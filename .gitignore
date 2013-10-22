@@ -8,6 +8,7 @@
 *.unityproj
 *.pidb
 *.sln
+*.meta
 
 # User Specific
 *.userprefs
