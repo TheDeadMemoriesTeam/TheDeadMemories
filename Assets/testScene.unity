@@ -444,7 +444,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1389026317}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9b90fe8781779e94a848f0a6591b6789, type: 3}
+  m_Script: {fileID: 11500000, guid: 3e21212e277391442a046099a9941392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1949668848}
@@ -476,12 +476,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1949668848}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8ff36ad197a41d45b491b115de0ac4b, type: 3}
+  m_Script: {fileID: 11500000, guid: 90e4f67e8785ca748b64a013df34adc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   moveSpeed: 10
   turnSpeed: 100
-  jumpHeight: 4
+  jumpHeight: 2
 --- !u!23 &1949668850
 Renderer:
   m_ObjectHideFlags: 0
