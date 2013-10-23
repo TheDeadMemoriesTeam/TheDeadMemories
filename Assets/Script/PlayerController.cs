@@ -76,6 +76,11 @@ public class PlayerController : MonoBehaviour {
 			else
 				rigidbody.AddForce(Vector3.back * moveSpeed * Time.deltaTime);
 		}
+		
+		else if (Input.GetKey(KeyCode.D) || Input.GetKey (KeyCode.RightArrow))
+			rigidbody.AddForce(Vector3.right * moveSpeed * Time.deltaTime);		
+		else if (Input.GetKey(KeyCode.Q) || Input.GetKey (KeyCode.LeftArrow))
+			rigidbody.AddForce(Vector3.left * moveSpeed * Time.deltaTime);
 	}
 	
 	void OnTriggerEnter (Collider other)
