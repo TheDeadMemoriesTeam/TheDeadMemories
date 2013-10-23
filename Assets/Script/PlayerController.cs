@@ -3,7 +3,7 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	
-	public float moveSpeed, turnSpeed, jumpHeight;
+	public float moveSpeed, jumpHeight;
 	
 	private bool isJumping;
 	
@@ -15,23 +15,66 @@ public class PlayerController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		// Si le perso doit avancer
-		if (Input.GetKey(KeyCode.Z) || Input.GetKey (KeyCode.UpArrow))
-			transform.Translate(Vector3.forward * moveSpeed * Time.deltaTime);
-		// Si le perso doit reculer
-		else if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
-			transform.Translate(-Vector3.forward * moveSpeed * Time.deltaTime);
-		// Si le perso doit tourner à gauche
-		else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
-			transform.Rotate(Vector3.up * -turnSpeed * Time.deltaTime);
-		// Si le perso doit tourner à droite
-		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-			transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
-		// Si le perso doit sauter
-		else if (Input.GetKey(KeyCode.Space) && !isJumping)
+		/* Sauts */
+			// esquive avant
+		if (Input.GetKey(KeyCode.Space) && !isJumping)
 		{
-			rigidbody.AddForce(Vector3.up * jumpHeight);
-			isJumping = true;
+			if (Input.GetKey(KeyCode.Z) || Input.GetKey (KeyCode.UpArrow))
+			{
+				rigidbody.AddForce((Vector3.up * jumpHeight + Vector3.forward * moveSpeed)/2);
+				isJumping = true;
+			}
+				// esquive arriere
+			else if (Input.GetKey(KeyCode.S) || Input.GetKey (KeyCode.DownArrow))
+			{
+				rigidbody.AddForce(Vector3.up * jumpHeight - Vector3.forward * moveSpeed /2);
+				isJumping = true;
+			}
+				// esquive gauche
+			else if (Input.GetKey(KeyCode.Q) || Input.GetKey (KeyCode.LeftArrow))
+			{
+				rigidbody.AddForce(Vector3.up * jumpHeight + Vector3.left * moveSpeed /2);
+				isJumping = true;
+			}
+				// esquive droite
+			else if (Input.GetKey(KeyCode.D) || Input.GetKey (KeyCode.RightArrow))
+			{
+				rigidbody.AddForce(Vector3.up * jumpHeight + Vector3.right * moveSpeed /2);
+				isJumping = true;
+			}
+				// sauter
+			else
+			{
+				rigidbody.AddForce(Vector3.up * jumpHeight);
+				isJumping = true;
+			}
+		}
+		
+		/* Déplacements*/
+		else if (Input.GetKey(KeyCode.Z) || Input.GetKey (KeyCode.UpArrow))
+		{
+			// avant
+			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+				rigidbody.AddForce(new Vector3((float)1,0,(float)0.5) * moveSpeed * Time.deltaTime);
+			// avant
+			else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
+				rigidbody.AddForce(new Vector3((float)-1,0,(float)0.5) * moveSpeed * Time.deltaTime);
+			// avant
+			else
+				rigidbody.AddForce(Vector3.forward * moveSpeed * Time.deltaTime);
+		}
+		
+		else if (Input.GetKey(KeyCode.S) || Input.GetKey (KeyCode.DownArrow))
+		{
+			// arriere droite
+			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+				rigidbody.AddForce(new Vector3((float)1,0,(float)-0.5) * moveSpeed * Time.deltaTime);
+			// arriere gauche
+			else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
+				rigidbody.AddForce(new Vector3((float)-1,0,(float)-0.5) * moveSpeed * Time.deltaTime);
+			// arriere
+			else
+				rigidbody.AddForce(Vector3.back * moveSpeed * Time.deltaTime);
 		}
 	}
 	
@@ -43,9 +86,9 @@ public class PlayerController : MonoBehaviour {
 		{
 			other.gameObject.SetActive(false);
 		}
-		//if (other.gameObject.tag == "Ground")
-		//{
+		if (other.gameObject.tag == "Ground")
+		{
 			isJumping = false;
-		//}
+		}
 	}
 }

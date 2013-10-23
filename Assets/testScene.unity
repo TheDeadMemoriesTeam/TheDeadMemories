@@ -1021,7 +1021,7 @@ Transform:
   m_GameObject: {fileID: 1766251828}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 1, z: 2}
   m_Children: []
   m_Father: {fileID: 0}
 --- !u!54 &1766251833
@@ -1070,8 +1070,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e4f67e8785ca748b64a013df34adc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  turnSpeed: 100
+  moveSpeed: 16000
   jumpHeight: 8000
 --- !u!23 &1949668850
 Renderer:
