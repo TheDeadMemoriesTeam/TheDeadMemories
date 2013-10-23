@@ -5,8 +5,12 @@ public class PlayerController : MonoBehaviour {
 	
 	public float moveSpeed, turnSpeed, jumpHeight;
 	
+	private bool isJumping;
+	
 	// Use this for initialization
 	void Start () {
+		gameObject.renderer.material.color = new Color(255, 0, 0);
+		isJumping=false;
 	}
 	
 	// Update is called once per frame
@@ -24,9 +28,10 @@ public class PlayerController : MonoBehaviour {
 		else if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
 			transform.Rotate(Vector3.up * turnSpeed * Time.deltaTime);
 		// Si le perso doit sauter
-		else if (Input.GetKey(KeyCode.Space))
+		else if (Input.GetKey(KeyCode.Space) && !isJumping)
 		{
-			transform.Translate(Vector3.up * jumpHeight * Time.deltaTime);
+			rigidbody.AddForce(Vector3.up * jumpHeight);
+			isJumping = true;
 		}
 	}
 	
@@ -38,5 +43,9 @@ public class PlayerController : MonoBehaviour {
 		{
 			other.gameObject.SetActive(false);
 		}
+		//if (other.gameObject.tag == "Ground")
+		//{
+			isJumping = false;
+		//}
 	}
 }
