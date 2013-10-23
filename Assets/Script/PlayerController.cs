@@ -29,4 +29,14 @@ public class PlayerController : MonoBehaviour {
 			transform.Translate(Vector3.up * jumpHeight * Time.deltaTime);
 		}
 	}
+	
+	void OnTriggerEnter (Collider other)
+	{
+		// Effet vache qui rit
+		// -> other.gameObject.collider.gameObject.collider.gameObject
+		if (other.gameObject.tag == "Item")
+		{
+			other.gameObject.SetActive(false);
+		}
+	}
 }
