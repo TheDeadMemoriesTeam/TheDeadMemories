@@ -3,92 +3,47 @@ using System.Collections;
 
 public class PlayerController : MonoBehaviour {
 	
-	public float moveSpeed, jumpHeight;
+	//public float moveSpeed, jumpHeight;
 	
-	private bool isJumping;
+	public float speed = 6.0F;
+    public float jumpSpeed = 8.0F;
+    public float gravity = 20.0F;
+	
+    private Vector3 moveDirection = Vector3.zero;
+	
+	private CharacterController controller;
 	
 	// Use this for initialization
 	void Start () {
 		gameObject.renderer.material.color = new Color(255, 0, 0);
-		isJumping=false;
+		controller = GetComponent<CharacterController>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		/* Sauts */
-			// esquive avant
-		if (Input.GetKey(KeyCode.Space) && !isJumping)
-		{
-			if (Input.GetKey(KeyCode.Z) || Input.GetKey (KeyCode.UpArrow))
-			{
-				rigidbody.AddForce((Vector3.up * jumpHeight + Vector3.forward * moveSpeed)/2);
-				isJumping = true;
-			}
-				// esquive arriere
-			else if (Input.GetKey(KeyCode.S) || Input.GetKey (KeyCode.DownArrow))
-			{
-				rigidbody.AddForce(Vector3.up * jumpHeight - Vector3.forward * moveSpeed /2);
-				isJumping = true;
-			}
-				// esquive gauche
-			else if (Input.GetKey(KeyCode.Q) || Input.GetKey (KeyCode.LeftArrow))
-			{
-				rigidbody.AddForce(Vector3.up * jumpHeight + Vector3.left * moveSpeed /2);
-				isJumping = true;
-			}
-				// esquive droite
-			else if (Input.GetKey(KeyCode.D) || Input.GetKey (KeyCode.RightArrow))
-			{
-				rigidbody.AddForce(Vector3.up * jumpHeight + Vector3.right * moveSpeed /2);
-				isJumping = true;
-			}
-				// sauter
-			else
-			{
-				rigidbody.AddForce(Vector3.up * jumpHeight);
-				isJumping = true;
-			}
-		}
 		
-		/* Déplacements*/
-		else if (Input.GetKey(KeyCode.Z) || Input.GetKey (KeyCode.UpArrow))
-		{
-			// avant
-			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-				rigidbody.AddForce(new Vector3((float)1,0,(float)0.5) * moveSpeed * Time.deltaTime);
-			// avant
-			else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
-				rigidbody.AddForce(new Vector3((float)-1,0,(float)0.5) * moveSpeed * Time.deltaTime);
-			// avant
-			else
-				rigidbody.AddForce(Vector3.forward * moveSpeed * Time.deltaTime);
-		}
-		
-		else if (Input.GetKey(KeyCode.S) || Input.GetKey (KeyCode.DownArrow))
-		{
-			// arriere droite
-			if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
-				rigidbody.AddForce(new Vector3((float)1,0,(float)-0.5) * moveSpeed * Time.deltaTime);
-			// arriere gauche
-			else if (Input.GetKey(KeyCode.Q) || Input.GetKey(KeyCode.LeftArrow))
-				rigidbody.AddForce(new Vector3((float)-1,0,(float)-0.5) * moveSpeed * Time.deltaTime);
-			// arriere
-			else
-				rigidbody.AddForce(Vector3.back * moveSpeed * Time.deltaTime);
-		}
+        if (controller.isGrounded) {
+			// Moves forward, left, right, backward
+            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            moveDirection = transform.TransformDirection(moveDirection);
+            moveDirection *= speed;
+			// Handle jumps
+            if (Input.GetButton("Jump"))
+                moveDirection.y = jumpSpeed;
+            
+        }
+		// Applies move
+        moveDirection.y -= gravity * Time.deltaTime;
+        controller.Move(moveDirection * Time.deltaTime);
+
 	}
 	
 	void OnTriggerEnter (Collider other)
 	{
-		// Effet vache qui rit
-		// -> other.gameObject.collider.gameObject.collider.gameObject
+		// Collects items
 		if (other.gameObject.tag == "Item")
 		{
 			other.gameObject.SetActive(false);
-		}
-		if (other.gameObject.tag == "Ground")
-		{
-			isJumping = false;
 		}
 	}
 }
