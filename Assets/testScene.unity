@@ -249,7 +249,7 @@ GameObject:
   - 114: {fileID: 243926411}
   - 54: {fileID: 243926415}
   m_Layer: 0
-  m_Name: PickUp
+  m_Name: Medikit
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -538,7 +538,7 @@ GameObject:
   - 114: {fileID: 859973842}
   - 54: {fileID: 859973843}
   m_Layer: 0
-  m_Name: PickUp
+  m_Name: Medikit
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -820,7 +820,7 @@ GameObject:
   - 114: {fileID: 1148677138}
   - 54: {fileID: 1148677139}
   m_Layer: 0
-  m_Name: PickUp
+  m_Name: Medikit
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -915,7 +915,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1194533975}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: ATH
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1070,14 +1070,14 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1148677134}
   - {fileID: 243926410}
-  - {fileID: 859973838}
   - {fileID: 2000401432}
-  - {fileID: 896973401}
-  - {fileID: 52215230}
-  - {fileID: 1817590367}
+  - {fileID: 1148677134}
+  - {fileID: 859973838}
   - {fileID: 1284022612}
+  - {fileID: 1817590367}
+  - {fileID: 52215230}
+  - {fileID: 896973401}
   m_Father: {fileID: 0}
 --- !u!1 &1350883271
 GameObject:
@@ -1642,7 +1642,7 @@ GameObject:
   - 114: {fileID: 2000401436}
   - 54: {fileID: 2000401437}
   m_Layer: 0
-  m_Name: PickUp
+  m_Name: Medikit
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
