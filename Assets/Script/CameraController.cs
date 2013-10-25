@@ -4,35 +4,36 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 	
 	public GameObject target;
-	private Vector3 offset;
+	public Vector3 offset;
 	
-	// Mouvement du perso avec la souris
+	// Mouvement du personnage avec la souris
 	private float mouseX;
-	private float mouseY;
 	public float mouseSpeed = 10f;
 	
 	// Use this for initialization
 	void Start () {
-		offset = transform.position;
-		// Initialisation de la position de la souris
-		Input.mousePosition.Set(0,0,0);
+		// Initialise la position de la caméra
+		transform.position = target.transform.position + offset;
+		// Initialise l'angle de la caméra
+		this.transform.rotation.Set(25,2,0,1);
+		// Initialise la rotation du personnage
 		mouseX = Input.mousePosition.x;
-		mouseY = Input.mousePosition.y;
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void Update () {
+		// Mise à jour de la position de la caméra
 		transform.position = target.transform.position + offset;
-		
+		transform.LookAt(target.transform);
 		handleMouseRotation();
 	}
 	
-	
+	// Change la position de la caméra en fonction
+	// des mouvements de la souris
 	void handleMouseRotation()
 	{
 		float positionX = Input.mousePosition.x;
-		float positionY = Input.mousePosition.y;
-		float deltaX, deltaY;
+		float deltaX;
 		if (positionX != mouseX)
 		{
 			deltaX = (positionX - mouseX) * mouseSpeed * Time.deltaTime;
@@ -40,16 +41,7 @@ public class CameraController : MonoBehaviour {
 		}
 		else
 			deltaX = 0;
-		
-		
-		if (positionY != mouseY)
-		{
-			deltaY = (positionY - mouseY) * mouseSpeed * Time.deltaTime;
-			mouseY = positionY;
-		}
-		else
-			deltaY = 0;
-		
-		this.transform.Rotate(-deltaY, deltaX, 0);
+		// Mise à jour de la rotation du personnage
+		target.gameObject.transform.Rotate(0, deltaX, 0);
 	}
 }
