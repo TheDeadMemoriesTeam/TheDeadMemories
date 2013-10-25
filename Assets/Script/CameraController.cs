@@ -4,6 +4,7 @@ using System.Collections;
 public class CameraController : MonoBehaviour {
 	
 	public GameObject target;
+
 	public float distance = 5F;
 	public float height = 2.5F;
 	
