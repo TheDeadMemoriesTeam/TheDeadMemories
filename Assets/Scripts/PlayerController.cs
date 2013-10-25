@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 	
-	void healthUpdate(int change)
+	public void healthUpdate(int change)
 	{
 		pv += change;
 		statuUpdate();

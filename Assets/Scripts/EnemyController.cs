@@ -3,18 +3,28 @@ using System.Collections;
 
 public class EnemyController : MonoBehaviour 
 {
-	private Transform target;
+	public PlayerController target;
+	private Vector3 distance;
+	NavMeshAgent agent;
 	
 	// Use this for initialization
 	void Start () 
 	{
-		target = GameObject.FindGameObjectWithTag("Player").transform;
+		target = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
 		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
+		agent = GetComponent<NavMeshAgent>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
-	{
-		GetComponent<NavMeshAgent>().destination = target.transform.position;
+	{	
+		agent.destination = target.transform.position;
+		distance = transform.position-target.transform.position;
+		if(distance.x <= agent.stoppingDistance && distance.x >= -agent.stoppingDistance &&
+			distance.y <= agent.stoppingDistance && distance.y >= -agent.stoppingDistance &&
+			distance.z <= agent.stoppingDistance && distance.z >= -agent.stoppingDistance)
+		{
+			target.healthUpdate(-1);
+		}
 	}
 }
