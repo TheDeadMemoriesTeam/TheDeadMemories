@@ -5,9 +5,11 @@ public class PlayerController : MonoBehaviour {
 	
 	public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
+	public float rotationFactor = 5.0F;
     public float gravity = 20.0F;
 	
     private Vector3 moveDirection = Vector3.zero;
+	private Vector3 rotation = Vector3.zero;
 	
 	private CharacterController controller;
 	
@@ -28,12 +30,15 @@ public class PlayerController : MonoBehaviour {
 			// Handle jumps
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
-            
         }
 		// Applies move
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-
+		
+		// Rotation
+		rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
+		rotation *= rotationFactor;
+		transform.Rotate(rotation);
 	}
 	
 	void OnTriggerEnter (Collider other)
