@@ -9,6 +9,7 @@ public class EnemyController : MonoBehaviour
 	void Start () 
 	{
 		target = GameObject.FindGameObjectWithTag("Player").transform;
+		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 	}
 	
 	// Update is called once per frame
