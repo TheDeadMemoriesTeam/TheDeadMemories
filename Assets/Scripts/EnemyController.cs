@@ -21,7 +21,12 @@ public class EnemyController : HumanoidController
 		Vector3 distance = transform.position-target.transform.position;
 		if(distance.magnitude <= agent.stoppingDistance)
 		{
-			target.healthUpdate(-1);
+			attack();
 		}
+	}
+	void attack()
+	{
+		//code a realiser pour toi jannis ;) 
+		target.healthUpdate(-1);
 	}
 }
