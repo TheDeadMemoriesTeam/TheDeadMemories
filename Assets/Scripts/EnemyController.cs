@@ -20,9 +20,7 @@ public class EnemyController : MonoBehaviour
 	{	
 		agent.destination = target.transform.position;
 		distance = transform.position-target.transform.position;
-		if(distance.x <= agent.stoppingDistance && distance.x >= -agent.stoppingDistance &&
-			distance.y <= agent.stoppingDistance && distance.y >= -agent.stoppingDistance &&
-			distance.z <= agent.stoppingDistance && distance.z >= -agent.stoppingDistance)
+		if(distance.magnitude <= agent.stoppingDistance)
 		{
 			target.healthUpdate(-1);
 		}
