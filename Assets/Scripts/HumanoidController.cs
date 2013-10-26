@@ -2,18 +2,19 @@
 using System.Collections;
 
 // Permet de gérer la vie
-public class HumanoidController : MonoBehaviour {
+public class HumanoidController : MonoBehaviour 
+{
 	
 	protected int pv, pvMax;
 	
 	// Use this for initialization
-	void Start () {
-	
+	void Start () 
+	{
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
 	}
 	
 	public virtual void healthUpdate(int change)

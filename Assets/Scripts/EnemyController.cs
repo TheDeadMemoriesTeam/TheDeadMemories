@@ -7,7 +7,7 @@ public class EnemyController : HumanoidController
 	protected NavMeshAgent agent;
 	
 	// Use this for initialization
-	void Start () 
+	protected virtual void Start () 
 	{
 		target = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
 		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);

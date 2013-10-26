@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : HumanoidController {
+public class PlayerController : HumanoidController 
+{
 	
 	public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
@@ -20,7 +21,8 @@ public class PlayerController : HumanoidController {
 	private bool gameOver = false;
 	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		gameObject.renderer.material.color = new Color(255, 0, 0);
 		controller = GetComponent<CharacterController>();
 		experienceText.color = new Color(0,0,255);
@@ -31,13 +33,16 @@ public class PlayerController : HumanoidController {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-		if (gameOver) {
+	void Update () 
+	{
+		if (gameOver) 
+		{
 			gameOverText.enabled=true;
 			return;
 		}
 		
-        if (controller.isGrounded) {
+        if (controller.isGrounded) 
+		{
 			// Moves forward, left, right, backward
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
             moveDirection = transform.TransformDirection(moveDirection);
