@@ -3,7 +3,6 @@ using System.Collections;
 
 public class PlayerController : HumanoidController 
 {
-	
 	public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
 	public float rotationFactor = 5.0F;
@@ -15,29 +14,20 @@ public class PlayerController : HumanoidController
 	private CharacterController controller;
 	
 	private int xp=0;
-	public GUIText healthText;
-	public GUIText experienceText;
-	public GUIText gameOverText;
-	private bool gameOver = false;
 	
 	// Use this for initialization
 	void Start () 
 	{
 		gameObject.renderer.material.color = new Color(255, 0, 0);
 		controller = GetComponent<CharacterController>();
-		experienceText.color = new Color(0,0,255);
 		pvMax = 200;
 		pv = pvMax;
-		statuUpdate();
-		gameOverText.enabled=false;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (gameOver) 
-		{
-			gameOverText.enabled=true;
+		if (pv <= 0) {
 			return;
 		}
 		
@@ -92,39 +82,15 @@ public class PlayerController : HumanoidController
 	public override void healthUpdate(int change)
 	{
 		base.healthUpdate(change);
-		statuUpdate();
 	}
 	
-	void experienceUpdate(int change)
+	private void experienceUpdate(int change)
 	{
 		xp += change;
-		statuUpdate();
 	}
 	
-	void statuUpdate()
+	public int getExperience()
 	{
-		if (pv<=0)
-		{
-			healthText.color = new Color(255,0,0);
-        	healthText.text = "0";
-			gameOver = true;
-		}
-        else if (pv<= pvMax * 1/4)
-		{
-			healthText.color = new Color(255,0,0);
-			healthText.text = pv.ToString();
-		}
-		else if (pv<= pvMax * 3/4)
-		{
-			healthText.color = new Color(125,125,0);
-			healthText.text = pv.ToString();
-		}
-		else
-		{
-			healthText.color = new Color(0,255,0);
-			healthText.text = pv.ToString();
-		}
-	
-		experienceText.text = xp.ToString();
+		return xp;
 	}
 }

@@ -20,7 +20,17 @@ public class HumanoidController : MonoBehaviour
 	public virtual void healthUpdate(int change)
 	{
 		pv += change;
-		if (pv>pvMax)
-			pv=pvMax;
+		if (pv > pvMax)
+			pv = pvMax;
+	}
+	
+	public int getHitPoints()
+	{
+		return pv;
+	}
+	
+	public int getMaxHitPoints()
+	{
+		return pvMax;
 	}
 }

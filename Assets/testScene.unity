@@ -90,7 +90,7 @@ GameObject:
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -334,7 +334,7 @@ GameObject:
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -681,7 +681,7 @@ GameObject:
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -1477,6 +1477,7 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 1194533975}
+  - 114: {fileID: 1194533976}
   m_Layer: 0
   m_Name: ATH
   m_TagString: Untagged
@@ -1498,6 +1499,21 @@ Transform:
   - {fileID: 2103803405}
   - {fileID: 1820496162}
   m_Father: {fileID: 0}
+--- !u!114 &1194533976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194533974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1dbcccd3c1d164544bed3d5eed29ccfa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1949668849}
+  healthText: {fileID: 1820496161}
+  experienceText: {fileID: 1073132793}
+  gameOverText: {fileID: 2103803406}
 --- !u!1001 &1203240220
 Prefab:
   m_ObjectHideFlags: 0
@@ -1764,7 +1780,7 @@ GameObject:
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2313,9 +2329,6 @@ MonoBehaviour:
   jumpSpeed: 8
   rotationFactor: 5
   gravity: 20
-  healthText: {fileID: 1820496161}
-  experienceText: {fileID: 1073132793}
-  gameOverText: {fileID: 2103803406}
 --- !u!23 &1949668850
 Renderer:
   m_ObjectHideFlags: 0
@@ -2596,7 +2609,7 @@ GameObject:
   m_Layer: 0
   m_Name: enemy
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -2694,6 +2707,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 2103803405}
   - 132: {fileID: 2103803406}
+  - 114: {fileID: 2103803407}
   m_Layer: 0
   m_Name: Game Over
   m_TagString: Untagged
@@ -2721,7 +2735,7 @@ GUIText:
   m_GameObject: {fileID: 2103803404}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: Game Over
+  m_Text: 
   m_Anchor: 4
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}
@@ -2736,6 +2750,18 @@ GUIText:
     rgba: 4278190335
   m_PixelCorrect: 1
   m_RichText: 1
+--- !u!114 &2103803407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2103803404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584bf4f7a96ce45f38e6756144845b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizedKey: Interface.GameOver
 --- !u!1001 &2141795222
 Prefab:
   m_ObjectHideFlags: 0
