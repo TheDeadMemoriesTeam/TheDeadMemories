@@ -6,7 +6,9 @@ public class EnemyController : HumanoidController
 	protected PlayerController target;
 	protected NavMeshAgent agent;
 	protected float time_count_Attack;
-	protected const float time_Attack = 1F;
+	protected int degat_Attack = -1;
+	protected float time_Attack = 1F;
+	protected float chance_attack = 0.1F;
 	
 	// Use this for initialization
 	protected virtual void Start () 
@@ -34,7 +36,8 @@ public class EnemyController : HumanoidController
 		time_count_Attack += Time.deltaTime;
 		if (time_count_Attack >= time_Attack)
 		{
-			target.healthUpdate(-1);
+			if (Random.value > chance_attack)
+			target.healthUpdate(degat_Attack);
 			time_count_Attack = 0;
 		}
 	}
