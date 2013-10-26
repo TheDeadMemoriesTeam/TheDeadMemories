@@ -1,11 +1,10 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : MonoBehaviour 
+public class EnemyController : HumanoidController 
 {
-	public PlayerController target;
-	private Vector3 distance;
-	NavMeshAgent agent;
+	protected PlayerController target;
+	protected NavMeshAgent agent;
 	
 	// Use this for initialization
 	void Start () 
@@ -16,10 +15,10 @@ public class EnemyController : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected virtual void Update () 
 	{	
 		agent.destination = target.transform.position;
-		distance = transform.position-target.transform.position;
+		Vector3 distance = transform.position-target.transform.position;
 		if(distance.magnitude <= agent.stoppingDistance)
 		{
 			target.healthUpdate(-1);

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour {
+public class PlayerController : HumanoidController {
 	
 	public float speed = 6.0F;
     public float jumpSpeed = 8.0F;
@@ -13,7 +13,7 @@ public class PlayerController : MonoBehaviour {
 	
 	private CharacterController controller;
 	
-	private int maxpv=200, pv=200, xp=0;
+	private int xp=0;
 	public GUIText healthText;
 	public GUIText experienceText;
 	public GUIText gameOverText;
@@ -24,6 +24,8 @@ public class PlayerController : MonoBehaviour {
 		gameObject.renderer.material.color = new Color(255, 0, 0);
 		controller = GetComponent<CharacterController>();
 		experienceText.color = new Color(0,0,255);
+		pvMax = 200;
+		pv = pvMax;
 		statuUpdate();
 		gameOverText.enabled=false;
 	}
@@ -52,6 +54,16 @@ public class PlayerController : MonoBehaviour {
 		rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
 		rotation *= rotationFactor;
 		transform.Rotate(rotation);
+		
+		if (Input.GetButton("Fire1"))
+		{
+			EnemyController target = (EnemyController)FindObjectOfType(System.Type.GetType("EnemyController"));
+			Vector3 distance = transform.position-target.transform.position;
+			if(distance.magnitude <= 4f)
+			{
+				target.healthUpdate(-1);
+			}
+		}
 	}
 	
 	
@@ -72,9 +84,9 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 	
-	public void healthUpdate(int change)
+	public override void healthUpdate(int change)
 	{
-		pv += change;
+		base.healthUpdate(change);
 		statuUpdate();
 	}
 	
@@ -92,12 +104,12 @@ public class PlayerController : MonoBehaviour {
         	healthText.text = "0";
 			gameOver = true;
 		}
-        else if (pv<= maxpv * 1/4)
+        else if (pv<= pvMax * 1/4)
 		{
 			healthText.color = new Color(255,0,0);
 			healthText.text = pv.ToString();
 		}
-		else if (pv<= maxpv * 3/4)
+		else if (pv<= pvMax * 3/4)
 		{
 			healthText.color = new Color(125,125,0);
 			healthText.text = pv.ToString();
