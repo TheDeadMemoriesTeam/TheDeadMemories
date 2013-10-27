@@ -23,7 +23,10 @@ public class EnemyController : HumanoidController
 	protected virtual void Update () 
 	{	
 		if (pv <= 0)
+		{
 			Destroy(gameObject);
+			SpawnController.nbEnemies--;
+		}
 		timeCountAttack += Time.deltaTime;
 		agent.destination = target.transform.position;
 		Vector3 distance = transform.position-target.transform.position;
@@ -35,7 +38,6 @@ public class EnemyController : HumanoidController
 	
 	void attack()
 	{
-		//code a realiser pour toi janisse ;) 
 		if (timeCountAttack >= timeAttack)
 		{
 			if (Random.value > probabilityAttack)
