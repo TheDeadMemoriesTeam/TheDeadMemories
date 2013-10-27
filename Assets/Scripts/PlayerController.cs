@@ -58,8 +58,11 @@ public class PlayerController : HumanoidController
 				Vector3 distance = transform.position-targets[i].transform.position;
 				if(distance.magnitude <= 4f)
 				{
-					targets[i].healthUpdate(-1);
-					return;
+					var targetDir = targets[i].transform.position - transform.position;
+					var playerDir = transform.forward;
+					var angle = Vector3.Angle(targetDir, playerDir);
+					if (angle>=-45 && angle<=45)
+						targets[i].healthUpdate(-1);
 				}	
 			}
 		}
