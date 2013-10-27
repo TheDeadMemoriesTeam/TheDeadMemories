@@ -16,5 +16,7 @@ public class PeonController : EnemyController
 	protected override void Update ()
 	{
 		base.Update();
+		if (pv<=0)
+			gameObject.renderer.material.color = new Color(1, 0, 0);
 	}
 }
