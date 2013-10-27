@@ -52,13 +52,13 @@ public class PlayerController : HumanoidController
 		
 		if (Input.GetButton("Fire1"))
 		{
-			EnemyController[] target = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-			for (int i=0; i<5; i++)
+			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+			for (int i=0; i<targets.Length; i++)
 			{
-				Vector3 distance = transform.position-target[i].transform.position;
+				Vector3 distance = transform.position-targets[i].transform.position;
 				if(distance.magnitude <= 4f)
 				{
-					target[i].healthUpdate(-1);
+					targets[i].healthUpdate(-1);
 					return;
 				}	
 			}
