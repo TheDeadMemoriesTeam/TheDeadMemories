@@ -28,6 +28,8 @@ public class EnemyController : HumanoidController
 		{
 			attack();
 		}
+		if (pv <= 0)
+			Destroy(gameObject);
 	}
 	
 	void attack()
