@@ -91,7 +91,7 @@ public class PlayerController : HumanoidController
 		base.healthUpdate(change);
 	}
 	
-	private void experienceUpdate(int change)
+	public void experienceUpdate(int change)
 	{
 		xp += change;
 	}

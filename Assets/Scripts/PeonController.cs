@@ -11,6 +11,8 @@ public class PeonController : EnemyController
 		
 		pvMax = 5;
 		pv = pvMax;
+		
+		xp = 15;
 	}
 	
 	protected override void Update ()

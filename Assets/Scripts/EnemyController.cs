@@ -9,6 +9,7 @@ public class EnemyController : HumanoidController
 	protected int damageAttack = -1;
 	protected float timeAttack = 1F;
 	protected float probabilityAttack = 0.1F;
+	protected int xp;
 	
 	// Use this for initialization
 	protected virtual void Start () 
@@ -26,6 +27,7 @@ public class EnemyController : HumanoidController
 		{
 			Destroy(gameObject);
 			SpawnController.nbEnemies--;
+			target.experienceUpdate(xp);
 		}
 		timeCountAttack += Time.deltaTime;
 		agent.destination = target.transform.position;
