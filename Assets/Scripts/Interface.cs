@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Interface : MonoBehaviour {
+public class Interface : MonoBehaviour 
+{
 	
 	public PlayerController player;
 	
@@ -10,13 +11,15 @@ public class Interface : MonoBehaviour {
 	public GUIText gameOverText;
 	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		experienceText.color = new Color(0,0,255);
 		gameOverText.enabled=false;
 	}
 	
 	// Update is called once per frame
-	void LateUpdate () {
+	void LateUpdate () 
+	{
 		
 		int hp = player.getHitPoints();
 		int hpMax = player.getMaxHitPoints();
