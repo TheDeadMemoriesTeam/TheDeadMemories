@@ -9,6 +9,7 @@
 *.pidb
 *.sln
 *.suo
+*.pdb
 
 # User Specific
 *.userprefs

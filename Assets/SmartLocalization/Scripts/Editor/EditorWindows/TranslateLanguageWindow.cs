@@ -50,7 +50,11 @@ public class TranslateLanguageWindow : EditorWindow
 	private SmartLocalizationWindow smartLocWindow;
 #endregion
 #region Initialization
-	public void Initialize(CultureInfo thisCultureInfo, bool checkTranslation = false)
+	public void Initialize(CultureInfo thisCultureInfo)
+	{
+		Initialize(thisCultureInfo, false);
+	}
+	public void Initialize(CultureInfo thisCultureInfo, bool checkTranslation)
 	{
 		if(smartLocWindow != null && !Application.isPlaying && thisCultureInfo != null)
 		{

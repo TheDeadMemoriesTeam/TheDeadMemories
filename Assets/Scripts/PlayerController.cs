@@ -52,11 +52,18 @@ public class PlayerController : HumanoidController
 		
 		if (Input.GetButton("Fire1"))
 		{
-			EnemyController target = (EnemyController)FindObjectOfType(System.Type.GetType("EnemyController"));
-			Vector3 distance = transform.position-target.transform.position;
-			if(distance.magnitude <= 4f)
+			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+			for (int i=0; i<targets.Length; i++)
 			{
-				target.healthUpdate(-1);
+				Vector3 distance = transform.position-targets[i].transform.position;
+				if(distance.magnitude <= 4f)
+				{
+					var targetDir = targets[i].transform.position - transform.position;
+					var playerDir = transform.forward;
+					var angle = Vector3.Angle(targetDir, playerDir);
+					if (angle>=-45 && angle<=45)
+						targets[i].healthUpdate(-1);
+				}	
 			}
 		}
 	}

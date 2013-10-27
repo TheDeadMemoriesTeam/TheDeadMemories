@@ -30,7 +30,15 @@ public class LocalizedKeySelector
 	/// <param name='sortType'>
 	/// Sort type.
 	/// </param>
-	public static string SelectKeyGUI(string currentKey, bool sort = false, LocalizedObjectType sortType = LocalizedObjectType.INVALID)
+	public static string SelectKeyGUI(string currentKey)
+	{
+		return SelectKeyGUI(currentKey, false, LocalizedObjectType.INVALID);
+	}
+	public static string SelectKeyGUI(string currentKey, bool sort)
+	{
+		return SelectKeyGUI(currentKey, sort, LocalizedObjectType.INVALID);
+	}
+	public static string SelectKeyGUI(string currentKey, bool sort, LocalizedObjectType sortType)
 	{
 		EditorGUILayout.BeginHorizontal();
 		GUILayout.Label("Smart Localization",EditorStyles.boldLabel);
