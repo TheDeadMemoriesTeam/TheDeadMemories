@@ -25,9 +25,10 @@ public class EnemyController : HumanoidController
 	{	
 		if (pv <= 0)
 		{
-			Destroy(gameObject);
 			SpawnController.nbEnemies--;
 			target.experienceUpdate(xp);
+			DestroyImmediate(gameObject);
+			return;
 		}
 		timeCountAttack += Time.deltaTime;
 		agent.destination = target.transform.position;
