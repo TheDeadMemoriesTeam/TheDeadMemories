@@ -22,20 +22,20 @@ public class EnemyController : HumanoidController
 	// Update is called once per frame
 	protected virtual void Update () 
 	{	
+		if (pv <= 0)
+			Destroy(gameObject);
+		timeCountAttack += Time.deltaTime;
 		agent.destination = target.transform.position;
 		Vector3 distance = transform.position-target.transform.position;
 		if(distance.magnitude <= agent.stoppingDistance)
 		{
 			attack();
 		}
-		if (pv <= 0)
-			Destroy(gameObject);
 	}
 	
 	void attack()
 	{
 		//code a realiser pour toi janisse ;) 
-		timeCountAttack += Time.deltaTime;
 		if (timeCountAttack >= timeAttack)
 		{
 			if (Random.value > probabilityAttack)
