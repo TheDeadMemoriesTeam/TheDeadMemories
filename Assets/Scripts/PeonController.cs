@@ -17,6 +17,9 @@ public class PeonController : EnemyController
 	{
 		base.Update();
 		if (pv<=0)
+		{
 			gameObject.renderer.material.color = new Color(1, 0, 0);
+			Destroy(this);	
+		}
 	}
 }
