@@ -50,7 +50,7 @@ public class PlayerController : HumanoidController
 		rotation *= rotationFactor;
 		transform.Rotate(rotation);
 		
-		if (Input.GetButton("Fire1"))
+		if (Input.GetButtonDown("Fire1"))
 		{
 			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 			for (int i=0; i<targets.Length; i++)
