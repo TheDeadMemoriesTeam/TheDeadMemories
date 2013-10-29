@@ -30,7 +30,7 @@ public class EnemyController : HumanoidController
 	{	
 		if (pv <= 0)
 		{
-			SpawnController.nbEnemies--;
+			((SpawnManager)FindObjectOfType(System.Type.GetType("SpawnManager"))).decNbEnnemies();
 			target.experienceUpdate(xp);
 			
 			// Lache un medikit à la position de l'ennemi mort
