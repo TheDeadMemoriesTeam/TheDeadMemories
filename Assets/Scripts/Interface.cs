@@ -6,15 +6,19 @@ public class Interface : MonoBehaviour
 	
 	public PlayerController player;
 	
-	public GUIText healthText;
 	public GUIText experienceText;
 	public GUIText gameOverText;
+	public GUITexture healthTextureEmpty;
+	public GUITexture healthTexture;
+	
 	
 	// Use this for initialization
 	void Start () 
 	{
 		experienceText.color = new Color(0,0,255);
 		gameOverText.enabled=false;
+		healthTextureEmpty.pixelInset = new Rect(-32,Screen.height-32,32,32); // position de la texture vide de la barre de vie
+		healthTexture.pixelInset = new Rect(-32,Screen.height-32,32,32); // position de la texture de la barre de vie actuelle du joueur
 	}
 	
 	// Update is called once per frame
@@ -24,26 +28,18 @@ public class Interface : MonoBehaviour
 		int hp = player.getHitPoints();
 		int hpMax = player.getMaxHitPoints();
 		
-		if (hp <= 0)
+		
+		if(hp <= 0)
 		{
-			healthText.color = new Color(255,0,0);
-        	hp = 0;
+			hp = 0;
 			gameOverText.enabled=true;
 		}
-        else if (hp <= hpMax * 1/4)
-		{
-			healthText.color = new Color(255,0,0);
-		}
-		else if (hp <= hpMax * 3/4)
-		{
-			healthText.color = new Color(125,125,0);
-		}
-		else
-		{
-			healthText.color = new Color(0,255,0);
-			
-		}
-		healthText.text = hp.ToString();
+		
+		double hpBar = (double)hp * 1.12;
+		int hpBarPxl = (int)hpBar + 32;
+		
+		healthTextureEmpty.border = new RectOffset(256,0,0,0);
+		healthTexture.border = new RectOffset(hpBarPxl,0,0,0);
 	
 		experienceText.text = player.getExperience().ToString();
 	}
