@@ -15,6 +15,8 @@ public class PlayerController : HumanoidController
 	
 	private int xp=0;
 	
+	public AchivementManager achivementManager;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -40,6 +42,9 @@ public class PlayerController : HumanoidController
 			// Handle jumps
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
+			
+			// Débloque l'achivement premier pas
+			achivementManager.playerFirstMove();
         }
 		// Applies move
         moveDirection.y -= gravity * Time.deltaTime;
