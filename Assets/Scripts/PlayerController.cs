@@ -77,6 +77,7 @@ public class PlayerController : HumanoidController
 		{
 			other.gameObject.SetActive(false);
 			healthUpdate(50);
+			return;
 		}
 		if (other.gameObject.tag == "Weapon")
 		{

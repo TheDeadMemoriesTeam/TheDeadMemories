@@ -12,13 +12,13 @@ public class EnemyController : HumanoidController
 	protected float probabilityAttack = 0.1F;
 	protected int xp;
 	
-	protected Rotator medikit;
+	public Rotator medikit;
 	protected float dropProbability = 0.077F;
 	
 	// Use this for initialization
 	protected virtual void Start () 
 	{
-		medikit = (Rotator)FindObjectOfType(System.Type.GetType("Rotator"));
+		//medikit = (Rotator)FindObjectOfType(System.Type.GetType("Rotator"));
 		target = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
 		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 		agent = GetComponent<NavMeshAgent>();
@@ -36,8 +36,7 @@ public class EnemyController : HumanoidController
 			// Lache un medikit à la position de l'ennemi mort
 			if (Random.value < dropProbability)
 			{
-				Vector3 lootPosition = new Vector3(transform.position.x, transform.position.y, transform.position.z);
-				Instantiate(medikit, lootPosition, Random.rotation);
+				Instantiate(medikit, transform.position, Random.rotation);
 			}
 			DestroyImmediate(gameObject);
 			return;

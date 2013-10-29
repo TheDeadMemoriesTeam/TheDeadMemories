@@ -26,8 +26,6 @@ public class Interface : MonoBehaviour
 	{
 		
 		int hp = player.getHitPoints();
-		int hpMax = player.getMaxHitPoints();
-		
 		
 		if(hp <= 0)
 		{
