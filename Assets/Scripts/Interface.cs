@@ -8,7 +8,6 @@ public class Interface : MonoBehaviour
 	
 	public GUIText experienceText;
 	public GUIText gameOverText;
-	public GUIText manaText;
 	public GUITexture healthTextureEmpty;
 	public GUITexture healthTexture;
 	public GUITexture manaTextureEmpty;
@@ -18,7 +17,6 @@ public class Interface : MonoBehaviour
 	void Start () 
 	{
 		experienceText.color = new Color(0,0,255);
-		manaText.color = Color.magenta;
 		gameOverText.enabled=false;
 		
 		healthTextureEmpty.pixelInset = new Rect(-32,Screen.height-32,32,32); // position de la texture vide de la barre de vie
@@ -64,6 +62,5 @@ public class Interface : MonoBehaviour
 		manaTexture.border = new RectOffset(manaBarPxl,0,0,0);
 	
 		experienceText.text = player.getExperience().ToString();
-		manaText.text = player.getMana().ToString() + " / " + player.getManaMax().ToString();
 	}
 }
