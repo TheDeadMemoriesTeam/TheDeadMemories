@@ -47,6 +47,9 @@ public class PlayerController : HumanoidController
 			// Handle jumps
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
+			
+			// Débloque l'achivement premier pas
+			achivementManager.FirstMoveAchievement();
         }
 		// Applies move
         moveDirection.y -= gravity * Time.deltaTime;
