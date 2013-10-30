@@ -109,13 +109,19 @@ public class PlayerController : HumanoidController
 	void OnTriggerEnter (Collider other)
 	{
 		// Collects items
-		if (other.gameObject.tag == "Item")
+		if (other.gameObject.tag == "Medikit")
 		{
 			other.gameObject.SetActive(false);
 			healthUpdate(50);
 			return;
 		}
-		if (other.gameObject.tag == "Weapon")
+		else if (other.gameObject.tag == "Potion Mana")
+		{
+			other.gameObject.SetActive(false);
+			manaUpdate(50);
+			return;
+		}
+		else if (other.gameObject.tag == "Weapon")
 		{
 			other.gameObject.SetActive(false);
 			healthUpdate(-50);
