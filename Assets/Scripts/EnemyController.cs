@@ -9,6 +9,7 @@ public class EnemyController : HumanoidController
 	protected float timeCountAttack;
 	protected int damageAttack = -1;
 	protected int damageMagic = -5;
+	protected int manaCost = -50;
 	protected float timeAttack = 1F;
 	protected float probabilityAttack = 0.1F;
 	protected int xp;
@@ -57,16 +58,18 @@ public class EnemyController : HumanoidController
 		{
 			if (Random.value > probabilityAttack)
 			{
-				if (Random.value > 0.5)
+				if (getMana() >= -manaCost)
 				{
-					target.healthUpdate(damageAttack);	
-					print ("physic");
+					if (Random.value > 0.5)
+						target.healthUpdate(damageAttack);
+					else
+					{
+						target.healthUpdate(damageMagic);
+						manaUpdate(manaCost);
+					}					
 				}
 				else
-				{
-					target.healthUpdate(damageMagic);
-					print ("magic");
-				}
+					target.healthUpdate(damageAttack);
 				target.setTimeNotTouched(0);
 			}
 			timeCountAttack = 0;
