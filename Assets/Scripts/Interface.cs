@@ -16,7 +16,7 @@ public class Interface : MonoBehaviour
 	void Start () 
 	{
 		experienceText.color = new Color(0,0,255);
-		//manaText.color = Color.magenta;
+		manaText.color = Color.magenta;
 		gameOverText.enabled=false;
 		healthTextureEmpty.pixelInset = new Rect(-32,Screen.height-32,32,32); // position de la texture vide de la barre de vie
 		healthTexture.pixelInset = new Rect(-32,Screen.height-32,32,32); // position de la texture de la barre de vie actuelle du joueur
@@ -41,6 +41,6 @@ public class Interface : MonoBehaviour
 		healthTexture.border = new RectOffset(hpBarPxl,0,0,0);
 	
 		experienceText.text = player.getExperience().ToString();
-		//manaText.text = player.getMana().ToString() + " / " + player.getManaMax().ToString();
+		manaText.text = player.getMana().ToString() + " / " + player.getManaMax().ToString();
 	}
 }
