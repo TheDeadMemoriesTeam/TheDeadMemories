@@ -406,7 +406,7 @@ Transform:
   m_GameObject: {fileID: 565409769}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1194533975}
 --- !u!131 &565409771
@@ -570,6 +570,52 @@ GUIText:
     rgba: 4278190080
   m_PixelCorrect: 1
   m_RichText: 1
+--- !u!1 &972415808
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 972415809}
+  - 131: {fileID: 972415810}
+  m_Layer: 0
+  m_Name: ManaBar
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &972415809
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972415808}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!131 &972415810
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 972415808}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 3d794546c8692f14a823077f3c87c711, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 256
+    height: 32
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &1073132791
 GameObject:
   m_ObjectHideFlags: 0
@@ -653,6 +699,8 @@ Transform:
   - {fileID: 1311372441}
   - {fileID: 565409770}
   - {fileID: 932983089}
+  - {fileID: 972415809}
+  - {fileID: 2003792408}
   m_Father: {fileID: 0}
 --- !u!114 &1194533976
 MonoBehaviour:
@@ -671,6 +719,8 @@ MonoBehaviour:
   manaText: {fileID: 932983090}
   healthTextureEmpty: {fileID: 565409771}
   healthTexture: {fileID: 1311372442}
+  manaTextureEmpty: {fileID: 2003792409}
+  manaTexture: {fileID: 972415810}
 --- !u!114 &1194533977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -706,8 +756,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1311372440}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 1194533975}
 --- !u!131 &1311372442
@@ -1171,6 +1221,52 @@ AudioListener:
   m_PrefabInternal: {fileID: 703574397}
   m_GameObject: {fileID: 1949668848}
   m_Enabled: 1
+--- !u!1 &2003792407
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2003792408}
+  - 131: {fileID: 2003792409}
+  m_Layer: 0
+  m_Name: ManaBarEmpty
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2003792408
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003792407}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!131 &2003792409
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2003792407}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 39415b0e43fb3cc48a49847b868a70a0, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 256
+    height: 32
+  m_LeftBorder: 1
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &2103803404
 GameObject:
   m_ObjectHideFlags: 0
