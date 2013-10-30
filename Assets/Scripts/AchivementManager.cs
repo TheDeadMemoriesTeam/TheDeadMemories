@@ -13,6 +13,7 @@ public class AchivementManager : MonoBehaviour {
 	private bool firstMove = false;
 	private bool firstKill = false;
 	private bool tenKills = false;
+	private bool untouch1min = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -54,22 +55,19 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
+	public void untouchOneMinuteAchievement()
+	{
+		if (!untouch1min)
+		{
+			Debug.Log("Achivement Not touch during 1min !");
+			unlockAchivement(texture);
+			untouch1min = !untouch1min;
+		}
+	}
+	
 	void unlockAchivement(Texture textureAchivement)
 	{
-		/*GameObject displayAchivement = new GameObject ("Achivement Object");
-		displayAchivement.transform.position = new Vector3(0, 0, 0);
-		GUITexture textureToApply = new GUITexture();
-		textureToApply = (GUITexture)displayAchivement.AddComponent(System.Type.GetType("GUITexture"));
-		textureToApply.texture = textureAchivement;
-		/*textureToApply = displayAchivement.AddComponent(System.Type.GetType("GUITexture"));
-		textureToApply.texture = textureAchivement;
-		textureToApply.pixelInset.width = textureAchivement.width;
-		textureToApply.pixelInset.height = textureAchivement.height;
-		textureToApply.pixelInset.x = textureAchivement.width;
-		textureToApply.pixelInset.y = textureAchivement.height;*/
-		
-		/*displayAchivement.AddComponent(System.Type.GetType("AchivementShow"));*/
-		
+		// TODO
 		audio.PlayOneShot(soundAchivement);
 	}
 }

@@ -56,7 +56,10 @@ public class EnemyController : HumanoidController
 		if (timeCountAttack >= timeAttack)
 		{
 			if (Random.value > probabilityAttack)
-			target.healthUpdate(damageAttack);
+			{
+				target.healthUpdate(damageAttack);	
+				target.setTimeNotTouched(0);
+			}
 			timeCountAttack = 0;
 		}
 	}

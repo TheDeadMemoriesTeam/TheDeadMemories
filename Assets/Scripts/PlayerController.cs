@@ -17,6 +17,7 @@ public class PlayerController : HumanoidController
 	
 	public AchivementManager achivementManager;
 	private int cptEnemyKilled = 0;
+	private float timeNotTouched = 0;
 	
 	// Use this for initialization
 	void Start () 
@@ -72,6 +73,11 @@ public class PlayerController : HumanoidController
 				}	
 			}
 		}
+		
+		timeNotTouched += Time.deltaTime;
+		// Débloque l'achievement non touché pendant 1 min 
+		if (timeNotTouched >= 60)
+			achivementManager.untouchOneMinuteAchievement();
 	}
 	
 	
@@ -100,6 +106,7 @@ public class PlayerController : HumanoidController
 	public void experienceUpdate(int change)
 	{
 		xp += change;
+		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
 		if (cptEnemyKilled == 1)
 			achivementManager.oneKillAchievement();
@@ -110,5 +117,10 @@ public class PlayerController : HumanoidController
 	public int getExperience()
 	{
 		return xp;
+	}
+	
+	public void setTimeNotTouched(float time)
+	{
+		timeNotTouched = time;
 	}
 }
