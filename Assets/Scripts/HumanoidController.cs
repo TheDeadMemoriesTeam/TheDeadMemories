@@ -5,7 +5,7 @@ using System.Collections;
 public class HumanoidController : MonoBehaviour 
 {
 	
-	protected int pv, pvMax;
+	protected int pv, pvMax, mana, manaMax;
 	
 	// Use this for initialization
 	void Start () 
@@ -32,5 +32,22 @@ public class HumanoidController : MonoBehaviour
 	public int getMaxHitPoints()
 	{
 		return pvMax;
+	}
+	
+	public virtual void manaUpdate(int change)
+	{
+		mana += change;
+		if (mana>manaMax)
+			mana = manaMax;
+	}
+	
+	public int getMana()
+	{
+		return mana;	
+	}
+	
+	public int getManaMax()
+	{
+		return manaMax;	
 	}
 }

@@ -13,6 +13,9 @@ public class PeonController : EnemyController
 		pv = pvMax;
 		
 		xp = 15;
+		
+		manaMax = 50;
+		mana = manaMax;
 	}
 	
 	protected override void Update ()
