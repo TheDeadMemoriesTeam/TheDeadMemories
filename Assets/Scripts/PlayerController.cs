@@ -55,13 +55,10 @@ public class PlayerController : HumanoidController
         controller.Move(moveDirection * Time.deltaTime);
 		
 		
-		if(Time.timeScale == 1) // Ne rotate pas si le jeu est en pause
-		{	
-			// Rotation
-			rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
-			rotation *= rotationFactor;
-			transform.Rotate(rotation);
-		}
+		// Rotation
+		rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
+		rotation *= rotationFactor * Time.timeScale;
+		transform.Rotate(rotation);
 		
 		if (Input.GetButtonDown("Fire1"))
 		{
