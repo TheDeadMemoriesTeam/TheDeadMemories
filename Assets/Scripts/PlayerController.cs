@@ -17,6 +17,10 @@ public class PlayerController : HumanoidController
 	private int mana;
 	private int manaMax = 100;
 	
+	public AchivementManager achivementManager;
+	private int cptEnemyKilled = 0;
+	private float timeNotTouched = 0;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -124,6 +128,13 @@ public class PlayerController : HumanoidController
 	public void experienceUpdate(int change)
 	{
 		xp += change;
+		
+		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
+		cptEnemyKilled++;
+		if (cptEnemyKilled == 1)
+			achivementManager.oneKillAchievement();
+		else if (cptEnemyKilled == 10)
+			achivementManager.tenKillsAchievement();
 	}
 	
 	public int getExperience()
@@ -146,5 +157,10 @@ public class PlayerController : HumanoidController
 	public int getManaMax()
 	{
 		return manaMax;	
+	}
+	
+	public void setTimeNotTouched(float time)
+	{
+		timeNotTouched = time;
 	}
 }
