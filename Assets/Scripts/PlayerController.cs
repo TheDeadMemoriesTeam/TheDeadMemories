@@ -14,6 +14,8 @@ public class PlayerController : HumanoidController
 	private CharacterController controller;
 	
 	private int xp=0;
+	private int mana;
+	private int manaMax = 100;
 	
 	// Use this for initialization
 	void Start () 
@@ -22,6 +24,7 @@ public class PlayerController : HumanoidController
 		controller = GetComponent<CharacterController>();
 		pvMax = 200;
 		pv = pvMax;
+		mana = manaMax;
 	}
 	
 	// Update is called once per frame
@@ -66,6 +69,23 @@ public class PlayerController : HumanoidController
 				}	
 			}
 		}
+		else if (Input.GetButtonDown("Fire2"))
+		{
+			manaUpdate(-10);
+			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+			for (int i=0; i<targets.Length; i++)
+			{
+				Vector3 distance = transform.position-targets[i].transform.position;
+				if(distance.magnitude <= 4f)
+				{
+					var targetDir = targets[i].transform.position - transform.position;
+					var playerDir = transform.forward;
+					var angle = Vector3.Angle(targetDir, playerDir);
+					if (angle>=-45 && angle<=45)
+						targets[i].healthUpdate(-5);
+				}	
+			}
+		}
 	}
 	
 	
@@ -100,5 +120,22 @@ public class PlayerController : HumanoidController
 	public int getExperience()
 	{
 		return xp;
+	}
+	
+	public void manaUpdate(int change)
+	{
+		mana += change;
+		if (mana>manaMax)
+			mana = manaMax;
+	}
+	
+	public int getMana()
+	{
+		return mana;	
+	}
+	
+	public int getManaMax()
+	{
+		return manaMax;	
 	}
 }

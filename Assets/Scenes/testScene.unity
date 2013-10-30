@@ -520,6 +520,56 @@ Prefab:
   m_RootGameObject: {fileID: 1949668848}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &932983088
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 932983089}
+  - 132: {fileID: 932983090}
+  m_Layer: 0
+  m_Name: Mana
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &932983089
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 932983088}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!132 &932983090
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 932983088}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: 200 / 200
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 10, y: -40}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190080
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1073132791
 GameObject:
   m_ObjectHideFlags: 0
@@ -559,7 +609,7 @@ GUIText:
   m_Text: 0
   m_Anchor: 0
   m_Alignment: 0
-  m_PixelOffset: {x: 10, y: -30}
+  m_PixelOffset: {x: 10, y: -60}
   m_LineSpacing: 1
   m_TabSize: 4
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
@@ -601,6 +651,7 @@ Transform:
   - {fileID: 2103803405}
   - {fileID: 1311372441}
   - {fileID: 565409770}
+  - {fileID: 932983089}
   m_Father: {fileID: 0}
 --- !u!114 &1194533976
 MonoBehaviour:
@@ -616,6 +667,7 @@ MonoBehaviour:
   player: {fileID: 1949668849}
   experienceText: {fileID: 1073132793}
   gameOverText: {fileID: 2103803406}
+  manaText: {fileID: 932983090}
   healthTextureEmpty: {fileID: 565409771}
   healthTexture: {fileID: 1311372442}
 --- !u!1 &1311372440
