@@ -8,6 +8,7 @@ public class EnemyController : HumanoidController
 	protected NavMeshAgent agent;
 	protected float timeCountAttack;
 	protected int damageAttack = -1;
+	protected int damageMagic = -5;
 	protected float timeAttack = 1F;
 	protected float probabilityAttack = 0.1F;
 	protected int xp;
@@ -56,7 +57,16 @@ public class EnemyController : HumanoidController
 		{
 			if (Random.value > probabilityAttack)
 			{
-				target.healthUpdate(damageAttack);	
+				if (Random.value > 0.5)
+				{
+					target.healthUpdate(damageAttack);	
+					print ("physic");
+				}
+				else
+				{
+					target.healthUpdate(damageMagic);
+					print ("magic");
+				}
 				target.setTimeNotTouched(0);
 			}
 			timeCountAttack = 0;

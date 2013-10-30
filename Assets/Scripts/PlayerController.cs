@@ -14,8 +14,6 @@ public class PlayerController : HumanoidController
 	private CharacterController controller;
 	
 	private int xp=0;
-	private int mana;
-	private int manaMax = 100;
 	
 	public AchivementManager achivementManager;
 	private int cptEnemyKilled = 0;
@@ -28,6 +26,7 @@ public class PlayerController : HumanoidController
 		controller = GetComponent<CharacterController>();
 		pvMax = 200;
 		pv = pvMax;
+		manaMax = 100;
 		mana = manaMax;
 	}
 	
@@ -129,11 +128,6 @@ public class PlayerController : HumanoidController
 		}
 	}
 	
-	public override void healthUpdate(int change)
-	{
-		base.healthUpdate(change);
-	}
-	
 	public void experienceUpdate(int change)
 	{
 		xp += change;
@@ -149,23 +143,6 @@ public class PlayerController : HumanoidController
 	public int getExperience()
 	{
 		return xp;
-	}
-	
-	public void manaUpdate(int change)
-	{
-		mana += change;
-		if (mana>manaMax)
-			mana = manaMax;
-	}
-	
-	public int getMana()
-	{
-		return mana;	
-	}
-	
-	public int getManaMax()
-	{
-		return manaMax;	
 	}
 	
 	public void setTimeNotTouched(float time)
