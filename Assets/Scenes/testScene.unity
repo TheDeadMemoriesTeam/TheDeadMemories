@@ -580,6 +580,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1194533975}
   - 114: {fileID: 1194533976}
+  - 114: {fileID: 1194533977}
   m_Layer: 0
   m_Name: ATH
   m_TagString: Untagged
@@ -618,6 +619,18 @@ MonoBehaviour:
   gameOverText: {fileID: 2103803406}
   healthTextureEmpty: {fileID: 565409771}
   healthTexture: {fileID: 1311372442}
+--- !u!114 &1194533977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1194533974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6431d838c916cc34788e45849dd676a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  paused: 1
 --- !u!1 &1311372440
 GameObject:
   m_ObjectHideFlags: 0
