@@ -14,7 +14,7 @@ public class EnemyController : HumanoidController
 	protected float probabilityAttack = 0.1F;
 	protected int xp;
 	
-	public Rotator medikit;
+	public Rigidbody medikit;
 	protected float dropProbability = 0.077F;
 	
 	// Use this for initialization
