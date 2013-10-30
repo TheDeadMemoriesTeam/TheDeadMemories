@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpawnManager : MonoBehaviour {
+public class SpawnManager : MonoBehaviour 
+{
 	
 	private SpawnController[] spawns;
 	
@@ -22,7 +23,8 @@ public class SpawnManager : MonoBehaviour {
 	
 	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		spawns = FindObjectsOfType(System.Type.GetType("SpawnController")) as SpawnController[];
 		
 		// Start with 4 ennemies
@@ -33,7 +35,8 @@ public class SpawnManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		// Create an ennemy if the specified time is elapsed
 		if (Time.time - timeLastSpawn >= spawnDelay)
 		{

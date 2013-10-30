@@ -14,10 +14,8 @@ public class PlayerController : HumanoidController
 	private CharacterController controller;
 	
 	private int xp=0;
-	
-	public AchivementManager achivementManager;
-	private int cptEnemyKilled = 0;
-	private float timeNotTouched = 0;
+	private int mana;
+	private int manaMax = 100;
 	
 	// Use this for initialization
 	void Start () 
@@ -26,6 +24,7 @@ public class PlayerController : HumanoidController
 		controller = GetComponent<CharacterController>();
 		pvMax = 200;
 		pv = pvMax;
+		mana = manaMax;
 	}
 	
 	// Update is called once per frame
@@ -44,18 +43,19 @@ public class PlayerController : HumanoidController
 			// Handle jumps
             if (Input.GetButton("Jump"))
                 moveDirection.y = jumpSpeed;
-			
-			// Débloque l'achivement premier pas
-			achivementManager.FirstMoveAchievement();
         }
 		// Applies move
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
 		
-		// Rotation
-		rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
-		rotation *= rotationFactor;
-		transform.Rotate(rotation);
+		
+		if(Time.timeScale == 1) // Ne rotate pas si le jeu est en pause
+		{	
+			// Rotation
+			rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
+			rotation *= rotationFactor;
+			transform.Rotate(rotation);
+		}
 		
 		if (Input.GetButtonDown("Fire1"))
 		{
@@ -70,6 +70,23 @@ public class PlayerController : HumanoidController
 					var angle = Vector3.Angle(targetDir, playerDir);
 					if (angle>=-45 && angle<=45)
 						targets[i].healthUpdate(-1);
+				}	
+			}
+		}
+		else if (Input.GetButtonDown("Fire2"))
+		{
+			manaUpdate(-10);
+			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+			for (int i=0; i<targets.Length; i++)
+			{
+				Vector3 distance = transform.position-targets[i].transform.position;
+				if(distance.magnitude <= 4f)
+				{
+					var targetDir = targets[i].transform.position - transform.position;
+					var playerDir = transform.forward;
+					var angle = Vector3.Angle(targetDir, playerDir);
+					if (angle>=-45 && angle<=45)
+						targets[i].healthUpdate(-5);
 				}	
 			}
 		}
@@ -89,6 +106,7 @@ public class PlayerController : HumanoidController
 		{
 			other.gameObject.SetActive(false);
 			healthUpdate(50);
+			return;
 		}
 		if (other.gameObject.tag == "Weapon")
 		{
@@ -106,12 +124,6 @@ public class PlayerController : HumanoidController
 	public void experienceUpdate(int change)
 	{
 		xp += change;
-		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
-		cptEnemyKilled++;
-		if (cptEnemyKilled == 1)
-			achivementManager.oneKillAchievement();
-		else if (cptEnemyKilled == 10)
-			achivementManager.tenKillsAchievement();
 	}
 	
 	public int getExperience()
@@ -119,8 +131,20 @@ public class PlayerController : HumanoidController
 		return xp;
 	}
 	
-	public void setTimeNotTouched(float time)
+	public void manaUpdate(int change)
 	{
-		timeNotTouched = time;
+		mana += change;
+		if (mana>manaMax)
+			mana = manaMax;
+	}
+	
+	public int getMana()
+	{
+		return mana;	
+	}
+	
+	public int getManaMax()
+	{
+		return manaMax;	
 	}
 }
