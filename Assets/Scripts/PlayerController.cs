@@ -16,6 +16,7 @@ public class PlayerController : HumanoidController
 	private int xp=0;
 	
 	public AchivementManager achivementManager;
+	private int cptEnemyKilled = 0;
 	
 	// Use this for initialization
 	void Start () 
@@ -44,7 +45,7 @@ public class PlayerController : HumanoidController
                 moveDirection.y = jumpSpeed;
 			
 			// Débloque l'achivement premier pas
-			achivementManager.playerFirstMove();
+			achivementManager.FirstMoveAchievement();
         }
 		// Applies move
         moveDirection.y -= gravity * Time.deltaTime;
@@ -99,6 +100,11 @@ public class PlayerController : HumanoidController
 	public void experienceUpdate(int change)
 	{
 		xp += change;
+		cptEnemyKilled++;
+		if (cptEnemyKilled == 1)
+			achivementManager.oneKillAchievement();
+		else if (cptEnemyKilled == 10)
+			achivementManager.tenKillsAchievement();
 	}
 	
 	public int getExperience()

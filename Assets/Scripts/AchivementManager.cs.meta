@@ -3,6 +3,7 @@ guid: d5d6ec66c440cb4448acb2b7ea976c08
 MonoImporter:
   serializedVersion: 2
   defaultReferences:
+  - texture: {instanceID: 0}
   - soundAchivement: {fileID: 8300000, guid: eaa2541bd0742744c80930f68a09526b, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
