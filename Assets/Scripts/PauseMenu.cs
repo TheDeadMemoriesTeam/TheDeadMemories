@@ -10,6 +10,7 @@ public class PauseMenu : MonoBehaviour {
 	void Start() // le jeu n'est pas en pause au départ
 	{
 		paused = false;
+		UpdateState();
 	}
 	
 	
@@ -20,7 +21,7 @@ public class PauseMenu : MonoBehaviour {
 		{
 			paused = !paused;
 			
-			Pause();
+			UpdateState();
 		}
 	}
 	
@@ -43,12 +44,12 @@ public class PauseMenu : MonoBehaviour {
 			
 			GUILayout.EndArea();
 			
-			Pause();
+			UpdateState();
 		}
 	}
 	
 	
-	void Pause()
+	void UpdateState()
 	{
 		if(paused)	// actualise la valeur du timeScale selon si "En Pause"
 		{
