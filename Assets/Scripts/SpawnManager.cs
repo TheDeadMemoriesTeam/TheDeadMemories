@@ -10,8 +10,8 @@ public class SpawnManager : MonoBehaviour
 	private float timeStep = 5.0F;
 	private float spawnDelay;
 	
-	private int _nbEnnemies = 0;// Should be modified only using the NbEnnemies property
 	private int lastNbEnnemies = 0;
+	private int _nbEnnemies = 0;// Should be modified only using the NbEnnemies property
 	private int NbEnnemies {
 		get {
             return _nbEnnemies;
