@@ -159,6 +159,10 @@ public class PlayerController : HumanoidController
 			achivementManager.surviveTwentyMinutesAchievement();
 		if (timeSurvived >= 3600)	// 1 h
 			achivementManager.surviveOneHourAchievement();
+		if (timeSurvived >= 14400)	// 4 h
+			achivementManager.surviveFourHoursAchievement();
+		if (timeSurvived >= 43200)	// 12 h
+			achivementManager.surviveTwelveHoursAchievement();
 	}
 	
 	private void killsAchievements()

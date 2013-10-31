@@ -23,6 +23,8 @@ public class AchivementManager : MonoBehaviour {
 	private bool beginner = false;
 	private bool amateur = false;
 	private bool ghost = false;
+	private bool immortal = false;
+	private bool god = false;
 	
 	private bool assassin = false;
 	private bool masterAssassin = false;
@@ -136,6 +138,26 @@ public class AchivementManager : MonoBehaviour {
 			Debug.Log("Achivement Survive during 1 h !");
 			unlockAchivement(texture);
 			ghost = !ghost;
+		}
+	}
+	
+	public void surviveFourHoursAchievement()
+	{
+		if (!immortal)
+		{
+			Debug.Log("Achivement Survive during 4 h !");
+			unlockAchivement(texture);
+			immortal = !immortal;
+		}
+	}
+	
+	public void surviveTwelveHoursAchievement()
+	{
+		if (!god)
+		{
+			Debug.Log("Achivement Survive during 12 h !");
+			unlockAchivement(texture);
+			god = !god;
 		}
 	}
 	
