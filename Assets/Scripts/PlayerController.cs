@@ -18,6 +18,8 @@ public class PlayerController : HumanoidController
 	public AchivementManager achivementManager;
 	private int cptEnemyKilled = 0;
 	private float timeNotTouched = 0;
+	private float timeSurvived = 0;
+	private bool assassin = true;
 	
 	// Use this for initialization
 	void Start () 
@@ -94,10 +96,7 @@ public class PlayerController : HumanoidController
 			}
 		}
 		
-		timeNotTouched += Time.deltaTime;
-		// Débloque l'achievement non touché pendant 1 min 
-		if (timeNotTouched >= 60)
-			achivementManager.untouchOneMinuteAchievement();
+		timedAchievements();
 	}
 	
 	
@@ -107,8 +106,8 @@ public class PlayerController : HumanoidController
 		// Collects items
 		if (other.gameObject.tag == "Medikit")
 		{
-			other.gameObject.SetActive(false);
 			healthUpdate(50);
+			DestroyObject(other.gameObject);
 			return;
 		}
 		else if (other.gameObject.tag == "Potion Mana")
@@ -129,12 +128,7 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		
-		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
-		cptEnemyKilled++;
-		if (cptEnemyKilled == 1)
-			achivementManager.oneKillAchievement();
-		else if (cptEnemyKilled == 10)
-			achivementManager.tenKillsAchievement();
+		killsAchievements();
 	}
 	
 	public int getExperience()
@@ -145,5 +139,49 @@ public class PlayerController : HumanoidController
 	public void setTimeNotTouched(float time)
 	{
 		timeNotTouched = time;
+		assassin = false;
+	}
+	
+	private void timedAchievements()
+	{
+		timeNotTouched += Time.deltaTime;
+		timeSurvived += Time.deltaTime;
+		// Débloque les achievements non touché pendant x temps
+		if (timeNotTouched >= 30)	// 30s
+			achivementManager.uncatchableAchievement();
+		if (timeNotTouched >= 60)	// 1 min
+			achivementManager.reallyUncatchableAchievement();
+		
+		// Débloque les achievements survivre x temps
+		if (timeSurvived >= 60)	// 1 min
+			achivementManager.surviveOneMinuteAchievement();
+		if (timeSurvived >= 1200)	// 20 mins
+			achivementManager.surviveTwentyMinutesAchievement();
+		if (timeSurvived >= 3600)	// 1 h
+			achivementManager.surviveOneHourAchievement();
+	}
+	
+	private void killsAchievements()
+	{
+		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
+		cptEnemyKilled++;
+		// Achievements de la série tuer x ennemis
+		if (cptEnemyKilled == 1)
+			achivementManager.firstBloodAchievement();
+		else if (cptEnemyKilled == 10)
+			achivementManager.littleKillerAchievement();
+		else if (cptEnemyKilled == 100)
+			achivementManager.killerAchievement();
+		else if (cptEnemyKilled == 1000)
+			achivementManager.serialKillerAchievement();
+		
+		// Achievements de la série assassin
+		if (assassin)
+		{
+			if (cptEnemyKilled == 10)
+				achivementManager.assassinAchievement();
+			else if (cptEnemyKilled == 100)
+				achivementManager.masterAssassinAchievement();
+		}
 	}
 }
