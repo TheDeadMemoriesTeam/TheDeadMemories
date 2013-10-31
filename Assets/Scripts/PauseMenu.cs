@@ -1,20 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PauseMenu : MonoBehaviour {
+public class PauseMenu : PauseSystem
+{
 	
-	
-	public bool paused;
-	
-	
-	void Start() // le jeu n'est pas en pause au départ
+	protected override void Start()
 	{
-		paused = false;
-		UpdateState();
+		base.Start();
 	}
 	
 	
-	void Update()
+	protected override void Update()
 	{
 		// si on appuie sur "Escape" change l'état du jeu
 		if(Input.GetKeyDown(KeyCode.Escape))
@@ -24,8 +20,6 @@ public class PauseMenu : MonoBehaviour {
 			UpdateState();
 		}
 	}
-	
-	
 	
 	void OnGUI()
 	{
@@ -49,24 +43,9 @@ public class PauseMenu : MonoBehaviour {
 	}
 	
 	
-	void UpdateState()
+	protected override void UpdateState()
 	{
-		if(paused)	// actualise la valeur du timeScale selon si "En Pause"
-		{
-			Time.timeScale = 0;
-			
-			// on fait apparaitre le curseur
-			Screen.showCursor = true;
-			Screen.lockCursor = false;
-		}
-		else 		// ou pas
-		{
-			Time.timeScale = 1;
-			
-			// le cursor ne peux plus bouger et est caché
-			Screen.showCursor = false;
-			Screen.lockCursor = true;
-		}
+		base.UpdateState();
 	}
 	
 }
