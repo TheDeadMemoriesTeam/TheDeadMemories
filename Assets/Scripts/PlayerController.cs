@@ -112,8 +112,8 @@ public class PlayerController : HumanoidController
 		}
 		else if (other.gameObject.tag == "Potion Mana")
 		{
-			other.gameObject.SetActive(false);
 			manaUpdate(50);
+			DestroyObject(other.gameObject);
 			return;
 		}
 		else if (other.gameObject.tag == "Weapon")

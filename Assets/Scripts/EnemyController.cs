@@ -15,7 +15,9 @@ public class EnemyController : HumanoidController
 	protected int xp;
 	
 	public Rigidbody medikit;
-	protected float dropProbability = 0.077F;
+	protected float dropProbabilityMedikit = 0.077F;
+	public Rigidbody manaPotion;
+	protected float dropProbabilityMana = 0.08F;
 	
 	// Use this for initialization
 	protected virtual void Start () 
@@ -36,9 +38,14 @@ public class EnemyController : HumanoidController
 			target.experienceUpdate(xp);
 			
 			// Lache un medikit à la position de l'ennemi mort
-			if (Random.value < dropProbability)
+			if (Random.value < dropProbabilityMedikit)
 			{
 				Instantiate(medikit, transform.position, Random.rotation);
+			}
+			// Lache une potion de mana à la position de l'ennemi mort
+			if (Random.value < dropProbabilityMana)
+			{
+				Instantiate(manaPotion, transform.position, Random.rotation);
 			}
 			DestroyImmediate(gameObject);
 			return;
