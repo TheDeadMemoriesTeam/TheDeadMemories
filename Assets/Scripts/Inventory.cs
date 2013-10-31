@@ -62,7 +62,7 @@ public class Inventory : PauseSystem
 			player.healthUpdate(50);
 			return;
 		}
-		if(key == "Potion Mana")
+		if(key == "ManaPotion")
 		{
 			player.manaUpdate(50);
 			return;

@@ -121,12 +121,12 @@ public class PlayerController : HumanoidController
 			DestroyObject(other.gameObject);
 			return;
 		}
-		else if (other.gameObject.tag == "Potion Mana")
+		else if (other.gameObject.tag == "ManaPotion")
 		{
-			if(!inv.ContainsKey("Potion Mana"))
-				inv.Add ("Potion Mana",1);
+			if(!inv.ContainsKey("ManaPotion"))
+				inv.Add ("ManaPotion",1);
 			else
-				inv["Potion Mana"] = (int)inv["Potion Mana"]+1;
+				inv["ManaPotion"] = (int)inv["ManaPotion"]+1;
 			DestroyObject(other.gameObject);
 			return;
 		}
