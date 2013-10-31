@@ -50,12 +50,12 @@ public class PlayerController : HumanoidController
                 moveDirection.y = jumpSpeed;
 			
 			// Débloque l'achivement premier pas
-			achivementManager.FirstMoveAchievement();
+			if (moveDirection != Vector3.zero)
+				achivementManager.FirstMoveAchievement();
         }
 		// Applies move
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move(moveDirection * Time.deltaTime);
-		
 		
 		// Rotation
 		rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
