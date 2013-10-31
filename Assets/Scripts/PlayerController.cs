@@ -18,6 +18,7 @@ public class PlayerController : HumanoidController
 	public AchivementManager achivementManager;
 	private int cptEnemyKilled = 0;
 	private float timeNotTouched = 0;
+	private float timeSurvived = 0;
 	
 	// Use this for initialization
 	void Start () 
@@ -95,9 +96,18 @@ public class PlayerController : HumanoidController
 		}
 		
 		timeNotTouched += Time.deltaTime;
+		timeSurvived += Time.deltaTime;
 		// Débloque l'achievement non touché pendant 1 min 
 		if (timeNotTouched >= 60)
 			achivementManager.untouchOneMinuteAchievement();
+		
+		// Débloque les achievements survivre x temps
+		if (timeSurvived >= 60)	// 1 min
+			achivementManager.surviveOneMinuteAchievement();
+		if (timeSurvived >= 1200)	// 20 mins
+			achivementManager.surviveTwentyMinutesAchievement();
+		if (timeSurvived >= 3600)	// 1 h
+			achivementManager.surviveOneHourAchievement();
 	}
 	
 	

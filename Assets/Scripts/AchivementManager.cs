@@ -14,6 +14,9 @@ public class AchivementManager : MonoBehaviour {
 	private bool firstKill = false;
 	private bool tenKills = false;
 	private bool untouch1min = false;
+	private bool beginner = false;
+	private bool amateur = false;
+	private bool ghost = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -59,9 +62,39 @@ public class AchivementManager : MonoBehaviour {
 	{
 		if (!untouch1min)
 		{
-			Debug.Log("Achivement Not touch during 1min !");
+			Debug.Log("Achivement Not touch during 1 min !");
 			unlockAchivement(texture);
 			untouch1min = !untouch1min;
+		}
+	}
+	
+	public void surviveOneMinuteAchievement()
+	{
+		if (!beginner)
+		{
+			Debug.Log("Achivement Survive during 1 min !");
+			unlockAchivement(texture);
+			beginner = !beginner;
+		}
+	}
+	
+	public void surviveTwentyMinutesAchievement()
+	{
+		if (!amateur)
+		{
+			Debug.Log("Achivement Survive during 20 mins !");
+			unlockAchivement(texture);
+			amateur = !amateur;
+		}
+	}
+	
+	public void surviveOneHourAchievement()
+	{
+		if (!ghost)
+		{
+			Debug.Log("Achivement Survive during 1 h !");
+			unlockAchivement(texture);
+			ghost = !ghost;
 		}
 	}
 	
