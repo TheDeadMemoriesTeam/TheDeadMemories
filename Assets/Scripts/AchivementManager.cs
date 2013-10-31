@@ -24,6 +24,9 @@ public class AchivementManager : MonoBehaviour {
 	private bool amateur = false;
 	private bool ghost = false;
 	
+	private bool assassin = false;
+	private bool masterAssassin = false;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -131,6 +134,26 @@ public class AchivementManager : MonoBehaviour {
 			Debug.Log("Achivement Survive during 1 h !");
 			unlockAchivement(texture);
 			ghost = !ghost;
+		}
+	}
+	
+	public void assassinAchievement()
+	{
+		if (!assassin)
+		{
+			Debug.Log("Achivement Kill 10 enemy and not be touch !");
+			unlockAchivement(texture);
+			assassin = !assassin;
+		}
+	}
+	
+	public void masterAssassinAchievement()
+	{
+		if (!masterAssassin)
+		{
+			Debug.Log("Achivement Kill 100 enemy and not be touch !");
+			unlockAchivement(texture);
+			masterAssassin = !masterAssassin;
 		}
 	}
 	

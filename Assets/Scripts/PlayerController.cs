@@ -19,6 +19,7 @@ public class PlayerController : HumanoidController
 	private int cptEnemyKilled = 0;
 	private float timeNotTouched = 0;
 	private float timeSurvived = 0;
+	private bool assassin = true;
 	
 	// Use this for initialization
 	void Start () 
@@ -143,6 +144,7 @@ public class PlayerController : HumanoidController
 		
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
+		// Achievements de la série tuer x ennemis
 		if (cptEnemyKilled == 1)
 			achivementManager.firstBloodAchievement();
 		else if (cptEnemyKilled == 10)
@@ -151,6 +153,15 @@ public class PlayerController : HumanoidController
 			achivementManager.killerAchievement();
 		else if (cptEnemyKilled == 1000)
 			achivementManager.serialKillerAchievement();
+		
+		// Achievements de la série assassin
+		if (assassin)
+		{
+			if (cptEnemyKilled == 10)
+				achivementManager.assassinAchievement();
+			else if (cptEnemyKilled == 100)
+				achivementManager.masterAssassinAchievement();
+		}
 	}
 	
 	public int getExperience()
@@ -161,5 +172,6 @@ public class PlayerController : HumanoidController
 	public void setTimeNotTouched(float time)
 	{
 		timeNotTouched = time;
+		assassin = false;
 	}
 }

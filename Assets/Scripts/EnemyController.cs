@@ -71,6 +71,7 @@ public class EnemyController : HumanoidController
 				else
 					target.healthUpdate(damageAttack);
 				target.setTimeNotTouched(0);
+				Debug.Log("touché");
 			}
 			timeCountAttack = 0;
 		}
