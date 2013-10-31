@@ -1371,3 +1371,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e899e3ded719140b9bfe926e004e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  achievementManager: {fileID: 1375840453}
