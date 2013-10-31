@@ -96,21 +96,7 @@ public class PlayerController : HumanoidController
 			}
 		}
 		
-		timeNotTouched += Time.deltaTime;
-		timeSurvived += Time.deltaTime;
-		// Débloque les achievements non touché pendant x temps
-		if (timeNotTouched >= 30)	// 30s
-			achivementManager.uncatchableAchievement();
-		if (timeNotTouched >= 60)	// 1 min
-			achivementManager.reallyUncatchableAchievement();
-		
-		// Débloque les achievements survivre x temps
-		if (timeSurvived >= 60)	// 1 min
-			achivementManager.surviveOneMinuteAchievement();
-		if (timeSurvived >= 1200)	// 20 mins
-			achivementManager.surviveTwentyMinutesAchievement();
-		if (timeSurvived >= 3600)	// 1 h
-			achivementManager.surviveOneHourAchievement();
+		timedAchievements();
 	}
 	
 	
@@ -142,6 +128,41 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		
+		killsAchievements();
+	}
+	
+	public int getExperience()
+	{
+		return xp;
+	}
+	
+	public void setTimeNotTouched(float time)
+	{
+		timeNotTouched = time;
+		assassin = false;
+	}
+	
+	private void timedAchievements()
+	{
+		timeNotTouched += Time.deltaTime;
+		timeSurvived += Time.deltaTime;
+		// Débloque les achievements non touché pendant x temps
+		if (timeNotTouched >= 30)	// 30s
+			achivementManager.uncatchableAchievement();
+		if (timeNotTouched >= 60)	// 1 min
+			achivementManager.reallyUncatchableAchievement();
+		
+		// Débloque les achievements survivre x temps
+		if (timeSurvived >= 60)	// 1 min
+			achivementManager.surviveOneMinuteAchievement();
+		if (timeSurvived >= 1200)	// 20 mins
+			achivementManager.surviveTwentyMinutesAchievement();
+		if (timeSurvived >= 3600)	// 1 h
+			achivementManager.surviveOneHourAchievement();
+	}
+	
+	private void killsAchievements()
+	{
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
 		// Achievements de la série tuer x ennemis
@@ -162,16 +183,5 @@ public class PlayerController : HumanoidController
 			else if (cptEnemyKilled == 100)
 				achivementManager.masterAssassinAchievement();
 		}
-	}
-	
-	public int getExperience()
-	{
-		return xp;
-	}
-	
-	public void setTimeNotTouched(float time)
-	{
-		timeNotTouched = time;
-		assassin = false;
 	}
 }
