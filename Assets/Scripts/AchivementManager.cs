@@ -27,6 +27,8 @@ public class AchivementManager : MonoBehaviour {
 	private bool assassin = false;
 	private bool masterAssassin = false;
 	
+	private bool longArm = false;
+	
 	// Use this for initialization
 	void Start () {
 		
@@ -154,6 +156,16 @@ public class AchivementManager : MonoBehaviour {
 			Debug.Log("Achivement Kill 100 enemy and not be touch !");
 			unlockAchivement(texture);
 			masterAssassin = !masterAssassin;
+		}
+	}
+	
+	public void longArmAchievement()
+	{
+		if (!longArm)
+		{
+			Debug.Log("Achivement Long Arm (10 kills in the same time) !");
+			unlockAchivement(texture);
+			longArm = !longArm;
 		}
 	}
 	
