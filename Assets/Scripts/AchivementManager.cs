@@ -17,6 +17,7 @@ public class AchivementManager : MonoBehaviour {
 	private bool beginner = false;
 	private bool amateur = false;
 	private bool ghost = false;
+	private bool untouch30s = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -58,7 +59,17 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void untouchOneMinuteAchievement()
+	public void uncatchableAchievement()
+	{
+		if (!untouch30s)
+		{
+			Debug.Log("Achivement Not touch during 30s !");
+			unlockAchivement(texture);
+			untouch30s = !untouch30s;
+		}
+	}
+	
+	public void reallyUncatchableAchievement()
 	{
 		if (!untouch1min)
 		{

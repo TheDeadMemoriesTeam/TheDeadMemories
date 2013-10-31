@@ -97,9 +97,11 @@ public class PlayerController : HumanoidController
 		
 		timeNotTouched += Time.deltaTime;
 		timeSurvived += Time.deltaTime;
-		// Débloque l'achievement non touché pendant 1 min 
-		if (timeNotTouched >= 60)
-			achivementManager.untouchOneMinuteAchievement();
+		// Débloque les achievements non touché pendant x temps
+		if (timeNotTouched >= 30)	// 30s
+			achivementManager.uncatchableAchievement();
+		if (timeNotTouched >= 60)	// 1 min
+			achivementManager.reallyUncatchableAchievement();
 		
 		// Débloque les achievements survivre x temps
 		if (timeSurvived >= 60)	// 1 min
