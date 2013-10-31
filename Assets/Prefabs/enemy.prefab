@@ -68,6 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   medikit: {fileID: 5400000, guid: 29cb9700c511f1a4c9c568f54b099bc1, type: 2}
+  manaPotion: {fileID: 5400000, guid: 8cd8cc65ea93c59478687b5c13a55ddb, type: 2}
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
