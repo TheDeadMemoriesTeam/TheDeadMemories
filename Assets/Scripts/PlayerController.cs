@@ -21,6 +21,8 @@ public class PlayerController : HumanoidController
 	private float timeSurvived = 0;
 	private bool assassin = true;
 	
+	private Hashtable inv;
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -30,6 +32,8 @@ public class PlayerController : HumanoidController
 		pv = pvMax;
 		manaMax = 100;
 		mana = manaMax;
+		
+		inv = new Hashtable(2);
 	}
 	
 	// Update is called once per frame
@@ -106,13 +110,19 @@ public class PlayerController : HumanoidController
 		// Collects items
 		if (other.gameObject.tag == "Medikit")
 		{
-			healthUpdate(50);
+			if(!inv.ContainsKey("Medikit"))
+				inv.Add ("Medikit",1);
+			else
+				inv["Medikit"] = (int)inv["Medikit"]+1;
 			DestroyObject(other.gameObject);
 			return;
 		}
 		else if (other.gameObject.tag == "Potion Mana")
 		{
-			manaUpdate(50);
+			if(!inv.ContainsKey("Potion Mana"))
+				inv.Add ("Potion Mana",1);
+			else
+				inv["Potion Mana"] = (int)inv["Potion Mana"]+1;
 			DestroyObject(other.gameObject);
 			return;
 		}
@@ -187,5 +197,10 @@ public class PlayerController : HumanoidController
 			else if (cptEnemyKilled == 50)
 				achivementManager.masterAssassinAchievement();
 		}
+	}
+
+	public Hashtable getInv()
+	{
+		return inv;	
 	}
 }
