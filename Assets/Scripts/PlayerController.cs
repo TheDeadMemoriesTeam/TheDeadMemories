@@ -15,11 +15,13 @@ public class PlayerController : HumanoidController
 	
 	private int xp=0;
 	
+	// Variables servants aux achievements
 	public AchivementManager achivementManager;
 	private int cptEnemyKilled = 0;
 	private float timeNotTouched = 0;
 	private float timeSurvived = 0;
 	private bool assassin = true;
+	private float travel = 0;
 	
 	// Use this for initialization
 	void Start () 
@@ -55,8 +57,10 @@ public class PlayerController : HumanoidController
         }
 		// Applies move
         moveDirection.y -= gravity * Time.deltaTime;
+		Vector3 vec = transform.position;
         controller.Move(moveDirection * Time.deltaTime);
-		
+		updateTravel(vec, transform.position);
+
 		// Rotation
 		rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
 		rotation *= rotationFactor * Time.timeScale;
@@ -140,6 +144,24 @@ public class PlayerController : HumanoidController
 	{
 		timeNotTouched = time;
 		assassin = false;
+	}
+	
+	private void updateTravel(Vector3 fromWhere, Vector3 to)
+	{
+		travel += Vector3.Distance(fromWhere, to);
+		
+		if (travel >= 1000)		// 1 km parcourut
+			achivementManager.sundayWalkerAchievement();
+		if (travel >= 10000)	// 10 km parcourut
+			achivementManager.dailyJoggingAchievement();
+		if (travel >= 42195)	// 42,195 km parcourut
+			achivementManager.marathonAchievement();
+		if (travel >= 100000)	// 100 km parcourut
+			achivementManager.healthWalkAchievement();
+		if (travel >= 1000000)	// 1.000 km parcourut
+			achivementManager.athleticAchievement();
+		if (travel >= 1000000000)// 1.000.000 km parcourut
+			achivementManager.dopedAddictAchievement();
 	}
 	
 	private void timedAchievements()
