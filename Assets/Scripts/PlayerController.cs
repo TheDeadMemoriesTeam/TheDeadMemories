@@ -120,8 +120,8 @@ public class PlayerController : HumanoidController
 		// Collects items
 		if (other.gameObject.tag == "Medikit")
 		{
-			other.gameObject.SetActive(false);
 			healthUpdate(50);
+			DestroyObject(other.gameObject);
 			return;
 		}
 		else if (other.gameObject.tag == "Potion Mana")
