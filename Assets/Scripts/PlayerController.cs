@@ -147,9 +147,9 @@ public class PlayerController : HumanoidController
 		timeNotTouched += Time.deltaTime;
 		timeSurvived += Time.deltaTime;
 		// Débloque les achievements non touché pendant x temps
-		if (timeNotTouched >= 30)	// 30s
-			achivementManager.uncatchableAchievement();
 		if (timeNotTouched >= 60)	// 1 min
+			achivementManager.uncatchableAchievement();
+		if (timeNotTouched >= 300)	// 5 mins
 			achivementManager.reallyUncatchableAchievement();
 		
 		// Débloque les achievements survivre x temps
@@ -178,9 +178,9 @@ public class PlayerController : HumanoidController
 		// Achievements de la série assassin
 		if (assassin)
 		{
-			if (cptEnemyKilled == 10)
+			if (cptEnemyKilled == 5)
 				achivementManager.assassinAchievement();
-			else if (cptEnemyKilled == 100)
+			else if (cptEnemyKilled == 50)
 				achivementManager.masterAssassinAchievement();
 		}
 	}
