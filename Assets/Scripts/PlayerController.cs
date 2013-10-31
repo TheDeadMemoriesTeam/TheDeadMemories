@@ -78,7 +78,7 @@ public class PlayerController : HumanoidController
 				}	
 			}
 		}
-		else if (Input.GetButtonDown("Fire2"))
+		else if (Input.GetButtonDown("Fire2") && getMana()>=10)
 		{
 			manaUpdate(-10);
 			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
