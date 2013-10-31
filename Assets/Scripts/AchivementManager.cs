@@ -11,13 +11,18 @@ public class AchivementManager : MonoBehaviour {
 	
 	// Booléens des achivements
 	private bool firstMove = false;
+	
 	private bool firstKill = false;
 	private bool tenKills = false;
+	private bool hundredKills = false;
+	private bool thousandKills = false;
+	
+	private bool untouch30s = false;
 	private bool untouch1min = false;
+	
 	private bool beginner = false;
 	private bool amateur = false;
 	private bool ghost = false;
-	private bool untouch30s = false;
 	
 	// Use this for initialization
 	void Start () {
@@ -39,7 +44,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void oneKillAchievement()
+	public void firstBloodAchievement()
 	{
 		if (!firstKill)
 		{
@@ -49,13 +54,33 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void tenKillsAchievement()
+	public void littleKillerAchievement()
 	{
 		if (!tenKills)
 		{
 			Debug.Log("Achivement Ten kills !");
 			unlockAchivement(texture);
 			tenKills = !tenKills;
+		}
+	}
+	
+	public void killerAchievement()
+	{
+		if (!hundredKills)
+		{
+			Debug.Log("Achivement a hundred kills !");
+			unlockAchivement(texture);
+			hundredKills = !hundredKills;
+		}
+	}
+	
+	public void serialKillerAchievement()
+	{
+		if (!thousandKills)
+		{
+			Debug.Log("Achivement 1 thousand kills !");
+			unlockAchivement(texture);
+			thousandKills = !thousandKills;
 		}
 	}
 	

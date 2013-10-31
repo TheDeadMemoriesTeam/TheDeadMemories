@@ -144,9 +144,13 @@ public class PlayerController : HumanoidController
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
 		if (cptEnemyKilled == 1)
-			achivementManager.oneKillAchievement();
+			achivementManager.firstBloodAchievement();
 		else if (cptEnemyKilled == 10)
-			achivementManager.tenKillsAchievement();
+			achivementManager.littleKillerAchievement();
+		else if (cptEnemyKilled == 100)
+			achivementManager.killerAchievement();
+		else if (cptEnemyKilled == 1000)
+			achivementManager.serialKillerAchievement();
 	}
 	
 	public int getExperience()
