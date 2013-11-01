@@ -28,7 +28,6 @@ public class PlayerController : HumanoidController
 	// Use this for initialization
 	void Start () 
 	{
-		gameObject.renderer.material.color = new Color(255, 0, 0);
 		controller = GetComponent<CharacterController>();
 		pvMax = 200;
 		pv = pvMax;
