@@ -14,15 +14,27 @@ public class EnemyController : HumanoidController
 	protected float probabilityAttack = 0.1F;
 	protected int xp;
 	
-	public Rigidbody medikit;
-	protected float dropProbabilityMedikit = 0.077F;
-	public Rigidbody manaPotion;
-	protected float dropProbabilityMana = 0.08F;
+	public Rigidbody[] droppableItems;
+	public float[] itemsDropProbability;
+	
 	
 	// Use this for initialization
 	protected virtual void Start () 
 	{
-		//medikit = (Rotator)FindObjectOfType(System.Type.GetType("Rotator"));
+		// Check attributs droppableItems and itemsDropProbability
+		bool validAttributs = true;
+		if (droppableItems.Length != itemsDropProbability.Length) // Same size
+			validAttributs = false;
+		else
+			for (int i = 0; i < droppableItems.Length; i++)
+				if (droppableItems[i] == null || itemsDropProbability[i] < 0 || itemsDropProbability[i] > 1) // Valid values
+					validAttributs = false;
+		if (!validAttributs) {
+			Debug.LogError("The enemy has its droppable items that are not correctly configured.");
+			Application.Quit();
+		}
+		
+		// Init the instance
 		target = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
 		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 		agent = GetComponent<NavMeshAgent>();
@@ -36,18 +48,8 @@ public class EnemyController : HumanoidController
 		{
 			((SpawnManager)FindObjectOfType(System.Type.GetType("SpawnManager"))).decNbEnnemies();
 			target.experienceUpdate(xp);
-			
-			// Lache un medikit à la position de l'ennemi mort
-			if (Random.value < dropProbabilityMedikit)
-			{
-				Instantiate(medikit, transform.position, Random.rotation);
-			}
-			// Lache une potion de mana à la position de l'ennemi mort
-			if (Random.value < dropProbabilityMana)
-			{
-				Instantiate(manaPotion, transform.position, Random.rotation);
-			}
-			DestroyImmediate(gameObject);
+			dropItems();
+			Destroy(gameObject);
 			return;
 		}
 		timeCountAttack += Time.deltaTime;
@@ -80,6 +82,15 @@ public class EnemyController : HumanoidController
 				target.setTimeNotTouched(0);
 			}
 			timeCountAttack = 0;
+		}
+	}
+	
+	void dropItems()
+	{
+		for (int i=0; i < droppableItems.Length; i++)
+		{
+			if (Random.value < itemsDropProbability[i])
+				Instantiate(droppableItems[i], transform.position, Quaternion.identity);
 		}
 	}
 }
