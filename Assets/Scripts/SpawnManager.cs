@@ -7,7 +7,7 @@ public class SpawnManager : MonoBehaviour
 	private SpawnController[] spawns;
 	
 	private float timeLastSpawn;
-	private float timeStep = 5.0F;
+	private float timeStep = 7.0F;
 	private float spawnDelay;
 	
 	private int lastNbEnnemies = 0;
@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
         }
         set {
             _nbEnnemies = value;
-			spawnDelay = timeStep - timeStep * 1/Mathf.Sqrt((_nbEnnemies+2)/2);
+			spawnDelay = timeStep - timeStep * 1/Mathf.Sqrt((_nbEnnemies+5)/5);
         }
 	}
 	
