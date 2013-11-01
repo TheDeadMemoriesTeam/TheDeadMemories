@@ -18,7 +18,7 @@ public class SpawnManager : MonoBehaviour
         }
         set {
             _nbEnnemies = value;
-			spawnDelay = timeStep - timeStep * 1/Mathf.Sqrt((_nbEnnemies+5)/5);
+			spawnDelay = timeStep - timeStep * 1/Mathf.Sqrt((_nbEnnemies+5F)/5F);
         }
 	}
 	
