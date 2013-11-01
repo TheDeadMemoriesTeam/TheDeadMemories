@@ -975,6 +975,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 2.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2300000, guid: 053521a0a5bdf6c4a94bd41357c872ea, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 053521a0a5bdf6c4a94bd41357c872ea, type: 3}
   m_RootGameObject: {fileID: 1272334984}
@@ -1217,7 +1221,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1272334985}
   - 95: {fileID: 1272334986}
-  - 23: {fileID: 1272334987}
   m_Layer: 0
   m_Name: skull
   m_TagString: Untagged
@@ -1256,24 +1259,6 @@ Animator:
   m_CullingMode: 1
   m_ApplyRootMotion: 1
   m_AnimatePhysics: 0
---- !u!23 &1272334987
-Renderer:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1272334984}
-  m_Enabled: 1
-  m_CastShadows: 1
-  m_ReceiveShadows: 1
-  m_LightmapIndex: 255
-  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
-  m_Materials:
-  - {fileID: 2100000, guid: 21b51b2b735a75f43af1cc75963e46c4, type: 2}
-  m_SubsetIndices: 
-  m_StaticBatchRoot: {fileID: 0}
-  m_UseLightProbes: 1
-  m_LightProbeAnchor: {fileID: 0}
-  m_ScaleInLightmap: 1
 --- !u!1 &1311372440
 GameObject:
   m_ObjectHideFlags: 0
