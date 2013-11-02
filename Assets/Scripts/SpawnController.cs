@@ -3,17 +3,15 @@ using System.Collections;
 
 public class SpawnController : MonoBehaviour 
 {
-	public PeonController prefab;
+	public EnemyController prefab;
 	private PlayerController player;
 	
-	private int range;
+	private int range = 15;
 	
 	// Use this for initialization
 	void Start () 
 	{
 		player = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
-		
-		range = 20;
  	}
 	
 	// Update is called once per frame
@@ -36,6 +34,6 @@ public class SpawnController : MonoBehaviour
 		int randX = Random.Range(-range, range);
 		int randZ = Random.Range(-range, range);
 		Vector3 position = new Vector3 (transform.position.x-randX, 0, transform.position.z-randZ);
-		Instantiate(prefab, position, Random.rotation);
+		Instantiate(prefab, position, Quaternion.identity);
 	}
 }

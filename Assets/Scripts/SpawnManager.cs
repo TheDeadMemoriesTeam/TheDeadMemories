@@ -7,9 +7,10 @@ public class SpawnManager : MonoBehaviour
 	private SpawnController[] spawns;
 	
 	private float timeLastSpawn;
-	private float timeStep = 5.0F;
+	private float timeStep = 7.0F;
 	private float spawnDelay;
 	
+	private int lastNbEnnemies = 0;
 	private int _nbEnnemies = 0;// Should be modified only using the NbEnnemies property
 	private int NbEnnemies {
 		get {
@@ -17,10 +18,11 @@ public class SpawnManager : MonoBehaviour
         }
         set {
             _nbEnnemies = value;
-			spawnDelay = timeStep - timeStep * 1/Mathf.Sqrt((_nbEnnemies+2)/2);
+			spawnDelay = timeStep - timeStep * 1/Mathf.Sqrt((_nbEnnemies+5F)/5F);
         }
 	}
 	
+	public AchivementManager achievementManager;
 	
 	// Use this for initialization
 	void Start () 
@@ -37,12 +39,17 @@ public class SpawnManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
+		// Débloque l'achievement 10 ennemies tués en meme temps
+		if (lastNbEnnemies - NbEnnemies >= 10)
+			achievementManager.longArmAchievement();
+			
 		// Create an ennemy if the specified time is elapsed
 		if (Time.time - timeLastSpawn >= spawnDelay)
 		{
 			timeLastSpawn += spawnDelay;
 			addEnnemy();
 		}
+		lastNbEnnemies = NbEnnemies;
 	}
 	
 	private void addEnnemy()

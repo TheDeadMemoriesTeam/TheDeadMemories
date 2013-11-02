@@ -1,0 +1,102 @@
+fileFormatVersion: 2
+guid: 053521a0a5bdf6c4a94bd41357c872ea
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: bras droit
+    100002: Bras gauche
+    100004: Cage thoracique
+    100006: Colonne vertebrale
+    100008: Cr__ne
+    100010: Jambe gauche
+    100012: Jambe gauche001
+    100014: //RootNode
+    400000: bras droit
+    400002: Bras gauche
+    400004: Cage thoracique
+    400006: Colonne vertebrale
+    400008: Cr__ne
+    400010: Jambe gauche
+    400012: Jambe gauche001
+    400014: //RootNode
+    2300000: bras droit
+    2300002: Bras gauche
+    2300004: Cage thoracique
+    2300006: Colonne vertebrale
+    2300008: Cr__ne
+    2300010: Jambe gauche
+    2300012: Jambe gauche001
+    3300000: bras droit
+    3300002: Bras gauche
+    3300004: Cage thoracique
+    3300006: Colonne vertebrale
+    3300008: Cr__ne
+    3300010: Jambe gauche
+    3300012: Jambe gauche001
+    4300000: Jambe gauche001
+    4300002: bras droit
+    4300004: Jambe gauche
+    4300006: Cr__ne
+    4300008: Colonne vertebrale
+    4300010: Cage thoracique
+    4300012: Bras gauche
+    6400000: bras droit
+    6400002: Bras gauche
+    6400004: Cage thoracique
+    6400006: Colonne vertebrale
+    6400008: Cr__ne
+    6400010: Jambe gauche
+    6400012: Jambe gauche001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 0
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
