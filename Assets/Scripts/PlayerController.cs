@@ -22,6 +22,7 @@ public class PlayerController : HumanoidController
 	private float timeSurvived = 0;
 	private bool assassin = true;
 	private float travel = 0;
+	private int cptBersekerKilled = 0;
 	
 	private Hashtable inv;
 	
@@ -135,7 +136,7 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		
-		killsAchievements();
+		killsAchievements(change);
 	}
 	
 	public int getExperience()
@@ -190,7 +191,7 @@ public class PlayerController : HumanoidController
 			achivementManager.surviveTwelveHoursAchievement();
 	}
 	
-	private void killsAchievements()
+	private void killsAchievements(int gainOfXp)
 	{
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
@@ -203,6 +204,17 @@ public class PlayerController : HumanoidController
 			achivementManager.killerAchievement();
 		else if (cptEnemyKilled == 1000)
 			achivementManager.serialKillerAchievement();
+		
+		// Achievements avec les bersekers
+		if (gainOfXp == 30)
+		{
+			cptBersekerKilled++;
+			
+			if (cptBersekerKilled == 10)
+				achivementManager.noLimitAchievement();
+			else if (cptBersekerKilled == 1000)
+				achivementManager.serialKillerOfSerialKillerAchievement();
+		}
 		
 		// Achievements de la série assassin
 		if (assassin)
