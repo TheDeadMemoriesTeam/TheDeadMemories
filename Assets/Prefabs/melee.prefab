@@ -68,7 +68,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   droppableItems:
-  - {fileID: 5400000, guid: 45e2a9e61f1a3254bb44b4d0ed16dd30, type: 2}
+  - {fileID: 5400000, guid: 00e6f55288c657d42976a57a746e78ef, type: 2}
   - {fileID: 5400000, guid: b66e8926d3c80274ebea26acfbc8e4a8, type: 2}
   itemsDropProbability:
   - .0450000018
