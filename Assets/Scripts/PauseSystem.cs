@@ -39,6 +39,7 @@ public class PauseSystem : MonoBehaviour
 			Screen.showCursor = false;
 			Screen.lockCursor = true;
 		}
+		player.onPause();
 	}
 	
 }

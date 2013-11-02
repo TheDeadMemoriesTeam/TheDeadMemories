@@ -16,7 +16,6 @@ public class PauseMenu : PauseSystem
 		if(Input.GetButtonDown("Menu"))
 		{
 			paused = !paused;
-			player.onPause();
 			
 			UpdateState();
 		}
@@ -31,15 +30,15 @@ public class PauseMenu : PauseSystem
 			if(GUILayout.Button("Continuer"))
 			{
 				paused = false;
+				UpdateState();
 			}
 			if(GUILayout.Button("Menu"))
 			{
-				// Renvoie au menu
+				 Application.LoadLevel(0);
 			}
 			
 			GUILayout.EndArea();
 			
-			UpdateState();
 		}
 	}
 	

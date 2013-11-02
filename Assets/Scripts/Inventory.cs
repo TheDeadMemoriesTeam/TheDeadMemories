@@ -17,7 +17,6 @@ public class Inventory : PauseSystem
 		if(Input.GetButtonDown("Inventory"))
 		{
 			paused = !paused;
-			player.onPause();
 			if (paused)
 			{
 				inv = player.getInv();
