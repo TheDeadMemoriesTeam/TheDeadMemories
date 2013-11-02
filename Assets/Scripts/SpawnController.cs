@@ -36,10 +36,10 @@ public class SpawnController : MonoBehaviour
 		int randX = Random.Range(-range, range);
 		int randZ = Random.Range(-range, range);
 		Vector3 position = new Vector3 (transform.position.x-randX, 0, transform.position.z-randZ);
-		float v = Random.value;
-		if (v <= 0.05)
+		float proba = Random.value;
+		if (proba <= 0.01)
 				Instantiate(bossPrefab, position, Quaternion.identity);
-		else if (v <= 0.40)
+		else if (proba <= 0.36)
 				Instantiate(distancePrefab, position, Quaternion.identity);
 		else
 			Instantiate(meleePrefab, position, Quaternion.identity);
