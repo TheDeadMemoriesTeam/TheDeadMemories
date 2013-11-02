@@ -98,6 +98,26 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
+	public void noLimitAchievement()
+	{
+		if (!thousandKills)
+		{
+			Debug.Log("Achivement No Limit (kill 10 Bersekers) !");
+			unlockAchivement(texture);
+			thousandKills = !thousandKills;
+		}
+	}
+	
+	public void serialKillerOfSerialKillerAchievement()
+	{
+		if (!thousandKills)
+		{
+			Debug.Log("Achivement Serial Killer Of Serial Killer (kill 1000 Bersekers) !");
+			unlockAchivement(texture);
+			thousandKills = !thousandKills;
+		}
+	}
+	
 	public void uncatchableAchievement()
 	{
 		if (!untouch1min)
