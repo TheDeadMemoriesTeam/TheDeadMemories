@@ -17,6 +17,9 @@ public class AchivementManager : MonoBehaviour {
 	private bool hundredKills = false;
 	private bool thousandKills = false;
 	
+	private bool noLimit = false;
+	private bool thousandKillsBersekers = false;
+	
 	private bool untouch1min = false;
 	private bool untouch5mins = false;
 	
@@ -100,21 +103,21 @@ public class AchivementManager : MonoBehaviour {
 	
 	public void noLimitAchievement()
 	{
-		if (!thousandKills)
+		if (!noLimit)
 		{
 			Debug.Log("Achivement No Limit (kill 10 Bersekers) !");
 			unlockAchivement(texture);
-			thousandKills = !thousandKills;
+			noLimit = !noLimit;
 		}
 	}
 	
 	public void serialKillerOfSerialKillerAchievement()
 	{
-		if (!thousandKills)
+		if (!thousandKillsBersekers)
 		{
 			Debug.Log("Achivement Serial Killer Of Serial Killer (kill 1000 Bersekers) !");
 			unlockAchivement(texture);
-			thousandKills = !thousandKills;
+			thousandKillsBersekers = !thousandKillsBersekers;
 		}
 	}
 	
