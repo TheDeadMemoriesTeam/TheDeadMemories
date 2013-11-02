@@ -164,10 +164,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_TagString
       value: Untagged
@@ -654,7 +650,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cacPrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
   distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
 --- !u!4 &107796630
 Transform:
@@ -2479,7 +2475,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cacPrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
   distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
 --- !u!1 &487889820
 GameObject:
@@ -7420,7 +7416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  cacPrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
   distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
 --- !u!1 &1340378830
 GameObject:
@@ -7912,8 +7908,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 1758632530}
-  distance: 4
-  height: 2
+  distance: 3.5
+  height: 2.5
+  angle: 22
 --- !u!1 &1390230421
 GameObject:
   m_ObjectHideFlags: 0
@@ -12252,8 +12249,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 482644215}
   - {fileID: 1320824942}
+  - {fileID: 482644215}
   - {fileID: 107796630}
   m_Father: {fileID: 0}
 --- !u!114 &2108200924

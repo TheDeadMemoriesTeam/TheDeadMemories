@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CacController : EnemyController 
+public class MeleeController : EnemyController 
 {
 
 	// Use this for initialization

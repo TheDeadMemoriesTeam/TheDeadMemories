@@ -6,8 +6,9 @@ public class CameraController : MonoBehaviour
 	
 	public GameObject target;
 
-	public float distance = 5F;
+	public float distance = 3.5F;
 	public float height = 2.5F;
+	public float angle = 22F;
 	
 	// Use this for initialization
 	void Start () 
@@ -20,5 +21,6 @@ public class CameraController : MonoBehaviour
 		Vector3 offset = new Vector3(0F, height, -distance);
 		transform.position = target.transform.position + target.transform.TransformDirection(offset);
 		transform.LookAt(target.transform.position);
+		transform.Rotate(Vector3.left * angle);
 	}
 }
