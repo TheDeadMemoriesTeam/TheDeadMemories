@@ -30,6 +30,7 @@ public class PauseMenu : PauseSystem
 			if(GUILayout.Button("Continuer"))
 			{
 				paused = false;
+				
 				UpdateState();
 			}
 			if(GUILayout.Button("Menu"))
