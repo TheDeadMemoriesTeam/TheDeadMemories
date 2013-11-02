@@ -111,12 +111,12 @@ public class PlayerController : HumanoidController
 	void OnTriggerEnter (Collider other)
 	{
 		// Collects items
-		if (other.gameObject.tag == "Medikit")
+		if (other.gameObject.tag == "Bone")
 		{
-			if(!inv.ContainsKey("Medikit"))
-				inv.Add ("Medikit",1);
+			if(!inv.ContainsKey("Bone"))
+				inv.Add ("Bone",1);
 			else
-				inv["Medikit"] = (int)inv["Medikit"]+1;
+				inv["Bone"] = (int)inv["Bone"]+1;
 			DestroyObject(other.gameObject);
 			return;
 		}
