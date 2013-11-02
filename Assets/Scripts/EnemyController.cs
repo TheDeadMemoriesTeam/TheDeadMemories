@@ -7,11 +7,11 @@ public class EnemyController : HumanoidController
 	protected PlayerController target;
 	protected NavMeshAgent agent;
 	protected float timeCountAttack;
-	protected int damageAttack = -1;
-	protected int damageMagic = -5;
-	protected int manaCost = -50;
-	protected float timeAttack = 1F;
-	protected float probabilityAttack = 0.1F;
+	protected int damageAttack;
+	protected int damageMagic;
+	protected int manaCost;
+	protected float timeAttack;
+	protected float probabilityAttack;
 	protected int xp;
 	
 	public Rigidbody[] droppableItems;
@@ -36,7 +36,6 @@ public class EnemyController : HumanoidController
 		
 		// Init the instance
 		target = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
-		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 		agent = GetComponent<NavMeshAgent>();
 		timeCountAttack = 0;
 	}

@@ -11,10 +11,10 @@ GameObject:
   - 33: {fileID: 3300000}
   - 23: {fileID: 2300000}
   - 195: {fileID: 19500000}
-  - 114: {fileID: 11400000}
   - 136: {fileID: 13600000}
+  - 114: {fileID: 11400000}
   m_Layer: 0
-  m_Name: enemy
+  m_Name: cac
   m_TagString: Untagged
   m_Icon: {fileID: 266726316, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
@@ -64,7 +64,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c3e1ac6905b57864eb645ae233f9d1dd, type: 3}
+  m_Script: {fileID: 11500000, guid: 6ba5c27f37ce7b145bec07c30489bd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   droppableItems:
@@ -72,7 +72,7 @@ MonoBehaviour:
   - {fileID: 5400000, guid: b66e8926d3c80274ebea26acfbc8e4a8, type: 2}
   itemsDropProbability:
   - .0450000018
-  - .0399999991
+  - .00400000019
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
