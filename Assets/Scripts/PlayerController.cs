@@ -65,7 +65,7 @@ public class PlayerController : HumanoidController
 		updateTravel(vec, transform.position);
 
 		// Rotation
-		rotation = new Vector3(0, Input.GetAxis("Mouse X"), 0);
+		rotation = new Vector3(0, Input.GetAxis("Rotation")+Input.GetAxis("Mouse X"), 0);
 		rotation *= rotationFactor * Time.timeScale;
 		transform.Rotate(rotation);
 		

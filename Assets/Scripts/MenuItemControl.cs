@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TextControl : MonoBehaviour {
+public class MenuItemControl : MonoBehaviour {
 	
 	public bool isQuitButton=false;
 	
@@ -21,7 +21,7 @@ public class TextControl : MonoBehaviour {
        }
        else
        {
-       		 //Application.LoadLevel(1);
+       		 Application.LoadLevel(1);
  
        }
     }

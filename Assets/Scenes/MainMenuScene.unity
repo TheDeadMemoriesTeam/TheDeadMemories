@@ -149,8 +149,9 @@ GameObject:
   - 4: {fileID: 392756520}
   - 23: {fileID: 392756519}
   - 102: {fileID: 392756518}
-  - 114: {fileID: 392756517}
   - 65: {fileID: 392756521}
+  - 114: {fileID: 392756517}
+  - 114: {fileID: 392756522}
   m_Layer: 0
   m_Name: txt_Quit
   m_TagString: Item
@@ -181,7 +182,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
@@ -216,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 392756516}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.359911, y: 1.60413647, z: 9.49561501}
+  m_LocalPosition: {x: 20, y: 1.29999995, z: 9.49561501}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -231,7 +232,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.79999995, y: 1.84062505, z: 0}
-  m_Center: {x: 1.39999998, y: -.920312524, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &392756522
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 392756516}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i18nNamespace: MainMenu
 --- !u!1 &436159206
 GameObject:
   m_ObjectHideFlags: 0
@@ -242,6 +255,7 @@ GameObject:
   - 4: {fileID: 436159209}
   - 23: {fileID: 436159208}
   - 102: {fileID: 436159207}
+  - 114: {fileID: 436159210}
   m_Layer: 0
   m_Name: txt_Title
   m_TagString: Untagged
@@ -256,15 +270,15 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 436159206}
-  m_Text: The Dead Memory
+  m_Text: The Dead Memories
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
-  m_FontStyle: 0
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 12800000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
   m_Color:
@@ -295,10 +309,22 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 436159206}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 16.7103195, y: 3.93855333, z: 9.49561501}
+  m_LocalPosition: {x: 20, y: 3.5, z: 9.49561501}
   m_LocalScale: {x: .600000024, y: .600000024, z: .600000024}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!114 &436159210
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 436159206}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i18nNamespace: MainMenu
 --- !u!1 &668151145
 GameObject:
   m_ObjectHideFlags: 0
@@ -375,8 +401,9 @@ GameObject:
   - 4: {fileID: 1271360363}
   - 23: {fileID: 1271360362}
   - 102: {fileID: 1271360361}
-  - 114: {fileID: 1271360364}
   - 65: {fileID: 1271360365}
+  - 114: {fileID: 1271360364}
+  - 114: {fileID: 1271360366}
   m_Layer: 0
   m_Name: txt_Play
   m_TagString: Item
@@ -395,7 +422,7 @@ TextMesh:
   m_OffsetZ: 0
   m_CharacterSize: 1
   m_LineSpacing: 1
-  m_Anchor: 0
+  m_Anchor: 4
   m_Alignment: 0
   m_TabSize: 4
   m_FontSize: 0
@@ -430,7 +457,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271360360}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 19.359911, y: 2.73140335, z: 9.49561501}
+  m_LocalPosition: {x: 20, y: 2.29999995, z: 9.49561501}
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
@@ -457,7 +484,19 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 2.9000001, y: 1.84062505, z: 0}
-  m_Center: {x: 1.45000005, y: -.920312524, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1271360366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1271360360}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i18nNamespace: MainMenu
 --- !u!1 &1291194880
 GameObject:
   m_ObjectHideFlags: 0

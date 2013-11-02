@@ -114,4 +114,4 @@
   </resheader>
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
-  </resheader><data name="Interface.Experience" xml:space="preserve"><value>Expérience</value></data><data name="Interface.GameOver" xml:space="preserve"><value>Défaite</value></data><data name="Interface.HitPoints" xml:space="preserve"><value>Points de vie</value></data></root>
+  </resheader><data name="Interface.Experience" xml:space="preserve"><value>Expérience</value></data><data name="Interface.GameOver" xml:space="preserve"><value>Défaite</value></data><data name="Interface.HitPoints" xml:space="preserve"><value>Points de vie</value></data><data name="MainMenu.Play" xml:space="preserve"><value>Jouer</value></data><data name="MainMenu.Quit" xml:space="preserve"><value>Quitter</value></data><data name="MainMenu.TheDeadMemories" xml:space="preserve"><value>The Dead Memories</value></data></root>
