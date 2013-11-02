@@ -11,11 +11,12 @@ public class PauseMenu : PauseSystem
 	
 	
 	protected override void Update()
-	{
+	{		
 		// si on appuie sur "Escape" change l'état du jeu
 		if(Input.GetButtonDown("Menu"))
 		{
 			paused = !paused;
+			player.onPause();
 			
 			UpdateState();
 		}

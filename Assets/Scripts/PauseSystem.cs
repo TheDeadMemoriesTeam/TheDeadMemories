@@ -6,10 +6,13 @@ public class PauseSystem : MonoBehaviour
 	
 	public bool paused;
 	
+	protected PlayerController player;
+	
 	
 	protected virtual void Start() // le jeu n'est pas en pause au départ
 	{
 		paused = false;
+		player = FindObjectOfType(System.Type.GetType("PlayerController")) as PlayerController;
 		UpdateState();
 	}
 	
@@ -21,7 +24,7 @@ public class PauseSystem : MonoBehaviour
 	protected virtual void UpdateState()
 	{
 		if(paused)	// actualise la valeur du timeScale selon si "En Pause"
-		{
+		{	
 			Time.timeScale = 0;
 			
 			// on fait apparaitre le curseur

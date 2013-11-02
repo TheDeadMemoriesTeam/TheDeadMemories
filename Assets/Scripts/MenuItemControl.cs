@@ -1,15 +1,18 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MenuItemControl : MonoBehaviour {
+public class MenuItemControl : MonoBehaviour 
+{
 	
-	public bool isQuitButton=false;
+	public bool isQuitButton = false;
 	
-	void OnMouseEnter() {
+	void OnMouseEnter() 
+	{
 		renderer.material.color = Color.red;
 	}
 	
-	void OnMouseExit() {
+	void OnMouseExit() 
+	{
 		renderer.material.color = Color.white;
 	}
 	

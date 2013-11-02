@@ -3,14 +3,12 @@ using System.Collections;
 
 public class Inventory : PauseSystem
 {
-	private PlayerController player;
 	private Hashtable inv;
 	
 	// Use this for initialization
 	protected override void Start () 
 	{
 		base.Start();
-		player = FindObjectOfType(System.Type.GetType("PlayerController")) as PlayerController;
 	}
 	
 	// Update is called once per frame
@@ -19,11 +17,11 @@ public class Inventory : PauseSystem
 		if(Input.GetButtonDown("Inventory"))
 		{
 			paused = !paused;
+			player.onPause();
 			if (paused)
 			{
 				inv = player.getInv();
 			}
-	
 			UpdateState();
 		}
 	}

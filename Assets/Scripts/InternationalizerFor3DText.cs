@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class InternationalizerFor3DText : MonoBehaviour {
+public class InternationalizerFor3DText : MonoBehaviour 
+{
 	
 	public string i18nNamespace;
 	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		// Set the localized text the item menu.
 		TextMesh tm = GetComponent<TextMesh>();
 		string textKey = i18nNamespace + '.' + tm.text.Replace(" ", "");
@@ -20,7 +22,7 @@ public class InternationalizerFor3DText : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
 	}
 }

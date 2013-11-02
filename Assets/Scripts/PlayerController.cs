@@ -13,7 +13,7 @@ public class PlayerController : HumanoidController
 	
 	private CharacterController controller;
 	
-	private int xp=0;
+	private int xp = 0;
 	
 	// Variables servants aux achievements
 	public AchivementManager achivementManager;
@@ -25,6 +25,8 @@ public class PlayerController : HumanoidController
 	private int cptBersekerKilled = 0;
 	
 	private Hashtable inv;
+	
+	private bool pause = false;
 	
 	// Use this for initialization
 	void Start () 
@@ -41,70 +43,73 @@ public class PlayerController : HumanoidController
 	// Update is called once per frame
 	void Update () 
 	{
-		if (pv <= 0) {
-			return;
-		}
-		
-        if (controller.isGrounded) 
+		if(!pause)
 		{
-			// Moves forward, left, right, backward
-            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
-            moveDirection *= speed;
-			// Handle jumps
-            if (Input.GetButton("Jump"))
-                moveDirection.y = jumpSpeed;
+			if (pv <= 0) {
+				return;
+			}
 			
-			// Débloque l'achivement premier pas
-			if (moveDirection != Vector3.zero)
-				achivementManager.FirstMoveAchievement();
-        }
-		// Applies move
-        moveDirection.y -= gravity * Time.deltaTime;
-		Vector3 vec = transform.position;
-        controller.Move(moveDirection * Time.deltaTime);
-		updateTravel(vec, transform.position);
-
-		// Rotation
-		rotation = new Vector3(0, Input.GetAxis("Rotation")+Input.GetAxis("Mouse X"), 0);
-		rotation *= rotationFactor * Time.timeScale;
-		transform.Rotate(rotation);
-		
-		if (Input.GetButtonDown("Fire1"))
-		{
-			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-			for (int i=0; i<targets.Length; i++)
+	        if (controller.isGrounded) 
 			{
-				Vector3 distance = transform.position-targets[i].transform.position;
-				if(distance.magnitude <= 4f)
-				{
-					var targetDir = targets[i].transform.position - transform.position;
-					var playerDir = transform.forward;
-					var angle = Vector3.Angle(targetDir, playerDir);
-					if (angle>=-45 && angle<=45)
-						targets[i].healthUpdate(-1);
-				}	
-			}
-		}
-		else if (Input.GetButtonDown("Fire2") && getMana()>=10)
-		{
-			manaUpdate(-10);
-			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-			for (int i=0; i<targets.Length; i++)
+				// Moves forward, left, right, backward
+	            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+	            moveDirection = transform.TransformDirection(moveDirection);
+	            moveDirection *= speed;
+				// Handle jumps
+	            if (Input.GetButton("Jump"))
+	                moveDirection.y = jumpSpeed;
+				
+				// Débloque l'achivement premier pas
+				if (moveDirection != Vector3.zero)
+					achivementManager.FirstMoveAchievement();
+	        }
+			// Applies move
+	        moveDirection.y -= gravity * Time.deltaTime;
+			Vector3 vec = transform.position;
+	        controller.Move(moveDirection * Time.deltaTime);
+			updateTravel(vec, transform.position);
+	
+			// Rotation
+			rotation = new Vector3(0, Input.GetAxis("Rotation")+Input.GetAxis("Mouse X"), 0);
+			rotation *= rotationFactor * Time.timeScale;
+			transform.Rotate(rotation);
+			
+			if (Input.GetButtonDown("Fire1"))
 			{
-				Vector3 distance = transform.position-targets[i].transform.position;
-				if(distance.magnitude <= 4f)
+				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+				for (int i=0; i<targets.Length; i++)
 				{
-					var targetDir = targets[i].transform.position - transform.position;
-					var playerDir = transform.forward;
-					var angle = Vector3.Angle(targetDir, playerDir);
-					if (angle>=-45 && angle<=45)
-						targets[i].healthUpdate(-5);
-				}	
+					Vector3 distance = transform.position-targets[i].transform.position;
+					if(distance.magnitude <= 4f)
+					{
+						var targetDir = targets[i].transform.position - transform.position;
+						var playerDir = transform.forward;
+						var angle = Vector3.Angle(targetDir, playerDir);
+						if (angle>=-45 && angle<=45)
+							targets[i].healthUpdate(-1);
+					}	
+				}
 			}
+			else if (Input.GetButtonDown("Fire2") && getMana()>=10)
+			{
+				manaUpdate(-10);
+				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+				for (int i=0; i<targets.Length; i++)
+				{
+					Vector3 distance = transform.position-targets[i].transform.position;
+					if(distance.magnitude <= 4f)
+					{
+						var targetDir = targets[i].transform.position - transform.position;
+						var playerDir = transform.forward;
+						var angle = Vector3.Angle(targetDir, playerDir);
+						if (angle>=-45 && angle<=45)
+							targets[i].healthUpdate(-5);
+					}	
+				}
+			}
+			
+			timedAchievements();
 		}
-		
-		timedAchievements();
 	}
 	
 	
@@ -229,5 +234,10 @@ public class PlayerController : HumanoidController
 	public Hashtable getInv()
 	{
 		return inv;	
+	}
+	
+	public void onPause()
+	{
+		pause = !pause;
 	}
 }
