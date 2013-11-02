@@ -21,7 +21,7 @@ public class MenuItemControl : MonoBehaviour {
        }
        else
        {
-       		 //Application.LoadLevel(1);
+       		 Application.LoadLevel(1);
  
        }
     }
