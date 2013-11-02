@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class TextControl : MonoBehaviour {
+public class MenuItemControl : MonoBehaviour {
 	
 	public bool isQuitButton=false;
 	
