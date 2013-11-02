@@ -31,6 +31,7 @@ public class PauseMenu : PauseSystem
 			if(GUILayout.Button("Continuer"))
 			{
 				paused = false;
+				player.onPause();
 			}
 			if(GUILayout.Button("Menu"))
 			{
