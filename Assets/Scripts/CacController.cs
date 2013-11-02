@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PeonController : EnemyController 
+public class CacController : EnemyController 
 {
 
 	// Use this for initialization
@@ -9,13 +9,21 @@ public class PeonController : EnemyController
 	{
 		base.Start();
 		
-		pvMax = 5;
+		pvMax = 6;
 		pv = pvMax;
+		
+		damageAttack = -2;
+		damageMagic = -4;
+		manaCost = -50;
+		timeAttack = 1F;
+		probabilityAttack = 0.1F;
 		
 		xp = 15;
 		
 		manaMax = 50;
 		mana = manaMax;
+		
+		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 	}
 	
 	protected override void Update ()

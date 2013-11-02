@@ -3,7 +3,8 @@ using System.Collections;
 
 public class SpawnController : MonoBehaviour 
 {
-	public EnemyController prefab;
+	public EnemyController cacPrefab;
+	public EnemyController distancePrefab;
 	private PlayerController player;
 	
 	private int range = 15;
@@ -34,6 +35,9 @@ public class SpawnController : MonoBehaviour
 		int randX = Random.Range(-range, range);
 		int randZ = Random.Range(-range, range);
 		Vector3 position = new Vector3 (transform.position.x-randX, 0, transform.position.z-randZ);
-		Instantiate(prefab, position, Quaternion.identity);
+		if(Random.Range(1,3)%2==0)
+			Instantiate(distancePrefab, position, Quaternion.identity);
+		else
+			Instantiate(cacPrefab, position, Quaternion.identity);
 	}
 }

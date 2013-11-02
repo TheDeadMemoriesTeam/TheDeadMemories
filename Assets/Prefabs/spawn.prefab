@@ -38,7 +38,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 11400000, guid: 470f33b677122944ba8c5eb32dc6ed96, type: 2}
+  cacPrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

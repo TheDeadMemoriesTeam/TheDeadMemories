@@ -654,7 +654,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 11400000, guid: 470f33b677122944ba8c5eb32dc6ed96, type: 2}
+  cacPrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
 --- !u!4 &107796630
 Transform:
   m_ObjectHideFlags: 0
@@ -2478,7 +2479,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 11400000, guid: 470f33b677122944ba8c5eb32dc6ed96, type: 2}
+  cacPrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
 --- !u!1 &487889820
 GameObject:
   m_ObjectHideFlags: 0
@@ -5618,6 +5620,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 9500000, guid: 053521a0a5bdf6c4a94bd41357c872ea, type: 3}
+      propertyPath: m_Avatar
+      value: 
+      objectReference: {fileID: 9000000, guid: 053521a0a5bdf6c4a94bd41357c872ea, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 053521a0a5bdf6c4a94bd41357c872ea, type: 3}
   m_RootGameObject: {fileID: 1272334984}
@@ -7414,7 +7420,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  prefab: {fileID: 11400000, guid: 470f33b677122944ba8c5eb32dc6ed96, type: 2}
+  cacPrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
 --- !u!1 &1340378830
 GameObject:
   m_ObjectHideFlags: 0
@@ -12245,9 +12252,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 107796630}
   - {fileID: 482644215}
   - {fileID: 1320824942}
+  - {fileID: 107796630}
   m_Father: {fileID: 0}
 --- !u!114 &2108200924
 MonoBehaviour:
