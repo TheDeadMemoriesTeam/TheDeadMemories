@@ -2849,7 +2849,7 @@ GameObject:
   - 95: {fileID: 565581390}
   - 65: {fileID: 565581391}
   m_Layer: 0
-  m_Name: cercueil
+  m_Name: coffin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
