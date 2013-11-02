@@ -129,12 +129,6 @@ public class PlayerController : HumanoidController
 			DestroyObject(other.gameObject);
 			return;
 		}
-		else if (other.gameObject.tag == "Weapon")
-		{
-			other.gameObject.SetActive(false);
-			healthUpdate(-50);
-			experienceUpdate(40);
-		}
 	}
 	
 	public void experienceUpdate(int change)
