@@ -5,6 +5,7 @@ public class SpawnController : MonoBehaviour
 {
 	public EnemyController meleePrefab;
 	public EnemyController distancePrefab;
+	public EnemyController bossPrefab;
 	private PlayerController player;
 	
 	private int range = 15;
@@ -35,8 +36,11 @@ public class SpawnController : MonoBehaviour
 		int randX = Random.Range(-range, range);
 		int randZ = Random.Range(-range, range);
 		Vector3 position = new Vector3 (transform.position.x-randX, 0, transform.position.z-randZ);
-		if(Random.Range(1,3)%2==0)
-			Instantiate(distancePrefab, position, Quaternion.identity);
+		if(Random.Range(1,3)==1)
+			if(Random.Range(1,10)==1)
+				Instantiate(bossPrefab, position, Quaternion.identity);
+			else
+				Instantiate(distancePrefab, position, Quaternion.identity);
 		else
 			Instantiate(meleePrefab, position, Quaternion.identity);
 	}

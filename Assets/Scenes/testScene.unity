@@ -652,6 +652,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
   distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
+  bossPrefab: {fileID: 11400000, guid: 8fae3ccba3895674991375f456ed44a1, type: 2}
 --- !u!4 &107796630
 Transform:
   m_ObjectHideFlags: 0
@@ -2477,6 +2478,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
   distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
+  bossPrefab: {fileID: 11400000, guid: 8fae3ccba3895674991375f456ed44a1, type: 2}
 --- !u!1 &487889820
 GameObject:
   m_ObjectHideFlags: 0
@@ -7418,6 +7420,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
   distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
+  bossPrefab: {fileID: 11400000, guid: 8fae3ccba3895674991375f456ed44a1, type: 2}
 --- !u!1 &1340378830
 GameObject:
   m_ObjectHideFlags: 0
@@ -12249,9 +12252,9 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 1320824942}
   - {fileID: 482644215}
   - {fileID: 107796630}
+  - {fileID: 1320824942}
   m_Father: {fileID: 0}
 --- !u!114 &2108200924
 MonoBehaviour:
