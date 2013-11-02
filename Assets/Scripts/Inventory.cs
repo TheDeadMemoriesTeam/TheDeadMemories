@@ -16,7 +16,7 @@ public class Inventory : PauseSystem
 	// Update is called once per frame
 	protected override void Update () 
 	{
-		if(Input.GetButtonDown("Inventaire"))
+		if(Input.GetButtonDown("Inventory"))
 		{
 			paused = !paused;
 			if (paused)
