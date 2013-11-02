@@ -738,7 +738,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!95 &591649229
 Animator:
@@ -2020,6 +2020,10 @@ Prefab:
       propertyPath: m_LocalScale.z
       value: 3.29999995
       objectReference: {fileID: 0}
+    - target: {fileID: 100170, guid: e88f4c7e878a10a49a33d6a735303f42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e88f4c7e878a10a49a33d6a735303f42, type: 3}
   m_RootGameObject: {fileID: 2001505554}
@@ -2418,7 +2422,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!95 &1976588762
 Animator:
@@ -2505,7 +2509,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!95 &2001505555
 Animator:
@@ -2711,6 +2715,10 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .707106829
       objectReference: {fileID: 0}
+    - target: {fileID: 100002, guid: afe1cbac2f1b98c4386c95107e419057, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: afe1cbac2f1b98c4386c95107e419057, type: 3}
   m_RootGameObject: {fileID: 591649228}
@@ -2914,6 +2922,10 @@ Prefab:
     - target: {fileID: 400170, guid: e88f4c7e878a10a49a33d6a735303f42, type: 3}
       propertyPath: m_LocalScale.z
       value: 3.29999995
+      objectReference: {fileID: 0}
+    - target: {fileID: 100170, guid: e88f4c7e878a10a49a33d6a735303f42, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e88f4c7e878a10a49a33d6a735303f42, type: 3}
