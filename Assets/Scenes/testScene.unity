@@ -1895,7 +1895,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: b66e8926d3c80274ebea26acfbc8e4a8, type: 2}
       propertyPath: m_Name
-      value: manaPotion
+      value: ManaPotion
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b66e8926d3c80274ebea26acfbc8e4a8, type: 2}
@@ -2737,7 +2737,7 @@ GameObject:
   - 114: {fileID: 1958243165}
   - 54: {fileID: 1958243166}
   m_Layer: 0
-  m_Name: manaPotion
+  m_Name: ManaPotion
   m_TagString: ManaPotion
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
