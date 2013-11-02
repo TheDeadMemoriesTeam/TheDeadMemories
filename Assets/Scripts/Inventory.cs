@@ -57,7 +57,7 @@ public class Inventory : PauseSystem
 	
 	void chooseWork(string key)
 	{
-		if(key == "Medikit")
+		if(key == "Bone")
 		{
 			player.healthUpdate(50);
 			return;
