@@ -21,7 +21,7 @@ public class Inventory : PauseSystem
 			{
 				inv = player.getInv();
 			}
-			UpdateState(1);
+			UpdateState();
 		}
 	}
 	
@@ -47,9 +47,10 @@ public class Inventory : PauseSystem
 		}
 	}
 	
-	protected override void UpdateState(int ind)
+	protected override void UpdateState()
 	{
-		base.UpdateState(ind);
+		base.UpdateState();
+		GetComponent<PauseMenu>().enabled = !paused;
 	}
 	
 	void chooseWork(string key)
