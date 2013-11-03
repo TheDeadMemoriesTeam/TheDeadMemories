@@ -17,7 +17,7 @@ public class PauseMenu : PauseSystem
 		{
 			paused = !paused;
 			
-			UpdateState();
+			UpdateState(2);
 		}
 	}
 	
@@ -31,7 +31,7 @@ public class PauseMenu : PauseSystem
 			{
 				paused = false;
 				
-				UpdateState();
+				UpdateState(2);
 			}
 			if(GUILayout.Button("Menu"))
 			{
@@ -44,9 +44,9 @@ public class PauseMenu : PauseSystem
 	}
 	
 	
-	protected override void UpdateState()
+	protected override void UpdateState(int ind)
 	{
-		base.UpdateState();
+		base.UpdateState(ind);
 	}
 	
 }

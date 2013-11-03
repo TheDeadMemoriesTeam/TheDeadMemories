@@ -13,7 +13,8 @@ public class PauseSystem : MonoBehaviour
 	{
 		paused = false;
 		player = FindObjectOfType(System.Type.GetType("PlayerController")) as PlayerController;
-		UpdateState();
+		
+		UpdateState(0);
 	}
 	
 	
@@ -21,7 +22,7 @@ public class PauseSystem : MonoBehaviour
 	{
 	}
 	
-	protected virtual void UpdateState()
+	protected virtual void UpdateState(int ind)
 	{
 		if(paused)	// actualise la valeur du timeScale selon si "En Pause"
 		{	
@@ -40,6 +41,17 @@ public class PauseSystem : MonoBehaviour
 			Screen.lockCursor = true;
 		}
 		player.onPause();
+		switch(ind)
+		{
+		case 0: 
+			break;
+		case 1:
+			GetComponent<PauseMenu>().enabled = !paused;
+			break;
+		case 2:
+			GetComponent<Inventory>().enabled = !paused;
+			break;
+		}
 	}
 	
 }
