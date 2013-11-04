@@ -36,6 +36,8 @@ public class PlayerController : HumanoidController
 		pv = pvMax;
 		manaMax = 100;
 		mana = manaMax;
+		distanceP = 4f;
+		distanceM = 4f;
 		
 		inv = new Hashtable(2);
 	}
@@ -80,7 +82,7 @@ public class PlayerController : HumanoidController
 				for (int i=0; i<targets.Length; i++)
 				{
 					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= 4f)
+					if(distance.magnitude <= distanceP)
 					{
 						var targetDir = targets[i].transform.position - transform.position;
 						var playerDir = transform.forward;
@@ -97,7 +99,7 @@ public class PlayerController : HumanoidController
 				for (int i=0; i<targets.Length; i++)
 				{
 					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= 4f)
+					if(distance.magnitude <= distanceM)
 					{
 						var targetDir = targets[i].transform.position - transform.position;
 						var playerDir = transform.forward;
