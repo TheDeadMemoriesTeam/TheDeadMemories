@@ -51,12 +51,22 @@ public class EnemyController : HumanoidController
 			Destroy(gameObject);
 			return;
 		}
-		timeCountAttack += Time.deltaTime;
-		agent.destination = target.transform.position;
-		Vector3 distance = transform.position-target.transform.position;
-		if(distance.magnitude <= agent.stoppingDistance)
+		
+		if(!target.getInCrypt())
 		{
-			attack();
+			agent.destination = target.transform.position;
+			timeCountAttack += Time.deltaTime;
+			Vector3 distance = transform.position-target.transform.position;
+		
+			if(distance.magnitude <= agent.stoppingDistance)
+			{
+				attack();
+			}
+		}
+		//les enemis vont vers une direction aleatoire pendent un certain temp et change au boutd'un moment
+		else if((int)Time.timeSinceLevelLoad%10 == 0)
+		{			
+			agent.destination = Random.onUnitSphere*100;
 		}
 	}
 	
