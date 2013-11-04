@@ -48,12 +48,14 @@ public class AchivementManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		//File.Delete("/achievements.dat");
+		//PlayerPrefs.DeleteAll();
 		loadAchievements();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{	
 	}
 	
 	public void saveAchievements()
@@ -66,6 +68,14 @@ public class AchivementManager : MonoBehaviour {
 		binFormatter.Serialize(file, AchievementsStates);
         
 		file.Close();
+		
+		// Sauvegarde les variables dans le PlayerPrefs
+		PlayerPrefs.SetInt("cptEnemyKilled", cptEnemyKilled);
+		PlayerPrefs.SetInt("cptBersekerKilled", cptBersekerKilled);
+		PlayerPrefs.SetInt("cptAssassinKill", cptAssassinKill);
+		PlayerPrefs.SetFloat("timeNotTouched", timeNotTouched);
+		PlayerPrefs.SetFloat("timeSurvived", timeSurvived);
+		PlayerPrefs.SetFloat("travel", travel);
 	}
 	
 	void loadAchievements()
@@ -80,6 +90,14 @@ public class AchivementManager : MonoBehaviour {
 			//Charge les achievements
 			AchievementsStates = (Dictionary<string, bool>)binFormatter.Deserialize(file);
 			file.Close();
+			
+			// Charge les variables du PlayerPrefs
+			cptEnemyKilled = PlayerPrefs.GetInt("cptEnemyKilled");
+			cptBersekerKilled = PlayerPrefs.GetInt("cptBersekerKilled");
+			cptAssassinKill = PlayerPrefs.GetInt("cptAssassinKill");
+			timeNotTouched = PlayerPrefs.GetFloat("timeNotTouched");
+			timeSurvived = PlayerPrefs.GetFloat("timeSurvived");
+			travel = PlayerPrefs.GetFloat("travel");
 		}
 	}
 	
