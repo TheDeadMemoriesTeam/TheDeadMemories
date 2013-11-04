@@ -2,7 +2,10 @@ fileFormatVersion: 2
 guid: cb5260921d34df345a515949e9237651
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
+  - distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
+  - bossPrefab: {fileID: 11400000, guid: 8fae3ccba3895674991375f456ed44a1, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

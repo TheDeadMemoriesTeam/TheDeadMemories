@@ -63,7 +63,7 @@ public class PlayerController : HumanoidController
 				
 				// Débloque l'achivement premier pas
 				if (moveDirection != Vector3.zero)
-					achivementManager.FirstMoveAchievement();
+					achivementManager.firstMoveAchievement();
 	        }
 			// Applies move
 	        moveDirection.y -= gravity * Time.deltaTime;

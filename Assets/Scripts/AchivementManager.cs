@@ -1,5 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
+
+using System.Linq;
+//Namespaces nécessaires pour BinaryFormatter
+using System;
+using System.Runtime.Serialization.Formatters.Binary;
+using System.IO;
+
 
 public class AchivementManager : MonoBehaviour {
 	
@@ -9,40 +17,27 @@ public class AchivementManager : MonoBehaviour {
 	// Son achivement
 	public AudioClip soundAchivement; 
 	
-	// Booléens des achivements
-	private bool firstMove = false;
+	// Associe le nom de l'achievement à son état (bool) => équivalent map de la STL
+	private Dictionary<string, bool> AchievementsStates;
 	
-	private bool firstKill = false;
-	private bool tenKills = false;
-	private bool hundredKills = false;
-	private bool thousandKills = false;
-	
-	private bool noLimit = false;
-	private bool thousandKillsBersekers = false;
-	
-	private bool untouch1min = false;
-	private bool untouch5mins = false;
-	
-	private bool beginner = false;
-	private bool amateur = false;
-	private bool ghost = false;
-	private bool immortal = false;
-	private bool god = false;
-	
-	private bool assassin = false;
-	private bool masterAssassin = false;
-	
-	private bool longArm = false;
-	
-	private bool oneKilometer = false;
-	private bool tenKilometers = false;
-	private bool marathon = false;
-	private bool hundredKilometers = false;
-	private bool thousandKilometers = false;
-	private bool milionKilometer = false;
+	void Awake ()
+    {
+		// Nom des achievements
+		string[] names = {
+			"firstMove", "firstKill", "tenKills", "hundredKills", "thousandKills", "noLimit", "thousandKillsBersekers",
+			"untouch1min", "untouch5mins", "beginner", "amateur", "ghost", "immortal", "god", "assassin", "masterAssassin",
+			"longArm", "oneKilometer", "tenKilometers", "marathon", "hundredKilometers", "thousandKilometers", "milionKilometer"
+		};
+		
+		AchievementsStates = new Dictionary<string, bool>();
+		// Initialise le dictionnaire des achievements
+		for (int i = 0 ; i <  names.Length ; i++)
+			AchievementsStates.Add(names[i], false);
+    }
 	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		
 	}
 	
@@ -51,233 +46,270 @@ public class AchivementManager : MonoBehaviour {
 	
 	}
 	
-	public void FirstMoveAchievement()
+	void changeState(string achievementName)
 	{
-		if (!firstMove)
+		if (AchievementsStates.ContainsKey(achievementName))
+			AchievementsStates[achievementName] = !AchievementsStates[achievementName];
+	}
+	
+	bool getState(string achievementName)
+	{
+		if (AchievementsStates.ContainsKey(achievementName))
+			return AchievementsStates[achievementName];
+		else
+			return false;
+	}
+	
+	public void firstMoveAchievement()
+	{
+		string name = "firstMove";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement First Move !");
 			unlockAchivement(texture);
-			firstMove = !firstMove;
+			changeState(name);
 		}
 	}
 	
 	public void firstBloodAchievement()
 	{
-		if (!firstKill)
+		string name = "firstKill";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement First Blood !");
 			unlockAchivement(texture);
-			firstKill = !firstKill;
+			changeState(name);
 		}
 	}
 	
 	public void littleKillerAchievement()
 	{
-		if (!tenKills)
+		string name = "tenKills";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Ten kills !");
 			unlockAchivement(texture);
-			tenKills = !tenKills;
+			changeState(name);
 		}
 	}
 	
 	public void killerAchievement()
 	{
-		if (!hundredKills)
+		string name = "hundredKills";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement a hundred kills !");
 			unlockAchivement(texture);
-			hundredKills = !hundredKills;
+			changeState(name);
 		}
 	}
 	
 	public void serialKillerAchievement()
 	{
-		if (!thousandKills)
+		string name = "thousandKills";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement 1 thousand kills !");
 			unlockAchivement(texture);
-			thousandKills = !thousandKills;
+			changeState(name);
 		}
 	}
 	
 	public void noLimitAchievement()
 	{
-		if (!noLimit)
+		string name = "noLimit";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement No Limit (kill 10 Bersekers) !");
 			unlockAchivement(texture);
-			noLimit = !noLimit;
+			changeState(name);
 		}
 	}
 	
 	public void serialKillerOfSerialKillerAchievement()
 	{
-		if (!thousandKillsBersekers)
+		string name = "thousandKillsBersekers";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Serial Killer Of Serial Killer (kill 1000 Bersekers) !");
 			unlockAchivement(texture);
-			thousandKillsBersekers = !thousandKillsBersekers;
+			changeState(name);
 		}
 	}
 	
 	public void uncatchableAchievement()
 	{
-		if (!untouch1min)
+		string name = "untouch1min";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Not touch during 1 min !");
 			unlockAchivement(texture);
-			untouch1min = !untouch1min;
+			changeState(name);
 		}
 	}
 	
 	public void reallyUncatchableAchievement()
 	{
-		if (!untouch5mins)
+		string name = "untouch5mins";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Not touch during 5 min !");
 			unlockAchivement(texture);
-			untouch5mins = !untouch5mins;
+			changeState(name);
 		}
 	}
 	
 	public void surviveOneMinuteAchievement()
 	{
-		if (!beginner)
+		string name = "beginner";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 1 min !");
 			unlockAchivement(texture);
-			beginner = !beginner;
+			changeState(name);
 		}
 	}
 	
 	public void surviveTwentyMinutesAchievement()
 	{
-		if (!amateur)
+		string name = "amateur";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 20 mins !");
 			unlockAchivement(texture);
-			amateur = !amateur;
+			changeState(name);
 		}
 	}
 	
 	public void surviveOneHourAchievement()
 	{
-		if (!ghost)
+		string name = "ghost";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 1 h !");
 			unlockAchivement(texture);
-			ghost = !ghost;
+			changeState(name);
 		}
 	}
 	
 	public void surviveFourHoursAchievement()
 	{
-		if (!immortal)
+		string name = "immortal";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 4 h !");
 			unlockAchivement(texture);
-			immortal = !immortal;
+			changeState(name);
 		}
 	}
 	
 	public void surviveTwelveHoursAchievement()
 	{
-		if (!god)
+		string name = "god";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 12 h !");
 			unlockAchivement(texture);
-			god = !god;
+			changeState(name);
 		}
 	}
 	
 	public void assassinAchievement()
 	{
-		if (!assassin)
+		string name = "assassin";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Kill 5 enemy and not be touch !");
 			unlockAchivement(texture);
-			assassin = !assassin;
+			changeState(name);
 		}
 	}
 	
 	public void masterAssassinAchievement()
 	{
-		if (!masterAssassin)
+		string name = "masterAssassin";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Kill 50 enemy and not be touch !");
 			unlockAchivement(texture);
-			masterAssassin = !masterAssassin;
+			changeState(name);
 		}
 	}
 	
 	public void longArmAchievement()
 	{
-		if (!longArm)
+		string name = "longArm";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Long Arm (10 kills in the same time) !");
 			unlockAchivement(texture);
-			longArm = !longArm;
+			changeState(name);
 		}
 	}
 	
 	public void sundayWalkerAchievement()
 	{
-		if (!oneKilometer)
+		string name = "oneKilometer";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Sunday Walker (run on 1 km) !");
 			unlockAchivement(texture);
-			oneKilometer = !oneKilometer;
+			changeState(name);
 		}
 	}
 	
 	public void dailyJoggingAchievement()
 	{
-		if (!tenKilometers)
+		string name = "tenKilometers";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Daily Jogging (run on 10 km) !");
 			unlockAchivement(texture);
-			tenKilometers = !tenKilometers;
+			changeState(name);
 		}
 	}
 	
 	public void marathonAchievement()
 	{
-		if (!marathon)
+		string name = "marathon";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Marathon (run on 42,195 km) !");
 			unlockAchivement(texture);
-			marathon = !marathon;
+			changeState(name);
 		}
 	}
 	
 	public void healthWalkAchievement()
 	{
-		if (!hundredKilometers)
+		string name = "hundredKilometers";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Health Walk (run on 100 km) !");
 			unlockAchivement(texture);
-			hundredKilometers = !hundredKilometers;
+			changeState(name);
 		}
 	}
 	
 	public void athleticAchievement()
 	{
-		if (!thousandKilometers)
+		string name = "thousandKilometers";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Athletic (run on 1.000 km) !");
 			unlockAchivement(texture);
-			thousandKilometers = !thousandKilometers;
+			changeState(name);
 		}
 	}
 	
 	public void dopedAddictAchievement()
 	{
-		if (!milionKilometer)
+		string name = "milionKilometer";
+		if (!getState(name))
 		{
 			Debug.Log("Achivement Doped Addict (run on 1.000.000 km) !");
 			unlockAchivement(texture);
-			milionKilometer = !milionKilometer;
+			changeState(name);
 		}
 	}
 	
