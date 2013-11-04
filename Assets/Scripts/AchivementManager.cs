@@ -38,12 +38,39 @@ public class AchivementManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		
+		loadAchievements();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 	
+	}
+	
+	public void saveAchievements()
+	{
+		//Cré un BinaryFormatter
+		var binFormatter = new BinaryFormatter();
+		//Cré un fichier
+		var file = File.Create(Application.persistentDataPath + "/achievements.dat");
+		//Sauvegarde les achievements
+		binFormatter.Serialize(file, AchievementsStates);
+        
+		file.Close();
+	}
+	
+	void loadAchievements()
+	{
+		//Si le fichier de sauvegarde existe on le charge
+		if(File.Exists(Application.persistentDataPath + "/achievements.dat"))
+		{
+			//BinaryFormatter pour charger les nouvelles données
+			var binFormatter = new BinaryFormatter();
+			//Ouvre le fichier
+			var file = File.Open(Application.persistentDataPath + "/achievements.dat", FileMode.Open);
+			//Charge les achievements
+			AchievementsStates = (Dictionary<string, bool>)binFormatter.Deserialize(file);
+			file.Close();
+		}
 	}
 	
 	void changeState(string achievementName)
