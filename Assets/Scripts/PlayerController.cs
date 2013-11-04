@@ -17,12 +17,6 @@ public class PlayerController : HumanoidController
 	
 	// Variables servants aux achievements
 	public AchivementManager achivementManager;
-	private int cptEnemyKilled = 0;
-	private float timeNotTouched = 0;
-	private float timeSurvived = 0;
-	private bool assassin = true;
-	private float travel = 0;
-	private int cptBersekerKilled = 0;
 	
 	private Hashtable inv;
 	
@@ -155,13 +149,15 @@ public class PlayerController : HumanoidController
 	
 	public void setTimeNotTouched(float time)
 	{
-		timeNotTouched = time;
-		assassin = false;
+		achivementManager.setTimeNotTouched(time);
+		achivementManager.setAssassin(false);
 	}
 	
 	private void updateTravel(Vector3 fromWhere, Vector3 to)
 	{
+		float travel = achivementManager.getTravel();
 		travel += Vector3.Distance(fromWhere, to);
+		achivementManager.setTravel(travel);
 		
 		if (travel >= 1000)		// 1 km parcourut
 			achivementManager.sundayWalkerAchievement();
@@ -179,8 +175,15 @@ public class PlayerController : HumanoidController
 	
 	private void timedAchievements()
 	{
+		float timeNotTouched = achivementManager.getTimeNotTouched();
+		float timeSurvived = achivementManager.getTimeSurvived();
+		
 		timeNotTouched += Time.deltaTime;
 		timeSurvived += Time.deltaTime;
+		
+		achivementManager.setTimeNotTouched(timeNotTouched);
+		achivementManager.setTimeSurvived(timeSurvived);
+		
 		// Débloque les achievements non touché pendant x temps
 		if (timeNotTouched >= 60)	// 1 min
 			achivementManager.uncatchableAchievement();
@@ -203,7 +206,11 @@ public class PlayerController : HumanoidController
 	private void killsAchievements(int gainOfXp)
 	{
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
-		cptEnemyKilled++;
+		achivementManager.updateCptEnemyKilled();
+		achivementManager.updateCptAssassinKill();
+		
+		int cptEnemyKilled = achivementManager.getCptEnemyKilled();
+		int cptAssassinKill = achivementManager.getCptAssassinKill();
 		// Achievements de la série tuer x ennemis
 		if (cptEnemyKilled == 1)
 			achivementManager.firstBloodAchievement();
@@ -217,7 +224,8 @@ public class PlayerController : HumanoidController
 		// Achievements avec les bersekers
 		if (gainOfXp == 30)
 		{
-			cptBersekerKilled++;
+			achivementManager.updateCptBersekerKilled();
+			int cptBersekerKilled = achivementManager.getCptBersekerKilled();
 			
 			if (cptBersekerKilled == 10)
 				achivementManager.noLimitAchievement();
@@ -226,11 +234,11 @@ public class PlayerController : HumanoidController
 		}
 		
 		// Achievements de la série assassin
-		if (assassin)
+		if (achivementManager.getAssassin())
 		{
-			if (cptEnemyKilled == 5)
+			if (cptAssassinKill == 5)
 				achivementManager.assassinAchievement();
-			else if (cptEnemyKilled == 50)
+			else if (cptAssassinKill == 50)
 				achivementManager.masterAssassinAchievement();
 		}
 	}
