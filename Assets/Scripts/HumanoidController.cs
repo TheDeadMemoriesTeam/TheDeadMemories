@@ -6,6 +6,7 @@ public class HumanoidController : MonoBehaviour
 {
 	
 	protected int pv, pvMax, mana, manaMax;
+	protected float distanceP, distanceM;
 	
 	// Use this for initialization
 	void Start () 
