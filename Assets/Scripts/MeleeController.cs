@@ -25,7 +25,7 @@ public class MeleeController : EnemyController
 		
 		timeRegen = 6;
 		
-		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
+		//gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 	}
 	
 	protected override void Update ()
