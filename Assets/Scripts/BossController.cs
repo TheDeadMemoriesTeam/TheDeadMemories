@@ -23,6 +23,8 @@ public class BossController : EnemyController
 		manaMax = 50;
 		mana = manaMax;
 		
+		timeRegen = 6;
+		
 		gameObject.renderer.material.color = new Color(0.341F, 0.725F, 0.478F);
 	}
 	

@@ -8,14 +8,23 @@ public class HumanoidController : MonoBehaviour
 	protected int pv, pvMax, mana, manaMax;
 	protected float distanceP, distanceM;
 	
+	private float regen = 0;
+	protected float timeRegen;
+	
 	// Use this for initialization
 	void Start () 
 	{
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected virtual void Update () 
 	{
+		if (regen >= timeRegen)
+		{
+			manaUpdate(1);	
+			regen = 0;
+		}
+		regen += Time.deltaTime;
 	}
 	
 	public virtual void healthUpdate(int change)

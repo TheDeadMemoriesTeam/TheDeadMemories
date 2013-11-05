@@ -12,8 +12,8 @@ public class MeleeController : EnemyController
 		pvMax = 6;
 		pv = pvMax;
 		
-		damageAttack = -2;
-		damageMagic = -4;
+		damageAttack = -3;
+		damageMagic = -2;
 		manaCost = -50;
 		timeAttack = 1F;
 		probabilityAttack = 0.1F;
@@ -22,6 +22,8 @@ public class MeleeController : EnemyController
 		
 		manaMax = 50;
 		mana = manaMax;
+		
+		timeRegen = 6;
 		
 		gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 	}

@@ -35,15 +35,19 @@ public class PlayerController : HumanoidController
 		distanceP = 4f;
 		distanceM = 4f;
 		
+		timeRegen = 2;
+		
 		inv = new Hashtable(2);
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected override void Update () 
 	{
 		if(!pause)
 		{
-			if (pv <= 0) {
+			base.Update();
+			if (pv <= 0) 
+			{
 				return;
 			}
 			
