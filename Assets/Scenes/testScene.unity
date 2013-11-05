@@ -113,6 +113,16 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: meleePrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988,
+        type: 2}
+    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: distancePrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
   m_RootGameObject: {fileID: 107796628}
@@ -201,8 +211,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
-  distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
+  meleePrefab: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988, type: 2}
+  distancePrefab: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b, type: 2}
   bossPrefab: {fileID: 11400000, guid: 8fae3ccba3895674991375f456ed44a1, type: 2}
 --- !u!4 &107796630
 Transform:
@@ -299,6 +309,16 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: distancePrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b,
+        type: 2}
+    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: meleePrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
   m_RootGameObject: {fileID: 482644214}
@@ -398,8 +418,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
-  distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
+  meleePrefab: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988, type: 2}
+  distancePrefab: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b, type: 2}
   bossPrefab: {fileID: 11400000, guid: 8fae3ccba3895674991375f456ed44a1, type: 2}
 --- !u!1 &487889820
 GameObject:
@@ -1417,8 +1437,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  meleePrefab: {fileID: 11400000, guid: 633911143d33bb040b31656d76def047, type: 2}
-  distancePrefab: {fileID: 11400000, guid: a927b5897a0b4bd47b93019f1bd35dd5, type: 2}
+  meleePrefab: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988, type: 2}
+  distancePrefab: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b, type: 2}
   bossPrefab: {fileID: 11400000, guid: 8fae3ccba3895674991375f456ed44a1, type: 2}
 --- !u!1 &1350883271
 GameObject:
@@ -1809,6 +1829,16 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: meleePrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988,
+        type: 2}
+    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: distancePrefab
+      value: 
+      objectReference: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
   m_RootGameObject: {fileID: 1320824941}
