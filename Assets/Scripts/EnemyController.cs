@@ -17,6 +17,8 @@ public class EnemyController : HumanoidController
 	public Rigidbody[] droppableItems;
 	public float[] itemsDropProbability;
 	
+	private bool inCrypte = false;
+	
 	// Use this for initialization
 	protected virtual void Start () 
 	{
@@ -52,7 +54,7 @@ public class EnemyController : HumanoidController
 			return;
 		}
 		
-		if(!target.getInCrypt())
+		if(!inCrypte)
 		{
 			agent.destination = target.transform.position;
 			timeCountAttack += Time.deltaTime;
@@ -101,5 +103,10 @@ public class EnemyController : HumanoidController
 			if (Random.value < itemsDropProbability[i])
 				Instantiate(droppableItems[i], transform.position, Quaternion.identity);
 		}
+	}
+	
+	public void setInCrypts(bool b)
+	{
+		inCrypte = b;	
 	}
 }

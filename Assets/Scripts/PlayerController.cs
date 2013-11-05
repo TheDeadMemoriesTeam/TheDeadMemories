@@ -22,8 +22,6 @@ public class PlayerController : HumanoidController
 	
 	private bool pause = false;
 	
-	private bool inCrypt = false;
-		
 	// Use this for initialization
 	void Start () 
 	{
@@ -159,15 +157,5 @@ public class PlayerController : HumanoidController
 	public void onPause()
 	{
 		pause = !pause;
-	}
-	
-	public void setInCrypt(bool b)
-	{
-		inCrypt = b;
-	}
-	
-	public bool getInCrypt()
-	{
-		return inCrypt;	
 	}
 }
