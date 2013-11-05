@@ -60,8 +60,7 @@ public class PlayerController : HumanoidController
 	                moveDirection.y = jumpSpeed;
 				
 				// Débloque l'achivement premier pas
-				if (moveDirection != Vector3.zero)
-					achivementManager.firstMoveAchievement();
+				achivementManager.firstMove(moveDirection);
 	        }
 			// Applies move
 	        moveDirection.y -= gravity * Time.deltaTime;
@@ -107,8 +106,6 @@ public class PlayerController : HumanoidController
 					}	
 				}
 			}
-			
-			achivementManager.timedAchievements();
 		}
 	}
 	
@@ -141,7 +138,7 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		
-		achivementManager.killsAchievements(change);
+		achivementManager.killsAchievements();
 	}
 	
 	public int getExperience()

@@ -40,8 +40,7 @@ public class SpawnManager : MonoBehaviour
 	void Update () 
 	{
 		// Débloque l'achievement 10 ennemies tués en meme temps
-		if (lastNbEnnemies - NbEnnemies >= 10)
-			achievementManager.longArmAchievement();
+		achievementManager.multiKills(lastNbEnnemies, NbEnnemies);
 			
 		// Create an ennemy if the specified time is elapsed
 		if (Time.time - timeLastSpawn >= spawnDelay)

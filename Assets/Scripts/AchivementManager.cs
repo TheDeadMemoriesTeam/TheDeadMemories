@@ -25,6 +25,9 @@ public class AchivementManager : MonoBehaviour {
 	private float travel = 0;
 	private int cptBersekerKilled = 0;
 	private int cptAssassinKill = 0;
+	private const float timesLimit = 60f;	// Temps imparti par session de kill => 1min
+	private float timeLimit = 0;
+	private int cptKillPerMin = 0;
 
 	
 	// Associe le nom de l'achievement à son état (bool) => équivalent map de la STL
@@ -36,7 +39,8 @@ public class AchivementManager : MonoBehaviour {
 		string[] names = {
 			"firstMove", "firstKill", "tenKills", "hundredKills", "thousandKills", "noLimit", "thousandKillsBersekers",
 			"untouch1min", "untouch5mins", "beginner", "amateur", "ghost", "immortal", "god", "assassin", "masterAssassin",
-			"longArm", "oneKilometer", "tenKilometers", "marathon", "hundredKilometers", "thousandKilometers", "milionKilometer"
+			"longArm", "oneKilometer", "tenKilometers", "marathon", "hundredKilometers", "thousandKilometers", "milionKilometer",
+			"littleHoodlum", "boxer", "clod", "brute", "barbarian"
 		};
 		
 		AchievementsStates = new Dictionary<string, bool>();
@@ -55,7 +59,8 @@ public class AchivementManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () 
-	{	
+	{
+		timedAchievements();
 	}
 	
 	public void saveAchievements()
@@ -112,10 +117,10 @@ public class AchivementManager : MonoBehaviour {
 		if (AchievementsStates.ContainsKey(achievementName))
 			return AchievementsStates[achievementName];
 		else
-			return false;
+			return true;
 	}
 	
-	public void firstMoveAchievement()
+	void firstMoveAchievement()
 	{
 		string name = "firstMove";
 		if (!getState(name))
@@ -126,7 +131,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void firstBloodAchievement()
+	void firstBloodAchievement()
 	{
 		string name = "firstKill";
 		if (!getState(name))
@@ -137,7 +142,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void littleKillerAchievement()
+	void littleKillerAchievement()
 	{
 		string name = "tenKills";
 		if (!getState(name))
@@ -148,7 +153,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void killerAchievement()
+	void killerAchievement()
 	{
 		string name = "hundredKills";
 		if (!getState(name))
@@ -159,7 +164,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void serialKillerAchievement()
+	void serialKillerAchievement()
 	{
 		string name = "thousandKills";
 		if (!getState(name))
@@ -170,7 +175,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void noLimitAchievement()
+	void noLimitAchievement()
 	{
 		string name = "noLimit";
 		if (!getState(name))
@@ -181,7 +186,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void serialKillerOfSerialKillerAchievement()
+	void serialKillerOfSerialKillerAchievement()
 	{
 		string name = "thousandKillsBersekers";
 		if (!getState(name))
@@ -192,7 +197,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void uncatchableAchievement()
+	void uncatchableAchievement()
 	{
 		string name = "untouch1min";
 		if (!getState(name))
@@ -203,7 +208,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void reallyUncatchableAchievement()
+	void reallyUncatchableAchievement()
 	{
 		string name = "untouch5mins";
 		if (!getState(name))
@@ -214,7 +219,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveOneMinuteAchievement()
+	void surviveOneMinuteAchievement()
 	{
 		string name = "beginner";
 		if (!getState(name))
@@ -225,7 +230,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveTwentyMinutesAchievement()
+	void surviveTwentyMinutesAchievement()
 	{
 		string name = "amateur";
 		if (!getState(name))
@@ -236,7 +241,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveOneHourAchievement()
+	void surviveOneHourAchievement()
 	{
 		string name = "ghost";
 		if (!getState(name))
@@ -247,7 +252,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveFourHoursAchievement()
+	void surviveFourHoursAchievement()
 	{
 		string name = "immortal";
 		if (!getState(name))
@@ -258,7 +263,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveTwelveHoursAchievement()
+	void surviveTwelveHoursAchievement()
 	{
 		string name = "god";
 		if (!getState(name))
@@ -269,7 +274,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void assassinAchievement()
+	void assassinAchievement()
 	{
 		string name = "assassin";
 		if (!getState(name))
@@ -280,7 +285,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void masterAssassinAchievement()
+	void masterAssassinAchievement()
 	{
 		string name = "masterAssassin";
 		if (!getState(name))
@@ -291,7 +296,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void longArmAchievement()
+	void longArmAchievement()
 	{
 		string name = "longArm";
 		if (!getState(name))
@@ -302,7 +307,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void sundayWalkerAchievement()
+	void sundayWalkerAchievement()
 	{
 		string name = "oneKilometer";
 		if (!getState(name))
@@ -313,7 +318,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void dailyJoggingAchievement()
+	void dailyJoggingAchievement()
 	{
 		string name = "tenKilometers";
 		if (!getState(name))
@@ -324,7 +329,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void marathonAchievement()
+	void marathonAchievement()
 	{
 		string name = "marathon";
 		if (!getState(name))
@@ -335,7 +340,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void healthWalkAchievement()
+	void healthWalkAchievement()
 	{
 		string name = "hundredKilometers";
 		if (!getState(name))
@@ -346,7 +351,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void athleticAchievement()
+	void athleticAchievement()
 	{
 		string name = "thousandKilometers";
 		if (!getState(name))
@@ -357,7 +362,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void dopedAddictAchievement()
+	void dopedAddictAchievement()
 	{
 		string name = "milionKilometer";
 		if (!getState(name))
@@ -368,10 +373,91 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
+	void littleHoodlumAchievement()
+	{
+		string name = "littleHoodlum";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement little Hoodlum (kill 10 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void boxerAchievement()
+	{
+		string name = "boxer";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Boxer (kill 25 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void clodAchievement()
+	{
+		string name = "clod";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Clod (kill 50 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void bruteAchievement()
+	{
+		string name = "brute";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Brute (kill 100 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void barbarianAchievement()
+	{
+		string name = "barbarian";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Barbarian (kill 200 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
 	void unlockAchivement(Texture textureAchivement)
 	{
 		// TODO
 		audio.PlayOneShot(soundAchivement);
+	}
+	
+	void killPerMin()
+	{
+		if (timesLimit - timeLimit >= 0)
+		{
+			// Si on a tuer plus de x ennemis dans un temps de 1 min
+			if (cptKillPerMin >= 10)
+				littleHoodlumAchievement();
+			if (cptKillPerMin >= 25)
+				boxerAchievement();
+			if (cptKillPerMin >= 50)
+				clodAchievement();
+			if (cptKillPerMin >= 100)
+				bruteAchievement();
+			if (cptKillPerMin >= 200)
+				barbarianAchievement();
+		}
+		else
+			resetKillPerMin();
+	}
+	
+	void resetKillPerMin()
+	{
+		timeLimit = 0;
+		cptKillPerMin = 0;
 	}
 	
 	public void setTimeNotTouched(float time)
@@ -398,10 +484,11 @@ public class AchivementManager : MonoBehaviour {
 			dopedAddictAchievement();
 	}
 	
-	public void timedAchievements()
+	void timedAchievements()
 	{	
 		timeNotTouched += Time.deltaTime;
 		timeSurvived += Time.deltaTime;
+		timeLimit += Time.deltaTime;
 		
 		// Débloque les achievements non touché pendant x temps
 		if (timeNotTouched >= 60)	// 1 min
@@ -420,13 +507,16 @@ public class AchivementManager : MonoBehaviour {
 			surviveFourHoursAchievement();
 		if (timeSurvived >= 43200)	// 12 h
 			surviveTwelveHoursAchievement();
+		
+		killPerMin();
 	}
 	
-	public void killsAchievements(int gainOfXp)
+	public void killsAchievements()
 	{
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
 		cptAssassinKill++;
+		cptKillPerMin++;
 		
 		// Achievements de la série tuer x ennemis
 		if (cptEnemyKilled == 1)
@@ -438,17 +528,6 @@ public class AchivementManager : MonoBehaviour {
 		else if (cptEnemyKilled == 1000)
 			serialKillerAchievement();
 		
-		// Achievements avec les bersekers
-		if (gainOfXp == 30)
-		{
-			cptBersekerKilled++;
-			
-			if (cptBersekerKilled == 10)
-				noLimitAchievement();
-			else if (cptBersekerKilled == 1000)
-				serialKillerOfSerialKillerAchievement();
-		}
-		
 		// Achievements de la série assassin
 		if (assassin)
 		{
@@ -457,5 +536,30 @@ public class AchivementManager : MonoBehaviour {
 			else if (cptAssassinKill == 50)
 				masterAssassinAchievement();
 		}
+		
+		killBersekerAchievement();
+	}
+	
+	public void killBersekerAchievement()
+	{
+		// Achievements avec les bersekers
+		cptBersekerKilled++;
+			
+		if (cptBersekerKilled == 10)
+			noLimitAchievement();
+		else if (cptBersekerKilled == 1000)
+			serialKillerOfSerialKillerAchievement();
+	}
+	
+	public void firstMove(Vector3 move)
+	{
+		if (move != Vector3.zero)
+			firstMoveAchievement();
+	}
+	
+	public void multiKills(int lastVal, int newVal)
+	{
+		if (lastVal - newVal >= 10)
+			longArmAchievement();
 	}
 }

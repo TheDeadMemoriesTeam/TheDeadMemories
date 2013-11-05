@@ -25,7 +25,7 @@ public class DistanceController : EnemyController
 		
 		timeRegen = 4;
 		
-		gameObject.renderer.material.color = new Color(0.341F, 0.478F, 0.725F);
+		//gameObject.renderer.material.color = new Color(0.341F, 0.478F, 0.725F);
 	}
 	
 	protected override void Update ()
