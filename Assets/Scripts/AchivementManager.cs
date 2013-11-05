@@ -15,7 +15,17 @@ public class AchivementManager : MonoBehaviour {
 	public Texture texture; 
 	
 	// Son achivement
-	public AudioClip soundAchivement; 
+	public AudioClip soundAchivement;
+	
+	// Variables achievements
+	private int cptEnemyKilled = 0;
+	private float timeNotTouched = 0;
+	private float timeSurvived = 0;
+	private bool assassin = true;
+	private float travel = 0;
+	private int cptBersekerKilled = 0;
+	private int cptAssassinKill = 0;
+
 	
 	// Associe le nom de l'achievement à son état (bool) => équivalent map de la STL
 	private Dictionary<string, bool> AchievementsStates;
@@ -38,12 +48,14 @@ public class AchivementManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
+		//File.Delete("/achievements.dat");
+		//PlayerPrefs.DeleteAll();
 		loadAchievements();
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{	
 	}
 	
 	public void saveAchievements()
@@ -56,6 +68,14 @@ public class AchivementManager : MonoBehaviour {
 		binFormatter.Serialize(file, AchievementsStates);
         
 		file.Close();
+		
+		// Sauvegarde les variables dans le PlayerPrefs
+		PlayerPrefs.SetInt("cptEnemyKilled", cptEnemyKilled);
+		PlayerPrefs.SetInt("cptBersekerKilled", cptBersekerKilled);
+		PlayerPrefs.SetInt("cptAssassinKill", cptAssassinKill);
+		PlayerPrefs.SetFloat("timeNotTouched", timeNotTouched);
+		PlayerPrefs.SetFloat("timeSurvived", timeSurvived);
+		PlayerPrefs.SetFloat("travel", travel);
 	}
 	
 	void loadAchievements()
@@ -70,6 +90,14 @@ public class AchivementManager : MonoBehaviour {
 			//Charge les achievements
 			AchievementsStates = (Dictionary<string, bool>)binFormatter.Deserialize(file);
 			file.Close();
+			
+			// Charge les variables du PlayerPrefs
+			cptEnemyKilled = PlayerPrefs.GetInt("cptEnemyKilled");
+			cptBersekerKilled = PlayerPrefs.GetInt("cptBersekerKilled");
+			cptAssassinKill = PlayerPrefs.GetInt("cptAssassinKill");
+			timeNotTouched = PlayerPrefs.GetFloat("timeNotTouched");
+			timeSurvived = PlayerPrefs.GetFloat("timeSurvived");
+			travel = PlayerPrefs.GetFloat("travel");
 		}
 	}
 	
@@ -344,5 +372,76 @@ public class AchivementManager : MonoBehaviour {
 	{
 		// TODO
 		audio.PlayOneShot(soundAchivement);
+	}
+	
+	// Accesseurs
+	public int getCptEnemyKilled()
+	{
+		return cptEnemyKilled;
+	}
+	
+	public void updateCptEnemyKilled()
+	{
+		cptEnemyKilled++;
+	}
+	
+	public int getCptAssassinKill()
+	{
+		return cptAssassinKill;
+	}
+	
+	public void updateCptAssassinKill()
+	{
+		cptAssassinKill++;
+	}
+	
+	public int getCptBersekerKilled()
+	{
+		return cptBersekerKilled;
+	}
+	
+	public void updateCptBersekerKilled()
+	{
+		cptBersekerKilled++;
+	}
+	
+	public bool getAssassin()
+	{
+		return assassin;
+	}
+	
+	public void setAssassin(bool b)
+	{
+		assassin = b;
+	}
+	
+	public float getTravel()
+	{
+		return travel;
+	}
+	
+	public void setTravel(float t)
+	{
+		travel = t;
+	}
+	
+	public float getTimeNotTouched()
+	{
+		return timeNotTouched;
+	}
+	
+	public void setTimeNotTouched(float time)
+	{
+		timeNotTouched = time;
+	}
+	
+	public float getTimeSurvived()
+	{
+		return timeSurvived;
+	}
+	
+	public void setTimeSurvived(float time)
+	{
+		timeNotTouched = time;
 	}
 }
