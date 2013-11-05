@@ -25,6 +25,9 @@ public class AchivementManager : MonoBehaviour {
 	private float travel = 0;
 	private int cptBersekerKilled = 0;
 	private int cptAssassinKill = 0;
+	private const float timesLimit = 60f;	// Temps imparti par session de kill => 1min
+	private float timeLimit = 0;
+	private int cptKillPerMin = 0;
 
 	
 	// Associe le nom de l'achievement à son état (bool) => équivalent map de la STL
@@ -36,7 +39,8 @@ public class AchivementManager : MonoBehaviour {
 		string[] names = {
 			"firstMove", "firstKill", "tenKills", "hundredKills", "thousandKills", "noLimit", "thousandKillsBersekers",
 			"untouch1min", "untouch5mins", "beginner", "amateur", "ghost", "immortal", "god", "assassin", "masterAssassin",
-			"longArm", "oneKilometer", "tenKilometers", "marathon", "hundredKilometers", "thousandKilometers", "milionKilometer"
+			"longArm", "oneKilometer", "tenKilometers", "marathon", "hundredKilometers", "thousandKilometers", "milionKilometer",
+			"littleHoodlum", "boxer", "clod", "brute", "barbarian"
 		};
 		
 		AchievementsStates = new Dictionary<string, bool>();
@@ -55,7 +59,8 @@ public class AchivementManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () 
-	{	
+	{
+		timedAchievements();
 	}
 	
 	public void saveAchievements()
@@ -112,7 +117,7 @@ public class AchivementManager : MonoBehaviour {
 		if (AchievementsStates.ContainsKey(achievementName))
 			return AchievementsStates[achievementName];
 		else
-			return false;
+			return true;
 	}
 	
 	void firstMoveAchievement()
@@ -368,10 +373,91 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
+	void littleHoodlumAchievement()
+	{
+		string name = "littleHoodlum";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement little Hoodlum (kill 10 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void boxerAchievement()
+	{
+		string name = "boxer";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Boxer (kill 25 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void clodAchievement()
+	{
+		string name = "clod";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Clod (kill 50 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void bruteAchievement()
+	{
+		string name = "brute";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Brute (kill 100 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
+	void barbarianAchievement()
+	{
+		string name = "barbarian";
+		if (!getState(name))
+		{
+			Debug.Log("Achivement Barbarian (kill 200 enemies in 1 min) !");
+			unlockAchivement(texture);
+			changeState(name);
+		}
+	}
+	
 	void unlockAchivement(Texture textureAchivement)
 	{
 		// TODO
 		audio.PlayOneShot(soundAchivement);
+	}
+	
+	void killPerMin()
+	{
+		if (timesLimit - timeLimit >= 0)
+		{
+			// Si on a tuer plus de x ennemis dans un temps de 1 min
+			if (cptKillPerMin >= 10)
+				littleHoodlumAchievement();
+			if (cptKillPerMin >= 25)
+				boxerAchievement();
+			if (cptKillPerMin >= 50)
+				clodAchievement();
+			if (cptKillPerMin >= 100)
+				bruteAchievement();
+			if (cptKillPerMin >= 200)
+				barbarianAchievement();
+		}
+		else
+			resetKillPerMin();
+	}
+	
+	void resetKillPerMin()
+	{
+		timeLimit = 0;
+		cptKillPerMin = 0;
 	}
 	
 	public void setTimeNotTouched(float time)
@@ -398,10 +484,11 @@ public class AchivementManager : MonoBehaviour {
 			dopedAddictAchievement();
 	}
 	
-	public void timedAchievements()
+	void timedAchievements()
 	{	
 		timeNotTouched += Time.deltaTime;
 		timeSurvived += Time.deltaTime;
+		timeLimit += Time.deltaTime;
 		
 		// Débloque les achievements non touché pendant x temps
 		if (timeNotTouched >= 60)	// 1 min
@@ -420,6 +507,8 @@ public class AchivementManager : MonoBehaviour {
 			surviveFourHoursAchievement();
 		if (timeSurvived >= 43200)	// 12 h
 			surviveTwelveHoursAchievement();
+		
+		killPerMin();
 	}
 	
 	public void killsAchievements()
@@ -427,6 +516,7 @@ public class AchivementManager : MonoBehaviour {
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
 		cptAssassinKill++;
+		cptKillPerMin++;
 		
 		// Achievements de la série tuer x ennemis
 		if (cptEnemyKilled == 1)
@@ -446,6 +536,8 @@ public class AchivementManager : MonoBehaviour {
 			else if (cptAssassinKill == 50)
 				masterAssassinAchievement();
 		}
+		
+		killBersekerAchievement();
 	}
 	
 	public void killBersekerAchievement()

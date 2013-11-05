@@ -106,8 +106,6 @@ public class PlayerController : HumanoidController
 					}	
 				}
 			}
-			
-			achivementManager.timedAchievements();
 		}
 	}
 	
