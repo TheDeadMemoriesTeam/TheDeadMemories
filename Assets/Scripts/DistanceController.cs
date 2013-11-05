@@ -15,13 +15,15 @@ public class DistanceController : EnemyController
 		damageAttack = -1;
 		damageMagic = -5;
 		manaCost = -40;
-		timeAttack = 0.5F;
-		probabilityAttack = 0.1F;
+		timeAttack = 1F;
+		probabilityAttack = 0.25F;
 		
 		xp = 15;
 		
 		manaMax = 80;
 		mana = manaMax;
+		
+		timeRegen = 4;
 		
 		gameObject.renderer.material.color = new Color(0.341F, 0.478F, 0.725F);
 	}

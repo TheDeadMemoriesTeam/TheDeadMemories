@@ -17,7 +17,6 @@ public class EnemyController : HumanoidController
 	public Rigidbody[] droppableItems;
 	public float[] itemsDropProbability;
 	
-	
 	// Use this for initialization
 	protected virtual void Start () 
 	{
@@ -41,8 +40,9 @@ public class EnemyController : HumanoidController
 	}
 	
 	// Update is called once per frame
-	protected virtual void Update () 
+	protected override void Update () 
 	{	
+		base.Update();
 		if (pv <= 0)
 		{
 			((SpawnManager)FindObjectOfType(System.Type.GetType("SpawnManager"))).decNbEnnemies();
