@@ -31,5 +31,7 @@ public class BossController : EnemyController
 	protected override void Update ()
 	{
 		base.Update();
+		if (pv <= 0)
+			target.achivementManager.killBersekerAchievement();
 	}
 }

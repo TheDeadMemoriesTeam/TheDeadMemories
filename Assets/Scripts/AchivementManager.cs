@@ -115,7 +115,7 @@ public class AchivementManager : MonoBehaviour {
 			return false;
 	}
 	
-	public void firstMoveAchievement()
+	void firstMoveAchievement()
 	{
 		string name = "firstMove";
 		if (!getState(name))
@@ -126,7 +126,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void firstBloodAchievement()
+	void firstBloodAchievement()
 	{
 		string name = "firstKill";
 		if (!getState(name))
@@ -137,7 +137,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void littleKillerAchievement()
+	void littleKillerAchievement()
 	{
 		string name = "tenKills";
 		if (!getState(name))
@@ -148,7 +148,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void killerAchievement()
+	void killerAchievement()
 	{
 		string name = "hundredKills";
 		if (!getState(name))
@@ -159,7 +159,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void serialKillerAchievement()
+	void serialKillerAchievement()
 	{
 		string name = "thousandKills";
 		if (!getState(name))
@@ -170,7 +170,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void noLimitAchievement()
+	void noLimitAchievement()
 	{
 		string name = "noLimit";
 		if (!getState(name))
@@ -181,7 +181,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void serialKillerOfSerialKillerAchievement()
+	void serialKillerOfSerialKillerAchievement()
 	{
 		string name = "thousandKillsBersekers";
 		if (!getState(name))
@@ -192,7 +192,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void uncatchableAchievement()
+	void uncatchableAchievement()
 	{
 		string name = "untouch1min";
 		if (!getState(name))
@@ -203,7 +203,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void reallyUncatchableAchievement()
+	void reallyUncatchableAchievement()
 	{
 		string name = "untouch5mins";
 		if (!getState(name))
@@ -214,7 +214,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveOneMinuteAchievement()
+	void surviveOneMinuteAchievement()
 	{
 		string name = "beginner";
 		if (!getState(name))
@@ -225,7 +225,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveTwentyMinutesAchievement()
+	void surviveTwentyMinutesAchievement()
 	{
 		string name = "amateur";
 		if (!getState(name))
@@ -236,7 +236,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveOneHourAchievement()
+	void surviveOneHourAchievement()
 	{
 		string name = "ghost";
 		if (!getState(name))
@@ -247,7 +247,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveFourHoursAchievement()
+	void surviveFourHoursAchievement()
 	{
 		string name = "immortal";
 		if (!getState(name))
@@ -258,7 +258,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void surviveTwelveHoursAchievement()
+	void surviveTwelveHoursAchievement()
 	{
 		string name = "god";
 		if (!getState(name))
@@ -269,7 +269,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void assassinAchievement()
+	void assassinAchievement()
 	{
 		string name = "assassin";
 		if (!getState(name))
@@ -280,7 +280,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void masterAssassinAchievement()
+	void masterAssassinAchievement()
 	{
 		string name = "masterAssassin";
 		if (!getState(name))
@@ -291,7 +291,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void longArmAchievement()
+	void longArmAchievement()
 	{
 		string name = "longArm";
 		if (!getState(name))
@@ -302,7 +302,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void sundayWalkerAchievement()
+	void sundayWalkerAchievement()
 	{
 		string name = "oneKilometer";
 		if (!getState(name))
@@ -313,7 +313,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void dailyJoggingAchievement()
+	void dailyJoggingAchievement()
 	{
 		string name = "tenKilometers";
 		if (!getState(name))
@@ -324,7 +324,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void marathonAchievement()
+	void marathonAchievement()
 	{
 		string name = "marathon";
 		if (!getState(name))
@@ -335,7 +335,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void healthWalkAchievement()
+	void healthWalkAchievement()
 	{
 		string name = "hundredKilometers";
 		if (!getState(name))
@@ -346,7 +346,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void athleticAchievement()
+	void athleticAchievement()
 	{
 		string name = "thousandKilometers";
 		if (!getState(name))
@@ -357,7 +357,7 @@ public class AchivementManager : MonoBehaviour {
 		}
 	}
 	
-	public void dopedAddictAchievement()
+	void dopedAddictAchievement()
 	{
 		string name = "milionKilometer";
 		if (!getState(name))
@@ -422,7 +422,7 @@ public class AchivementManager : MonoBehaviour {
 			surviveTwelveHoursAchievement();
 	}
 	
-	public void killsAchievements(int gainOfXp)
+	public void killsAchievements()
 	{
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
 		cptEnemyKilled++;
@@ -438,17 +438,6 @@ public class AchivementManager : MonoBehaviour {
 		else if (cptEnemyKilled == 1000)
 			serialKillerAchievement();
 		
-		// Achievements avec les bersekers
-		if (gainOfXp == 30)
-		{
-			cptBersekerKilled++;
-			
-			if (cptBersekerKilled == 10)
-				noLimitAchievement();
-			else if (cptBersekerKilled == 1000)
-				serialKillerOfSerialKillerAchievement();
-		}
-		
 		// Achievements de la série assassin
 		if (assassin)
 		{
@@ -457,5 +446,28 @@ public class AchivementManager : MonoBehaviour {
 			else if (cptAssassinKill == 50)
 				masterAssassinAchievement();
 		}
+	}
+	
+	public void killBersekerAchievement()
+	{
+		// Achievements avec les bersekers
+		cptBersekerKilled++;
+			
+		if (cptBersekerKilled == 10)
+			noLimitAchievement();
+		else if (cptBersekerKilled == 1000)
+			serialKillerOfSerialKillerAchievement();
+	}
+	
+	public void firstMove(Vector3 move)
+	{
+		if (move != Vector3.zero)
+			firstMoveAchievement();
+	}
+	
+	public void multiKills(int lastVal, int newVal)
+	{
+		if (lastVal - newVal >= 10)
+			longArmAchievement();
 	}
 }
