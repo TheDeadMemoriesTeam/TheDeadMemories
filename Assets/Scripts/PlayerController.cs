@@ -65,7 +65,7 @@ public class PlayerController : HumanoidController
 	        moveDirection.y -= gravity * Time.deltaTime;
 			Vector3 vec = transform.position;
 	        controller.Move(moveDirection * Time.deltaTime);
-			updateTravel(vec, transform.position);
+			achivementManager.updateTravel(vec, transform.position);
 	
 			// Rotation
 			rotation = new Vector3(0, Input.GetAxis("Rotation")+Input.GetAxis("Mouse X"), 0);
@@ -106,7 +106,7 @@ public class PlayerController : HumanoidController
 				}
 			}
 			
-			timedAchievements();
+			achivementManager.timedAchievements();
 		}
 	}
 	
@@ -139,108 +139,12 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		
-		killsAchievements(change);
+		achivementManager.killsAchievements(change);
 	}
 	
 	public int getExperience()
 	{
 		return xp;
-	}
-	
-	public void setTimeNotTouched(float time)
-	{
-		achivementManager.setTimeNotTouched(time);
-		achivementManager.setAssassin(false);
-	}
-	
-	private void updateTravel(Vector3 fromWhere, Vector3 to)
-	{
-		float travel = achivementManager.getTravel();
-		travel += Vector3.Distance(fromWhere, to);
-		achivementManager.setTravel(travel);
-		
-		if (travel >= 1000)		// 1 km parcourut
-			achivementManager.sundayWalkerAchievement();
-		if (travel >= 10000)	// 10 km parcourut
-			achivementManager.dailyJoggingAchievement();
-		if (travel >= 42195)	// 42,195 km parcourut
-			achivementManager.marathonAchievement();
-		if (travel >= 100000)	// 100 km parcourut
-			achivementManager.healthWalkAchievement();
-		if (travel >= 1000000)	// 1.000 km parcourut
-			achivementManager.athleticAchievement();
-		if (travel >= 1000000000)// 1.000.000 km parcourut
-			achivementManager.dopedAddictAchievement();
-	}
-	
-	private void timedAchievements()
-	{
-		float timeNotTouched = achivementManager.getTimeNotTouched();
-		float timeSurvived = achivementManager.getTimeSurvived();
-		
-		timeNotTouched += Time.deltaTime;
-		timeSurvived += Time.deltaTime;
-		
-		achivementManager.setTimeNotTouched(timeNotTouched);
-		achivementManager.setTimeSurvived(timeSurvived);
-		
-		// Débloque les achievements non touché pendant x temps
-		if (timeNotTouched >= 60)	// 1 min
-			achivementManager.uncatchableAchievement();
-		if (timeNotTouched >= 300)	// 5 mins
-			achivementManager.reallyUncatchableAchievement();
-		
-		// Débloque les achievements survivre x temps
-		if (timeSurvived >= 60)	// 1 min
-			achivementManager.surviveOneMinuteAchievement();
-		if (timeSurvived >= 1200)	// 20 mins
-			achivementManager.surviveTwentyMinutesAchievement();
-		if (timeSurvived >= 3600)	// 1 h
-			achivementManager.surviveOneHourAchievement();
-		if (timeSurvived >= 14400)	// 4 h
-			achivementManager.surviveFourHoursAchievement();
-		if (timeSurvived >= 43200)	// 12 h
-			achivementManager.surviveTwelveHoursAchievement();
-	}
-	
-	private void killsAchievements(int gainOfXp)
-	{
-		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
-		achivementManager.updateCptEnemyKilled();
-		achivementManager.updateCptAssassinKill();
-		
-		int cptEnemyKilled = achivementManager.getCptEnemyKilled();
-		int cptAssassinKill = achivementManager.getCptAssassinKill();
-		// Achievements de la série tuer x ennemis
-		if (cptEnemyKilled == 1)
-			achivementManager.firstBloodAchievement();
-		else if (cptEnemyKilled == 10)
-			achivementManager.littleKillerAchievement();
-		else if (cptEnemyKilled == 100)
-			achivementManager.killerAchievement();
-		else if (cptEnemyKilled == 1000)
-			achivementManager.serialKillerAchievement();
-		
-		// Achievements avec les bersekers
-		if (gainOfXp == 30)
-		{
-			achivementManager.updateCptBersekerKilled();
-			int cptBersekerKilled = achivementManager.getCptBersekerKilled();
-			
-			if (cptBersekerKilled == 10)
-				achivementManager.noLimitAchievement();
-			else if (cptBersekerKilled == 1000)
-				achivementManager.serialKillerOfSerialKillerAchievement();
-		}
-		
-		// Achievements de la série assassin
-		if (achivementManager.getAssassin())
-		{
-			if (cptAssassinKill == 5)
-				achivementManager.assassinAchievement();
-			else if (cptAssassinKill == 50)
-				achivementManager.masterAssassinAchievement();
-		}
 	}
 
 	public Hashtable getInv()

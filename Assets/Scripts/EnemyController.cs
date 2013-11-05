@@ -88,7 +88,7 @@ public class EnemyController : HumanoidController
 				}
 				else
 					target.healthUpdate(damageAttack);
-				target.setTimeNotTouched(0);
+				target.achivementManager.setTimeNotTouched(0);
 			}
 			timeCountAttack = 0;
 		}

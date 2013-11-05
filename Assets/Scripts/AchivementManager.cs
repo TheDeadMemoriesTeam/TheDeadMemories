@@ -374,74 +374,88 @@ public class AchivementManager : MonoBehaviour {
 		audio.PlayOneShot(soundAchivement);
 	}
 	
-	// Accesseurs
-	public int getCptEnemyKilled()
-	{
-		return cptEnemyKilled;
-	}
-	
-	public void updateCptEnemyKilled()
-	{
-		cptEnemyKilled++;
-	}
-	
-	public int getCptAssassinKill()
-	{
-		return cptAssassinKill;
-	}
-	
-	public void updateCptAssassinKill()
-	{
-		cptAssassinKill++;
-	}
-	
-	public int getCptBersekerKilled()
-	{
-		return cptBersekerKilled;
-	}
-	
-	public void updateCptBersekerKilled()
-	{
-		cptBersekerKilled++;
-	}
-	
-	public bool getAssassin()
-	{
-		return assassin;
-	}
-	
-	public void setAssassin(bool b)
-	{
-		assassin = b;
-	}
-	
-	public float getTravel()
-	{
-		return travel;
-	}
-	
-	public void setTravel(float t)
-	{
-		travel = t;
-	}
-	
-	public float getTimeNotTouched()
-	{
-		return timeNotTouched;
-	}
-	
 	public void setTimeNotTouched(float time)
 	{
 		timeNotTouched = time;
+		assassin= false;
 	}
 	
-	public float getTimeSurvived()
+	public void updateTravel(Vector3 fromWhere, Vector3 to)
 	{
-		return timeSurvived;
+		travel += Vector3.Distance(fromWhere, to);
+		
+		if (travel >= 1000)		// 1 km parcourut
+			sundayWalkerAchievement();
+		if (travel >= 10000)	// 10 km parcourut
+			dailyJoggingAchievement();
+		if (travel >= 42195)	// 42,195 km parcourut
+			marathonAchievement();
+		if (travel >= 100000)	// 100 km parcourut
+			healthWalkAchievement();
+		if (travel >= 1000000)	// 1.000 km parcourut
+			athleticAchievement();
+		if (travel >= 10000000)	// 10.000 km parcourut
+			dopedAddictAchievement();
 	}
 	
-	public void setTimeSurvived(float time)
+	public void timedAchievements()
+	{	
+		timeNotTouched += Time.deltaTime;
+		timeSurvived += Time.deltaTime;
+		
+		// Débloque les achievements non touché pendant x temps
+		if (timeNotTouched >= 60)	// 1 min
+			uncatchableAchievement();
+		if (timeNotTouched >= 300)	// 5 mins
+			reallyUncatchableAchievement();
+		
+		// Débloque les achievements survivre x temps
+		if (timeSurvived >= 60)		// 1 min
+			surviveOneMinuteAchievement();
+		if (timeSurvived >= 1200)	// 20 mins
+			surviveTwentyMinutesAchievement();
+		if (timeSurvived >= 3600)	// 1 h
+			surviveOneHourAchievement();
+		if (timeSurvived >= 14400)	// 4 h
+			surviveFourHoursAchievement();
+		if (timeSurvived >= 43200)	// 12 h
+			surviveTwelveHoursAchievement();
+	}
+	
+	public void killsAchievements(int gainOfXp)
 	{
-		timeNotTouched = time;
+		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
+		cptEnemyKilled++;
+		cptAssassinKill++;
+		
+		// Achievements de la série tuer x ennemis
+		if (cptEnemyKilled == 1)
+			firstBloodAchievement();
+		else if (cptEnemyKilled == 10)
+			littleKillerAchievement();
+		else if (cptEnemyKilled == 100)
+			killerAchievement();
+		else if (cptEnemyKilled == 1000)
+			serialKillerAchievement();
+		
+		// Achievements avec les bersekers
+		if (gainOfXp == 30)
+		{
+			cptBersekerKilled++;
+			
+			if (cptBersekerKilled == 10)
+				noLimitAchievement();
+			else if (cptBersekerKilled == 1000)
+				serialKillerOfSerialKillerAchievement();
+		}
+		
+		// Achievements de la série assassin
+		if (assassin)
+		{
+			if (cptAssassinKill == 5)
+				assassinAchievement();
+			else if (cptAssassinKill == 50)
+				masterAssassinAchievement();
+		}
 	}
 }
