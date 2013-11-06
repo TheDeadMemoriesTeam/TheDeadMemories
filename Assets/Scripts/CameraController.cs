@@ -46,12 +46,13 @@ public class CameraController : MonoBehaviour
     void LateUpdate ()
 	{
         // Mouvements de rotation
-        if (Input.GetAxis("Vertical") != 0 || Input.GetAxis("Horizontal") != 0)
-        {
-            float targetRotationAngle = target.transform.eulerAngles.y;
+		// Si appui sur H permet de tourner le joueur sur lui meme
+		if (!Input.GetKey(KeyCode.H))
+		{
+			float targetRotationAngle = target.transform.eulerAngles.y;
             float currentRotationAngle = transform.eulerAngles.y;
             x = Mathf.LerpAngle(currentRotationAngle, targetRotationAngle, rotationAttenuation * Time.deltaTime);
-        }
+		}
 		
 		// Affecte l'une des bornes en fonction de l'angle sur y
         y = ClampAngle(y, yMinLimit, yMaxLimit);
