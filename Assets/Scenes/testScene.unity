@@ -1543,10 +1543,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e21212e277391442a046099a9941392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1758632530}
-  distance: 3.5
-  height: 2.5
-  angle: 22
+  target: {fileID: 1758632532}
 --- !u!1 &1428512892
 GameObject:
   m_ObjectHideFlags: 0
