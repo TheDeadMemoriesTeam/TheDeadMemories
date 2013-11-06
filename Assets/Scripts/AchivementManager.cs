@@ -12,7 +12,13 @@ using System.IO;
 public class AchivementManager : MonoBehaviour {
 	
 	// Texture achivement
-	public Texture texture; 
+	public GUITexture achievTexture;
+	public bool achievGet = false;
+	public bool monte = true;
+	public int posYAchiev = 0;
+	public float posModifier = 0;
+	public float counter = 0;
+	
 	
 	// Son achivement
 	public AudioClip soundAchivement;
@@ -55,11 +61,51 @@ public class AchivementManager : MonoBehaviour {
 		//File.Delete("/achievements.dat");
 		//PlayerPrefs.DeleteAll();
 		loadAchievements();
+		
+		// positionne la texture d'affichage des achievements cachée au début du jeu
+		achievTexture.pixelInset = new Rect(Screen.width-256, -128, 256, 128);
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		
+		if(achievGet)
+		{
+			posModifier += Time.deltaTime;
+			if(posModifier > 0.05)
+			{
+				if(monte)
+				{
+					posYAchiev += 8;
+					if(posYAchiev > 128)
+					{
+						posYAchiev = 128;
+						monte = false;
+					}
+				}
+				else
+				{
+					counter += 8;
+				}
+				
+				if(!monte && counter > 256)
+				{
+					posYAchiev -= 8;
+					if(posYAchiev < 0)
+					{
+						posYAchiev = 0;
+						achievGet = false;
+						monte = true;
+						counter = 0;
+					}
+				}
+				posModifier = 0;
+			}
+			achievTexture.pixelInset = new Rect(Screen.width-256, posYAchiev-128, 256, 128);
+			
+		}
+		
 		timedAchievements();
 	}
 	
@@ -126,7 +172,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement First Move !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -137,7 +183,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement First Blood !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -148,7 +194,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Ten kills !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -159,7 +205,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement a hundred kills !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -170,7 +216,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement 1 thousand kills !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -181,7 +227,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement No Limit (kill 10 Bersekers) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -192,7 +238,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Serial Killer Of Serial Killer (kill 1000 Bersekers) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -203,7 +249,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Not touch during 1 min !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -214,7 +260,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Not touch during 5 min !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -225,7 +271,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 1 min !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -236,7 +282,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 20 mins !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -247,7 +293,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 1 h !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -258,7 +304,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 4 h !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -269,7 +315,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Survive during 12 h !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -280,7 +326,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Kill 5 enemy and not be touch !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -291,7 +337,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Kill 50 enemy and not be touch !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -302,7 +348,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Long Arm (10 kills in the same time) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -313,7 +359,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Sunday Walker (run on 1 km) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -324,7 +370,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Daily Jogging (run on 10 km) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -335,7 +381,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Marathon (run on 42,195 km) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -346,7 +392,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Health Walk (run on 100 km) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -357,7 +403,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Athletic (run on 1.000 km) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -368,7 +414,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Doped Addict (run on 1.000.000 km) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -379,7 +425,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement little Hoodlum (kill 10 enemies in 1 min) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -390,7 +436,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Boxer (kill 25 enemies in 1 min) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -401,7 +447,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Clod (kill 50 enemies in 1 min) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -412,7 +458,7 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Brute (kill 100 enemies in 1 min) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
@@ -423,14 +469,16 @@ public class AchivementManager : MonoBehaviour {
 		if (!getState(name))
 		{
 			Debug.Log("Achivement Barbarian (kill 200 enemies in 1 min) !");
-			unlockAchivement(texture);
+			unlockAchivement(name);
 			changeState(name);
 		}
 	}
 	
-	void unlockAchivement(Texture textureAchivement)
+	void unlockAchivement(string textureAchivement)
 	{
-		// TODO
+		// TODO///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+		achievTexture.texture = Resources.Load (textureAchivement) as Texture2D;
+		achievGet = true;
 		audio.PlayOneShot(soundAchivement);
 	}
 	
