@@ -694,10 +694,10 @@ GUITexture:
   m_PixelInset:
     serializedVersion: 2
     x: -32
-    y: 0
-    width: 32
+    y: 340
+    width: 64
     height: 32
-  m_LeftBorder: 256
+  m_LeftBorder: 288
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
@@ -1250,7 +1250,9 @@ Transform:
   m_Children:
   - {fileID: 2103803405}
   - {fileID: 1311372441}
+  - {fileID: 1640812205}
   - {fileID: 565409770}
+  - {fileID: 1473899211}
   - {fileID: 972415809}
   - {fileID: 2003792408}
   - {fileID: 1152220682}
@@ -1273,8 +1275,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   player: {fileID: 1758632532}
   gameOverText: {fileID: 2103803406}
+  lifeShaker: 0
   healthTextureEmpty: {fileID: 565409771}
+  healthTextureEmpty2: {fileID: 1473899212}
   healthTexture: {fileID: 1311372442}
+  healthTexture2: {fileID: 1640812206}
   manaTextureEmpty: {fileID: 2003792409}
   manaTexture: {fileID: 972415810}
   scorePanel: {fileID: 1152220683}
@@ -1391,8 +1396,8 @@ GUITexture:
   m_PixelInset:
     serializedVersion: 2
     x: -32
-    y: 0
-    width: 32
+    y: 340
+    width: 64
     height: 32
   m_LeftBorder: 200
   m_RightBorder: 0
@@ -1736,10 +1741,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3e21212e277391442a046099a9941392, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 1758632530}
-  distance: 3.5
-  height: 2.5
-  angle: 22
+  target: {fileID: 1758632532}
 --- !u!1 &1428512892
 GameObject:
   m_ObjectHideFlags: 0
@@ -1783,6 +1785,52 @@ GUITexture:
     width: 16
     height: 32
   m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!1 &1473899210
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1473899211}
+  - 131: {fileID: 1473899212}
+  m_Layer: 0
+  m_Name: HealthBarEmpty2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1473899211
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1473899210}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!131 &1473899212
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1473899210}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 1415dcaba99dcc6469892ca77eadb8e4, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -32
+    y: 340
+    width: 64
+    height: 32
+  m_LeftBorder: 288
   m_RightBorder: 0
   m_TopBorder: 0
   m_BottomBorder: 0
@@ -1958,6 +2006,52 @@ Transform:
   m_LocalScale: {x: .405979216, y: .405978948, z: .405979007}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &1640812204
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1640812205}
+  - 131: {fileID: 1640812206}
+  m_Layer: 0
+  m_Name: HealthBar2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1640812205
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1640812204}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!131 &1640812206
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1640812204}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: eda5a0b7da463f24bb052517909ce5eb, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -32
+    y: 340
+    width: 64
+    height: 32
+  m_LeftBorder: 200
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &1686736781
 GameObject:
   m_ObjectHideFlags: 0
