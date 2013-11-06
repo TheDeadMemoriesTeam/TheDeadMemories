@@ -11,8 +11,6 @@ public class CameraController : MonoBehaviour
 
     private float maxDistance = 10f;
     private float minDistance = 3f;
-	
-	private float speed;	// Vitesse player
 
     private int yMinLimit = -120;
     private int yMaxLimit = 120;
@@ -32,8 +30,6 @@ public class CameraController : MonoBehaviour
 
     void Start ()
 	{
-		speed = target.speed;
-		
 		// Angles de la caméra
         Vector3 angles = transform.eulerAngles;
 
