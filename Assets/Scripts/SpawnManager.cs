@@ -22,7 +22,7 @@ public class SpawnManager : MonoBehaviour
         }
 	}
 	
-	public AchivementManager achievementManager;
+	public PlayerController player;
 	
 	// Use this for initialization
 	void Start () 
@@ -40,10 +40,10 @@ public class SpawnManager : MonoBehaviour
 	void Update () 
 	{
 		// Débloque l'achievement 10 ennemies tués en meme temps
-		achievementManager.multiKills(lastNbEnnemies, NbEnnemies);
+		player.achivementManager.multiKills(lastNbEnnemies, NbEnnemies);
 			
 		// Create an ennemy if the specified time is elapsed
-		if (Time.time - timeLastSpawn >= spawnDelay)
+		if (!player.getPause() && Time.time - timeLastSpawn >= spawnDelay)
 		{
 			timeLastSpawn += spawnDelay;
 			addEnnemy();

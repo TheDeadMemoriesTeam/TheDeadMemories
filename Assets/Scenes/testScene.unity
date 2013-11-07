@@ -2595,7 +2595,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e899e3ded719140b9bfe926e004e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  achievementManager: {fileID: 1375840453}
+  player: {fileID: 1758632532}
 --- !u!1001 &2113924149
 Prefab:
   m_ObjectHideFlags: 0
