@@ -63,16 +63,16 @@ LightmapSettings:
 NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    agentRadius: .5
-    agentHeight: 1
-    agentSlope: 90
-    agentClimb: .200000003
+    agentRadius: .200000003
+    agentHeight: .899999976
+    agentSlope: 20
+    agentClimb: .300000012
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 10
-    widthInaccuracy: 16.666666
-    heightInaccuracy: 10
+    widthInaccuracy: 15
+    heightInaccuracy: 15
   m_NavMesh: {fileID: 19400000, guid: f08bfdb46f65e9e4487badcb6d699830, type: 2}
 --- !u!1001 &12922685
 Prefab:
@@ -2028,7 +2028,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1758632530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27, y: 0, z: 33.0051804}
+  m_LocalPosition: {x: 40.3611603, y: 0, z: 33.0051804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1272334985}
