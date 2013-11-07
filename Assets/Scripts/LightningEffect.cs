@@ -11,6 +11,8 @@ public class LightningEffect : MonoBehaviour {
 	private float lightningLenght = 0.3f;	// Durée d'un éclair
 	private float thresh = 0.7f;	// Pourcentage d'éclair
 	
+	public AudioClip lightningSound; 
+	
 	// Types d'orage
 	private int velocity = 1; // 1 = petit | 2 = moyen | 3 = tempete
 	
@@ -34,6 +36,7 @@ public class LightningEffect : MonoBehaviour {
 				lastTime = Time.time;
 				lightning.intensity = Random.Range(0.4f, 3f);
 				lightning.enabled = true;
+				audio.PlayOneShot(lightningSound);
 			}
 			else
 				lightning.enabled = false;
@@ -51,11 +54,11 @@ public class LightningEffect : MonoBehaviour {
 	private void ResetTimeForRefresh()
 	{
 		if (velocity == 1)
-			timeForRefresh = Random.Range(15, 19);
+			timeForRefresh = Random.Range(17, 21);
 		else if (velocity == 15)
-			timeForRefresh = Random.Range(10, 14);
+			timeForRefresh = Random.Range(12, 16);
 		else
-			timeForRefresh = Random.Range(5, 9);
+			timeForRefresh = Random.Range(7, 11);
 	}
 	
 	public void setVelocity(int v)
