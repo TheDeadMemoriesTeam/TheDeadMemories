@@ -155,4 +155,9 @@ public class PlayerController : HumanoidController
 	{
 		pause = !pause;
 	}
+	
+	public bool getPause()
+	{
+		return pause;
+	}
 }
