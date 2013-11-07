@@ -290,7 +290,7 @@ GUITexture:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 147062824}
   m_Enabled: 1
-  m_Texture: {fileID: 2800000, guid: cb4ee13b1d9110e4e96412734655108c, type: 3}
+  m_Texture: {fileID: 2800000, guid: 8ef0d0dc94f653e4cad89881a14fd69d, type: 3}
   m_Color: {r: .5, g: .5, b: .5, a: .5}
   m_PixelInset:
     serializedVersion: 2
@@ -567,6 +567,56 @@ Transform:
   m_LocalScale: {x: 10, y: 1, z: 10}
   m_Children: []
   m_Father: {fileID: 0}
+--- !u!1 &502881427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 502881429}
+  - 132: {fileID: 502881428}
+  m_Layer: 0
+  m_Name: AchievementText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!132 &502881428
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502881427}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Frist Move
+  m_Anchor: 0
+  m_Alignment: 0
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 12800000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_Material: {fileID: 0}
+  m_FontSize: 20
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4279177133
+  m_PixelCorrect: 1
+  m_RichText: 1
+--- !u!4 &502881429
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 502881427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 1375840452}
 --- !u!1 &565409769
 GameObject:
   m_ObjectHideFlags: 0
@@ -1407,6 +1457,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 147062825}
+  - {fileID: 502881429}
   m_Father: {fileID: 0}
 --- !u!114 &1375840453
 MonoBehaviour:
@@ -1420,6 +1471,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   achievTexture: {fileID: 147062826}
+  achievText: {fileID: 502881428}
+  waitText2: 
+  waitText3: 
+  waitText4: 
+  waitText5: 
   achievGet: 0
   monte: 1
   posYAchiev: 0
@@ -2550,8 +2606,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 482644215}
   - {fileID: 107796630}
+  - {fileID: 482644215}
   - {fileID: 1320824942}
   m_Father: {fileID: 0}
 --- !u!114 &2108200924
