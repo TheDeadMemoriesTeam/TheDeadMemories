@@ -3,7 +3,9 @@ using System.Collections;
 
 public class CameraMenu : MonoBehaviour 
 {
-	public Vector3 dest;
+	public float smooth = 0.1f;
+	
+	private Vector3 dest;
 	// Use this for initialization
 	void Start () 
 	{
@@ -11,29 +13,19 @@ public class CameraMenu : MonoBehaviour
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	void Update ()
 	{
-		Vector3 d;
-		if(dest.magnitude > transform.position.magnitude)
-		{
-			d = transform.position - dest;
-			if(d.magnitude > 0)
-			{
-				transform.position = new Vector3(transform.position.x<dest.x ? transform.position.x+0.1f : dest.x,
-												1.5f,
-												transform.position.z<dest.z ? transform.position.z+0.1f : dest.z);
-			}
-		}
-		/*else
-		{
-			d = dest - transform.position;
-			if(d.magnitude > 0)
-			{
-				transform.position = new Vector3(transform.position.x>dest.x ? transform.position.x-0.1f : dest.x,
-												1.5f,
-												transform.position.z>dest.z ? transform.position.z-0.1f : dest.z);
-				
-			}
-		}*/
+		transform.position = Vector3.Lerp(transform.position, dest, smooth * Time.deltaTime);
+	}
+
+	
+	public void goToMainMenu()
+	{
+		dest = new Vector3(20f, 1.5f, 5f);
+	}
+	
+	public void goToLaunchMenu()
+	{
+		dest = new Vector3(25.4f, 1.5f, 19.5f);
 	}
 }

@@ -34,7 +34,8 @@ public class MenuItemControl : MonoBehaviour
 		
 		if(isPlayButton)
 		{	
-			cam.dest = new Vector3(25.4f, 1.5f, 19.5f);
+			//cam.dest = new Vector3(25.4f, 1.5f, 19.5f);
+			cam.goToLaunchMenu();
 			return;
 		}
 		
@@ -49,7 +50,8 @@ public class MenuItemControl : MonoBehaviour
 		
 		if(isReturn)
 		{
-			cam.dest = new Vector3(20f, 1.5f, 5f);
+			//cam.dest = new Vector3(20f, 1.5f, 5f);
+			cam.goToMainMenu();
 		}
     }
 	//20 1.5 5
