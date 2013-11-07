@@ -7,7 +7,7 @@ public class CameraController : MonoBehaviour
     public PlayerController target;
 
     private float targetHeight = 2.5f;
-    private float distance = 3.5f;	// distance au perso
+    private float distance = 4.5f;	// distance au perso
 
     private float maxDistance = 10f;
     private float minDistance = 3f;
