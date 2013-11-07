@@ -28,11 +28,6 @@ public class DayNightCycleManager : MonoBehaviour
 	
 	private float realToInGameTime(float t)
 	{
-		if (Debug.isDebugBuild) {
-			return t/6; // 6s in real time <=> 1h in game
-		}
-		else {
-			return t/60; // 60s in real time <=> 1h in game
-		}
+		return t/60; // 60s in real time <=> 1h in game
 	}
 }
