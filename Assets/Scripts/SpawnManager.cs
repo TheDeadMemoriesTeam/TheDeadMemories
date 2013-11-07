@@ -41,9 +41,13 @@ public class SpawnManager : MonoBehaviour
 	{
 		// Débloque l'achievement 10 ennemies tués en meme temps
 		player.achivementManager.multiKills(lastNbEnnemies, NbEnnemies);
-			
+		
+		// Manage the pause state
+		if (player.getPause())
+			timeLastSpawn += Time.deltaTime;
+		
 		// Create an ennemy if the specified time is elapsed
-		if (!player.getPause() && Time.time - timeLastSpawn >= spawnDelay)
+		if (Time.time - timeLastSpawn >= spawnDelay)
 		{
 			timeLastSpawn += spawnDelay;
 			addEnnemy();

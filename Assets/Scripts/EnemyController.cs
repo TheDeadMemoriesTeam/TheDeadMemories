@@ -57,12 +57,12 @@ public class EnemyController : HumanoidController
 		if(!inCrypte)
 		{
 			agent.destination = target.transform.position;
-			transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
 			timeCountAttack += Time.deltaTime;
 			Vector3 distance = transform.position-target.transform.position;
 		
 			if(distance.magnitude <= agent.stoppingDistance)
 			{
+				transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
 				attack();
 			}
 		}

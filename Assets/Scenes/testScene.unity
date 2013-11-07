@@ -63,16 +63,16 @@ LightmapSettings:
 NavMeshSettings:
   m_ObjectHideFlags: 0
   m_BuildSettings:
-    agentRadius: .5
-    agentHeight: 1
-    agentSlope: 90
-    agentClimb: .200000003
+    agentRadius: .200000003
+    agentHeight: .899999976
+    agentSlope: 20
+    agentClimb: .300000012
     ledgeDropHeight: 0
     maxJumpAcrossDistance: 0
     accuratePlacement: 0
     minRegionArea: 10
-    widthInaccuracy: 16.666666
-    heightInaccuracy: 10
+    widthInaccuracy: 15
+    heightInaccuracy: 15
   m_NavMesh: {fileID: 19400000, guid: f08bfdb46f65e9e4487badcb6d699830, type: 2}
 --- !u!1001 &12922685
 Prefab:
@@ -87,7 +87,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -113,16 +113,6 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
-      propertyPath: meleePrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988,
-        type: 2}
-    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
-      propertyPath: distancePrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
   m_RootGameObject: {fileID: 107796628}
@@ -221,7 +211,7 @@ Transform:
   m_PrefabInternal: {fileID: 12922685}
   m_GameObject: {fileID: 107796628}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 91.0255432, y: 0, z: 26.0430374}
+  m_LocalPosition: {x: 91.0255432, y: 5, z: 26.0430374}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2108200923}
@@ -325,7 +315,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -355,16 +345,6 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
-      propertyPath: distancePrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b,
-        type: 2}
-    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
-      propertyPath: meleePrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
   m_RootGameObject: {fileID: 482644214}
@@ -448,7 +428,7 @@ Transform:
   m_PrefabInternal: {fileID: 319567754}
   m_GameObject: {fileID: 482644214}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.4384766, y: 0, z: 129.982315}
+  m_LocalPosition: {x: 33.4384766, y: 5, z: 129.982315}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2108200923}
@@ -1359,7 +1339,7 @@ Transform:
   m_PrefabInternal: {fileID: 1511407395}
   m_GameObject: {fileID: 1320824941}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.1232224, y: 1, z: 54.2093048}
+  m_LocalPosition: {x: -14.1232224, y: 5, z: 54.2093048}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 2108200923}
@@ -1742,7 +1722,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 1
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1772,16 +1752,6 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
-      propertyPath: meleePrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: a12e477a27bdd3c4b8b6ab4d952fe988,
-        type: 2}
-    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
-      propertyPath: distancePrefab
-      value: 
-      objectReference: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b,
-        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
   m_RootGameObject: {fileID: 1320824941}
@@ -2069,7 +2039,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1758632530}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 27, y: 0, z: 33.0051804}
+  m_LocalPosition: {x: 40.3611603, y: 0, z: 33.0051804}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1272334985}
@@ -2683,8 +2653,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 107796630}
   - {fileID: 482644215}
+  - {fileID: 107796630}
   - {fileID: 1320824942}
   m_Father: {fileID: 0}
 --- !u!114 &2108200924
