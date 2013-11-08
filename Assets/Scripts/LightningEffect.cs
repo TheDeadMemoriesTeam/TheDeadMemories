@@ -14,7 +14,7 @@ public class LightningEffect : MonoBehaviour {
 	public AudioClip lightningSound; 
 	
 	// Types d'orage
-	private int velocity = 1; // 1 = petit | 2 = moyen | 3 = tempete
+	private int velocity = 3; // 1 = petit | 2 = moyen | 3 = tempete
 	
 	public PlayerController player;
 	

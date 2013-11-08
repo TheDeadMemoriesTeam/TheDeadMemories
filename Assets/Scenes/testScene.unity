@@ -255,7 +255,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de25d70b3f95104c8d88c2caeeb9c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 12
+  dayTime: 23
 --- !u!1 &147062824
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,9 +877,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 694833398}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 419.788208, y: 2.67086792, z: 83.5376892}
+  m_LocalPosition: {x: 419.788208, y: 500, z: 83.5376892}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1824432440}
   m_Father: {fileID: 0}
 --- !u!114 &694833400
 MonoBehaviour:
@@ -913,7 +914,7 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 5000
   Pan2D: 0
   rolloffMode: 0
   BypassEffects: 0
@@ -922,13 +923,13 @@ AudioSource:
   rolloffCustomCurve:
     serializedVersion: 2
     m_Curve:
-    - time: 0
+    - time: .00416666642
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
-    - time: 1
-      value: 0
+    - time: 1.02499998
+      value: .606249928
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2248,10 +2249,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1824432438}
   m_LocalRotation: {x: .791873932, y: -.18511644, z: .219063908, w: .539146185}
-  m_LocalPosition: {x: 339.473206, y: 344.279968, z: 270.66803}
+  m_LocalPosition: {x: -80.3150024, y: 0, z: 187.130341}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 694833399}
 --- !u!1 &1895416756
 GameObject:
   m_ObjectHideFlags: 0
