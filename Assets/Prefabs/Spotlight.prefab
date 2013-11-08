@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 400000}
   - 108: {fileID: 10800000}
   - 114: {fileID: 11400000}
-  - 82: {fileID: 8200000}
   m_Layer: 0
   m_Name: Spotlight
   m_TagString: Untagged
