@@ -630,8 +630,6 @@ public class AchivementManager : MonoBehaviour {
 			else if (cptAssassinKill == 50)
 				masterAssassinAchievement();
 		}
-		
-		killBersekerAchievement();
 	}
 	
 	public void killBersekerAchievement()
