@@ -1,63 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraMenu : MonoBehaviour 
+public class CameraMenu : CameraPath
 {
-	public float smooth = 0.1f;
-	
-	private Vector3 dest;
-	private Vector3 step;
-	
-	private float time;
-	
-	private bool translate;
 	
 	// Use this for initialization
-	void Start () 
+	public override void Start () 
 	{
-		dest = transform.position;
-		step = transform.position;
-		
-		time = 0;
-		Time.timeScale = 1;
+		base.Start();
 	}
 	
 	// Update is called once per frame
-	void Update ()
+	public override void Update ()
 	{
-		if(translate)
-		{
-			time += Time.deltaTime;
-			if(time>0.5)
-			{
-				transform.position = Vector3.Lerp(transform.position, dest, smooth * Time.deltaTime);
-			}
-			else
-			{
-				transform.position = Vector3.Lerp(transform.position, step, smooth * Time.deltaTime);
-			} 
-			if((int)transform.position.magnitude - (int)dest.magnitude == 0)
-			{
-				translate = false;
-				time = 0;
-			}
-		}
+		base.Update();
 	}
 
 	
 	public void goToMainMenu()
 	{
-		translate = true;
-		step = new Vector3(22.7f, 5f, 12.25f);
-		dest = new Vector3(20f, 1.5f, 5f);
+		float startX = transform.position.x;
+		float startZ = transform.position.z;
+		float endX = 20f;
+		float endZ = 5f;
+		path.Add(new Vector3(startX + (endX - startX)/4, 3.5f, startZ + (endZ - startZ)/4));
+		path.Add(new Vector3(startX + (endX - startX)/2, 5f, startZ + (endZ - startZ)/2));
+		path.Add(new Vector3(startX + (endX - startX)*3/4, 3.5f, startZ + (endZ - startZ)*3/4));
+		path.Add(new Vector3(endX, 1.5f, endZ));
 		//20 1.5 5
 	//25.4 1.5 19.5
 	}
 	
 	public void goToLaunchMenu()
 	{
-		translate = true;
-		step = new Vector3(22.7f, 5f, 12.25f);
-		dest = new Vector3(25.4f, 1.5f, 19.5f);
+		float startX = transform.position.x;
+		float startZ = transform.position.z;
+		float endX = 25.4f;
+		float endZ = 19.5f;
+		path.Add(new Vector3(startX + (endX - startX)/4, 3.5f, startZ + (endZ - startZ)/4));
+		path.Add(new Vector3(startX + (endX - startX)/2, 5f, startZ + (endZ - startZ)/2));
+		path.Add(new Vector3(startX + (endX - startX)*3/4, 3.5f, startZ + (endZ - startZ)*3/4));
+		path.Add(new Vector3(endX, 1.5f, endZ));
 	}
 }
