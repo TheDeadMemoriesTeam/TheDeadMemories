@@ -40,7 +40,7 @@ public class SpawnManager : MonoBehaviour
 	void Update () 
 	{
 		// Débloque l'achievement 10 ennemies tués en meme temps
-		player.achivementManager.multiKills(lastNbEnnemies, NbEnnemies);
+		player.achievementManager.multiKills(lastNbEnnemies, NbEnnemies);
 		
 		// Manage the pause state
 		if (player.getPause())

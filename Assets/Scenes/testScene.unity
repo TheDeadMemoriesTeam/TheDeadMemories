@@ -1316,7 +1316,7 @@ GameObject:
   - 114: {fileID: 1194533977}
   - 114: {fileID: 1194533978}
   m_Layer: 0
-  m_Name: ATH
+  m_Name: HUD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1602,7 +1602,7 @@ GameObject:
   - 114: {fileID: 1375840453}
   - 82: {fileID: 1375840454}
   m_Layer: 0
-  m_Name: _AchivementManager
+  m_Name: _AchievementManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1645,7 +1645,7 @@ MonoBehaviour:
   posYAchiev: 0
   posModifier: 0
   counter: 0
-  soundAchivement: {fileID: 8300000, guid: 67ae931dc72464e47b8f43f8d13fcbe6, type: 3}
+  soundAchievement: {fileID: 8300000, guid: 67ae931dc72464e47b8f43f8d13fcbe6, type: 3}
 --- !u!82 &1375840454
 AudioSource:
   m_ObjectHideFlags: 0
@@ -2238,7 +2238,7 @@ MonoBehaviour:
   jumpSpeed: 8
   rotationFactor: 5
   gravity: 20
-  achivementManager: {fileID: 1375840453}
+  achievementManager: {fileID: 1375840453}
 --- !u!143 &1758632533
 CharacterController:
   m_ObjectHideFlags: 0
