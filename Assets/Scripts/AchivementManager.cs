@@ -13,6 +13,7 @@ public class AchivementManager : MonoBehaviour {
 	
 	// Texture achivement
 	public GUITexture achievTexture;
+	public GUIText achievementGet;
 	public GUIText achievText;
 	public string waitText2;
 	public string waitText3;
@@ -69,7 +70,8 @@ public class AchivementManager : MonoBehaviour {
 		
 		// positionne la texture d'affichage des achievements cachée au début du jeu
 		achievTexture.pixelInset = new Rect(Screen.width-256, -128, 256, 128);
-		achievText.pixelOffset = new Vector2(Screen.width-185, posYAchiev-75);
+		achievementGet.pixelOffset = new Vector2(Screen.width-215, posYAchiev-35);
+		achievText.pixelOffset = new Vector2(Screen.width-215, posYAchiev-75);
 		achievText.text = "000";
 		waitText2 = "000";
 		waitText3 = "000";
@@ -118,7 +120,8 @@ public class AchivementManager : MonoBehaviour {
 				posModifier = 0;
 			}
 			achievTexture.pixelInset = new Rect(Screen.width-256, posYAchiev-128, 256, 128);
-			achievText.pixelOffset = new Vector2(Screen.width-185, posYAchiev-75);
+			achievementGet.pixelOffset = new Vector2(Screen.width-215, posYAchiev-35);
+			achievText.pixelOffset = new Vector2(Screen.width-215, posYAchiev-75);
 		}
 		
 		timedAchievements();
