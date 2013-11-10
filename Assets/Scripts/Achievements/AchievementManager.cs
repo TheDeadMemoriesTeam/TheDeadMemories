@@ -25,16 +25,19 @@ public class AchievementManager : MonoBehaviour {
 	public float posModifier = 0;
 	public float counter = 0;
 	
+	private List<Achievement> achievements;
 	
 	// Son Achievement
 	public AudioClip soundAchievement;
 	
 	// Variables achievements
-	private int cptEnemyKilled = 0;
+	private int nbKilledEnemy = 0;
+	private int lastNbEnemyKilled = 0;
 	private float timeNotTouched = 0;
 	private float timeSurvived = 0;
+	private float travelledDistance = 0;
+	
 	private bool assassin = true;
-	private float travel = 0;
 	private int cptBersekerKilled = 0;
 	private int cptAssassinKill = 0;
 	private const float timesLimit = 60f;	// Temps imparti par session de kill => 1min
@@ -47,6 +50,16 @@ public class AchievementManager : MonoBehaviour {
 	
 	void Awake ()
     {
+		// Add achievements
+		achievements = new List<Achievement>();
+		achievements.Add(new WalkingAchievement(this, "First Move", "Do your first move!", 1));
+		achievements.Add(new WalkingAchievement(this, "Sunday Walker", "Walk on 1 km!", 1000));
+		achievements.Add(new KillingAchievement(this, "First Kill", "Kill for the first time!", 1));
+		achievements.Add(new SimultaneousKillsAchievement(this, "Long Arm", "Kill 10 enemies in the same time", 10));
+		achievements.Add(new SurvivedAchievement(this, "Beginner", "Survive during 1 min!", 60));
+		achievements.Add(new UntouchedAchievement(this, "Untouched", "Not being touched during 1 min !", 60));
+		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies and not be touch !", 5));
+		
 		// Nom des achievements
 		string[] names = {
 			"firstMove", "firstKill", "tenKills", "hundredKills", "thousandKills", "noLimit", "thousandKillsBersekers",
@@ -125,13 +138,26 @@ public class AchievementManager : MonoBehaviour {
 		}
 		
 		timedAchievements();
+		
+		
+		// Manage achievements
+		for (int i = 0; i < achievements.Count(); i++)
+		{
+			if (achievements[i].check())
+			{
+				// Unlocked achievement
+				Debug.Log(achievements[i].getName() + ": " + achievements[i].getDescription());
+			}
+		}
+		
+		lastNbEnemyKilled = nbKilledEnemy;
 	}
 	
 	public void saveAchievements()
 	{
-		//Cré un BinaryFormatter
+		//Crée un BinaryFormatter
 		var binFormatter = new BinaryFormatter();
-		//Cré un fichier
+		//Crée un fichier
 		var file = File.Create(Application.persistentDataPath + "/achievements.dat");
 		//Sauvegarde les achievements
 		binFormatter.Serialize(file, AchievementsStates);
@@ -139,12 +165,12 @@ public class AchievementManager : MonoBehaviour {
 		file.Close();
 		
 		// Sauvegarde les variables dans le PlayerPrefs
-//		PlayerPrefs.SetInt("cptEnemyKilled", cptEnemyKilled);
+//		PlayerPrefs.SetInt("nbKilledEnemy", nbKilledEnemy);
 //		PlayerPrefs.SetInt("cptBersekerKilled", cptBersekerKilled);
 //		PlayerPrefs.SetInt("cptAssassinKill", cptAssassinKill);
 //		PlayerPrefs.SetFloat("timeNotTouched", timeNotTouched);
 //		PlayerPrefs.SetFloat("timeSurvived", timeSurvived);
-//		PlayerPrefs.SetFloat("travel", travel);
+//		PlayerPrefs.SetFloat("travelledDistance", travelledDistance);
 	}
 	
 	void loadAchievements()
@@ -161,12 +187,12 @@ public class AchievementManager : MonoBehaviour {
 			file.Close();
 			
 			// Charge les variables du PlayerPrefs
-//			cptEnemyKilled = PlayerPrefs.GetInt("cptEnemyKilled");
+//			nbKilledEnemy = PlayerPrefs.GetInt("nbKilledEnemy");
 //			cptBersekerKilled = PlayerPrefs.GetInt("cptBersekerKilled");
 //			cptAssassinKill = PlayerPrefs.GetInt("cptAssassinKill");
 //			timeNotTouched = PlayerPrefs.GetFloat("timeNotTouched");
 //			timeSurvived = PlayerPrefs.GetFloat("timeSurvived");
-//			travel = PlayerPrefs.GetFloat("travel");
+//			travelledDistance = PlayerPrefs.GetFloat("travelledDistance");
 		}
 	}
 	
@@ -565,19 +591,19 @@ public class AchievementManager : MonoBehaviour {
 	
 	public void updateTravel(Vector3 fromWhere, Vector3 to)
 	{
-		travel += Vector3.Distance(fromWhere, to);
+		travelledDistance += Vector3.Distance(fromWhere, to);
 		
-		if (travel >= 1000)		// 1 km parcourut
+		if (travelledDistance >= 1000)		// 1 km parcourut
 			sundayWalkerAchievement();
-		if (travel >= 10000)	// 10 km parcourut
+		if (travelledDistance >= 10000)	// 10 km parcourut
 			dailyJoggingAchievement();
-		if (travel >= 42195)	// 42,195 km parcourut
+		if (travelledDistance >= 42195)	// 42,195 km parcourut
 			marathonAchievement();
-		if (travel >= 100000)	// 100 km parcourut
+		if (travelledDistance >= 100000)	// 100 km parcourut
 			healthWalkAchievement();
-		if (travel >= 1000000)	// 1.000 km parcourut
+		if (travelledDistance >= 1000000)	// 1.000 km parcourut
 			athleticAchievement();
-		if (travel >= 10000000)	// 10.000 km parcourut
+		if (travelledDistance >= 10000000)	// 10.000 km parcourut
 			dopedAddictAchievement();
 	}
 	
@@ -611,18 +637,18 @@ public class AchievementManager : MonoBehaviour {
 	public void killsAchievements()
 	{
 		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
-		cptEnemyKilled++;
+		nbKilledEnemy++;
 		cptAssassinKill++;
 		cptKillPerMin++;
 		
 		// Achievements de la série tuer x ennemis
-		if (cptEnemyKilled == 1)
+		if (nbKilledEnemy == 1)
 			firstBloodAchievement();
-		else if (cptEnemyKilled == 10)
+		else if (nbKilledEnemy == 10)
 			littleKillerAchievement();
-		else if (cptEnemyKilled == 100)
+		else if (nbKilledEnemy == 100)
 			killerAchievement();
-		else if (cptEnemyKilled == 1000)
+		else if (nbKilledEnemy == 1000)
 			serialKillerAchievement();
 		
 		// Achievements de la série assassin
@@ -656,5 +682,38 @@ public class AchievementManager : MonoBehaviour {
 	{
 		if (lastVal - newVal >= 10)
 			longArmAchievement();
+	}
+	
+	
+	
+	
+	public int getNbKilledEnemy()
+	{
+		return nbKilledEnemy;
+	}
+	
+	public int getNbSimultaneouslyKilledEnemy()
+	{
+		return nbKilledEnemy - lastNbEnemyKilled;	
+	}
+	
+	public float getTravelledDistance()
+	{
+		return travelledDistance;
+	}
+	
+	public float getUntouchedTime()
+	{
+		return timeNotTouched;
+	}
+	
+	public float getSurvivedTime()
+	{
+		return timeSurvived;
+	}
+	
+	public int getNbAssassinKills()
+	{
+		return cptAssassinKill;
 	}
 }

@@ -1,17 +1,42 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Achievement {
+public abstract class Achievement
+{
 	
-	private AchievementManager am;
+	protected AchievementManager am;
 	
-	private string name;
-	private string description;
+	protected string name;
+	protected string description;
+	protected bool _achieved = false;
 	
 	
-	
-	public Achievement(string name, string description)
+	public Achievement(AchievementManager am, string name, string description)
 	{
-		
+		this.am = am;
+		this.name = name;
+		this.description = description;
+	}
+	
+	public string getName()
+	{
+		return name;
+	}
+	
+	public string getDescription()
+	{
+		return description;
+	}
+	
+	public abstract bool achieved();
+	
+	public bool check()
+	{
+		// Returns true if the achievement is achieved for the first time
+		if (!_achieved && achieved()) {
+			_achieved = true;
+			return true;
+		}
+		return false;
 	}
 }
