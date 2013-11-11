@@ -77,7 +77,10 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new SurvivedAchievement(this, "Immortal", "Survive during 4 h!", 14400));
 		achievements.Add(new SurvivedAchievement(this, "God", "Survive during 12 h!", 43200));
 		
-		achievements.Add(new UntouchedAchievement(this, "Untouched", "Not being touched during 1 min !", 60));
+		// Famille d'achievement ne pas etre touché x temps
+		achievements.Add(new UntouchedAchievement(this, "Uncatchable", "Not being touched during 1 min !", 60));
+		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
+		
 		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies and not be touch !", 5));
 		
 		// Nom des achievements
@@ -307,7 +310,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 	
-	void uncatchableAchievement()
+	/*void uncatchableAchievement()
 	{
 		string name = "untouch1min";
 		if (!getState(name))
@@ -327,7 +330,7 @@ public class AchievementManager : MonoBehaviour {
 			unlockAchievement("Untouchable !!!");
 			changeState(name);
 		}
-	}
+	}*/
 	
 	/*void surviveOneMinuteAchievement()
 	{
@@ -633,7 +636,7 @@ public class AchievementManager : MonoBehaviour {
 		timeSurvived += Time.deltaTime;
 		timeLimit += Time.deltaTime;
 		
-		// Débloque les achievements non touché pendant x temps
+		/*// Débloque les achievements non touché pendant x temps
 		if (timeNotTouched >= 60)	// 1 min
 			uncatchableAchievement();
 		if (timeNotTouched >= 300)	// 5 mins
@@ -649,7 +652,7 @@ public class AchievementManager : MonoBehaviour {
 		if (timeSurvived >= 14400)	// 4 h
 			surviveFourHoursAchievement();
 		if (timeSurvived >= 43200)	// 12 h
-			surviveTwelveHoursAchievement();
+			surviveTwelveHoursAchievement();*/
 		
 		killPerMin();
 	}
@@ -661,7 +664,7 @@ public class AchievementManager : MonoBehaviour {
 		cptAssassinKill++;
 		cptKillPerMin++;
 		
-		// Achievements de la série tuer x ennemis
+		/*// Achievements de la série tuer x ennemis
 		if (nbKilledEnemy == 1)
 			firstBloodAchievement();
 		else if (nbKilledEnemy == 10)
@@ -678,7 +681,7 @@ public class AchievementManager : MonoBehaviour {
 				assassinAchievement();
 			else if (cptAssassinKill == 50)
 				masterAssassinAchievement();
-		}
+		}*/
 	}
 	
 	public void killBersekerAchievement()
@@ -700,8 +703,8 @@ public class AchievementManager : MonoBehaviour {
 	
 	public void multiKills(int lastVal, int newVal)
 	{
-		if (lastVal - newVal >= 10)
-			longArmAchievement();
+		//if (lastVal - newVal >= 10)
+			//longArmAchievement();
 	}
 	
 	
