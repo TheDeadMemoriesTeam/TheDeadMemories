@@ -81,7 +81,9 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new UntouchedAchievement(this, "Uncatchable", "Not being touched during 1 min !", 60));
 		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
 		
-		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies and not be touch !", 5));
+		// Famille d'achievement Assassin
+		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies without being touch !", 5));
+		achievements.Add(new AssassinAchievement(this, "Master Assassin", "Kill 50 enemies without being touch !", 50));
 		
 		// Nom des achievements
 		string[] names = {
@@ -387,7 +389,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}*/
 	
-	void assassinAchievement()
+	/*void assassinAchievement()
 	{
 		string name = "assassin";
 		if (!getState(name))
