@@ -32,6 +32,7 @@ public class AchievementManager : MonoBehaviour {
 	
 	// Variables achievements
 	private float travelledDistance = 0;	// walking achievement
+	private int nbBersekerKilled = 0;		// kill berseker achievement
 	private int nbKilledEnemy = 0;			// kill ennemies achievement
 	private int lastNbEnemyKilled = 0;		// kill simultaneous achievement
 	private bool assassin = true;			// assassin achievement
@@ -41,7 +42,7 @@ public class AchievementManager : MonoBehaviour {
 	
 	
 	
-	private int cptBersekerKilled = 0;
+	
 	private const float timesLimit = 60f;	// Temps imparti par session de kill => 1min
 	private float timeLimit = 0;
 	private int cptKillPerMin = 0;
@@ -69,9 +70,19 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new KillingAchievement(this, "Killer", "Kill 100 enemies !", 100));
 		achievements.Add(new KillingAchievement(this, "Serial Killer", "Kill 1000 enemies !", 1000));
 		
+		// Famille d'achievements Kill x bersekers
+		achievements.Add(new KillingBersekerAchievement(this, "First Berseker", "Kill your first Berseker !", 1));
+		achievements.Add(new KillingBersekerAchievement(this, "No Limit", "Kill 10 Bersekers !", 10));
+		achievements.Add(new KillingBersekerAchievement(this, "Serial Killer of Serial Killer", "Kill 100 Bersekers !", 100));
+		achievements.Add(new KillingBersekerAchievement(this, "Berserker Genocide", "Kill 1000 Bersekers !", 1000));
+		
 		// Famille d'achievement kill simultanés
 		achievements.Add(new SimultaneousKillsAchievement(this, "Nice Hit", "Kill 5 enemies in the same time", 5));
 		achievements.Add(new SimultaneousKillsAchievement(this, "Long Arm", "Kill 10 enemies in the same time", 10));
+		
+		// Famille d'achievements Assassin
+		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies without being touch !", 5));
+		achievements.Add(new AssassinAchievement(this, "Master Assassin", "Kill 50 enemies without being touch !", 50));
 		
 		// Famille d'achievements survivre x temps
 		achievements.Add(new SurvivedAchievement(this, "Beginner", "Survive during 1 min!", 60));
@@ -83,10 +94,6 @@ public class AchievementManager : MonoBehaviour {
 		// Famille d'achievements ne pas etre touché x temps
 		achievements.Add(new UntouchedAchievement(this, "Uncatchable", "Not being touched during 1 min !", 60));
 		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
-		
-		// Famille d'achievements Assassin
-		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies without being touch !", 5));
-		achievements.Add(new AssassinAchievement(this, "Master Assassin", "Kill 50 enemies without being touch !", 50));
 		
 		// Nom des achievements
 		string[] names = {
@@ -291,7 +298,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}*/
 	
-	void noLimitAchievement()
+	/*void noLimitAchievement()
 	{
 		string name = "noLimit";
 		if (!getState(name))
@@ -649,6 +656,10 @@ public class AchievementManager : MonoBehaviour {
 		killPerMin();
 	}
 	
+	public void updateKillsBerseker()
+	{
+		nbBersekerKilled++;
+	}
 	
 	
 	void killPerMin()
@@ -677,17 +688,6 @@ public class AchievementManager : MonoBehaviour {
 		cptKillPerMin = 0;
 	}
 	
-	public void killBersekerAchievement()
-	{
-		// Achievements avec les bersekers
-		cptBersekerKilled++;
-			
-		if (cptBersekerKilled == 10)
-			noLimitAchievement();
-		else if (cptBersekerKilled == 1000)
-			serialKillerOfSerialKillerAchievement();
-	}
-	
 	public void multiKills(int lastVal, int newVal)
 	{
 		//if (lastVal - newVal >= 10)
@@ -700,6 +700,11 @@ public class AchievementManager : MonoBehaviour {
 	public int getNbKilledEnemy()
 	{
 		return nbKilledEnemy;
+	}
+	
+	public int getNbKilledBerseker()
+	{
+		return nbBersekerKilled;
 	}
 	
 	public int getNbSimultaneouslyKilledEnemy()
