@@ -52,8 +52,16 @@ public class AchievementManager : MonoBehaviour {
     {
 		// Add achievements
 		achievements = new List<Achievement>();
+		// Famille d'achievement Walking
 		achievements.Add(new WalkingAchievement(this, "First Move", "Do your first move!", 1));
 		achievements.Add(new WalkingAchievement(this, "Sunday Walker", "Walk on 1 km!", 1000));
+		achievements.Add(new WalkingAchievement(this, "Daily Jogging", "Walk on 10 km!", 10000));
+		achievements.Add(new WalkingAchievement(this, "Marathon", "Walk on 42.195 km!", 42195));
+		achievements.Add(new WalkingAchievement(this, "Health Walk", "Walk on 100 km!", 100000));
+		achievements.Add(new WalkingAchievement(this, "Athletic", "Walk on 1.000 km!", 1000000));
+		achievements.Add(new WalkingAchievement(this, "Doped Addict", "Walk on 10.000 km!", 10000000));
+		
+		
 		achievements.Add(new KillingAchievement(this, "First Kill", "Kill for the first time!", 1));
 		achievements.Add(new SimultaneousKillsAchievement(this, "Long Arm", "Kill 10 enemies in the same time", 10));
 		achievements.Add(new SurvivedAchievement(this, "Beginner", "Survive during 1 min!", 60));
@@ -210,7 +218,7 @@ public class AchievementManager : MonoBehaviour {
 			return true;
 	}
 	
-	void firstMoveAchievement()
+	/*void firstMoveAchievement()
 	{
 		string name = "firstMove";
 		if (!getState(name))
@@ -219,7 +227,7 @@ public class AchievementManager : MonoBehaviour {
 			unlockAchievement("First Move !");
 			changeState(name);
 		}
-	}
+	}*/
 	
 	void firstBloodAchievement()
 	{
@@ -397,7 +405,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 	
-	void sundayWalkerAchievement()
+	/*void sundayWalkerAchievement()
 	{
 		string name = "oneKilometer";
 		if (!getState(name))
@@ -461,7 +469,7 @@ public class AchievementManager : MonoBehaviour {
 			unlockAchievement("Doped Addict !!!");
 			changeState(name);
 		}
-	}
+	}*/
 	
 	void littleHoodlumAchievement()
 	{
@@ -593,7 +601,7 @@ public class AchievementManager : MonoBehaviour {
 	{
 		travelledDistance += Vector3.Distance(fromWhere, to);
 		
-		if (travelledDistance >= 1000)		// 1 km parcourut
+		/*if (travelledDistance >= 1000)		// 1 km parcourut
 			sundayWalkerAchievement();
 		if (travelledDistance >= 10000)	// 10 km parcourut
 			dailyJoggingAchievement();
@@ -604,7 +612,7 @@ public class AchievementManager : MonoBehaviour {
 		if (travelledDistance >= 1000000)	// 1.000 km parcourut
 			athleticAchievement();
 		if (travelledDistance >= 10000000)	// 10.000 km parcourut
-			dopedAddictAchievement();
+			dopedAddictAchievement();*/
 	}
 	
 	void timedAchievements()
@@ -674,8 +682,8 @@ public class AchievementManager : MonoBehaviour {
 	
 	public void firstMove(Vector3 move)
 	{
-		if (move != Vector3.zero)
-			firstMoveAchievement();
+		/*if (move != Vector3.zero)
+			firstMoveAchievement();*/
 	}
 	
 	public void multiKills(int lastVal, int newVal)
