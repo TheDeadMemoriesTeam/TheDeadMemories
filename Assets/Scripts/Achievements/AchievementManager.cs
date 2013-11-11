@@ -31,15 +31,17 @@ public class AchievementManager : MonoBehaviour {
 	public AudioClip soundAchievement;
 	
 	// Variables achievements
-	private int nbKilledEnemy = 0;
-	private int lastNbEnemyKilled = 0;
-	private float timeNotTouched = 0;
-	private float timeSurvived = 0;
-	private float travelledDistance = 0;
+	private float travelledDistance = 0;	// walking achievement
+	private int nbKilledEnemy = 0;			// kill ennemies achievement
+	private int lastNbEnemyKilled = 0;		// kill simultaneous achievement
+	private bool assassin = true;			// assassin achievement
+	private int nbAssassinKill = 0;
+	private float timeNotTouched = 0;		// untouch achievement
+	private float timeSurvived = 0;			// survive achievement
 	
-	private bool assassin = true;
+	
+	
 	private int cptBersekerKilled = 0;
-	private int cptAssassinKill = 0;
 	private const float timesLimit = 60f;	// Temps imparti par session de kill => 1min
 	private float timeLimit = 0;
 	private int cptKillPerMin = 0;
@@ -52,7 +54,7 @@ public class AchievementManager : MonoBehaviour {
     {
 		// Add achievements
 		achievements = new List<Achievement>();
-		// Famille d'achievement Walking
+		// Famille d'achievements Walking
 		achievements.Add(new WalkingAchievement(this, "First Move", "Do your first move!", 1));
 		achievements.Add(new WalkingAchievement(this, "Sunday Walker", "Walk on 1 km!", 1000));
 		achievements.Add(new WalkingAchievement(this, "Daily Jogging", "Walk on 10 km!", 10000));
@@ -61,27 +63,28 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new WalkingAchievement(this, "Athletic", "Walk on 1.000 km!", 1000000));
 		achievements.Add(new WalkingAchievement(this, "Doped Addict", "Walk on 10.000 km!", 10000000));
 		
-		// Famille d'achievement Kill x ennemis
+		// Famille d'achievements Kill x ennemis
 		achievements.Add(new KillingAchievement(this, "First Blood", "Kill for the first time!", 1));
 		achievements.Add(new KillingAchievement(this, "Little Killer", "Kill 10 enemies !", 10));
 		achievements.Add(new KillingAchievement(this, "Killer", "Kill 100 enemies !", 100));
 		achievements.Add(new KillingAchievement(this, "Serial Killer", "Kill 1000 enemies !", 1000));
 		
 		// Famille d'achievement kill simultanés
+		achievements.Add(new SimultaneousKillsAchievement(this, "Nice Hit", "Kill 5 enemies in the same time", 5));
 		achievements.Add(new SimultaneousKillsAchievement(this, "Long Arm", "Kill 10 enemies in the same time", 10));
 		
-		// Famille d'achievement survivre x temps
+		// Famille d'achievements survivre x temps
 		achievements.Add(new SurvivedAchievement(this, "Beginner", "Survive during 1 min!", 60));
 		achievements.Add(new SurvivedAchievement(this, "Amateur", "Survive during 20 min!", 1200));
 		achievements.Add(new SurvivedAchievement(this, "Ghost", "Survive during 1 h!", 3600));
 		achievements.Add(new SurvivedAchievement(this, "Immortal", "Survive during 4 h!", 14400));
 		achievements.Add(new SurvivedAchievement(this, "God", "Survive during 12 h!", 43200));
 		
-		// Famille d'achievement ne pas etre touché x temps
+		// Famille d'achievements ne pas etre touché x temps
 		achievements.Add(new UntouchedAchievement(this, "Uncatchable", "Not being touched during 1 min !", 60));
 		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
 		
-		// Famille d'achievement Assassin
+		// Famille d'achievements Assassin
 		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies without being touch !", 5));
 		achievements.Add(new AssassinAchievement(this, "Master Assassin", "Kill 50 enemies without being touch !", 50));
 		
@@ -161,10 +164,7 @@ public class AchievementManager : MonoBehaviour {
 			achievementGet.pixelOffset = new Vector2(Screen.width-215, posYAchiev-35);
 			achievText.pixelOffset = new Vector2(Screen.width-215, posYAchiev-75);
 		}
-		
-		timedAchievements();
-		
-		
+
 		// Manage achievements
 		for (int i = 0; i < achievements.Count(); i++)
 		{
@@ -175,6 +175,7 @@ public class AchievementManager : MonoBehaviour {
 			}
 		}
 		
+		updateTimes();
 		lastNbEnemyKilled = nbKilledEnemy;
 	}
 	
@@ -579,6 +580,74 @@ public class AchievementManager : MonoBehaviour {
 	
 	
 	
+	// Méthodes permettant un Update des variables des achievements
+	public void updateTravel(Vector3 fromWhere, Vector3 to)
+	{
+		travelledDistance += Vector3.Distance(fromWhere, to);
+	}
+	
+	public void updateKills()
+	{
+		nbKilledEnemy++;
+		nbAssassinKill++;
+		
+		//////////////////////////////////
+		/*cptKillPerMin++;
+		
+		// Achievements de la série tuer x ennemis
+		if (nbKilledEnemy == 1)
+			firstBloodAchievement();
+		else if (nbKilledEnemy == 10)
+			littleKillerAchievement();
+		else if (nbKilledEnemy == 100)
+			killerAchievement();
+		else if (nbKilledEnemy == 1000)
+			serialKillerAchievement();
+		
+		// Achievements de la série assassin
+		if (assassin)
+		{
+			if (cptAssassinKill == 5)
+				assassinAchievement();
+			else if (cptAssassinKill == 50)
+				masterAssassinAchievement();
+		}*/
+	}
+	
+	public void updateTimeNotTouched(float time)
+	{
+		timeNotTouched = time;
+		assassin = false;
+	}
+	
+	void updateTimes()
+	{	
+		timeNotTouched += Time.deltaTime;
+		timeSurvived += Time.deltaTime;
+		
+		
+		////////////////////////////////////////////
+		timeLimit += Time.deltaTime;
+		
+		/*// Débloque les achievements non touché pendant x temps
+		if (timeNotTouched >= 60)	// 1 min
+			uncatchableAchievement();
+		if (timeNotTouched >= 300)	// 5 mins
+			reallyUncatchableAchievement();
+		
+		// Débloque les achievements survivre x temps
+		if (timeSurvived >= 60)		// 1 min
+			surviveOneMinuteAchievement();
+		if (timeSurvived >= 1200)	// 20 mins
+			surviveTwentyMinutesAchievement();
+		if (timeSurvived >= 3600)	// 1 h
+			surviveOneHourAchievement();
+		if (timeSurvived >= 14400)	// 4 h
+			surviveFourHoursAchievement();
+		if (timeSurvived >= 43200)	// 12 h
+			surviveTwelveHoursAchievement();*/
+		killPerMin();
+	}
 	
 	
 	
@@ -608,84 +677,6 @@ public class AchievementManager : MonoBehaviour {
 		cptKillPerMin = 0;
 	}
 	
-	public void setTimeNotTouched(float time)
-	{
-		timeNotTouched = time;
-		assassin= false;
-	}
-	
-	public void updateTravel(Vector3 fromWhere, Vector3 to)
-	{
-		travelledDistance += Vector3.Distance(fromWhere, to);
-		
-		/*if (travelledDistance >= 1000)		// 1 km parcourut
-			sundayWalkerAchievement();
-		if (travelledDistance >= 10000)	// 10 km parcourut
-			dailyJoggingAchievement();
-		if (travelledDistance >= 42195)	// 42,195 km parcourut
-			marathonAchievement();
-		if (travelledDistance >= 100000)	// 100 km parcourut
-			healthWalkAchievement();
-		if (travelledDistance >= 1000000)	// 1.000 km parcourut
-			athleticAchievement();
-		if (travelledDistance >= 10000000)	// 10.000 km parcourut
-			dopedAddictAchievement();*/
-	}
-	
-	void timedAchievements()
-	{	
-		timeNotTouched += Time.deltaTime;
-		timeSurvived += Time.deltaTime;
-		timeLimit += Time.deltaTime;
-		
-		/*// Débloque les achievements non touché pendant x temps
-		if (timeNotTouched >= 60)	// 1 min
-			uncatchableAchievement();
-		if (timeNotTouched >= 300)	// 5 mins
-			reallyUncatchableAchievement();
-		
-		// Débloque les achievements survivre x temps
-		if (timeSurvived >= 60)		// 1 min
-			surviveOneMinuteAchievement();
-		if (timeSurvived >= 1200)	// 20 mins
-			surviveTwentyMinutesAchievement();
-		if (timeSurvived >= 3600)	// 1 h
-			surviveOneHourAchievement();
-		if (timeSurvived >= 14400)	// 4 h
-			surviveFourHoursAchievement();
-		if (timeSurvived >= 43200)	// 12 h
-			surviveTwelveHoursAchievement();*/
-		
-		killPerMin();
-	}
-	
-	public void killsAchievements()
-	{
-		// Compteur d'ennemis tués, débloque les achievements avec un certain nombre
-		nbKilledEnemy++;
-		cptAssassinKill++;
-		cptKillPerMin++;
-		
-		/*// Achievements de la série tuer x ennemis
-		if (nbKilledEnemy == 1)
-			firstBloodAchievement();
-		else if (nbKilledEnemy == 10)
-			littleKillerAchievement();
-		else if (nbKilledEnemy == 100)
-			killerAchievement();
-		else if (nbKilledEnemy == 1000)
-			serialKillerAchievement();
-		
-		// Achievements de la série assassin
-		if (assassin)
-		{
-			if (cptAssassinKill == 5)
-				assassinAchievement();
-			else if (cptAssassinKill == 50)
-				masterAssassinAchievement();
-		}*/
-	}
-	
 	public void killBersekerAchievement()
 	{
 		// Achievements avec les bersekers
@@ -697,12 +688,6 @@ public class AchievementManager : MonoBehaviour {
 			serialKillerOfSerialKillerAchievement();
 	}
 	
-	public void firstMove(Vector3 move)
-	{
-		/*if (move != Vector3.zero)
-			firstMoveAchievement();*/
-	}
-	
 	public void multiKills(int lastVal, int newVal)
 	{
 		//if (lastVal - newVal >= 10)
@@ -711,7 +696,7 @@ public class AchievementManager : MonoBehaviour {
 	
 	
 	
-	
+	// Accesseurs
 	public int getNbKilledEnemy()
 	{
 		return nbKilledEnemy;
@@ -739,6 +724,11 @@ public class AchievementManager : MonoBehaviour {
 	
 	public int getNbAssassinKills()
 	{
-		return cptAssassinKill;
+		return nbAssassinKill;
+	}
+	
+	public bool getAssassin()
+	{
+		return assassin;
 	}
 }

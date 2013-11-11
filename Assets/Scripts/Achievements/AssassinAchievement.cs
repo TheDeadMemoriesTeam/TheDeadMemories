@@ -14,6 +14,6 @@ public class AssassinAchievement : Achievement
 	
 	public override bool achieved()
 	{
-		return am.getNbAssassinKills() >= requiredKills;
+		return am.getAssassin() && am.getNbAssassinKills() >= requiredKills;
 	}
 }
