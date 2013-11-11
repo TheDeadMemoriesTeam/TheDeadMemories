@@ -61,8 +61,12 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new WalkingAchievement(this, "Athletic", "Walk on 1.000 km!", 1000000));
 		achievements.Add(new WalkingAchievement(this, "Doped Addict", "Walk on 10.000 km!", 10000000));
 		
+		// Famille d'achievement Kill x ennemis
+		achievements.Add(new KillingAchievement(this, "First Blood", "Kill for the first time!", 1));
+		achievements.Add(new KillingAchievement(this, "Little Killer", "Kill 10 enemies !", 10));
+		achievements.Add(new KillingAchievement(this, "Killer", "Kill 100 enemies !", 100));
+		achievements.Add(new KillingAchievement(this, "Serial Killer", "Kill 1000 enemies !", 1000));
 		
-		achievements.Add(new KillingAchievement(this, "First Kill", "Kill for the first time!", 1));
 		achievements.Add(new SimultaneousKillsAchievement(this, "Long Arm", "Kill 10 enemies in the same time", 10));
 		achievements.Add(new SurvivedAchievement(this, "Beginner", "Survive during 1 min!", 60));
 		achievements.Add(new UntouchedAchievement(this, "Untouched", "Not being touched during 1 min !", 60));
@@ -229,7 +233,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}*/
 	
-	void firstBloodAchievement()
+	/*void firstBloodAchievement()
 	{
 		string name = "firstKill";
 		if (!getState(name))
@@ -271,7 +275,7 @@ public class AchievementManager : MonoBehaviour {
 			unlockAchievement("1000 Kills !!!");
 			changeState(name);
 		}
-	}
+	}*/
 	
 	void noLimitAchievement()
 	{
