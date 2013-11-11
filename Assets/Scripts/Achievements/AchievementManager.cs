@@ -67,8 +67,16 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new KillingAchievement(this, "Killer", "Kill 100 enemies !", 100));
 		achievements.Add(new KillingAchievement(this, "Serial Killer", "Kill 1000 enemies !", 1000));
 		
+		// Famille d'achievement kill simultanés
 		achievements.Add(new SimultaneousKillsAchievement(this, "Long Arm", "Kill 10 enemies in the same time", 10));
+		
+		// Famille d'achievement survivre x temps
 		achievements.Add(new SurvivedAchievement(this, "Beginner", "Survive during 1 min!", 60));
+		achievements.Add(new SurvivedAchievement(this, "Amateur", "Survive during 20 min!", 1200));
+		achievements.Add(new SurvivedAchievement(this, "Ghost", "Survive during 1 h!", 3600));
+		achievements.Add(new SurvivedAchievement(this, "Immortal", "Survive during 4 h!", 14400));
+		achievements.Add(new SurvivedAchievement(this, "God", "Survive during 12 h!", 43200));
+		
 		achievements.Add(new UntouchedAchievement(this, "Untouched", "Not being touched during 1 min !", 60));
 		achievements.Add(new AssassinAchievement(this, "Assassin", "Kill 5 enemies and not be touch !", 5));
 		
@@ -321,7 +329,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 	
-	void surviveOneMinuteAchievement()
+	/*void surviveOneMinuteAchievement()
 	{
 		string name = "beginner";
 		if (!getState(name))
@@ -374,7 +382,7 @@ public class AchievementManager : MonoBehaviour {
 			unlockAchievement("God !!!");
 			changeState(name);
 		}
-	}
+	}*/
 	
 	void assassinAchievement()
 	{
@@ -398,7 +406,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 	}
 	
-	void longArmAchievement()
+	/*void longArmAchievement()
 	{
 		string name = "longArm";
 		if (!getState(name))
