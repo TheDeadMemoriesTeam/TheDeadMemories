@@ -7,23 +7,28 @@ public class CameraController : MonoBehaviour
     public PlayerController target;
 
     private float targetHeight = 2.5f;
-    private float distance = 3.5f;	// distance au perso
+    private float distance = 4.5f;	// distance au perso
 
     private float maxDistance = 10f;
     private float minDistance = 3f;
 
     private int yMinLimit = -120;
     private int yMaxLimit = 120;
+	
+	private float limitMinOnXAxis = -60;
+	private float limitMaxOnXAxis = 50;
  
     private int zoomRate = 40;
 	
 	// Smooth sur les zooms et rotations
     private float rotationAttenuation = 3f;
+	private float rotationAttenuationOnXAxis = 1f;
     private float zoomAttenuation = 5f;
 
     private float x = 0f;
     private float y = 0f;
-
+	private float rotationOnXAxis = 0f;
+	
     private float currentDistance;
     private float desiredDistance;
     private float correctedDistance;
@@ -59,6 +64,13 @@ public class CameraController : MonoBehaviour
 
         // Transformation pour la caméra (rotation)
         Quaternion rotation = Quaternion.Euler(y, x, 0);
+		
+		// Inclinaison de la caméra
+		if (!target.getPause())
+			rotationOnXAxis += Input.GetAxis("Mouse Y") * rotationAttenuationOnXAxis;
+		
+		rotationOnXAxis = ClampAngle(rotationOnXAxis, limitMinOnXAxis, limitMaxOnXAxis);
+		rotation *= Quaternion.AngleAxis(rotationOnXAxis, Vector3.left);
 
         // Calcul de la distance de la caméra entre les bornes min et max distance (selon le scroll souris)
         desiredDistance -= Input.GetAxis("Mouse ScrollWheel") * Time.deltaTime * zoomRate * Mathf.Abs(desiredDistance);
@@ -87,7 +99,7 @@ public class CameraController : MonoBehaviour
 		
         // Recalcule la position de la caméra avec la distance correcte
         position = target.transform.position - (rotation * Vector3.forward * currentDistance + new Vector3(0, -targetHeight, 0));
-
+		
 		// Applique la rotation et position de la caméra
         transform.rotation = rotation;
         transform.position = position;

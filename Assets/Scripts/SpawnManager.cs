@@ -10,7 +10,6 @@ public class SpawnManager : MonoBehaviour
 	private float timeStep = 7.0F;
 	private float spawnDelay;
 	
-	private int lastNbEnnemies = 0;
 	private int _nbEnnemies = 0;// Should be modified only using the NbEnnemies property
 	private int NbEnnemies {
 		get {
@@ -39,16 +38,16 @@ public class SpawnManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		// Débloque l'achievement 10 ennemies tués en meme temps
-		player.achivementManager.multiKills(lastNbEnnemies, NbEnnemies);
-			
+		// Manage the pause state
+		if (player.getPause())
+			timeLastSpawn += Time.deltaTime;
+		
 		// Create an ennemy if the specified time is elapsed
-		if (!player.getPause() && Time.time - timeLastSpawn >= spawnDelay)
+		if (Time.time - timeLastSpawn >= spawnDelay)
 		{
 			timeLastSpawn += spawnDelay;
 			addEnnemy();
 		}
-		lastNbEnnemies = NbEnnemies;
 	}
 	
 	private void addEnnemy()

@@ -1,39 +1,45 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class CameraMenu : MonoBehaviour 
+public class CameraMenu : CameraPath
 {
-	public Vector3 dest;
+	
 	// Use this for initialization
-	void Start () 
+	public override void Start () 
 	{
-		dest = transform.position;
+		base.Start();
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	public override void Update ()
 	{
-		Vector3 d;
-		if(dest.magnitude > transform.position.magnitude)
-		{
-			d = transform.position - dest;
-			if(d.magnitude > 0)
-			{
-				transform.position = new Vector3(transform.position.x<dest.x ? transform.position.x+0.1f : dest.x,
-												1.5f,
-												transform.position.z<dest.z ? transform.position.z+0.1f : dest.z);
-			}
-		}
-		/*else
-		{
-			d = dest - transform.position;
-			if(d.magnitude > 0)
-			{
-				transform.position = new Vector3(transform.position.x>dest.x ? transform.position.x-0.1f : dest.x,
-												1.5f,
-												transform.position.z>dest.z ? transform.position.z-0.1f : dest.z);
-				
-			}
-		}*/
+		base.Update();
+	}
+
+	
+	public void goToMainMenu()
+	{
+		float startX = transform.position.x;
+		float startZ = transform.position.z;
+		float endX = 20f;
+		float endZ = 5f;
+		path.Add(new Vector3(startX + (endX - startX)/4, 3.5f, startZ + (endZ - startZ)/4));
+		path.Add(new Vector3(startX + (endX - startX)/2, 5f, startZ + (endZ - startZ)/2));
+		path.Add(new Vector3(startX + (endX - startX)*3/4, 3.5f, startZ + (endZ - startZ)*3/4));
+		path.Add(new Vector3(endX, 1.5f, endZ));
+		//20 1.5 5
+	//25.4 1.5 19.5
+	}
+	
+	public void goToLaunchMenu()
+	{
+		float startX = transform.position.x;
+		float startZ = transform.position.z;
+		float endX = 25.4f;
+		float endZ = 19.5f;
+		path.Add(new Vector3(startX + (endX - startX)/4, 3.5f, startZ + (endZ - startZ)/4));
+		path.Add(new Vector3(startX + (endX - startX)/2, 5f, startZ + (endZ - startZ)/2));
+		path.Add(new Vector3(startX + (endX - startX)*3/4, 3.5f, startZ + (endZ - startZ)*3/4));
+		path.Add(new Vector3(endX, 1.5f, endZ));
 	}
 }

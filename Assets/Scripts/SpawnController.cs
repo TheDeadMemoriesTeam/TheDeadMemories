@@ -35,7 +35,12 @@ public class SpawnController : MonoBehaviour
 	{
 		int randX = Random.Range(-range, range);
 		int randZ = Random.Range(-range, range);
-		Vector3 position = new Vector3 (transform.position.x-randX, 0, transform.position.z-randZ);
+		Vector3 position = new Vector3 (transform.position.x-randX, transform.position.y, transform.position.z-randZ);
+		// Determine la hauteur de spawn
+		RaycastHit raycastHit;
+		Physics.Raycast(position, Vector3.down, out raycastHit);
+		position.y = position.y - raycastHit.distance + 1;
+		
 		float proba = Random.value;
 		if (proba <= 0.02)
 				Instantiate(bossPrefab, position, Quaternion.identity);
