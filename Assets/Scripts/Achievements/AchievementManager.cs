@@ -4,7 +4,6 @@ using System.Collections.Generic;
 
 using System.Linq;
 //Namespaces nécessaires pour BinaryFormatter
-using System;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
@@ -26,7 +25,9 @@ public class AchievementManager : MonoBehaviour {
 	public float counter = 0;
 	
 	private List<Achievement> achievements;
-	
+	// Stocke un historique des ennemis tués <temps, nb Ennemis Tués sur la frame>
+	private Dictionary<float, int> ennemiesKilledHistorical;
+		
 	// Son Achievement
 	public AudioClip soundAchievement;
 	
@@ -39,8 +40,7 @@ public class AchievementManager : MonoBehaviour {
 	private int nbAssassinKill = 0;
 	private float timeNotTouched = 0;		// untouch achievement
 	private float timeSurvived = 0;			// survive achievement
-	private int nbKillPerSession = 0;		// kill x ennemies in x time achievement
-	private float timeLimit = 0;
+	private float maxTimeLimit = 60;		// kill x ennemies in x time achievement
 	
 	// Associe le nom de l'achievement à son état (bool) => équivalent map de la STL
 	private Dictionary<string, bool> AchievementsStates;
@@ -95,6 +95,9 @@ public class AchievementManager : MonoBehaviour {
 		// Famille d'achievements ne pas etre touché x temps
 		achievements.Add(new UntouchedAchievement(this, "Uncatchable", "Not being touched during 1 min !", 60));
 		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
+		
+		// Historique des ennemis tués
+		ennemiesKilledHistorical = new Dictionary<float, int>();
 		
 		// Nom des achievements
 		string[] names = {
@@ -184,7 +187,12 @@ public class AchievementManager : MonoBehaviour {
 		}
 		
 		updateTimes();
+		// Ajoute à l'historique des kills le nombre d'ennemis tués sur la frame (que si différent de 0 !)
+		if (getNbSimultaneouslyKilledEnemy() > 0)
+			ennemiesKilledHistorical.Add(Time.time, getNbSimultaneouslyKilledEnemy());
 		lastNbEnemyKilled = nbKilledEnemy;
+		// Vide l'historique pour conserver l'historique que sur la période voulue
+		updateEnnemiesKilledHistorical();
 	}
 	
 	public void saveAchievements()
@@ -276,7 +284,6 @@ public class AchievementManager : MonoBehaviour {
 	{
 		nbKilledEnemy++;
 		nbAssassinKill++;
-		nbKillPerSession++;
 	}
 	
 	public void updateTimeNotTouched(float time)
@@ -289,7 +296,6 @@ public class AchievementManager : MonoBehaviour {
 	{	
 		timeNotTouched += Time.deltaTime;
 		timeSurvived += Time.deltaTime;
-		timeLimit += Time.deltaTime;
 	}
 	
 	public void updateKillsBerseker()
@@ -297,10 +303,20 @@ public class AchievementManager : MonoBehaviour {
 		nbBersekerKilled++;
 	}
 	
-	public void resetKillPerSession()
+	void updateEnnemiesKilledHistorical()
 	{
-		timeLimit = 0;
-		nbKillPerSession = 0;
+		// Parcours tout l'historique pour supprimer les enregistrements en dehors de la période maxTimeLimit
+		for (int i = 0 ; i < ennemiesKilledHistorical.Count() ; i++)
+		{
+			if (!isValidDuration(i, maxTimeLimit))
+				ennemiesKilledHistorical.Remove(ennemiesKilledHistorical.ElementAt(i).Key);
+		}
+	}
+	
+	bool isValidDuration(int index, float duration)
+	{
+		// condition pour vérifier que le temps est dans l'espace temps définit avec duration
+		return ennemiesKilledHistorical.ElementAt(index).Key >= (Time.time - duration);
 	}
 	
 	// Accesseurs
@@ -344,13 +360,18 @@ public class AchievementManager : MonoBehaviour {
 		return assassin;
 	}
 	
-	public float getLimitTime()
+	public int getNbEnnemiesKilledPerDuration(float duration)
 	{
-		return timeLimit;
-	}
-	
-	public int getNbKillPerSession()
-	{
-		return nbKillPerSession;
+		int nbKillPerDuration = 0;
+		
+		// Parcours l'historique des ennemis tués pour compté leur nombre
+		// Le comptage se fait sur la période définit par le paramètre duration
+		for (int i = 0 ; i < ennemiesKilledHistorical.Count() ; i++)
+		{
+			if (isValidDuration(i, duration))
+				nbKillPerDuration += ennemiesKilledHistorical.ElementAt(i).Value;
+		}
+		
+		return nbKillPerDuration;
 	}
 }

@@ -15,11 +15,6 @@ public class TimedKillAchievement : Achievement
 	
 	public override bool achieved()
 	{
-		if (!(timeGive - am.getLimitTime() >= 0))
-		{
-			am.resetKillPerSession();
-			return false;
-		}
-		return am.getNbKillPerSession() >= requiredKills;
+		return am.getNbEnnemiesKilledPerDuration(timeGive) >= requiredKills;
 	}
 }
