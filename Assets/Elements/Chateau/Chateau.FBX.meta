@@ -1,0 +1,556 @@
+fileFormatVersion: 2
+guid: 4c684da83df818443b515ca3e79f3dfb
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Base-tour 001
+    100002: Base-tour 003
+    100004: Base-tour 004
+    100006: Base-tour 005
+    100008: Base-tour 006
+    100010: Base-tour 007
+    100012: Basechateau 001
+    100014: //RootNode
+    100016: Contrefortpetit001
+    100018: Contrefortpetit002
+    100020: Contrefortpetit003
+    100022: Contrefortpetit004
+    100024: Contrefortpetit005
+    100026: Contrefortpetit006
+    100028: Contrefortpetit007
+    100030: Contrefortpetit008
+    100032: Contrefortpetit009
+    100034: Contrefortpetit010
+    100036: Falaise
+    100038: Mur Exterieur 001
+    100040: Mur Exterieur 003
+    100042: Mur Exterieur 004
+    100044: Mur Exterieur 005
+    100046: Mur Exterieur 006
+    100048: Mur Exterieur 007
+    100050: Mur Exterieur 008
+    100052: Mur Exterieur 009
+    100054: Mur Exterieur 011
+    100056: Mur Exterieur 012
+    100058: Mur Exterieur 013
+    100060: Mur Exterieur 014
+    100062: Mur Exterieur 015
+    100064: Mur Exterieur 016
+    100066: Mur Exterieur 017
+    100068: Mur Exterieur 018
+    100070: Mur Exterieur 019
+    100072: Mur Exterieur 020
+    100074: Mur Exterieur 021
+    100076: Mur Exterieur grand 002
+    100078: Mur Exterieur grand 003
+    100080: Mur Exterieur grand 004
+    100082: Mur Exterieur grand 005
+    100084: Mur Exterieur grand 006
+    100086: Mur Exterieur grand 007
+    100088: Mur Exterieur grand 008
+    100090: Mur Exterieur grand 009
+    100092: Mur Exterieur grand 010
+    100094: Tour centrale base 001
+    100096: Tour centrale base 003
+    100098: Tour centrale base 004
+    100100: Tour centrale base 005
+    100102: Tour centrale milieu 001
+    100104: Tour centrale milieu 003
+    100106: Tour centrale milieu 004
+    100108: Tour centrale milieu 005
+    100110: Tour centrale milieu 006
+    100112: Tour centrale milieu 007
+    100114: Tour centrale milieu 008
+    100116: Tour etage bas 001
+    100118: Tour etage bas 003
+    100120: Tour etage bas 004
+    100122: Tour etage bas 005
+    100124: Tour etage bas 006
+    100126: Tour fine 001
+    100128: Tour fine 003
+    100130: Tour fine 004
+    100132: Tour fine 005
+    100134: Tour fine 006
+    100136: Tour fine 007
+    100138: Tour fine 008
+    100140: Tour fine 009
+    100142: Tour fine2 001
+    100144: Tour fine2 003
+    100146: Tour fine2 004
+    100148: tour haut 001
+    100150: tour haut 003
+    100152: tour haut 004
+    100154: tour haut 005
+    100156: Tour haut2 002
+    100158: Tour haut2 003
+    100160: Tour haut2 004
+    100162: Tour milieu 001
+    100164: Tour milieu 003
+    100166: Tour milieu 004
+    100168: Tour milieu 005
+    100170: Tour milieu 006
+    100172: Tour milieu 007
+    100174: Tour milieu 008
+    100176: tour milieu2 002
+    100178: tour milieu2 003
+    100180: tour milieu2 004
+    100182: tour milieu2 005
+    100184: tour milieu2 006
+    100186: tour milieu2 007
+    100188: tour toiture 002
+    100190: tour toiture 003
+    100192: tour toiture 004
+    100194: Zone de marche 002
+    100196: Zone de marche 003
+    100198: Zone de marche 004
+    400000: Base-tour 001
+    400002: Base-tour 003
+    400004: Base-tour 004
+    400006: Base-tour 005
+    400008: Base-tour 006
+    400010: Base-tour 007
+    400012: Basechateau 001
+    400014: //RootNode
+    400016: Contrefortpetit001
+    400018: Contrefortpetit002
+    400020: Contrefortpetit003
+    400022: Contrefortpetit004
+    400024: Contrefortpetit005
+    400026: Contrefortpetit006
+    400028: Contrefortpetit007
+    400030: Contrefortpetit008
+    400032: Contrefortpetit009
+    400034: Contrefortpetit010
+    400036: Falaise
+    400038: Mur Exterieur 001
+    400040: Mur Exterieur 003
+    400042: Mur Exterieur 004
+    400044: Mur Exterieur 005
+    400046: Mur Exterieur 006
+    400048: Mur Exterieur 007
+    400050: Mur Exterieur 008
+    400052: Mur Exterieur 009
+    400054: Mur Exterieur 011
+    400056: Mur Exterieur 012
+    400058: Mur Exterieur 013
+    400060: Mur Exterieur 014
+    400062: Mur Exterieur 015
+    400064: Mur Exterieur 016
+    400066: Mur Exterieur 017
+    400068: Mur Exterieur 018
+    400070: Mur Exterieur 019
+    400072: Mur Exterieur 020
+    400074: Mur Exterieur 021
+    400076: Mur Exterieur grand 002
+    400078: Mur Exterieur grand 003
+    400080: Mur Exterieur grand 004
+    400082: Mur Exterieur grand 005
+    400084: Mur Exterieur grand 006
+    400086: Mur Exterieur grand 007
+    400088: Mur Exterieur grand 008
+    400090: Mur Exterieur grand 009
+    400092: Mur Exterieur grand 010
+    400094: Tour centrale base 001
+    400096: Tour centrale base 003
+    400098: Tour centrale base 004
+    400100: Tour centrale base 005
+    400102: Tour centrale milieu 001
+    400104: Tour centrale milieu 003
+    400106: Tour centrale milieu 004
+    400108: Tour centrale milieu 005
+    400110: Tour centrale milieu 006
+    400112: Tour centrale milieu 007
+    400114: Tour centrale milieu 008
+    400116: Tour etage bas 001
+    400118: Tour etage bas 003
+    400120: Tour etage bas 004
+    400122: Tour etage bas 005
+    400124: Tour etage bas 006
+    400126: Tour fine 001
+    400128: Tour fine 003
+    400130: Tour fine 004
+    400132: Tour fine 005
+    400134: Tour fine 006
+    400136: Tour fine 007
+    400138: Tour fine 008
+    400140: Tour fine 009
+    400142: Tour fine2 001
+    400144: Tour fine2 003
+    400146: Tour fine2 004
+    400148: tour haut 001
+    400150: tour haut 003
+    400152: tour haut 004
+    400154: tour haut 005
+    400156: Tour haut2 002
+    400158: Tour haut2 003
+    400160: Tour haut2 004
+    400162: Tour milieu 001
+    400164: Tour milieu 003
+    400166: Tour milieu 004
+    400168: Tour milieu 005
+    400170: Tour milieu 006
+    400172: Tour milieu 007
+    400174: Tour milieu 008
+    400176: tour milieu2 002
+    400178: tour milieu2 003
+    400180: tour milieu2 004
+    400182: tour milieu2 005
+    400184: tour milieu2 006
+    400186: tour milieu2 007
+    400188: tour toiture 002
+    400190: tour toiture 003
+    400192: tour toiture 004
+    400194: Zone de marche 002
+    400196: Zone de marche 003
+    400198: Zone de marche 004
+    2300000: Base-tour 001
+    2300002: Base-tour 003
+    2300004: Base-tour 004
+    2300006: Base-tour 005
+    2300008: Base-tour 006
+    2300010: Base-tour 007
+    2300012: Basechateau 001
+    2300014: Contrefortpetit001
+    2300016: Contrefortpetit002
+    2300018: Contrefortpetit003
+    2300020: Contrefortpetit004
+    2300022: Contrefortpetit005
+    2300024: Contrefortpetit006
+    2300026: Contrefortpetit007
+    2300028: Contrefortpetit008
+    2300030: Contrefortpetit009
+    2300032: Contrefortpetit010
+    2300034: Falaise
+    2300036: Mur Exterieur 001
+    2300038: Mur Exterieur 003
+    2300040: Mur Exterieur 004
+    2300042: Mur Exterieur 005
+    2300044: Mur Exterieur 006
+    2300046: Mur Exterieur 007
+    2300048: Mur Exterieur 008
+    2300050: Mur Exterieur 009
+    2300052: Mur Exterieur 011
+    2300054: Mur Exterieur 012
+    2300056: Mur Exterieur 013
+    2300058: Mur Exterieur 014
+    2300060: Mur Exterieur 015
+    2300062: Mur Exterieur 016
+    2300064: Mur Exterieur 017
+    2300066: Mur Exterieur 018
+    2300068: Mur Exterieur 019
+    2300070: Mur Exterieur 020
+    2300072: Mur Exterieur 021
+    2300074: Mur Exterieur grand 002
+    2300076: Mur Exterieur grand 003
+    2300078: Mur Exterieur grand 004
+    2300080: Mur Exterieur grand 005
+    2300082: Mur Exterieur grand 006
+    2300084: Mur Exterieur grand 007
+    2300086: Mur Exterieur grand 008
+    2300088: Mur Exterieur grand 009
+    2300090: Mur Exterieur grand 010
+    2300092: Tour centrale base 001
+    2300094: Tour centrale base 003
+    2300096: Tour centrale base 004
+    2300098: Tour centrale base 005
+    2300100: Tour centrale milieu 001
+    2300102: Tour centrale milieu 003
+    2300104: Tour centrale milieu 004
+    2300106: Tour centrale milieu 005
+    2300108: Tour centrale milieu 006
+    2300110: Tour centrale milieu 007
+    2300112: Tour centrale milieu 008
+    2300114: Tour etage bas 001
+    2300116: Tour etage bas 003
+    2300118: Tour etage bas 004
+    2300120: Tour etage bas 005
+    2300122: Tour etage bas 006
+    2300124: Tour fine 001
+    2300126: Tour fine 003
+    2300128: Tour fine 004
+    2300130: Tour fine 005
+    2300132: Tour fine 006
+    2300134: Tour fine 007
+    2300136: Tour fine 008
+    2300138: Tour fine 009
+    2300140: Tour fine2 001
+    2300142: Tour fine2 003
+    2300144: Tour fine2 004
+    2300146: tour haut 001
+    2300148: tour haut 003
+    2300150: tour haut 004
+    2300152: tour haut 005
+    2300154: Tour haut2 002
+    2300156: Tour haut2 003
+    2300158: Tour haut2 004
+    2300160: Tour milieu 001
+    2300162: Tour milieu 003
+    2300164: Tour milieu 004
+    2300166: Tour milieu 005
+    2300168: Tour milieu 006
+    2300170: Tour milieu 007
+    2300172: Tour milieu 008
+    2300174: tour milieu2 002
+    2300176: tour milieu2 003
+    2300178: tour milieu2 004
+    2300180: tour milieu2 005
+    2300182: tour milieu2 006
+    2300184: tour milieu2 007
+    2300186: tour toiture 002
+    2300188: tour toiture 003
+    2300190: tour toiture 004
+    2300192: Zone de marche 002
+    2300194: Zone de marche 003
+    2300196: Zone de marche 004
+    3300000: Base-tour 001
+    3300002: Base-tour 003
+    3300004: Base-tour 004
+    3300006: Base-tour 005
+    3300008: Base-tour 006
+    3300010: Base-tour 007
+    3300012: Basechateau 001
+    3300014: Contrefortpetit001
+    3300016: Contrefortpetit002
+    3300018: Contrefortpetit003
+    3300020: Contrefortpetit004
+    3300022: Contrefortpetit005
+    3300024: Contrefortpetit006
+    3300026: Contrefortpetit007
+    3300028: Contrefortpetit008
+    3300030: Contrefortpetit009
+    3300032: Contrefortpetit010
+    3300034: Falaise
+    3300036: Mur Exterieur 001
+    3300038: Mur Exterieur 003
+    3300040: Mur Exterieur 004
+    3300042: Mur Exterieur 005
+    3300044: Mur Exterieur 006
+    3300046: Mur Exterieur 007
+    3300048: Mur Exterieur 008
+    3300050: Mur Exterieur 009
+    3300052: Mur Exterieur 011
+    3300054: Mur Exterieur 012
+    3300056: Mur Exterieur 013
+    3300058: Mur Exterieur 014
+    3300060: Mur Exterieur 015
+    3300062: Mur Exterieur 016
+    3300064: Mur Exterieur 017
+    3300066: Mur Exterieur 018
+    3300068: Mur Exterieur 019
+    3300070: Mur Exterieur 020
+    3300072: Mur Exterieur 021
+    3300074: Mur Exterieur grand 002
+    3300076: Mur Exterieur grand 003
+    3300078: Mur Exterieur grand 004
+    3300080: Mur Exterieur grand 005
+    3300082: Mur Exterieur grand 006
+    3300084: Mur Exterieur grand 007
+    3300086: Mur Exterieur grand 008
+    3300088: Mur Exterieur grand 009
+    3300090: Mur Exterieur grand 010
+    3300092: Tour centrale base 001
+    3300094: Tour centrale base 003
+    3300096: Tour centrale base 004
+    3300098: Tour centrale base 005
+    3300100: Tour centrale milieu 001
+    3300102: Tour centrale milieu 003
+    3300104: Tour centrale milieu 004
+    3300106: Tour centrale milieu 005
+    3300108: Tour centrale milieu 006
+    3300110: Tour centrale milieu 007
+    3300112: Tour centrale milieu 008
+    3300114: Tour etage bas 001
+    3300116: Tour etage bas 003
+    3300118: Tour etage bas 004
+    3300120: Tour etage bas 005
+    3300122: Tour etage bas 006
+    3300124: Tour fine 001
+    3300126: Tour fine 003
+    3300128: Tour fine 004
+    3300130: Tour fine 005
+    3300132: Tour fine 006
+    3300134: Tour fine 007
+    3300136: Tour fine 008
+    3300138: Tour fine 009
+    3300140: Tour fine2 001
+    3300142: Tour fine2 003
+    3300144: Tour fine2 004
+    3300146: tour haut 001
+    3300148: tour haut 003
+    3300150: tour haut 004
+    3300152: tour haut 005
+    3300154: Tour haut2 002
+    3300156: Tour haut2 003
+    3300158: Tour haut2 004
+    3300160: Tour milieu 001
+    3300162: Tour milieu 003
+    3300164: Tour milieu 004
+    3300166: Tour milieu 005
+    3300168: Tour milieu 006
+    3300170: Tour milieu 007
+    3300172: Tour milieu 008
+    3300174: tour milieu2 002
+    3300176: tour milieu2 003
+    3300178: tour milieu2 004
+    3300180: tour milieu2 005
+    3300182: tour milieu2 006
+    3300184: tour milieu2 007
+    3300186: tour toiture 002
+    3300188: tour toiture 003
+    3300190: tour toiture 004
+    3300192: Zone de marche 002
+    3300194: Zone de marche 003
+    3300196: Zone de marche 004
+    4300000: Basechateau 001
+    4300002: Mur Exterieur 001
+    4300004: Base-tour 001
+    4300006: Tour etage bas 001
+    4300008: Tour milieu 001
+    4300010: tour haut 001
+    4300012: Mur Exterieur 003
+    4300014: Base-tour 003
+    4300016: Mur Exterieur 004
+    4300018: Base-tour 004
+    4300020: Tour etage bas 003
+    4300022: tour milieu2 002
+    4300024: tour milieu2 003
+    4300026: Tour milieu 003
+    4300028: tour toiture 002
+    4300030: Base-tour 005
+    4300032: Tour milieu 004
+    4300034: tour haut 003
+    4300036: Tour centrale base 001
+    4300038: Tour centrale milieu 001
+    4300040: Tour fine 001
+    4300042: Tour centrale milieu 003
+    4300044: Tour centrale milieu 004
+    4300046: Tour fine 003
+    4300048: tour haut 004
+    4300050: Tour milieu 005
+    4300052: Tour fine2 001
+    4300054: Tour haut2 002
+    4300056: Mur Exterieur 005
+    4300058: Mur Exterieur 006
+    4300060: Mur Exterieur grand 002
+    4300062: Mur Exterieur grand 003
+    4300064: Tour etage bas 004
+    4300066: Tour milieu 006
+    4300068: tour haut 005
+    4300070: Mur Exterieur grand 004
+    4300072: Mur Exterieur grand 005
+    4300074: Base-tour 006
+    4300076: Tour etage bas 005
+    4300078: tour milieu2 004
+    4300080: tour milieu2 005
+    4300082: Tour milieu 007
+    4300084: tour toiture 003
+    4300086: Tour centrale base 003
+    4300088: Tour centrale milieu 005
+    4300090: Tour fine 004
+    4300092: Tour centrale milieu 006
+    4300094: Tour fine2 003
+    4300096: Tour haut2 003
+    4300098: Tour haut2 004
+    4300100: Tour fine2 004
+    4300102: Tour fine 005
+    4300104: Tour centrale base 004
+    4300106: Tour centrale milieu 007
+    4300108: tour milieu2 006
+    4300110: Tour milieu 008
+    4300112: tour milieu2 007
+    4300114: tour toiture 004
+    4300116: Tour etage bas 006
+    4300118: Tour centrale base 005
+    4300120: Tour centrale milieu 008
+    4300122: Tour fine 006
+    4300124: Tour fine 007
+    4300126: Tour fine 008
+    4300128: Falaise
+    4300130: Mur Exterieur 007
+    4300132: Mur Exterieur 008
+    4300134: Mur Exterieur 009
+    4300136: Mur Exterieur 011
+    4300138: Mur Exterieur 012
+    4300140: Mur Exterieur 013
+    4300142: Mur Exterieur 014
+    4300144: Mur Exterieur 015
+    4300146: Mur Exterieur grand 006
+    4300148: Mur Exterieur grand 007
+    4300150: Mur Exterieur grand 008
+    4300152: Mur Exterieur grand 009
+    4300154: Mur Exterieur grand 010
+    4300156: Base-tour 007
+    4300158: Tour fine 009
+    4300160: Mur Exterieur 016
+    4300162: Mur Exterieur 017
+    4300164: Mur Exterieur 018
+    4300166: Mur Exterieur 019
+    4300168: Mur Exterieur 020
+    4300170: Mur Exterieur 021
+    4300172: Zone de marche 002
+    4300174: Zone de marche 003
+    4300176: Contrefortpetit001
+    4300178: Contrefortpetit002
+    4300180: Contrefortpetit003
+    4300182: Contrefortpetit004
+    4300184: Zone de marche 004
+    4300186: Contrefortpetit005
+    4300188: Contrefortpetit006
+    4300190: Contrefortpetit007
+    4300192: Contrefortpetit008
+    4300194: Contrefortpetit009
+    4300196: Contrefortpetit010
+    7400000: Take 001
+    9500000: //RootNode
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    handles: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  additionalBone: 1
+  animationType: 2
+  userData: 
