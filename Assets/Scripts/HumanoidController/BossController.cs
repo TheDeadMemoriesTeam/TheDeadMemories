@@ -32,6 +32,6 @@ public class BossController : EnemyController
 	{
 		base.Update();
 		if (pv <= 0)
-			target.achievementManager.killBersekerAchievement();
+			target.achievementManager.updateKillsBerseker();
 	}
 }

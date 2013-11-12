@@ -58,9 +58,6 @@ public class PlayerController : HumanoidController
 				// Handle jumps
 	            if (Input.GetButton("Jump"))
 	                moveDirection.y = jumpSpeed;
-				
-				// Débloque l'Achievement premier pas
-				achievementManager.firstMove(moveDirection);
 	        }
 			// Applies move
 	        moveDirection.y -= gravity * Time.deltaTime;
@@ -138,7 +135,7 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		
-		achievementManager.killsAchievements();
+		achievementManager.updateKills();
 	}
 	
 	public int getExperience()
