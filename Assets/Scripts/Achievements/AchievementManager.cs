@@ -40,7 +40,7 @@ public class AchievementManager : MonoBehaviour {
 	private int nbAssassinKill = 0;
 	private float timeNotTouched = 0;		// untouch achievement
 	private float timeSurvived = 0;			// survive achievement
-	private float maxTimeLimit = 60;		// kill x ennemies in x time achievement
+	private float maxTimeLimit = 0;			// kill x ennemies in x time achievement
 	
 	// Associe le nom de l'achievement à son état (bool) => équivalent map de la STL
 	private Dictionary<string, bool> AchievementsStates;
@@ -96,6 +96,16 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new UntouchedAchievement(this, "Uncatchable", "Not being touched during 1 min !", 60));
 		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
 		
+		// Récupère l'interval de temps maximal à conserver en historique pour les TimedKillAchievement
+		for (int i = 0 ; i < achievements.Count() ; i++)
+		{
+			TimedKillAchievement achiev = achievements.ElementAt(i) as TimedKillAchievement;
+			if (achiev != null)
+			{
+				if (maxTimeLimit < achiev.getTimeGive())
+					maxTimeLimit = achiev.getTimeGive();
+			}
+		}
 		// Historique des ennemis tués
 		ennemiesKilledHistorical = new Dictionary<float, int>();
 		

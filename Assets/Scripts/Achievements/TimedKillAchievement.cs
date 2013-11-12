@@ -17,4 +17,9 @@ public class TimedKillAchievement : Achievement
 	{
 		return am.getNbEnnemiesKilledPerDuration(timeGive) >= requiredKills;
 	}
+	
+	public float getTimeGive()
+	{
+		return timeGive;
+	}
 }
