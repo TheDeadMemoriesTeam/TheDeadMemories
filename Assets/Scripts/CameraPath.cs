@@ -4,85 +4,134 @@ using System.Collections.Generic;
 
 public class CameraPath : MonoBehaviour 
 {
-	public float smooth = 0.2f;
 	
-	protected List<Vector3> path; // Path to follow
+	private Quadratic parabolaXYCoef;
+	private Quadratic parabolaZYCoef;
+	private Vector3 dest;
+	private Vector3 velocity;
 	
-	private Vector3 lastPosition; // Start position of the last path step.
-	private Vector3 dest; // Intermediate destination in the path
-	private SpeedPolicy speedPolicy; // Speed policy for the current path step.
-	private int lastPathSize;
-	private float time; // Start time of the current path step
-	
-	enum SpeedPolicy {
-		SpeedUp,
-		Constant,
-		SlowDown
-	};
 	
 	// Use this for initialization
 	public virtual void Start () 
 	{
 		Time.timeScale = 1;
 		
-		path = new List<Vector3>();
-		speedPolicy = SpeedPolicy.SpeedUp;
-		lastPathSize = 0;
-		time = 0;
-		
+		parabolaXYCoef = new Quadratic();
+		parabolaZYCoef = new Quadratic();
+		velocity = Vector3.zero;
 		dest = transform.position;
 	}
 	
 	// Update is called once per frame
 	public virtual void Update ()
 	{
-		
-		if (Vector3.Distance(transform.position, dest) < 0.5 && path.Count > 0)
-		{
-			if (path.Count == 1)
-				speedPolicy = SpeedPolicy.SlowDown;
-			else if (path.Count > lastPathSize)
-				speedPolicy = SpeedPolicy.SpeedUp;
-			else
-				speedPolicy = SpeedPolicy.Constant;
-			
-			Debug.Log (speedPolicy);
-			
-			lastPosition = transform.position;
-			dest = path[0];
-			path.RemoveAt(0);
-			time = 0;
-			
-			lastPathSize = path.Count;
-		}
-		
-		time += Time.deltaTime;
-		
-		if (speedPolicy == SpeedPolicy.SpeedUp) {
-			transform.position = Vector3.Lerp(transform.position, dest, smooth/4f * time);
-		}
-		else if (speedPolicy == SpeedPolicy.Constant) {
-			transform.position = Vector3.Lerp(lastPosition, dest, smooth * time);
-		}
-		else {
-			transform.position = Vector3.Lerp(transform.position, dest, smooth * Time.deltaTime);
-		}
-		
+		if (dest != transform.position)
+			getNextPosition();
 	}
 	
-//  Travail en cours
-//	public void goTo(float endX, float endZ)
-//	{
-//		
-//		const float nbSteps = 6;
-//		const float Ymax = 5f;
-//		
-//		float startX = transform.position.x;
-//		float startZ = transform.position.z;
-//		path.Add(new Vector3(startX + (endX - startX)/3, 4.5f, startZ + (endZ - startZ)/3));
-//		path.Add(new Vector3(startX + (endX - startX)/2, 5f, startZ + (endZ - startZ)/2));
-//		path.Add(new Vector3(startX + (endX - startX)*2/3, 4.5f, startZ + (endZ - startZ)*2/3));
-//		path.Add(new Vector3(endX, 1.5f, endZ));
-//	}
+
+	public void goTo(float endX, float endY, float endZ)
+	{
+		float height = 4f; // Parabola vertex height (vertex is the point at the top)
+		
+		// Init points that will define the parabola
+		Vector3 pos1 = transform.position; // Start
+		Vector3 pos2 = new Vector3((pos1.x+endX)/2, pos1.y+height, (pos1.z+endZ)/2); // Top middle
+		Vector3 pos3 = new Vector3(endX, endY, endZ); // End
+		dest = pos3;
+		
+		// Parabola: y = ax² + bx + c
+		
+		// Project on X-axis and Y-axis
+		// Determine a, b and c
+		Matrix mat = new Matrix(4, 3);
+		mat[0, 0] = pos1.x * pos1.x; mat[1, 0] = pos1.x; mat[2, 0] = 1; mat[3, 0] = pos1.y;
+		mat[0, 1] = pos2.x * pos2.x; mat[1, 1] = pos2.x; mat[2, 1] = 1; mat[3, 1] = pos2.y;
+		mat[0, 2] = pos3.x * pos3.x; mat[1, 2] = pos3.x; mat[2, 2] = 1; mat[3, 2] = pos3.y;
+		
+		Matrix reduced = mat.reduce();
+		parabolaXYCoef.a = reduced[3, 0];
+		parabolaXYCoef.b = reduced[3, 1];
+		parabolaXYCoef.c = reduced[3, 2];
+		
+		// Project on Z-axis and Y-axis
+		// Determine a, b and c
+		mat = new Matrix(4, 3);
+		mat[0, 0] = pos1.z * pos1.z; mat[1, 0] = pos1.z; mat[2, 0] = 1; mat[3, 0] = pos1.y;
+		mat[0, 1] = pos2.z * pos2.z; mat[1, 1] = pos2.z; mat[2, 1] = 1; mat[3, 1] = pos2.y;
+		mat[0, 2] = pos3.z * pos3.z; mat[1, 2] = pos3.z; mat[2, 2] = 1; mat[3, 2] = pos3.y;
+		
+		reduced = mat.reduce();
+		parabolaZYCoef.a = reduced[3, 0];
+		parabolaZYCoef.b = reduced[3, 1];
+		parabolaZYCoef.c = reduced[3, 2];
+	}
+	
+	public void getNextPosition()
+	{
+		float normalizedStep = 5.5f;
+		float step = normalizedStep * Time.deltaTime;
+		
+		// Init nextPos to the current position
+		Vector3 nextPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+		
+		// Determine X and Y value for next position
+		float angle = Mathf.Acos(Vector3.Dot((dest - nextPos).normalized, Vector3.right));
+		nextPos.x = nextPos.x + step * Mathf.Cos(angle);
+		nextPos.y = parabolaXYCoef.getValueFor(nextPos.x);
+		
+		// Validate the Y value, to have at least one result for the Z component below.
+		float vertY = parabolaZYCoef.getVertex().y;
+		bool isAPositive = parabolaXYCoef.isAPositive();
+		if ((isAPositive && vertY > nextPos.y) || (!isAPositive && vertY < nextPos.y))
+		{
+			nextPos.y = parabolaZYCoef.getVertex().y;
+		}
+		
+		// Determine the Z value for the next position
+		List<float> res = parabolaZYCoef.getArgOf(nextPos.y);
+		if (res.Count == 2) {
+			nextPos.z = res[0];
+			Vector3 vec1 = nextPos;
+			nextPos.z = res[1];
+			Vector3 vec2 = nextPos;
+			// If we are far of the top vertex, choose the nearest vector
+			if ((vec1 - vec2).magnitude > 2*step)
+			{
+				if ((transform.position - vec1).magnitude < (transform.position - vec2).magnitude)
+					nextPos.z = res[0];
+				else
+					nextPos.z = res[1];
+			}
+			// Else, if we are close to the top vertex
+			else {
+				// Determine the result that give to (nextPos - transform.position) a similar direction with velocity.
+				float dot0 = Vector3.Angle(vec1 - transform.position, velocity);
+				float dot1 = Vector3.Angle(vec2 - transform.position, velocity);
+				if (dot0 < dot1)
+					nextPos.z = res[0];
+				else
+					nextPos.z = res[1];
+			}
+		}
+		else if (res.Count == 1) {
+			nextPos.z = res[0];
+		}
+		else {
+			throw new System.Exception("CameraPath.getNextPosition: Invalid result of parabolaZYCoef.getArgOf.");
+		}
+		
+		// Update the current position
+		if ((nextPos - transform.position).magnitude > (dest - transform.position).magnitude)
+		{
+			velocity = Vector3.zero;
+			transform.position = nextPos = dest;
+		}
+		else
+		{
+			velocity = (nextPos - transform.position)/Time.deltaTime;
+			transform.position = nextPos;
+		}
+	}
 
 }
