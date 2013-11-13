@@ -25,6 +25,7 @@ public class AchievementManager : MonoBehaviour {
 	public float counter = 0;
 	
 	private List<Achievement> achievements;
+	private List<Achievement> achievementsGet;
 	// Stocke un historique des ennemis tués <temps, nb Ennemis Tués sur la frame>
 	private Dictionary<float, int> ennemiesKilledHistorical;
 		
@@ -107,6 +108,9 @@ public class AchievementManager : MonoBehaviour {
 			}
 		}
 		
+		// Liste des achievements déjà acquis
+		achievementsGet = new List<Achievement>();
+		
 		// Historique des ennemis tués
 		ennemiesKilledHistorical = new Dictionary<float, int>();
     }
@@ -117,7 +121,7 @@ public class AchievementManager : MonoBehaviour {
 		//File.Delete("/achievements.dat");
 		//PlayerPrefs.DeleteAll();
 		loadAchievements();
-		// Supprime de la liste des achievements a check tous ceux déjà réalisés
+		// Supprime de la liste des achievements a check tous ceux déjà réalisés et les ajoute à une liste de ceux réalisés
 		refreshListAchievements();
 			
 		// positionne la texture d'affichage des achievements cachée au début du jeu
@@ -323,11 +327,14 @@ public class AchievementManager : MonoBehaviour {
 	
 	void refreshListAchievements()
 	{
-		// Parcours la liste des achievements pour retirer ceux déjà réalisés
+		// Parcours la liste des achievements pour retirer ceux déjà réalisés et les ajoute à une liste de ceux réalisés
 		for (int i = 0 ; i < achievements.Count() ; i++)
 		{
 			if (achievements.ElementAt(i).getAchieved())
-				achievements.Remove(achievements.ElementAt(i));
+			{
+				achievementsGet.Add(achievements.ElementAt(i));
+				achievements.RemoveAt(i);
+			}
 		}
 	}
 	
