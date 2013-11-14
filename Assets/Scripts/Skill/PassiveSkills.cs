@@ -3,28 +3,63 @@ using System.Collections;
 
 public abstract class PassiveSkills : Skills 
 {
-	private int lvlSkill = 0;
+	private int m_lvlFirstAd = 0;
+	private int m_costIncFirstAd;
+	private int m_lvlSecAd = 0;
+	private int m_costIncSecAd;
 	
 	//acsessor
-	public void setLvlSkill(int lvl)
+	public void setLvlFirstAd(int lvl)
 	{
-		lvlSkill = lvl;	
+		m_lvlFirstAd = lvl;	
 	}
 	
-	public int getLvlSkill()
+	public int getLvlFirstAd()
 	{
-		return lvlSkill;	
+		return m_lvlFirstAd;	
+	}
+	
+	public void setLvlSecAd(int lvl)
+	{
+		m_lvlSecAd = lvl;	
+	}
+	
+	public int getLvlSecAd()
+	{
+		return m_lvlSecAd;	
+	}
+	
+	public void setCostIncFirstAd(int cost)
+	{
+		m_costIncFirstAd = cost;	
+	}
+	
+	public int setCostIncFirstAd()
+	{
+		return m_costIncFirstAd;	
+	}
+	
+	public void setCostIncSecAd(int cost)
+	{
+		m_costIncSecAd = cost;	
+	}
+	
+	public int setCostIncSecAd()
+	{
+		return m_costIncSecAd;	
 	}
 	
 	// Use this for initialization
-	void Start () 
+	protected virtual void Start (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd) 
 	{
-	
+		base.Start (name, price, father);
+		m_costIncFirstAd = costIncFirstAd;
+		m_costIncSecAd = costIncSecAd;
 	}
 	
 	// Update is called once per frame
-	void Update () 
+	protected override void Update () 
 	{
-	
+		base.Update();
 	}
 }

@@ -3,68 +3,55 @@ using System.Collections;
 
 public abstract class Skills 
 {
-	private string name;
-	private int price;
-	private bool isBought = false;
-	private bool isUnlock = false;
+	private string m_name;
+	private int m_price;
+	private bool m_isBought = false;
+	private bool m_isUnlock = false;
 	
-	private Skills father = null;
+	private Skills m_father;
 	
 	//acsessor
-	public void setName(string str)
-	{
-		name = str;	
-	}
-	
 	public string getName()
 	{
-		return name;	
-	}
-	
-	public void setPrice(int p)
-	{
-		price = p;	
+		return m_name;	
 	}
 	
 	public int getPrice()
 	{
-		return price;	
+		return m_price;	
 	}
 	
-	public void setIsBought(bool b)
+	public void setIsBought(bool isBought)
 	{
-		isBought = b;	
+		m_isBought = isBought;	
 	}
 	
 	public bool getIsBought()
 	{
-		return isBought;	
+		return m_isBought;	
 	}
 	
-	public void setIsUnlock(bool b)
+	public void setIsUnlock(bool isUnlock)
 	{
-		isUnlock = b;	
+		m_isUnlock = isUnlock;	
 	}
 	
 	public bool getIsUnlock()
 	{
-		return isUnlock;	
-	}
-	
-	public void setFather(Skills ptr)
-	{
-		father = ptr;	
+		return m_isUnlock;	
 	}
 	
 	public Skills getFather()
 	{
-		return father;
+		return m_father;
 	}
 	
 	// Use this for initialization
-	protected virtual void Start () 
+	protected virtual void Start (string name, int price, Skills father) 
 	{
-		
+		m_name = name;	
+		m_price = price;
+		m_father = father;
 	}
 	
 	// Update is called once per frame
