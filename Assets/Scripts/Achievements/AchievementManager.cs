@@ -25,6 +25,7 @@ public class AchievementManager : MonoBehaviour {
 	public float counter = 0;
 	
 	private List<Achievement> achievements;
+	private List<Achievement> achievementsGet;
 	// Stocke un historique des ennemis tués <temps, nb Ennemis Tués sur la frame>
 	private Dictionary<float, int> ennemiesKilledHistorical;
 		
@@ -106,21 +107,12 @@ public class AchievementManager : MonoBehaviour {
 					maxTimeLimit = achiev.getTimeGive();
 			}
 		}
+		
+		// Liste des achievements déjà acquis
+		achievementsGet = new List<Achievement>();
+		
 		// Historique des ennemis tués
 		ennemiesKilledHistorical = new Dictionary<float, int>();
-		
-		// Nom des achievements
-		string[] names = {
-			"firstMove", "firstKill", "tenKills", "hundredKills", "thousandKills", "noLimit", "thousandKillsBersekers",
-			"untouch1min", "untouch5mins", "beginner", "amateur", "ghost", "immortal", "god", "assassin", "masterAssassin",
-			"longArm", "oneKilometer", "tenKilometers", "marathon", "hundredKilometers", "thousandKilometers", "milionKilometer",
-			"littleHoodlum", "boxer", "clod", "brute", "barbarian"
-		};
-		
-		AchievementsStates = new Dictionary<string, bool>();
-		// Initialise le dictionnaire des achievements
-		for (int i = 0 ; i <  names.Length ; i++)
-			AchievementsStates.Add(names[i], false);
     }
 	
 	// Use this for initialization
@@ -129,7 +121,9 @@ public class AchievementManager : MonoBehaviour {
 		//File.Delete("/achievements.dat");
 		//PlayerPrefs.DeleteAll();
 		loadAchievements();
-		
+		// Supprime de la liste des achievements a check tous ceux déjà réalisés et les ajoute à une liste de ceux réalisés
+		refreshListAchievements();
+			
 		// positionne la texture d'affichage des achievements cachée au début du jeu
 		achievTexture.pixelInset = new Rect(Screen.width-256, -128, 256, 128);
 		achievementGet.pixelOffset = new Vector2(Screen.width-215, posYAchiev-35);
@@ -193,6 +187,8 @@ public class AchievementManager : MonoBehaviour {
 			{
 				// Unlocked achievement
 				Debug.Log(achievements[i].getName() + ": " + achievements[i].getDescription());
+				// Supprime de la liste des achievements a check tous ceux déjà réalisés
+				refreshListAchievements();
 			}
 		}
 		
@@ -327,6 +323,19 @@ public class AchievementManager : MonoBehaviour {
 	{
 		// condition pour vérifier que le temps est dans l'espace temps définit avec duration
 		return ennemiesKilledHistorical.ElementAt(index).Key >= (Time.time - duration);
+	}
+	
+	void refreshListAchievements()
+	{
+		// Parcours la liste des achievements pour retirer ceux déjà réalisés et les ajoute à une liste de ceux réalisés
+		for (int i = 0 ; i < achievements.Count() ; i++)
+		{
+			if (achievements.ElementAt(i).getAchieved())
+			{
+				achievementsGet.Add(achievements.ElementAt(i));
+				achievements.RemoveAt(i);
+			}
+		}
 	}
 	
 	// Accesseurs

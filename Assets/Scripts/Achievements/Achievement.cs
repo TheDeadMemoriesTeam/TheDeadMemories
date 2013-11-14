@@ -28,6 +28,11 @@ public abstract class Achievement
 		return description;
 	}
 	
+	public bool getAchieved()
+	{
+		return _achieved;
+	}
+	
 	public abstract bool achieved();
 	
 	public bool check()
