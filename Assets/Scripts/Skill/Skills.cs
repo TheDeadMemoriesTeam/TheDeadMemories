@@ -52,11 +52,29 @@ public abstract class Skills
 		m_name = name;	
 		m_price = price;
 		m_father = father;
+		
+		if(father == null)
+			setIsUnlock(true);
 	}
 	
 	// Update is called once per frame
 	protected virtual void Update () 
 	{
-	
+		if(!m_isUnlock)
+		{
+			PassiveSkills fatherP = m_father as  PassiveSkills;
+			if(fatherP != null)
+			{
+				if(fatherP.getLvlFirstAd() + fatherP.getLvlSecAd() > 5)
+					setIsUnlock(true);
+			}
+			
+			BaseSkills fatherB = m_father as BaseSkills;
+			if(fatherB != null)
+			{
+				if(fatherB.getLvlDamage() + fatherB.getLvlAd() > 5)
+					setIsUnlock(true);
+			}
+ 		}
 	}
 }

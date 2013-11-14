@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class FurieSkills : DamageSkills 
+public class FurieSkills : ActiveSkills 
 {
 	private float m_time;
 	private float m_damageFactor;
@@ -18,9 +18,9 @@ public class FurieSkills : DamageSkills
 	}
 	
 	// Use this for initialization
-	protected void Start (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, float time, float damageFactor) 
+	protected void Start (string name, int price, Skills father, float timeIncantation, int manaCost, float time, float damageFactor) 
 	{
-		base.Start(name, price, father, timeIncantation, manaCost, damage);
+		base.Start(name, price, father, timeIncantation, manaCost);
 		m_time = time;
 		m_damageFactor = damageFactor;
 	}
