@@ -25,7 +25,7 @@ public class AchievementManager : MonoBehaviour {
 	public float counter = 0;
 	
 	private List<Achievement> achievements;
-	private List<Achievement> achievementsGet;
+	private List<Achievement> achievementsUnlock;
 	// Stocke un historique des ennemis tués <temps, nb Ennemis Tués sur la frame>
 	private Dictionary<float, int> ennemiesKilledHistorical;
 		
@@ -98,7 +98,7 @@ public class AchievementManager : MonoBehaviour {
 		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
 		
 		// Récupère l'interval de temps maximal à conserver en historique pour les TimedKillAchievement
-		for (int i = 0 ; i < achievements.Count() ; i++)
+		for (int i = 0 ; i < achievements.Count ; i++)
 		{
 			TimedKillAchievement achiev = achievements.ElementAt(i) as TimedKillAchievement;
 			if (achiev != null)
@@ -109,7 +109,7 @@ public class AchievementManager : MonoBehaviour {
 		}
 		
 		// Liste des achievements déjà acquis
-		achievementsGet = new List<Achievement>();
+		achievementsUnlock = new List<Achievement>();
 		
 		// Historique des ennemis tués
 		ennemiesKilledHistorical = new Dictionary<float, int>();
@@ -203,45 +203,45 @@ public class AchievementManager : MonoBehaviour {
 	
 	public void saveAchievements()
 	{
+		// Sauvegarde des achievements non réalisés
 		//Crée un BinaryFormatter
-		var binFormatter = new BinaryFormatter();
+		//var binFormatter = new BinaryFormatter();
 		//Crée un fichier
-		var file = File.Create(Application.persistentDataPath + "/achievements.dat");
-		//Sauvegarde les achievements
-		binFormatter.Serialize(file, AchievementsStates);
-        
-		file.Close();
+		//var fileTodo = File.Create(Application.persistentDataPath + "/achievementsTodo.dat");
+		//binFormatter.Serialize(fileTodo, achievements);
+		//fileTodo.Close();
 		
-		// Sauvegarde les variables dans le PlayerPrefs
-//		PlayerPrefs.SetInt("nbKilledEnemy", nbKilledEnemy);
-//		PlayerPrefs.SetInt("cptBersekerKilled", cptBersekerKilled);
-//		PlayerPrefs.SetInt("cptAssassinKill", cptAssassinKill);
-//		PlayerPrefs.SetFloat("timeNotTouched", timeNotTouched);
-//		PlayerPrefs.SetFloat("timeSurvived", timeSurvived);
-//		PlayerPrefs.SetFloat("travelledDistance", travelledDistance);
+		// Sauvegarde des achievements réalisés
+		//Crée un fichier
+		//var fileGet = File.Create(Application.persistentDataPath + "/achievementsGet.dat");
+		//Sauvegarde les achievements
+		//binFormatter.Serialize(fileGet, achievementsGet);
+		//fileGet.Close();
 	}
 	
 	void loadAchievements()
 	{
-		//Si le fichier de sauvegarde existe on le charge
-		if(File.Exists(Application.persistentDataPath + "/achievements.dat"))
+		//Si le fichier de sauvegarde existe on les charge
+		//if(File.Exists(Application.persistentDataPath + "/achievementsTodo.dat"))
+		//{
+			//BinaryFormatter pour charger les nouvelles données
+		//	var binFormatter = new BinaryFormatter();
+			//Ouvre le fichier
+		//	var fileTodo = File.Open(Application.persistentDataPath + "/achievementsTodo.dat", FileMode.Open);
+			//Charge les achievements non réalisés
+		//	achievements = (List<Achievement>)binFormatter.Deserialize(fileTodo);
+		//	fileTodo.Close();
+		//}
+		/*if(File.Exists(Application.persistentDataPath + "/achievementsGet.dat"))
 		{
 			//BinaryFormatter pour charger les nouvelles données
 			var binFormatter = new BinaryFormatter();
 			//Ouvre le fichier
-			var file = File.Open(Application.persistentDataPath + "/achievements.dat", FileMode.Open);
-			//Charge les achievements
-			AchievementsStates = (Dictionary<string, bool>)binFormatter.Deserialize(file);
-			file.Close();
-			
-			// Charge les variables du PlayerPrefs
-//			nbKilledEnemy = PlayerPrefs.GetInt("nbKilledEnemy");
-//			cptBersekerKilled = PlayerPrefs.GetInt("cptBersekerKilled");
-//			cptAssassinKill = PlayerPrefs.GetInt("cptAssassinKill");
-//			timeNotTouched = PlayerPrefs.GetFloat("timeNotTouched");
-//			timeSurvived = PlayerPrefs.GetFloat("timeSurvived");
-//			travelledDistance = PlayerPrefs.GetFloat("travelledDistance");
-		}
+			var fileGet = File.Open(Application.persistentDataPath + "/achievementsGet.dat", FileMode.Open);
+			//Charge les achievements réalisés
+			achievementsGet = (List<Achievement>)binFormatter.Deserialize(fileGet);
+			fileGet.Close();
+		}*/
 	}
 	
 	void unlockAchievement(string nameAchievement)
@@ -332,7 +332,7 @@ public class AchievementManager : MonoBehaviour {
 		{
 			if (achievements.ElementAt(i).getAchieved())
 			{
-				achievementsGet.Add(achievements.ElementAt(i));
+				achievementsUnlock.Add(achievements.ElementAt(i));
 				achievements.RemoveAt(i);
 			}
 		}

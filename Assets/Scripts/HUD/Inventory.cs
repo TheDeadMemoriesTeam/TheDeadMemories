@@ -26,6 +26,27 @@ public class Inventory : PauseSystem
 		{8, string.Empty}
 	};
 	
+	// liste des items
+	private List<Item> listOfItem;
+	
+	// Inventaire <item, quantité possédée>
+	private Dictionary<Item, int> inventory;
+	
+	
+	
+	protected void Awake()
+	{
+		// Liste de tous les items
+		listOfItem = new List<Item>();
+		listOfItem.Add(new Item(0, "Bone", "Restaure de la vie"));
+		listOfItem.Add(new Item(1, "ManaPotion", "Restaure de la mana"));
+		
+		// Initialise la liste des items
+		inventory = new Dictionary<Item, int>();
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+			inventory.Add(listOfItem[i], 0);
+	}
+	
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -42,7 +63,7 @@ public class Inventory : PauseSystem
 			paused = !paused;
 			if (paused)
 			{
-				inv = player.getInv();
+				//inv = player.getInv();
 			}
 			UpdateState();
 		}
@@ -94,10 +115,6 @@ public class Inventory : PauseSystem
 	
 	void inventoryWindowMethod (int windowId)
 	{
-		//Définition des Items
-		item bone = new item(0, "Bone", "Restaure de la vie");
-		item manaPotion = new item(1, "ManaPotion", "restaure de la mana");
-		
 		//Mise a jour des items a afficher sur l'interface
 		inventoryItem[0] = string.Empty;
 		inventoryItem[1] = string.Empty;
@@ -110,7 +127,7 @@ public class Inventory : PauseSystem
 		inventoryItem[8] = string.Empty;
 		foreach(string keys in inv.Keys)
 		{
-			switch (keys)
+			/*switch (keys)
 			{
 			case "Bone":
 				if ((int)inv[keys]>0)
@@ -121,7 +138,7 @@ public class Inventory : PauseSystem
 				if ((int)inv[keys]>0)
 					inventoryItem[computeNbItem()] = manaPotion.getName();
 				break;
-			}
+			}*/
 		}
 		
 		
@@ -174,16 +191,31 @@ public class Inventory : PauseSystem
 		}
 		return i;
 	}
+	
+	
+	public void addItem(string nameItem)
+	{
+		// Incrémente la quantité de l'item de l'inventaire passé en paramètre
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			if (listOfItem[i].getName() == nameItem)
+			{
+				if (inventory.ContainsKey(listOfItem[i]))
+					inventory[listOfItem[i]]++;
+				break;
+			}
+		}
+	}
 }
 
-public class item
+public class Item
 {
 	private int id;
 	private string name;
 	//private Texture2D icon;
 	private string resume;
 	
-	public item(int in_id, string in_name, string in_resume)
+	public Item(int in_id, string in_name, string in_resume)
 	{
 		id = in_id;
 		name = in_name;

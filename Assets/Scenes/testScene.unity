@@ -1465,6 +1465,44 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1033109664}
   m_GameObject: {fileID: 410721345}
   m_Mesh: {fileID: 4300006, guid: 053521a0a5bdf6c4a94bd41357c872ea, type: 3}
+--- !u!1 &411470964
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 411470965}
+  - 114: {fileID: 411470966}
+  m_Layer: 0
+  m_Name: Inventory
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &411470965
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411470964}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 242.586533, y: 153.41626, z: 213.409424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!114 &411470966
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 411470964}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8434b1ea4c9fc7d47aa2b923848937c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &413971248
 Prefab:
   m_ObjectHideFlags: 0
@@ -4623,7 +4661,6 @@ GameObject:
   - 4: {fileID: 1194533975}
   - 114: {fileID: 1194533976}
   - 114: {fileID: 1194533977}
-  - 114: {fileID: 1194533978}
   m_Layer: 0
   m_Name: HUD
   m_TagString: Untagged
@@ -4642,6 +4679,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2103803405}
+  - {fileID: 411470965}
   - {fileID: 1311372441}
   - {fileID: 1640812205}
   - {fileID: 565409770}
@@ -4690,17 +4728,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6431d838c916cc34788e45849dd676a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1194533978
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1194533974}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8434b1ea4c9fc7d47aa2b923848937c9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1208222681
@@ -7177,6 +7204,7 @@ MonoBehaviour:
   rotationFactor: 5
   gravity: 20
   achievementManager: {fileID: 1375840453}
+  inventory: {fileID: 411470966}
 --- !u!143 &1758632533
 CharacterController:
   m_ObjectHideFlags: 0

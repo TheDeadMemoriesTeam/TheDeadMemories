@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class PlayerController : HumanoidController 
 {
@@ -18,7 +19,8 @@ public class PlayerController : HumanoidController
 	// Variables servants aux achievements
 	public AchievementManager achievementManager;
 	
-	private Hashtable inv;
+	// Inventaire du joueur
+	public Inventory inventory;
 	
 	private bool pause = false;
 	
@@ -35,7 +37,7 @@ public class PlayerController : HumanoidController
 		
 		timeRegen = 2;
 		
-		inv = new Hashtable(2);
+		//inv = new Dictionary<item, int>();
 	}
 	
 	// Update is called once per frame
@@ -110,25 +112,8 @@ public class PlayerController : HumanoidController
 	
 	void OnTriggerEnter (Collider other)
 	{
-		// Collects items
-		if (other.gameObject.tag == "Bone")
-		{
-			if(!inv.ContainsKey("Bone"))
-				inv.Add ("Bone",1);
-			else
-				inv["Bone"] = (int)inv["Bone"]+1;
-			DestroyObject(other.gameObject);
-			return;
-		}
-		else if (other.gameObject.tag == "ManaPotion")
-		{
-			if(!inv.ContainsKey("ManaPotion"))
-				inv.Add ("ManaPotion",1);
-			else
-				inv["ManaPotion"] = (int)inv["ManaPotion"]+1;
-			DestroyObject(other.gameObject);
-			return;
-		}
+		inventory.addItem(other.gameObject.tag);
+		DestroyObject(other.gameObject);
 	}
 	
 	public void experienceUpdate(int change)
@@ -141,11 +126,6 @@ public class PlayerController : HumanoidController
 	public int getExperience()
 	{
 		return xp;
-	}
-
-	public Hashtable getInv()
-	{
-		return inv;	
 	}
 	
 	public void onPause()
