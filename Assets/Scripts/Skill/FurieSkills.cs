@@ -18,16 +18,10 @@ public class FurieSkills : ActiveSkills
 	}
 	
 	// Use this for initialization
-	protected void Start (string name, int price, Skills father, float timeIncantation, int manaCost, float time, float damageFactor) 
+	public FurieSkills (string name, int price, Skills father, float timeIncantation, int manaCost, float time, float damageFactor) 
+		:base(name, price, father, timeIncantation, manaCost)
 	{
-		base.Start(name, price, father, timeIncantation, manaCost);
 		m_time = time;
 		m_damageFactor = damageFactor;
-	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
 	}
 }

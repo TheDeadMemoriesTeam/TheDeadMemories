@@ -18,16 +18,10 @@ public class BaseAttaqueSkills : PassiveSkills
 	}
 	
 	// Use this for initialization
-	protected void Start (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int damageCac, int damageDist) 
+	public BaseAttaqueSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int damageCac, int damageDist) 
+		:base (name, price, father, costIncFirstAd, costIncSecAd)
 	{
-		base.Start (name, price, father, costIncFirstAd, costIncSecAd);
 		m_damageCac = damageCac;
 		m_damageDist = damageDist;
-	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
 	}
 }

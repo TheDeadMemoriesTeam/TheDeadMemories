@@ -18,16 +18,10 @@ public class SurvieSkills : PassiveSkills
 	}
 	
 	// Use this for initialization
-	protected void Start (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int pvUp, int manUp) 
+	public SurvieSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int pvUp, int manUp) 
+		:base(name, price, father, costIncFirstAd, costIncSecAd)
 	{
-		base.Start (name, price, father, costIncFirstAd, costIncSecAd);
 		m_pvUp = pvUp;
 		m_manaUp = manUp;
-	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
 	}
 }
