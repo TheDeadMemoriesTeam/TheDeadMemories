@@ -26,7 +26,7 @@ public class PlayerController : HumanoidController
 	
 	void Awake()
 	{	
-		//arbre de competence Survie
+		/*//arbre de competence Survie
 		skillManager.addSkill(new SurvieSkills("Survie", 0, null, 200, 200, 5, 5));
 		skillManager.addSkill(new ResistanceSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 5, 5)); 
 		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, 5));
@@ -49,7 +49,7 @@ public class PlayerController : HumanoidController
 		//arbre de competence Vent
 		skillManager.addSkill(new PorteeSkills("Soufle", 1000, null, 1f, 10, 10, 200, 200, 2f));
 		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(12), 2f, 15, 15, 200, 200, 2f));
-		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 3f, 20, 20, 10f, 10f));	
+		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 3f, 20, 20, 10f, 10f));*/	
 	}
 	
 	// Use this for initialization
@@ -64,8 +64,6 @@ public class PlayerController : HumanoidController
 		distanceM = 4f;
 		
 		timeRegen = 2;
-		
-		//inv = new Dictionary<item, int>();
 	}
 	
 	// Update is called once per frame
