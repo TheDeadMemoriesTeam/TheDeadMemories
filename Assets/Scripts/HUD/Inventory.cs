@@ -4,29 +4,20 @@ using System.Collections.Generic;
 
 public class Inventory : PauseSystem
 {
-	private Hashtable inv;
+	// Nombre d'item par ligne d'inventaire
+	private int nbItemPerLine = 3;
+	// Nombre de place dans l'inventaire
+	private int nbLocationInInventory;
 	
 	private Rect inventoryWindowRect = new Rect(Screen.width/2-130,Screen.height/2-200, 260, 250);
-	private Dictionary<int, string> dictionaryItem;
 	
-	private bool[] listeButton = new bool[9];
+	// Liste de l'état des boutons de l'inventaire (true = occupé, false = libre)
+	private bool[] listeButton;
 	
-	private Texture2D boneIcon;
+	// Association <id bouton, id item> pour l'affichage de l'inventaire
+	private Dictionary<int, int> inventoryItem;
 	
-	private Dictionary<int, string> inventoryItem = new Dictionary<int, string>()
-	{
-		{0, string.Empty},
-		{1, string.Empty},
-		{2, string.Empty},
-		{3, string.Empty},
-		{4, string.Empty},
-		{5, string.Empty},
-		{6, string.Empty},
-		{7, string.Empty},
-		{8, string.Empty}
-	};
-	
-	// liste des items
+	// liste des items existants
 	private List<Item> listOfItem;
 	
 	// Inventaire <item, quantité possédée>
@@ -36,23 +27,30 @@ public class Inventory : PauseSystem
 	
 	protected void Awake()
 	{
+		nbLocationInInventory = nbItemPerLine*nbItemPerLine;
+		
+		// initialise le dictionnary pour l'affichage de l'inventaire
+		inventoryItem = new Dictionary<int, int>();
+		for (int i = 0 ; i < nbLocationInInventory; i++)
+			inventoryItem.Add(i, -1);
+		
+		listeButton = new bool[nbLocationInInventory];
+		
 		// Liste de tous les items
 		listOfItem = new List<Item>();
 		listOfItem.Add(new Item(0, "Bone", "Restaure de la vie"));
 		listOfItem.Add(new Item(1, "ManaPotion", "Restaure de la mana"));
 		
-		// Initialise la liste des items
 		inventory = new Dictionary<Item, int>();
-		for (int i = 0 ; i < listOfItem.Count ; i++)
-			inventory.Add(listOfItem[i], 0);
+		
+		for(int i=0; i<9; i++)
+			listeButton[i] = false;
 	}
 	
 	// Use this for initialization
 	protected override void Start () 
 	{
 		base.Start();
-		for(int i=0; i<9; i++)
-			listeButton[i] = false;
 	}
 	
 	// Update is called once per frame
@@ -61,10 +59,6 @@ public class Inventory : PauseSystem
 		if(Input.GetButtonDown("Inventory"))
 		{
 			paused = !paused;
-			if (paused)
-			{
-				//inv = player.getInv();
-			}
 			UpdateState();
 		}
 	}
@@ -72,139 +66,149 @@ public class Inventory : PauseSystem
 	void OnGUI()
 	{
 		if (paused)
-		{
-			/*GUILayout.BeginArea(new Rect(Screen.width/2-50,Screen.height/2-50, 100,100));
-			
-			foreach(string keys in inv.Keys)
-			{
-				if(getButton(keys))
-				{
-					chooseWork(keys);
-					inv[keys] = (int)inv[keys]-1;
-					if((int)inv[keys] <= 0)
-						inv.Remove(keys);
-					return;
-				}
-			}
-			
-			GUILayout.EndArea();*/	
-			
 			inventoryWindowRect = GUI.Window(0, inventoryWindowRect, inventoryWindowMethod, "Inventaire");
+	}
+	
+	void inventoryWindowMethod (int windowId)
+	{
+		//Mise a jour des items a afficher sur l'interface
+		resetInventoryItem();
+
+		// Met à jour chaque emplacement de l'inventaire en mettant l'id de l'item à afficher
+		updateGUIInventory();
+		
+		// Dessine le GUI de l'inventaire
+		drawInventory();
+		
+		//Regarde les buttons actionnés et execute l'utilisation de l'item
+		checkButtonClick();
+	}
+	
+	// Dessine le GUI d'un inventaire carré (3*3, 4*4 etc...)
+	void drawInventory()
+	{
+		//Dessine l'inventaire
+		GUILayout.BeginArea(new Rect(5, 50, 260, 250));
+		
+		for (int i = 0 ; i < nbItemPerLine ; i++)
+		{
+			GUILayout.BeginHorizontal();
+			for (int j = 0 ; j < nbItemPerLine ; j++)
+				listeButton[i*nbItemPerLine+j] = GUILayout.Button(inventoryItem[i*nbItemPerLine+j].ToString(), GUILayout.Height(50), GUILayout.Width(80));
+			GUILayout.EndHorizontal();
 		}
+		GUILayout.EndArea();
+	}
+	
+	// Met a jour l'inventaire avec les Id des items possédés
+	void updateGUIInventory()
+	{
+		foreach(Item item in inventory.Keys)
+			inventoryItem[computeNbItem()] = item.getId();
+	}
+	
+	// Vérifie les boutons et si l'un est cliqué
+	// si cliqué utilise l'item
+	// et met a jour les valeurs de l'inventaire (quantité item -1)
+	void checkButtonClick()
+	{
+		for (int i = 0 ; i < nbLocationInInventory ; i++)
+		{
+			if(listeButton[i])
+			{
+				chooseWork(inventoryItem[i]);
+				updateQuantity(inventoryItem[i]);
+				return;
+			}
+		}
+	}
+	
+	// Retourne l'index du premier emplacement d'inventaire disponible
+	int computeNbItem()
+	{
+		int i=0;
+		while(inventoryItem[i] != -1)
+			i++;
+		return i;
+	}
+	
+	// Remet toute les valeurs de l'inventaire à "vide"
+	void resetInventoryItem()
+	{
+		for (int i = 0 ; i < inventoryItem.Count ; i++)
+			inventoryItem[i] = -1;
+	}
+	
+	// Ajoute l'item à l'inventaire
+	// L'opération n'est effectué que si l'item existe
+	public void addItem(string nameItem)
+	{
+		// Parcours la liste des items
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			// Si on a trouvé l'item dans la liste des item
+			if (listOfItem[i].getName() == nameItem)
+			{
+				// On incrémente l'inventaire s'il y a déjà des item de ce type
+				if (inventory.ContainsKey(listOfItem[i]))
+					inventory[listOfItem[i]]++;
+				// sinon on l'ajoute que s'il reste des places dans l'inventaire
+				else
+				{
+					if (inventory.Count >= nbLocationInInventory)
+						throw new System.InvalidOperationException("Inventory full");
+					inventory.Add(listOfItem[i], 1);
+				}
+				break;
+			}
+		}
+	}
+	
+	// Utilise l'item avec l'id passé en parametre
+	void chooseWork(int id)
+	{
+		string itemName = "";
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			if (id == listOfItem[i].getId())
+				itemName = listOfItem[i].getName();	
+		}
+		
+		if(itemName == "Bone")
+		{
+			player.healthUpdate(50);
+			return;
+		}
+		if(itemName == "ManaPotion")
+		{
+			player.manaUpdate(50);
+			return;
+		}
+	}
+
+	// Diminue la quantité de l'item avec l'id en parametre de 1 (le supprime de l'inventaire si quantité = 0)
+	// L'opération n'est effectué que si l'item existe
+	void updateQuantity(int id)
+	{
+		for(int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			if (listOfItem[i].getId() == id)
+			{
+				if (inventory.ContainsKey(listOfItem[i]))
+				{
+					inventory[listOfItem[i]]--;
+					if (inventory[listOfItem[i]] <= 0)
+						inventory.Remove(listOfItem[i]);
+				}
+				break;
+			}
+		}	
 	}
 	
 	protected override void UpdateState()
 	{
 		base.UpdateState();
 		GetComponent<PauseMenu>().enabled = !paused;
-	}
-	
-	void chooseWork(string key)
-	{
-		if(key == "Bone")
-		{
-			player.healthUpdate(50);
-			return;
-		}
-		if(key == "ManaPotion")
-		{
-			player.manaUpdate(50);
-			return;
-		}
-	}
-	
-	void inventoryWindowMethod (int windowId)
-	{
-		//Mise a jour des items a afficher sur l'interface
-		inventoryItem[0] = string.Empty;
-		inventoryItem[1] = string.Empty;
-		inventoryItem[2] = string.Empty;
-		inventoryItem[3] = string.Empty;
-		inventoryItem[4] = string.Empty;
-		inventoryItem[5] = string.Empty;
-		inventoryItem[6] = string.Empty;
-		inventoryItem[7] = string.Empty;
-		inventoryItem[8] = string.Empty;
-		foreach(string keys in inv.Keys)
-		{
-			/*switch (keys)
-			{
-			case "Bone":
-				if ((int)inv[keys]>0)
-					inventoryItem[computeNbItem()] = bone.getName();
-				break;
-				
-			case "ManaPotion":
-				if ((int)inv[keys]>0)
-					inventoryItem[computeNbItem()] = manaPotion.getName();
-				break;
-			}*/
-		}
-		
-		
-		
-		//Dessine l'inventaire
-		GUILayout.BeginArea(new Rect(5, 50, 260, 250));
-		
-		GUILayout.BeginHorizontal();
-		listeButton[0] = GUILayout.Button(inventoryItem[0], GUILayout.Height(50), GUILayout.Width(80));
-		listeButton[1] = GUILayout.Button(inventoryItem[1], GUILayout.Height(50), GUILayout.Width(80));
-		listeButton[2] = GUILayout.Button(inventoryItem[2], GUILayout.Height(50), GUILayout.Width(80));
-		GUILayout.EndHorizontal();
-		
-		GUILayout.BeginHorizontal();
-		listeButton[3] = GUILayout.Button(inventoryItem[3], GUILayout.Height(50), GUILayout.Width(80));
-		listeButton[4] = GUILayout.Button(inventoryItem[4], GUILayout.Height(50), GUILayout.Width(80));
-		listeButton[5] = GUILayout.Button(inventoryItem[5], GUILayout.Height(50), GUILayout.Width(80));
-		GUILayout.EndHorizontal();
-		
-		GUILayout.BeginHorizontal();
-		listeButton[6] = GUILayout.Button(inventoryItem[6], GUILayout.Height(50), GUILayout.Width(80));
-		listeButton[7] = GUILayout.Button(inventoryItem[7], GUILayout.Height(50), GUILayout.Width(80));
-		listeButton[8] = GUILayout.Button(inventoryItem[8], GUILayout.Height(50), GUILayout.Width(80));
-		GUILayout.EndHorizontal();
-		
-		GUILayout.EndArea();
-		
-		//Regarde les buttons actionnés et execute l'utilisation de l'item
-		for (int i=0; i<9; i++)
-		{
-			if(listeButton[i])
-			{
-				chooseWork(inventoryItem[i]);
-				inv[inventoryItem[i]] = (int)inv[inventoryItem[i]]-1;
-				if((int)inv[inventoryItem[i]] <= 0)
-					inv.Remove(inventoryItem[i]);
-				return;
-			}
-		}
-	}
-	
-	//Compte le nombre d'item qu'on a sur soi
-	//Utile pour connaitre a quel emplacement du inventoryItem on peut placer un item
-	int computeNbItem()
-	{
-		int i=0;
-		while(inventoryItem[i] != string.Empty)
-		{
-			i++;
-		}
-		return i;
-	}
-	
-	
-	public void addItem(string nameItem)
-	{
-		// Incrémente la quantité de l'item de l'inventaire passé en paramètre
-		for (int i = 0 ; i < listOfItem.Count ; i++)
-		{
-			if (listOfItem[i].getName() == nameItem)
-			{
-				if (inventory.ContainsKey(listOfItem[i]))
-					inventory[listOfItem[i]]++;
-				break;
-			}
-		}
 	}
 }
 

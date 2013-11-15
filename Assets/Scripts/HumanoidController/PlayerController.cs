@@ -112,8 +112,15 @@ public class PlayerController : HumanoidController
 	
 	void OnTriggerEnter (Collider other)
 	{
-		inventory.addItem(other.gameObject.tag);
-		DestroyObject(other.gameObject);
+		try 
+		{
+			inventory.addItem(other.gameObject.tag);
+			DestroyObject(other.gameObject);
+		}
+		catch (System.InvalidOperationException ex)
+		{
+			Debug.Log(ex);	
+		}
 	}
 	
 	public void experienceUpdate(int change)
