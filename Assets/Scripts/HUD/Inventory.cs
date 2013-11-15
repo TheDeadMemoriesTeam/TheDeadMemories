@@ -94,7 +94,7 @@ public class Inventory : PauseSystem
 		{
 			GUILayout.BeginHorizontal();
 			for (int j = 0 ; j < nbItemPerLine ; j++)
-				listeButton[i*nbItemPerLine+j] = GUILayout.Button(inventoryItem[i*nbItemPerLine+j].ToString(), GUILayout.Height(50), GUILayout.Width(80));
+				listeButton[i*nbItemPerLine+j] = GUILayout.Button(getNameOfItemForId(inventoryItem[i*nbItemPerLine+j]), GUILayout.Height(50), GUILayout.Width(80));
 			GUILayout.EndHorizontal();
 		}
 		GUILayout.EndArea();
@@ -203,6 +203,17 @@ public class Inventory : PauseSystem
 				break;
 			}
 		}	
+	}
+	
+	// Retourne le nom d'un item en sachant sont id
+	string getNameOfItemForId(int id)
+	{
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			if (listOfItem[i].getId() == id)
+				return listOfItem[i].getName();
+		}
+		return "";
 	}
 	
 	protected override void UpdateState()
