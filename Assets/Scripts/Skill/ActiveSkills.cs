@@ -25,10 +25,4 @@ public abstract class ActiveSkills : Skills
 		m_timeIncantation = timeIncantation;
 		
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

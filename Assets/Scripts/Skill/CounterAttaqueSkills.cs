@@ -24,10 +24,4 @@ public class CounterAttaqueSkills : PassiveSkills
 		m_damageCounterAttaque = damageCounterAttaque;
 		m_counterAttaqueFactor = counterAttaqueFactor;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

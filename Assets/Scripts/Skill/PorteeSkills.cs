@@ -17,10 +17,4 @@ public class PorteeSkills : BaseSkills
 	{
 		m_portee = portee;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

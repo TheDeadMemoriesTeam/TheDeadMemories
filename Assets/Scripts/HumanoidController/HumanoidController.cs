@@ -4,12 +4,16 @@ using System.Collections;
 // Permet de gérer la vie
 public class HumanoidController : MonoBehaviour 
 {
-	
+	//variable afectant le player
 	protected int pv, pvMax, mana, manaMax;
 	protected float distanceP, distanceM;
 	
+	//regen de mana
 	private float regen = 0;
 	protected float timeRegen;
+	
+	//manager des skills
+	public SkillManager skillManager;
 	
 	// Use this for initialization
 	void Start () 

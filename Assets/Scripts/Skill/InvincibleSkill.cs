@@ -18,10 +18,4 @@ public class InvincibleSkill : ActiveSkills
 	{
 		m_time = time;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

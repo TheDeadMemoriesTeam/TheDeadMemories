@@ -24,10 +24,4 @@ public class SuperSkills : DamageSkills
 		m_portee = portee;
 		m_zone = zone;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

@@ -24,10 +24,4 @@ public class SurvieSkills : PassiveSkills
 		m_pvUp = pvUp;
 		m_manaUp = manUp;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

@@ -56,10 +56,4 @@ public class BaseSkills : DamageSkills
 		m_costIncDamage = costIncDamage;
 		m_costIncAd = costIncAd;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

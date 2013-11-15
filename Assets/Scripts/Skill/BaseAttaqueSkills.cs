@@ -24,10 +24,4 @@ public class BaseAttaqueSkills : PassiveSkills
 		m_damageCac = damageCac;
 		m_damageDist = damageDist;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

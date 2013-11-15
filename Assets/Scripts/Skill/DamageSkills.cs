@@ -22,10 +22,4 @@ public abstract class DamageSkills : ActiveSkills
 	{
 		m_damage = damage;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

@@ -18,10 +18,4 @@ public class ZoneSkills : BaseSkills
 		m_zone = zone;
 		
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

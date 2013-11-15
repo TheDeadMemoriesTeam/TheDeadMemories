@@ -24,10 +24,4 @@ public class ResistanceSkills : PassiveSkills
 		m_resistanceMagic = resistanceMagic;
 		m_resistancePhysic = resistancePhysic;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

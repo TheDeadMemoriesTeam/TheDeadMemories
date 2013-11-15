@@ -24,10 +24,4 @@ public class FurieSkills : ActiveSkills
 		m_time = time;
 		m_damageFactor = damageFactor;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

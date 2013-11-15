@@ -56,10 +56,4 @@ public abstract class PassiveSkills : Skills
 		m_costIncFirstAd = costIncFirstAd;
 		m_costIncSecAd = costIncSecAd;
 	}
-	
-	// Update is called once per frame
-	protected override void Update () 
-	{
-		base.Update();
-	}
 }

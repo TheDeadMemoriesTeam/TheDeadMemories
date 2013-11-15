@@ -22,6 +22,34 @@ public class PlayerController : HumanoidController
 	
 	private bool pause = false;
 	
+	void Awake()
+	{	
+		//arbre de competence Survie
+		skillManager.addSkill(new SurvieSkills("Survie", 0, null, 200, 200, 5, 5));
+		skillManager.addSkill(new ResistanceSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 5, 5)); 
+		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, 5));
+		
+		//arbre de competence Attaque
+		skillManager.addSkill(new BaseAttaqueSkills("Attaque de base", 0, null, 200, 200, 5, 5));
+		skillManager.addSkill(new CounterAttaqueSkills("Contre attaque", 0, skillManager.getSkill(3), 200, 200, 5, 0.1f));
+		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(4), 0, 30, 5f, 1.5f));
+		
+		//arbre de competence Feu
+		skillManager.addSkill(new PorteeSkills("Boule de feu", 1000, null, 1f, 10, 10, 200, 200, 2f));
+		skillManager.addSkill(new ZoneSkills("Lance flames", 1000, skillManager.getSkill(6), 2f, 15, 15, 200, 200, 2f));
+		skillManager.addSkill(new SuperSkills("Meteor", 3000, skillManager.getSkill(7), 3f, 20, 20, 10f, 10f)); 
+		
+		//arbre de competence Glace
+		skillManager.addSkill(new PorteeSkills("Glacon", 1000, null, 1f, 10, 10, 200, 200, 2f));
+		skillManager.addSkill(new ZoneSkills("Iceberg", 1000, skillManager.getSkill(9), 2f, 15, 15, 200, 200, 2f));
+		skillManager.addSkill(new SuperSkills("Ere glaciere", 3000, skillManager.getSkill(10), 3f, 20, 20, 10f, 10f));
+		
+		//arbre de competence Vent
+		skillManager.addSkill(new PorteeSkills("Soufle", 1000, null, 1f, 10, 10, 200, 200, 2f));
+		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(12), 2f, 15, 15, 200, 200, 2f));
+		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 3f, 20, 20, 10f, 10f));	
+	}
+	
 	// Use this for initialization
 	void Start () 
 	{

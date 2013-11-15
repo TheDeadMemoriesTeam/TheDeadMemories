@@ -8,6 +8,8 @@ public abstract class Skills
 	private bool m_isBought = false;
 	private bool m_isUnlock = false;
 	
+	private int lvlToUnlock = 10;
+	
 	private Skills m_father;
 	
 	//acsessor
@@ -41,11 +43,6 @@ public abstract class Skills
 		return m_isUnlock;	
 	}
 	
-	public Skills getFather()
-	{
-		return m_father;
-	}
-	
 	// Use this for initialization
 	public Skills (string name, int price, Skills father) 
 	{
@@ -57,22 +54,21 @@ public abstract class Skills
 			setIsUnlock(true);
 	}
 	
-	// Update is called once per frame
-	protected virtual void Update () 
+	public void unlockedSkill () 
 	{
 		if(!m_isUnlock)
 		{
 			PassiveSkills fatherP = m_father as  PassiveSkills;
 			if(fatherP != null)
 			{
-				if(fatherP.getLvlFirstAd() + fatherP.getLvlSecAd() > 5)
+				if(fatherP.getLvlFirstAd() + fatherP.getLvlSecAd() > lvlToUnlock)
 					setIsUnlock(true);
 			}
 			
 			BaseSkills fatherB = m_father as BaseSkills;
 			if(fatherB != null)
 			{
-				if(fatherB.getLvlDamage() + fatherB.getLvlAd() > 5)
+				if(fatherB.getLvlDamage() + fatherB.getLvlAd() > lvlToUnlock)
 					setIsUnlock(true);
 			}
  		}
