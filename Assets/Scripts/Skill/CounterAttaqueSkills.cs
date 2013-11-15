@@ -18,9 +18,9 @@ public class CounterAttaqueSkills : PassiveSkills
 	}
 	
 	// Use this for initialization
-	protected void Start (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int damageCounterAttaque, float counterAttaqueFactor) 
+	public CounterAttaqueSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int damageCounterAttaque, float counterAttaqueFactor) 
+		:base (name, price, father, costIncFirstAd, costIncSecAd)
 	{
-		base.Start (name, price, father, costIncFirstAd, costIncSecAd);
 		m_damageCounterAttaque = damageCounterAttaque;
 		m_counterAttaqueFactor = counterAttaqueFactor;
 	}

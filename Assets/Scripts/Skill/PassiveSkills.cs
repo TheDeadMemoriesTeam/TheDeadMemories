@@ -50,9 +50,9 @@ public abstract class PassiveSkills : Skills
 	}
 	
 	// Use this for initialization
-	protected virtual void Start (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd) 
+	public PassiveSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd) 
+		:base (name, price, father)
 	{
-		base.Start (name, price, father);
 		m_costIncFirstAd = costIncFirstAd;
 		m_costIncSecAd = costIncSecAd;
 	}

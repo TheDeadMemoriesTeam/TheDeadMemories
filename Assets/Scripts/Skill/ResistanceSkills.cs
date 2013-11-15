@@ -18,9 +18,9 @@ public class ResistanceSkills : PassiveSkills
 	}
 	
 	// Use this for initialization
-	protected void Start (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int resistanceMagic, int resistancePhysic) 
+	public ResistanceSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, int resistanceMagic, int resistancePhysic) 
+		:base (name, price, father, costIncFirstAd, costIncSecAd)
 	{
-		base.Start (name, price, father, costIncFirstAd, costIncSecAd);
 		m_resistanceMagic = resistanceMagic;
 		m_resistancePhysic = resistancePhysic;
 	}

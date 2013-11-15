@@ -18,9 +18,9 @@ public class SuperSkills : DamageSkills
 	}
 
 	// Use this for initialization
-	protected void Start (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, float portee, float zone) 
+	public SuperSkills (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, float portee, float zone) 
+		:base(name, price, father, timeIncantation, manaCost, damage)
 	{
-		base.Start(name, price, father, timeIncantation, manaCost, damage);
 		m_portee = portee;
 		m_zone = zone;
 	}

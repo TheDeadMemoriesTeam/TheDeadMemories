@@ -18,9 +18,9 @@ public abstract class ActiveSkills : Skills
 	}
 	
 	// Use this for initialization
-	protected virtual void Start (string name, int price, Skills father, float timeIncantation, int manaCost) 
+	public ActiveSkills (string name, int price, Skills father, float timeIncantation, int manaCost) 
+		:base(name, price, father)
 	{
-		base.Start (name, price, father);
 		m_manaCost = manaCost;
 		m_timeIncantation = timeIncantation;
 		

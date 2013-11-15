@@ -17,9 +17,9 @@ public abstract class DamageSkills : ActiveSkills
 	}
 	
 	// Use this for initialization
-	protected virtual void Start (string name, int price, Skills father, float timeIncantation, int manaCost, int damage) 
+	public DamageSkills (string name, int price, Skills father, float timeIncantation, int manaCost, int damage) 
+		:base(name, price, father, timeIncantation, manaCost)
 	{
-		base.Start(name, price, father, timeIncantation, manaCost);
 		m_damage = damage;
 	}
 	

@@ -47,7 +47,7 @@ public abstract class Skills
 	}
 	
 	// Use this for initialization
-	protected virtual void Start (string name, int price, Skills father) 
+	public Skills (string name, int price, Skills father) 
 	{
 		m_name = name;	
 		m_price = price;

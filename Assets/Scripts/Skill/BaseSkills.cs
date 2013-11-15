@@ -50,9 +50,9 @@ public class BaseSkills : DamageSkills
 	}
 	
 	// Use this for initialization
-	protected virtual void Start (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, int costIncDamage, int costIncAd) 
+	public BaseSkills (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, int costIncDamage, int costIncAd) 
+		:base(name, price, father, timeIncantation, manaCost, damage)
 	{
-		base.Start(name, price, father, timeIncantation, manaCost, damage);
 		m_costIncDamage = costIncDamage;
 		m_costIncAd = costIncAd;
 	}
