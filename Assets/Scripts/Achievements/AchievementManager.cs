@@ -10,27 +10,15 @@ using System.IO;
 
 public class AchievementManager : MonoBehaviour {
 	
-	// Texture Achievement
-	public GUITexture achievTexture;
-	public GUIText achievementGet;
-	public GUIText achievText;
-	public string waitText2;
-	public string waitText3;
-	public string waitText4;
-	public string waitText5;
-	public bool achievGet = false;
-	public bool monte = true;
-	public int posYAchiev = 0;
-	public float posModifier = 0;
-	public float counter = 0;
 	
 	private List<Achievement> achievements;
 	private List<Achievement> achievementsUnlock;
 	// Stocke un historique des ennemis tués <temps, nb Ennemis Tués sur la frame>
 	private Dictionary<float, int> ennemiesKilledHistorical;
 		
-	// Son Achievement
-	public AudioClip soundAchievement;
+	// Annonceur d'achievement
+	public AchievementAnnouncer Announcer;
+	
 	
 	// Variables achievements
 	private float travelledDistance = 0;	// walking achievement
@@ -111,6 +99,9 @@ public class AchievementManager : MonoBehaviour {
 		// Liste des achievements déjà acquis
 		achievementsUnlock = new List<Achievement>();
 		
+		// Initialisation de l'annonceur
+		Announcer = GetComponent<AchievementAnnouncer>();
+		
 		// Historique des ennemis tués
 		ennemiesKilledHistorical = new Dictionary<float, int>();
     }
@@ -123,62 +114,12 @@ public class AchievementManager : MonoBehaviour {
 		loadAchievements();
 		// Supprime de la liste des achievements a check tous ceux déjà réalisés et les ajoute à une liste de ceux réalisés
 		refreshListAchievements();
-			
-		// positionne la texture d'affichage des achievements cachée au début du jeu
-		achievTexture.pixelInset = new Rect(Screen.width-256, -128, 256, 128);
-		achievementGet.pixelOffset = new Vector2(Screen.width-215, posYAchiev-35);
-		achievText.pixelOffset = new Vector2(Screen.width-215, posYAchiev-75);
-		achievText.text = "000";
-		waitText2 = "000";
-		waitText3 = "000";
-		waitText4 = "000";
-		waitText5 = "000";
+
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		
-		if(achievGet)
-		{
-			posModifier += Time.deltaTime;
-			if(posModifier > 0.05)
-			{
-				if(monte)
-				{
-					posYAchiev += 8;
-					if(posYAchiev > 128)
-					{
-						posYAchiev = 128;
-						monte = false;
-					}
-				}
-				else
-				{
-					counter += 8;
-				}
-				
-				if(!monte && counter > 256)
-				{
-					posYAchiev -= 8;
-					if(posYAchiev < 0)
-					{
-						posYAchiev = 0;
-						monte = true;
-						counter = 0;
-						newAchievement();
-						
-						if(achievText.text == "000")
-							achievGet = false;
-						
-					}
-				}
-				posModifier = 0;
-			}
-			achievTexture.pixelInset = new Rect(Screen.width-256, posYAchiev-128, 256, 128);
-			achievementGet.pixelOffset = new Vector2(Screen.width-215, posYAchiev-35);
-			achievText.pixelOffset = new Vector2(Screen.width-215, posYAchiev-75);
-		}
 
 		// Manage achievements
 		for (int i = 0; i < achievements.Count(); i++)
@@ -187,6 +128,7 @@ public class AchievementManager : MonoBehaviour {
 			{
 				// Unlocked achievement
 				Debug.Log(achievements[i].getName() + ": " + achievements[i].getDescription());
+				Announcer.addAchiev(achievements[i].getName());
 				// Supprime de la liste des achievements a check tous ceux déjà réalisés
 				refreshListAchievements();
 			}
@@ -243,41 +185,6 @@ public class AchievementManager : MonoBehaviour {
 			fileGet.Close();
 		}*/
 	}
-	
-	void unlockAchievement(string nameAchievement)
-	{
-		// TODO///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-		if(achievText.text == "000")
-			achievText.text = nameAchievement;
-		else if(waitText2 == "000")
-			waitText2 = nameAchievement;
-		else if(waitText3 == "000")
-			waitText3 = nameAchievement;
-		else if(waitText4 == "000")
-			waitText4 = nameAchievement;
-		else
-			waitText5 = nameAchievement;
-		
-		achievGet = true;
-		audio.PlayOneShot(soundAchievement);
-	}
-	
-	// met a jour les achievements à afficher
-	void newAchievement()
-	{
-		
-		achievText.text = waitText2;
-		waitText2 = waitText3;
-		waitText3 = waitText4;
-		waitText4 = waitText5;
-		waitText5 = "000";
-		
-	}
-	
-	
-	
-	
-	
 	
 	
 	// Méthodes permettant un Update des variables des achievements
