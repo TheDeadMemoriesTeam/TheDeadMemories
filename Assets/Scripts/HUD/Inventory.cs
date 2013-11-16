@@ -9,7 +9,11 @@ public class Inventory : PauseSystem
 	// Nombre de place dans l'inventaire
 	private int nbLocationInInventory;
 	
-	private Rect inventoryWindowRect = new Rect(Screen.width/2-130,Screen.height/2-200, 260, 250);
+	//Fenetre de l'inventaire
+	private Rect inventoryWindowRect = new Rect(Screen.width/2-130,Screen.height/2-200, 260, 350);
+	
+	//ID de l'Item survolé
+	private int itemHover;
 	
 	// Liste de l'état des boutons de l'inventaire (true = occupé, false = libre)
 	private bool[] listeButton;
@@ -87,17 +91,39 @@ public class Inventory : PauseSystem
 	// Dessine le GUI d'un inventaire carré (3*3, 4*4 etc...)
 	void drawInventory()
 	{
+		//réinitialise l'item survolé
+		itemHover = -1;
+		
 		//Dessine l'inventaire
-		GUILayout.BeginArea(new Rect(5, 50, 260, 250));
+		GUILayout.BeginArea(new Rect(5, 50, 260, 350));
 		
 		for (int i = 0 ; i < nbItemPerLine ; i++)
 		{
 			GUILayout.BeginHorizontal();
 			for (int j = 0 ; j < nbItemPerLine ; j++)
+			{
 				listeButton[i*nbItemPerLine+j] = GUILayout.Button(getNameOfItemForId(inventoryItem[i*nbItemPerLine+j]), GUILayout.Height(50), GUILayout.Width(80));
+				hover(inventoryItem[i*nbItemPerLine+j]);
+			}
 			GUILayout.EndHorizontal();
 		}
+		
+		//Affiche la description de l'objet survolé dans ce Label
+		GUILayout.Label ("Nom: "+getNameOfItemForId(itemHover)
+			+System.Environment.NewLine+"Quantité: "+getQuantityOfItem(itemHover)
+			+System.Environment.NewLine+"Description: "+getDescriptionOfItemForId(itemHover)
+			,GUILayout.Height(100), GUILayout.Width(250));
+		
 		GUILayout.EndArea();
+	}
+	
+	//Met en place le survol de la souris
+	void hover(int i)
+	{
+		if(GUILayoutUtility.GetLastRect().Contains(Event.current.mousePosition))
+		{
+			itemHover = i;
+		}
 	}
 	
 	// Met a jour l'inventaire avec les Id des items possédés
@@ -205,13 +231,35 @@ public class Inventory : PauseSystem
 		}	
 	}
 	
-	// Retourne le nom d'un item en sachant sont id
+	// Retourne le nom d'un item en sachant son id
 	string getNameOfItemForId(int id)
 	{
 		for (int i = 0 ; i < listOfItem.Count ; i++)
 		{
 			if (listOfItem[i].getId() == id)
 				return listOfItem[i].getName();
+		}
+		return "";
+	}
+	
+	// Retourne la description d'un item en sachant son id
+	string getDescriptionOfItemForId(int id)
+	{
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			if (listOfItem[i].getId() == id)
+				return listOfItem[i].getResume();
+		}
+		return "";
+	}
+	
+	// Retourne la quantité d'un Item dans l'inventaire en sachant son Id
+	string getQuantityOfItem (int id)
+	{
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			if (listOfItem[i].getId() == id)
+				return inventory[listOfItem[i]].ToString();
 		}
 		return "";
 	}
