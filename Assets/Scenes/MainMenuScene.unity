@@ -344,7 +344,7 @@ GameObject:
   - 4: {fileID: 422019596}
   - 95: {fileID: 422019597}
   m_Layer: 0
-  m_Name: tombe
+  m_Name: Tomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -468,7 +468,7 @@ GameObject:
   - 23: {fileID: 781441687}
   - 95: {fileID: 781441686}
   m_Layer: 0
-  m_Name: Pierre tombale
+  m_Name: Headstone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1109,7 +1109,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68dfa77c703876b4ca790fde722ffe8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  smooth: 2
 --- !u!82 &1533108017
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1178,7 +1177,7 @@ GameObject:
   - 4: {fileID: 1685273988}
   - 95: {fileID: 1685273989}
   m_Layer: 0
-  m_Name: tombe
+  m_Name: Tomb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1535,6 +1534,10 @@ Prefab:
     - target: {fileID: 400000, guid: eca19f3a85910e54da2b2b6f7e95359c, type: 3}
       propertyPath: m_LocalRotation.w
       value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: eca19f3a85910e54da2b2b6f7e95359c, type: 3}
+      propertyPath: m_Name
+      value: Headstone
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: eca19f3a85910e54da2b2b6f7e95359c, type: 3}
