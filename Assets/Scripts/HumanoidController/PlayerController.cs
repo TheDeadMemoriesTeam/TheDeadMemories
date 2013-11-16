@@ -4,10 +4,20 @@ using System.Collections.Generic;
 
 public class PlayerController : HumanoidController 
 {
-	public float speed = 6.0F;
+	// Speeds
+	public float speed = 6.0F;		// CurrentSpeed
     public float jumpSpeed = 8.0F;
+	public float walkSpeed = 6.0F;
+	public float sprintSpeed = 10.0F;
+	
+	//
 	public float rotationFactor = 5.0F;
     public float gravity = 20.0F;
+	
+	// Sprint
+	public bool isSprinting;
+	public float sprintedTime;
+	public float pauseAfterSprint;
 	
     private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
@@ -86,6 +96,17 @@ public class PlayerController : HumanoidController
 				// Handle jumps
 	            if (Input.GetButton("Jump"))
 	                moveDirection.y = jumpSpeed;
+				if (Input.GetKeyDown(KeyCode.LeftShift) )
+				{
+					isSprinting = true;
+					doSprint(isSprinting);					
+				}
+				if ( (isSprinting && Time.time > sprintedTime+3.0F) || (Input.GetKeyUp(KeyCode.LeftShift)) )
+				{
+					
+					isSprinting = false;
+					doSprint(isSprinting);
+				}
 	        }
 			// Applies move
 	        moveDirection.y -= gravity * Time.deltaTime;
@@ -169,5 +190,18 @@ public class PlayerController : HumanoidController
 	public bool getPause()
 	{
 		return pause;
+	}
+	
+	public void doSprint(bool isSprinting)		
+	{
+		
+		if (isSprinting)
+		{
+			sprintedTime = Time.time;
+			pauseAfterSprint = sprintedTime+5.0F;
+			speed = sprintSpeed;
+		}			
+		else
+			speed = walkSpeed;		
 	}
 }
