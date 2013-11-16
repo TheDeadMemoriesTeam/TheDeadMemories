@@ -5,19 +5,20 @@ using System.Collections.Generic;
 public class PlayerController : HumanoidController 
 {
 	// Speeds
-	public float speed = 6.0F;		// CurrentSpeed
-    public float jumpSpeed = 8.0F;
 	public float walkSpeed = 6.0F;
 	public float sprintSpeed = 10.0F;
+	public float sprintDuration = 6.0F;
+    public float jumpSpeed = 8.0F;
+	private float speed = 6.0F;		// CurrentSpeed
 	
-	//
+	// Others move
 	public float rotationFactor = 5.0F;
     public float gravity = 20.0F;
 	
 	// Sprint
-	public bool isSprinting;
-	public float sprintedTime;
-	public float pauseAfterSprint;
+	private bool isSprinting;
+	private float sprintedTime;
+	private float pauseAfterSprint;
 	
     private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
@@ -74,6 +75,8 @@ public class PlayerController : HumanoidController
 		distanceM = 4f;
 		
 		timeRegen = 2;
+		
+		isSprinting = false;
 	}
 	
 	// Update is called once per frame
@@ -101,7 +104,7 @@ public class PlayerController : HumanoidController
 					isSprinting = true;
 					doSprint(isSprinting);					
 				}
-				if ( (isSprinting && Time.time > sprintedTime+3.0F) || (Input.GetKeyUp(KeyCode.LeftShift)) )
+				if ( (isSprinting && Time.time > sprintedTime+sprintDuration) || (Input.GetKeyUp(KeyCode.LeftShift)) )
 				{
 					
 					isSprinting = false;
@@ -198,7 +201,7 @@ public class PlayerController : HumanoidController
 		if (isSprinting)
 		{
 			sprintedTime = Time.time;
-			pauseAfterSprint = sprintedTime+5.0F;
+			pauseAfterSprint = sprintedTime*1.5F;
 			speed = sprintSpeed;
 		}			
 		else
