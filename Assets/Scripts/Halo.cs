@@ -4,12 +4,11 @@ using System.Collections;
 public class Halo : MonoBehaviour {
 	
 	public Light halo;
-	private DayNightCycleManager time;
+	public DayNightCycleManager time;
 	private float maxIntensity;
 	
 	// Use this for initialization
 	void Start () {
-		time = (DayNightCycleManager)FindObjectOfType(System.Type.GetType("DayNightCycle"));
 		maxIntensity = 0.4f;
 	}
 	
