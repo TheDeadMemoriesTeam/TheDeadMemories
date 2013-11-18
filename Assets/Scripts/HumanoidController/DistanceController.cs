@@ -9,8 +9,8 @@ public class DistanceController : EnemyController
 	{
 		base.Start();
 		
-		pvMax = 4;
-		pv = pvMax;
+		skillManager.setPvMax(4);
+		skillManager.setPv(skillManager.getPvMax());
 		
 		damageAttack = -1;
 		damageMagic = -5;
@@ -20,12 +20,10 @@ public class DistanceController : EnemyController
 		
 		xp = 15;
 		
-		manaMax = 80;
-		mana = manaMax;
+		skillManager.setManaMax(80);
+		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 4;
-		
-		//gameObject.renderer.material.color = new Color(0.341F, 0.478F, 0.725F);
 	}
 	
 	protected override void Update ()

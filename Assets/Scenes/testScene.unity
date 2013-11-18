@@ -11978,6 +11978,7 @@ GameObject:
   - 4: {fileID: 1758632531}
   - 143: {fileID: 1758632533}
   - 114: {fileID: 1758632532}
+  - 114: {fileID: 1758632534}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -12008,7 +12009,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e4f67e8785ca748b64a013df34adc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillManager: {fileID: 0}
   walkSpeed: 6
   sprintSpeed: 10
   sprintDuration: 6
@@ -12031,6 +12031,17 @@ CharacterController:
   m_SkinWidth: .0799999982
   m_MinMoveDistance: 0
   m_Center: {x: 0, y: .899999976, z: -.0399999991}
+--- !u!114 &1758632534
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1758632530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82113273b17764342848f031bdf84207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1762706073
 GameObject:
   m_ObjectHideFlags: 0
