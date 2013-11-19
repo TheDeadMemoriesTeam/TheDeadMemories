@@ -31,7 +31,7 @@ public class SpawnController : MonoBehaviour
 	}
 	
 	// Create an ennemy
-	public void spawn()
+	public EnemyController spawn()
 	{
 		int randX = Random.Range(-range, range);
 		int randZ = Random.Range(-range, range);
@@ -42,11 +42,14 @@ public class SpawnController : MonoBehaviour
 		position.y = position.y - raycastHit.distance + 1;
 		
 		float proba = Random.value;
+		EnemyController enemy;
 		if (proba <= 0.02)
-				Instantiate(bossPrefab, position, Quaternion.identity);
+			enemy = Instantiate(bossPrefab, position, Quaternion.identity) as EnemyController;
 		else if (proba <= 0.37)
-				Instantiate(distancePrefab, position, Quaternion.identity);
+			enemy = Instantiate(distancePrefab, position, Quaternion.identity) as EnemyController;
 		else
-			Instantiate(meleePrefab, position, Quaternion.identity);
+			enemy = Instantiate(meleePrefab, position, Quaternion.identity) as EnemyController;
+		enemy.transform.parent = transform;
+		return enemy;
 	}
 }

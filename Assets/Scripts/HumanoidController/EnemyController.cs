@@ -56,21 +56,21 @@ public class EnemyController : HumanoidController
 		
 		if(!inCrypte)
 		{
-			agent.destination = target.transform.position;
+//			agent.destination = target.transform.position;
 			timeCountAttack += Time.deltaTime;
 			Vector3 distance = transform.position-target.transform.position;
 		
 			if(distance.magnitude <= agent.stoppingDistance)
 			{
 				transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
-				attack();
+//				attack();
 			}
 		}
-		//les enemis vont vers une direction aleatoire pendent un certain temp et change au boutd'un moment
-		else if((int)Time.timeSinceLevelLoad%10 == 0)
-		{			
-			agent.destination = Random.onUnitSphere*100;
-		}
+//		//les enemis vont vers une direction aleatoire pendent un certain temp et change au boutd'un moment
+//		else if((int)Time.timeSinceLevelLoad%10 == 0)
+//		{			
+//			agent.destination = Random.onUnitSphere*100;
+//		}
 	}
 	
 	void attack()
