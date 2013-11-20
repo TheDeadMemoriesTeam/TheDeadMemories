@@ -17,7 +17,7 @@ public class EnemyAI : MonoBehaviour
     private float chaseTimer;                   // A timer for the chaseWaitTime.
     private float patrolTimer;                  // A timer for the patrolWaitTime.
     private int wayPointIndex = 0;              // A counter for the way point array.
-    
+    private Transform waysNetwork;				// Object that will store all way points.
     
     void Awake ()
     {
@@ -25,16 +25,33 @@ public class EnemyAI : MonoBehaviour
         enemySight = GetComponent<EnemySight>();
         nav = GetComponent<NavMeshAgent>();
         player = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
+		waysNetwork = null;
     }
     
     
     void Update ()
     {
+        // If the player is in sight and is alive...
+        if(enemySight.playerInSight && enemySight.getDistanceToPlayer() < shootDistance && player.getHitPoints() > 0f)
+            // ... shoot.
+            Shooting();
+        
         // If the player has been sighted and isn't dead...
-		if(enemySight.personalLastSighting != Utils.GetInfiniteVector3() && player.getHitPoints() > 0f)
+        else if(enemySight.personalLastSighting != Utils.GetInfiniteVector3() && player.getHitPoints() > 0f)
             // ... chase.
             Chasing();
-
+        
+        // Otherwise...
+        else
+            // ... patrol.
+            Patrolling();
+    }
+    
+    
+    void Shooting ()
+    {
+        // Stop the enemy where it is.
+        nav.Stop();
     }
     
     
@@ -69,4 +86,66 @@ public class EnemyAI : MonoBehaviour
             chaseTimer = 0f;
     }
 
+    
+    void Patrolling ()
+    {
+		if (patrolWayPoints.Length == 0) {
+			generatePatrolWayPoints();
+			return;
+		}
+		
+        // Set an appropriate speed for the NavMeshAgent.
+        nav.speed = patrolSpeed;
+        
+        // If near the next waypoint or there is no destination...
+        if(nav.destination == Utils.GetInfiniteVector3() || nav.remainingDistance < nav.stoppingDistance)
+        {
+            // ... increment the timer.
+            patrolTimer += Time.deltaTime;
+            
+            // If the timer exceeds the wait time...
+            if(patrolTimer >= patrolWaitTime)
+            {
+                // ... increment the wayPointIndex.
+                if(wayPointIndex == patrolWayPoints.Length - 1)
+                    wayPointIndex = 0;
+                else
+                    wayPointIndex++;
+                
+                // Reset the timer.
+                patrolTimer = 0;
+            }
+        }
+        else
+            // If not near a destination, reset the timer.
+            patrolTimer = 0;
+        
+        // Set the destination to the patrolWayPoint.
+        nav.destination = patrolWayPoints[wayPointIndex].position;
+    }
+	
+	void generatePatrolWayPoints()
+	{
+		waysNetwork = getNearestWaysNetwork();
+		patrolWayPoints = waysNetwork.gameObject.GetComponentsInChildren<Transform>();
+		wayPointIndex = 0;
+	}
+	
+	Transform getNearestWaysNetwork()
+	{
+		GameObject[] waysNetworks = GameObject.FindGameObjectsWithTag("WaysNetwork");
+		
+		Transform nearestWaysNetwork = null;
+		float minDistance = float.PositiveInfinity;
+		for (int i = 0; i < waysNetworks.Length; i++)
+		{
+			float d = Vector3.Distance(transform.position, waysNetworks[i].transform.position);
+			if (d < minDistance) {
+				minDistance = d;
+				nearestWaysNetwork = waysNetworks[i].transform;
+			}
+		}
+		
+		return nearestWaysNetwork;
+	}
 }
