@@ -109,11 +109,17 @@ public class Inventory : PauseSystem
 		}
 		
 		//Affiche la description de l'objet survolé dans ce Label
-		GUILayout.Label ("Nom: "+getNameOfItemForId(itemHover)
-			+System.Environment.NewLine+"Quantité: "+getQuantityOfItem(itemHover)
-			+System.Environment.NewLine+"Description: "+getDescriptionOfItemForId(itemHover)
-			,GUILayout.Height(100), GUILayout.Width(250));
-		
+		if (itemHover != -1)
+		{
+			GUILayout.Label ("Nom: "+getNameOfItemForId(itemHover)
+				+System.Environment.NewLine+"Quantité: "+getQuantityOfItem(itemHover)
+				+System.Environment.NewLine+"Description: "+getDescriptionOfItemForId(itemHover)
+				,GUILayout.Height(100), GUILayout.Width(250));
+		}
+		else
+		{
+			GUILayout.Label("",GUILayout.Height(100),GUILayout.Width(250));	
+		}
 		GUILayout.EndArea();
 	}
 	

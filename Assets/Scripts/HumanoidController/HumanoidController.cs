@@ -3,21 +3,22 @@ using System.Collections;
 
 // Permet de gérer la vie
 public class HumanoidController : MonoBehaviour 
-{
-	//variable afectant le player
-	protected int pv, pvMax, mana, manaMax;
-	protected float distanceP, distanceM;
-	
+{	
 	//regen de mana
 	private float regen = 0;
 	protected float timeRegen;
 	
 	//manager des skills
-	public SkillManager skillManager;
+	protected SkillManager skillManager;
 	
+	void Awake()
+	{
+		skillManager = GetComponent<SkillManager>();	
+	}
+
 	// Use this for initialization
 	void Start () 
-	{
+	{	
 	}
 	
 	// Update is called once per frame
@@ -33,35 +34,35 @@ public class HumanoidController : MonoBehaviour
 	
 	public virtual void healthUpdate(int change)
 	{
-		pv += change;
-		if (pv > pvMax)
-			pv = pvMax;
+		skillManager.setPv(skillManager.getPv() + change);
+		if (skillManager.getPv() > skillManager.getPvMax())
+			skillManager.setPv(skillManager.getPvMax());
 	}
 	
 	public int getHitPoints()
 	{
-		return pv;
+		return skillManager.getPv();
 	}
 	
 	public int getMaxHitPoints()
 	{
-		return pvMax;
+		return skillManager.getPvMax();
 	}
 	
 	public virtual void manaUpdate(int change)
 	{
-		mana += change;
-		if (mana>manaMax)
-			mana = manaMax;
+		skillManager.setMana(skillManager.getMana() + change);
+		if (skillManager.getMana()>skillManager.getManaMax())
+			skillManager.setMana(skillManager.getManaMax());
 	}
 	
 	public int getMana()
 	{
-		return mana;	
+		return skillManager.getMana();	
 	}
 	
 	public int getManaMax()
 	{
-		return manaMax;	
+		return skillManager.getManaMax();	
 	}
 }

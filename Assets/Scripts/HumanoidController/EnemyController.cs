@@ -45,7 +45,7 @@ public class EnemyController : HumanoidController
 	protected override void Update () 
 	{	
 		base.Update();
-		if (pv <= 0)
+		if (skillManager.getPv() <= 0)
 		{
 			((SpawnManager)FindObjectOfType(System.Type.GetType("SpawnManager"))).decNbEnnemies();
 			target.experienceUpdate(xp);

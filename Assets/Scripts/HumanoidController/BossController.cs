@@ -9,8 +9,8 @@ public class BossController : EnemyController
 	{
 		base.Start();
 		
-		pvMax = 10;
-		pv = pvMax;
+		skillManager.setPvMax(10);
+		skillManager.setPv(skillManager.getPvMax());
 		
 		damageAttack = -10;
 		damageMagic = -20;
@@ -20,8 +20,8 @@ public class BossController : EnemyController
 		
 		xp = 30;
 		
-		manaMax = 50;
-		mana = manaMax;
+		skillManager.setManaMax(50);
+		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 6;
 		
@@ -31,7 +31,7 @@ public class BossController : EnemyController
 	protected override void Update ()
 	{
 		base.Update();
-		if (pv <= 0)
+		if (skillManager.getPv() <= 0)
 			target.achievementManager.updateKillsBerseker();
 	}
 }

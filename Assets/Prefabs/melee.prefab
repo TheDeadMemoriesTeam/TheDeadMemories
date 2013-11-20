@@ -12,7 +12,10 @@ GameObject:
   - 64: {fileID: 6400000}
   - 114: {fileID: 11400000}
   - 114: {fileID: 11400002}
+  - 114: {fileID: 11400006}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400002}
+  - 114: {fileID: 11400008}
   m_Layer: 0
   m_Name: melee
   m_TagString: Untagged
@@ -1958,7 +1961,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba5c27f37ce7b145bec07c30489bd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillManager: {fileID: 0}
   droppableItems:
   - {fileID: 5400000, guid: 00e6f55288c657d42976a57a746e78ef, type: 2}
   - {fileID: 5400000, guid: b66e8926d3c80274ebea26acfbc8e4a8, type: 2}
@@ -1998,6 +2000,33 @@ MonoBehaviour:
   patrolSpeed: 2
   patrolWaitTime: 1
   patrolWayPoints: []
+--- !u!114 &11400006
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23c2cc3da99f0344aabe89321036f5c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  fieldOfViewAngle: 110
+  viewingDistance: 24
+  playerInSight: 0
+  personalLastSighting: {x: 0, y: 0, z: 0}
+  hearingDistance: 5
+--- !u!114 &11400008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82113273b17764342848f031bdf84207, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!195 &19500000
 NavMeshAgent:
   m_ObjectHideFlags: 1

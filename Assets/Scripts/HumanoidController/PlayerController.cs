@@ -34,10 +34,23 @@ public class PlayerController : HumanoidController
 	public Inventory inventory;
 	
 	private bool pause = false;
-	
-	void Awake()
-	{	
-		/*//arbre de competence Survie
+
+	// Use this for initialization
+	void Start () 
+	{
+		controller = GetComponent<CharacterController>();
+		skillManager.setPvMax(200);
+		skillManager.setPv(skillManager.getPvMax());
+		skillManager.setManaMax(100);
+		skillManager.setMana(skillManager.getManaMax());
+		skillManager.setDistanceP(4f);
+		skillManager.setDistanceM(4f);
+		
+		timeRegen = 2;
+		
+		isSprinting = false;
+		
+		//arbre de competence Survie
 		skillManager.addSkill(new SurvieSkills("Survie", 0, null, 200, 200, 5, 5));
 		skillManager.addSkill(new ResistanceSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 5, 5)); 
 		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, 5));
@@ -60,23 +73,7 @@ public class PlayerController : HumanoidController
 		//arbre de competence Vent
 		skillManager.addSkill(new PorteeSkills("Soufle", 1000, null, 1f, 10, 10, 200, 200, 2f));
 		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(12), 2f, 15, 15, 200, 200, 2f));
-		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 3f, 20, 20, 10f, 10f));*/	
-	}
-	
-	// Use this for initialization
-	void Start () 
-	{
-		controller = GetComponent<CharacterController>();
-		pvMax = 200;
-		pv = pvMax;
-		manaMax = 100;
-		mana = manaMax;
-		distanceP = 4f;
-		distanceM = 4f;
-		
-		timeRegen = 2;
-		
-		isSprinting = false;
+		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 3f, 20, 20, 10f, 10f));
 	}
 	
 	// Update is called once per frame
@@ -85,7 +82,7 @@ public class PlayerController : HumanoidController
 		if(!pause)
 		{
 			base.Update();
-			if (pv <= 0) 
+			if (skillManager.getPv() <= 0) 
 			{
 				return;
 			}
@@ -128,7 +125,7 @@ public class PlayerController : HumanoidController
 				for (int i=0; i<targets.Length; i++)
 				{
 					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= distanceP)
+					if(distance.magnitude <= skillManager.getDistanceP())
 					{
 						var targetDir = targets[i].transform.position - transform.position;
 						var playerDir = transform.forward;
@@ -145,7 +142,7 @@ public class PlayerController : HumanoidController
 				for (int i=0; i<targets.Length; i++)
 				{
 					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= distanceM)
+					if(distance.magnitude <= skillManager.getDistanceM())
 					{
 						var targetDir = targets[i].transform.position - transform.position;
 						var playerDir = transform.forward;
