@@ -53,23 +53,28 @@ public class EnemySight : MonoBehaviour
         // If the angle between forward and where the player is, is less than half the angle of view...
         if(angle < fieldOfViewAngle * 0.5f)
         {
-            RaycastHit hit;
-            
-            // ... and if a raycast towards the player hits something...
-			Debug.DrawRay(transform.position, direction.normalized * viewingDistance, new Color(1f, 0, 0, 1f));
-            if(Physics.Raycast(transform.position, direction.normalized, out hit, viewingDistance))
-            {
-                // ... and if the raycast hits the player...
-                if(hit.collider.gameObject.tag == "Player")
-                {
-                    // ... the player is in sight.
-                    playerInSight = true;
-                    
-                    // Set the players current position.
-					Debug.Log ("sight");
-					playerPosition(player.transform.position);
-                }
-            }
+			// If the ennemi was not alerted and if the player is not stopped
+			// This is to decrease the performance impact of the raycasting
+			if (personalLastSighting != player.transform.position)
+			{
+	            RaycastHit hit;
+	            
+	            // ... and if a raycast towards the player hits something...
+				//Debug.DrawRay(transform.position, direction.normalized * viewingDistance, new Color(1f, 0, 0, 1f));
+	            if(Physics.Raycast(transform.position, direction.normalized, out hit, viewingDistance))
+	            {
+	                // ... and if the raycast hits the player...
+	                if(hit.collider.gameObject.tag == "Player")
+	                {
+	                    // ... the player is in sight.
+	                    playerInSight = true;
+	                    
+	                    // Set the players current position.
+						Debug.Log ("sight");
+						playerPosition(player.transform.position);
+	                }
+	            }
+			}
         }
         
         // If the player is walking/running...
