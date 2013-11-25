@@ -86,10 +86,6 @@ Material:
     m_Floats:
       data:
         first:
-          name: _InvFade
-        second: 1
-      data:
-        first:
           name: _Shininess
         second: .078125
       data:
@@ -104,6 +100,10 @@ Material:
         first:
           name: _RefrDistort
         second: .400000006
+      data:
+        first:
+          name: _InvFade
+        second: 1
       data:
         first:
           name: _Parallax
