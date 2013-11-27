@@ -142,7 +142,8 @@ public class PlayerController : HumanoidController
 			{
 				manaUpdate(-10);
 				Instantiate(fireball,
-				            new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z), Quaternion.identity);
+				            new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z),
+				            Quaternion.identity);
 				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 				for (int i=0; i<targets.Length; i++)
 				{
