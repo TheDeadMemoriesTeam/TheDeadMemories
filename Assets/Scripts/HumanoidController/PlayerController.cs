@@ -6,8 +6,7 @@ public class PlayerController : HumanoidController
 {
 	// Speeds
 	public float walkSpeed = 6.0F;
-	public float sprintSpeed = 10.0F;
-	public float sprintDuration = 6.0F;
+	public float sprintSpeed;
     public float jumpSpeed = 8.0F;
 	private float speed = 6.0F;		// CurrentSpeed
 	
@@ -15,10 +14,12 @@ public class PlayerController : HumanoidController
 	public float rotationFactor = 5.0F;
     public float gravity = 20.0F;
 	
-	// Sprint
+	// Gestion Sprint
 	private bool isSprinting;
-	private float sprintedTime;
+	private float sprintTimeStart;
+	public float maxTimeSprinting = 10f; // temps de sprint maximum
 	private float pauseAfterSprint;
+	private float sprintAugmentation = 0.75f;	// Pourcentage d'accélération du joueur en sprint
 	
     private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
@@ -51,7 +52,11 @@ public class PlayerController : HumanoidController
 		
 		timeRegen = 2;
 		
+		// Affecte la valeur du sprint de sprintAugmentation% de plus que la marche normale
+		sprintSpeed = walkSpeed + sprintAugmentation*walkSpeed;
+		sprintTimeStart = Time.time;
 		isSprinting = false;
+		updateSpeed(isSprinting);
 		
 		//arbre de competence Survie
 		skillManager.addSkill(new SurvieSkills("Survie", 0, null, 200, 200, 5, 5));
@@ -99,17 +104,17 @@ public class PlayerController : HumanoidController
 				// Handle jumps
 	            if (Input.GetButton("Jump"))
 	                moveDirection.y = jumpSpeed;
-				if (Input.GetKeyDown(KeyCode.LeftShift) )
+				if (Input.GetKeyDown(KeyCode.LeftShift) && pauseAfterSprint <= 0)
 				{
 					isSprinting = true;
-					doSprint(isSprinting);					
+					updateSpeed(isSprinting);				
 				}
-				if ( (isSprinting && Time.time > sprintedTime+sprintDuration) || (Input.GetKeyUp(KeyCode.LeftShift)) )
+				if ((isSprinting && Time.time > sprintTimeStart + maxTimeSprinting) || (Input.GetKeyUp(KeyCode.LeftShift)))
 				{
-					
 					isSprinting = false;
-					doSprint(isSprinting);
+					updateSpeed(isSprinting);
 				}
+				updateStandOffTime();
 	        }
 			// Applies move
 	        moveDirection.y -= gravity * Time.deltaTime;
@@ -141,9 +146,14 @@ public class PlayerController : HumanoidController
 			else if (Input.GetButtonDown("Fire2") && getMana()>=10)
 			{
 				manaUpdate(-10);
-				Instantiate(fireball,
-				            new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z),
-				            Quaternion.identity);
+				// Création et initialisation du projectil
+				Transform projectileTransform = (Transform)Instantiate(fireball,
+												            new Vector3(transform.position.x + transform.forward.x, 
+												            			transform.position.y + 1.5f + transform.forward.y, 
+												            			transform.position.z + transform.forward.z),
+												            Quaternion.identity);
+				ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
+				projectile.init(0.1f, 20f, 50, transform.forward);
 				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 				for (int i=0; i<targets.Length; i++)
 				{
@@ -158,6 +168,8 @@ public class PlayerController : HumanoidController
 					}	
 				}
 			}
+			if (isSprinting)
+				Debug.Log("sprint !!");
 		}
 	}
 	
@@ -198,16 +210,24 @@ public class PlayerController : HumanoidController
 		return pause;
 	}
 	
-	public void doSprint(bool isSprinting)		
+	void updateSpeed(bool isSprinting)
 	{
-		
+		// Met à jour la vitesse du joueur selon son status (sprint ou non)
 		if (isSprinting)
 		{
-			sprintedTime = Time.time;
-			pauseAfterSprint = sprintedTime*1.5F;
+			sprintTimeStart = Time.time;
 			speed = sprintSpeed;
-		}			
+		}
 		else
-			speed = walkSpeed;		
+			speed = walkSpeed;
+	}
+	
+	void updateStandOffTime()
+	{
+		// Met à jour le temps pendant lequel le joueur ne peut pas sprinter
+		if (isSprinting)
+			pauseAfterSprint = (Time.time - sprintTimeStart) * 1.5f;
+		else
+			pauseAfterSprint -= Time.deltaTime;
 	}
 }

@@ -17,7 +17,8 @@ public class DayNightCycleManager : MonoBehaviour
 	void Update ()
 	{
 		float timeProgress = realToInGameTime(Time.deltaTime);
-		dayTime += timeProgress;
+		if ((dayTime += timeProgress) >= 24)
+			dayTime = 0;
 		transform.Rotate(0, 0, hoursToDegrees(timeProgress));
 	}
 	
