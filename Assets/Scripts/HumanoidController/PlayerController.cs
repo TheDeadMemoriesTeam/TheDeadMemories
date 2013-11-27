@@ -141,9 +141,14 @@ public class PlayerController : HumanoidController
 			else if (Input.GetButtonDown("Fire2") && getMana()>=10)
 			{
 				manaUpdate(-10);
-				Instantiate(fireball,
-				            new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z),
-				            Quaternion.identity);
+				// Création et initialisation du projectil
+				Transform projectileTransform = (Transform)Instantiate(fireball,
+												            new Vector3(transform.position.x + transform.forward.x, 
+												            			transform.position.y + 1.5f + transform.forward.y, 
+												            			transform.position.z + transform.forward.z),
+												            Quaternion.identity);
+				ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
+				projectile.init(0.1f, 20f, 50, transform.forward);
 				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 				for (int i=0; i<targets.Length; i++)
 				{
