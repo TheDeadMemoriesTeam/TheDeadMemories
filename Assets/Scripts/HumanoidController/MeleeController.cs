@@ -9,7 +9,7 @@ public class MeleeController : EnemyController
 	{
 		base.Start();
 		
-		skillManager.setPvMax(6);
+		skillManager.setBasePvMax(6);
 		skillManager.setPv(skillManager.getPvMax());
 		
 		damageAttack = -3;
@@ -20,7 +20,7 @@ public class MeleeController : EnemyController
 		
 		xp = 15;
 		
-		skillManager.setManaMax(50);
+		skillManager.setBaseManaMax(50);
 		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 6;

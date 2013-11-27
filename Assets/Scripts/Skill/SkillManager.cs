@@ -6,12 +6,27 @@ public class SkillManager : MonoBehaviour
 {
 	//list des competances
 	private List<Skills> listSkills;
-	
+
+	private int m_baseManaMax;
+	private int m_basePvMax;
+
 	//variable afectant le player
 	private int m_pv, m_pvMax, m_mana, m_manaMax;
 	private float m_distanceP, m_distanceM;
 	
 	//acesseur
+	public void setBaseManaMax(int baseManaMax)
+	{
+		m_baseManaMax = baseManaMax;
+		m_manaMax = m_baseManaMax;
+	}
+
+	public void setBasePvMax(int basePvMax)
+	{
+		m_basePvMax = basePvMax;
+		m_pvMax = m_basePvMax;
+	}
+	
 	public void setPv(int pv)
 	{
 		m_pv = pv;
@@ -86,7 +101,17 @@ public class SkillManager : MonoBehaviour
 	// Update is called once per frame
 	void Update () 
 	{
-		
+		if(Input.GetKeyDown(KeyCode.A))
+		{
+			for (int i=0; i<listSkills.Count; i++)
+			{
+				if(listSkills[i].GetType() == System.Type.GetType("SurvieSkills"))
+				{
+					SurvieSkills tmp = listSkills[i] as SurvieSkills;
+					tmp.update(ref m_manaMax, m_baseManaMax, ref m_pvMax, m_basePvMax);
+				}
+			}
+		}
 	}
 	
 	public void addSkill(Skills skill)

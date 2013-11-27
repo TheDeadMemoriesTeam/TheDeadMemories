@@ -42,9 +42,9 @@ public class PlayerController : HumanoidController
 	void Start () 
 	{
 		controller = GetComponent<CharacterController>();
-		skillManager.setPvMax(200);
+		skillManager.setBasePvMax(200);
 		skillManager.setPv(skillManager.getPvMax());
-		skillManager.setManaMax(100);
+		skillManager.setBaseManaMax(100);
 		skillManager.setMana(skillManager.getManaMax());
 		skillManager.setDistanceP(4f);
 		skillManager.setDistanceM(4f);

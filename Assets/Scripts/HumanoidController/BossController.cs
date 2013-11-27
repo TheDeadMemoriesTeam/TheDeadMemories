@@ -9,7 +9,7 @@ public class BossController : EnemyController
 	{
 		base.Start();
 		
-		skillManager.setPvMax(10);
+		skillManager.setBasePvMax(10);
 		skillManager.setPv(skillManager.getPvMax());
 		
 		damageAttack = -10;
@@ -20,7 +20,7 @@ public class BossController : EnemyController
 		
 		xp = 30;
 		
-		skillManager.setManaMax(50);
+		skillManager.setBaseManaMax(50);
 		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 6;

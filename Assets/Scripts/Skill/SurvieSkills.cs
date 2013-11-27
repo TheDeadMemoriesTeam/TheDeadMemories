@@ -24,4 +24,10 @@ public class SurvieSkills : PassiveSkills
 		m_pvUp = pvUp;
 		m_manaUp = manUp;
 	}
+
+	public void update(ref int manaMax, int baseManaMax, ref int pvMax, int basePvMax)
+	{
+		pvMax = basePvMax + m_pvUp * getLvlFirstAd();
+		manaMax = baseManaMax + m_manaUp * getLvlSecAd();
+	}
 }

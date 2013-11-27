@@ -9,7 +9,7 @@ public class DistanceController : EnemyController
 	{
 		base.Start();
 		
-		skillManager.setPvMax(4);
+		skillManager.setBasePvMax(4);
 		skillManager.setPv(skillManager.getPvMax());
 		
 		damageAttack = -1;
@@ -20,7 +20,7 @@ public class DistanceController : EnemyController
 		
 		xp = 15;
 		
-		skillManager.setManaMax(80);
+		skillManager.setBaseManaMax(80);
 		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 4;
