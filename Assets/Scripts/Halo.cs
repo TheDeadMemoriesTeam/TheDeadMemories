@@ -14,7 +14,7 @@ public class Halo : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		float cosinus = Mathf.Pow(Mathf.Cos(time.dayTime/24f*360f), 0.3f);
+		float cosinus = Mathf.Pow(Mathf.Cos(((time.dayTime+6f)/24f)*360f), 0.3f);
 		if (cosinus<0)
 			halo.intensity = 0;
 		else
