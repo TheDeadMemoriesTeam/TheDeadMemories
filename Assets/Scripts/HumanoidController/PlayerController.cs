@@ -32,6 +32,9 @@ public class PlayerController : HumanoidController
 	
 	// Inventaire du joueur
 	public Inventory inventory;
+
+	// Particule magie
+	public Transform fireball;
 	
 	private bool pause = false;
 
@@ -138,6 +141,9 @@ public class PlayerController : HumanoidController
 			else if (Input.GetButtonDown("Fire2") && getMana()>=10)
 			{
 				manaUpdate(-10);
+				Instantiate(fireball,
+				            new Vector3(transform.position.x, transform.position.y + 1.5f, transform.position.z),
+				            Quaternion.identity);
 				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 				for (int i=0; i<targets.Length; i++)
 				{
