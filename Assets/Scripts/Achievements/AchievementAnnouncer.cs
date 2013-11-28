@@ -53,8 +53,8 @@ public class AchievementAnnouncer : MonoBehaviour
 				texture1.color = new Color(0.5f,0.5f,0.5f,0.5f*compteurTemps);
 				texture2.color = new Color(0.5f,0.5f,0.5f,0.5f*compteurTemps);
 				
-				texture1.pixelInset = new Rect(Screen.width/2 - 192, 75, 256, 64);
-				texture2.pixelInset = new Rect(Screen.width/2 - 64, 50, 256, 64);
+				texture1.pixelInset = new Rect(Screen.width/2 - 192, Screen.height-175, 256, 64);
+				texture2.pixelInset = new Rect(Screen.width/2 - 64, Screen.height-200, 256, 64);
 				
 			}
 			
@@ -62,8 +62,8 @@ public class AchievementAnnouncer : MonoBehaviour
 			if(compteurTemps > 1 && !textApparu)
 			{
 				// on place le texte
-				text1.pixelOffset = new Vector2(Screen.width/2 - 170, 120);
-				text2.pixelOffset = new Vector2(Screen.width/2 - 54, 90);
+				text1.pixelOffset = new Vector2(Screen.width/2 - 170, Screen.height-140);
+				text2.pixelOffset = new Vector2(Screen.width/2 - 54, Screen.height-170);
 				// on assigne le nom de l'achievement
 				text2.text = achievList[0];;
 				
@@ -77,8 +77,8 @@ public class AchievementAnnouncer : MonoBehaviour
 			if(compteurTemps > 1 && compteurTemps < 3)
 			{
 				// fait bouger la texture 
-				texture1.pixelInset = new Rect(Screen.width/2 - 128 - compteurTemps*64, 75, 256, 64);
-				texture2.pixelInset = new Rect(Screen.width/2 - 128 + compteurTemps*64, 50, 256, 64);
+				texture1.pixelInset = new Rect(Screen.width/2 - 128 - compteurTemps*64, Screen.height-175, 256, 64);
+				texture2.pixelInset = new Rect(Screen.width/2 - 128 + compteurTemps*64, Screen.height-200, 256, 64);
 			}
 			
 			// disparition en fondu de la texture + fin du mouvement
@@ -86,8 +86,8 @@ public class AchievementAnnouncer : MonoBehaviour
 			{
 				
 				// fait bouger la texture 
-				texture1.pixelInset = new Rect(Screen.width/2 - 128 - compteurTemps*64, 75, 256, 64);
-				texture2.pixelInset = new Rect(Screen.width/2 - 128 + compteurTemps*64, 50, 256, 64);
+				texture1.pixelInset = new Rect(Screen.width/2 - 128 - compteurTemps*64, Screen.height-175, 256, 64);
+				texture2.pixelInset = new Rect(Screen.width/2 - 128 + compteurTemps*64, Screen.height-200, 256, 64);
 				
 				// fait disparaitre la texture
 				float factor = compteurTemps - 3f;
