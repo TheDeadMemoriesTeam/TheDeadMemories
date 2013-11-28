@@ -36,7 +36,13 @@ public class PlayerController : HumanoidController
 
 	// Particule magie
 	public Transform fireball;
+	public Transform iceball;
+	public Transform propulsion;
+	// Compteur de temps
 	private float magicTime;
+	// Type de magie
+	enum magicTypes{Fire=0, Ice=1, Wind=2};
+	int currentMagicType = magicTypes.Fire;
 	
 	private bool pause = false;
 
@@ -150,6 +156,7 @@ public class PlayerController : HumanoidController
 			else if (Input.GetButtonUp("Fire2") && skillManager.getMana()>=10)
 			{
 				float duration = Time.time - magicTime;
+				// Lancer de projectile
 				if(duration<2f)
 				{
 					manaUpdate(-10);
@@ -162,6 +169,7 @@ public class PlayerController : HumanoidController
 					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
 					projectile.init(10f, 20f, -200f, transform.forward);
 				}
+				// Lancer d'attaque de zone
 				else
 				{
 					manaUpdate(-20);
@@ -185,6 +193,13 @@ public class PlayerController : HumanoidController
 			}
 			else if (Input.GetButtonDown("Fire2"))
 				magicTime = Time.time;
+			// Permet le changement de type de magie
+			else if (Input.GetKeyDown(KeyCode.F1))
+				currentMagicType = magicTypes.Fire;
+			else if (Input.GetKeyDown(KeyCode.F2))
+				currentMagicType = magicTypes.Ice;
+			else if (Input.GetKeyDown(KeyCode.F3))
+				currentMagicType = magicTypes.Wind;
 			if (isSprinting)
 				Debug.Log("sprint !!");
 		}
