@@ -19,7 +19,7 @@ public class ProjectilController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		transform.position = new Vector3(transform.position.x + direction.x * m_speed * Time.deltaTime,
-		                                  1.5f,
+		                                 transform.position.y,
 		                                 transform.position.z + direction.z * m_speed * Time.deltaTime);
 		Vector3 newDistance = transform.position-m_origin;
 		if (newDistance.x>m_distance || newDistance.y>m_distance || newDistance.z>m_distance)
