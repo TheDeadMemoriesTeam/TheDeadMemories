@@ -86,6 +86,10 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Shininess
+        second: .078125
+      data:
+        first:
           name: _WaveScale
         second: .063000001
       data:
@@ -96,10 +100,6 @@ Material:
         first:
           name: _RefrDistort
         second: .400000006
-      data:
-        first:
-          name: _Shininess
-        second: .078125
       data:
         first:
           name: _InvFade
