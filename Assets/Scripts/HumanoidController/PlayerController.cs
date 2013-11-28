@@ -36,6 +36,7 @@ public class PlayerController : HumanoidController
 
 	// Particule magie
 	public Transform fireball;
+	private float magicTime;
 	
 	private bool pause = false;
 
@@ -146,34 +147,44 @@ public class PlayerController : HumanoidController
 					}	
 				}
 			}
-			else if (Input.GetButtonDown("Fire2") && skillManager.getMana()>=10)
+			else if (Input.GetButtonUp("Fire2") && skillManager.getMana()>=10)
 			{
-				manaUpdate(-10);
-				// Création et initialisation du projectil
-				Transform projectileTransform = (Transform)Instantiate(fireball,
-												            new Vector3(transform.position.x + transform.forward.x, 
-												            			transform.position.y + 1.5f + transform.forward.y, 
-												            			transform.position.z + transform.forward.z),
-												            Quaternion.identity);
-				ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
-				projectile.init(10f, 20f, -200f, transform.forward);
-				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-				for (int i=0; i<targets.Length; i++)
+				float duration = Time.time - magicTime;
+				if(duration<2f)
 				{
-					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= skillManager.getDistanceM())
+					manaUpdate(-10);
+					// Création et initialisation du projectile
+					Transform projectileTransform = (Transform)Instantiate(fireball,
+					                                                       new Vector3(transform.position.x + transform.forward.x, 
+																			            transform.position.y + 1.5f + transform.forward.y, 
+																			            transform.position.z + transform.forward.z),
+					                                                       Quaternion.identity);
+					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
+					projectile.init(10f, 20f, -200f, transform.forward);
+				}
+				else
+				{
+					manaUpdate(-20);
+					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+					for (int i=0; i<targets.Length; i++)
 					{
-						var targetDir = targets[i].transform.position - transform.position;
-						var playerDir = transform.forward;
-						var angle = Vector3.Angle(targetDir, playerDir);
-						if (angle>=-45 && angle<=45)
+						Vector3 distance = transform.position-targets[i].transform.position;
+						if(distance.magnitude <= skillManager.getDistanceM())
 						{
-							float damage = -5 + (-5/100 * targets[i].getSkillManager().getMagicResistance());
-							targets[i].healthUpdate(-5);
-						}
-					}	
+							var targetDir = targets[i].transform.position - transform.position;
+							var playerDir = transform.forward;
+							var angle = Vector3.Angle(targetDir, playerDir);
+							if (angle>=-45 && angle<=45)
+							{
+								float damage = -5 + (-5/100 * targets[i].getSkillManager().getMagicResistance());
+								targets[i].healthUpdate(-5);
+							}
+						}	
+					}
 				}
 			}
+			else if (Input.GetButtonDown("Fire2"))
+				magicTime = Time.time;
 			if (isSprinting)
 				Debug.Log("sprint !!");
 		}
