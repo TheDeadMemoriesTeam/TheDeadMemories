@@ -7,66 +7,114 @@ public class SkillManager : MonoBehaviour
 	//list des competances
 	private List<Skills> listSkills;
 
-	private int m_baseManaMax;
-	private int m_basePvMax;
+	//variable afectant le joueur
+	//mana
+	private float m_baseManaMax, m_manaMax, m_mana;
 
-	//variable afectant le player
-	private int m_pv, m_pvMax, m_mana, m_manaMax;
+	//pv
+	private float m_basePvMax, m_pvMax, m_pv;
+
+	//resistance physic
+	private float m_basePhysicalResistance, m_physicalResistance;
+
+	//resistance magique
+	private float m_baseMagicResistance, m_magicResistance;
+
+	//distance d'attaque
 	private float m_distanceP, m_distanceM;
 	
 	//acesseur
-	public void setBaseManaMax(int baseManaMax)
+	//mana
+	public void setBaseManaMax(float baseManaMax)
 	{
 		m_baseManaMax = baseManaMax;
 		m_manaMax = m_baseManaMax;
+		m_mana = m_manaMax;
 	}
 
-	public void setBasePvMax(int basePvMax)
-	{
-		m_basePvMax = basePvMax;
-		m_pvMax = m_basePvMax;
-	}
-	
-	public void setPv(int pv)
-	{
-		m_pv = pv;
-	}
-	
-	public int getPv()
-	{
-		return m_pv;	
-	}
-	
-	public void setPvMax(int pvMax)
-	{
-		m_pvMax = pvMax;
-	}
-	
-	public int getPvMax()
-	{
-		return m_pvMax;	
-	}
-	
-	public void setMana(int mana)
-	{
-		m_mana = mana;
-	}
-	
-	public int getMana()
-	{
-		return m_mana;	
-	}
-	
-	public void setManaMax(int manaMax)
+	public void setManaMax(float manaMax)
 	{
 		m_manaMax = manaMax;
 	}
 	
-	public int getManaMax()
+	public float getManaMax()
 	{
 		return m_manaMax;	
 	}
+
+	public void setMana(float mana)
+	{
+		m_mana = mana;
+	}
 	
+	public float getMana()
+	{
+		return m_mana;	
+	}
+
+	//pv
+	public void setBasePvMax(float basePvMax)
+	{
+		m_basePvMax = basePvMax;
+		m_pvMax = m_basePvMax;
+		m_pv = m_pvMax;
+	}
+
+	public void setPvMax(float pvMax)
+	{
+		m_pvMax = pvMax;
+	}
+	
+	public float getPvMax()
+	{
+		return m_pvMax;	
+	}
+
+	public void setPv(float pv)
+	{
+		m_pv = pv;
+	}
+	
+	public float getPv()
+	{
+		return m_pv;	
+	}
+
+	//resistance physique
+	public void setBasePhysicalResistance(float basePhysicalResistance)
+	{
+		m_basePhysicalResistance = basePhysicalResistance;
+		m_physicalResistance = m_basePhysicalResistance;
+	}
+	
+	public void setPhysicalResistance(float physicalResistance)
+	{
+		m_physicalResistance = physicalResistance;
+	}
+	
+	public float getPhysicalResistance()
+	{
+		return m_physicalResistance;	
+	}
+
+	//resistance magic
+	public void setBaseMagicResistance(float baseMagicResistance)
+	{
+		m_baseMagicResistance = baseMagicResistance;
+		m_magicResistance = m_baseMagicResistance;
+	}
+	
+	public void setMagicResistance(float magicResistance)
+	{
+		m_magicResistance = magicResistance;
+	}
+	
+	public float getMagicResistance()
+	{
+		return m_magicResistance;	
+	}
+
+	//distance d'attaque
 	public void setDistanceM(float distanceM)
 	{
 		m_distanceM = distanceM;
@@ -87,6 +135,7 @@ public class SkillManager : MonoBehaviour
 		return m_distanceP;	
 	}
 	
+	//constructor
 	public SkillManager()
 	{
 		//creation de la liste
@@ -105,10 +154,13 @@ public class SkillManager : MonoBehaviour
 		{
 			for (int i=0; i<listSkills.Count; i++)
 			{
-				if(listSkills[i].GetType() == System.Type.GetType("SurvieSkills"))
+				if(listSkills[i].GetType() == System.Type.GetType("PassiveSkills"))
 				{
-					SurvieSkills tmp = listSkills[i] as SurvieSkills;
-					tmp.update(ref m_manaMax, m_baseManaMax, ref m_pvMax, m_basePvMax);
+					PassiveSkills tmp = listSkills[i] as PassiveSkills;
+					if(tmp.getName() == "Survie")
+						tmp.update(ref m_manaMax, m_baseManaMax, ref m_pvMax, m_basePvMax);
+					else if(tmp.getName() == "Resistance")
+						tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
 				}
 			}
 		}

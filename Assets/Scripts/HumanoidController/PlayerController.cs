@@ -43,10 +43,10 @@ public class PlayerController : HumanoidController
 	void Start () 
 	{
 		controller = GetComponent<CharacterController>();
-		skillManager.setBasePvMax(200);
-		skillManager.setPv(skillManager.getPvMax());
-		skillManager.setBaseManaMax(100);
-		skillManager.setMana(skillManager.getManaMax());
+		skillManager.setBasePvMax(200f);
+		skillManager.setBaseManaMax(100f);
+		skillManager.setBasePhysicalResistance(0f);
+		skillManager.setBaseMagicResistance(0f);
 		skillManager.setDistanceP(4f);
 		skillManager.setDistanceM(4f);
 		
@@ -59,13 +59,13 @@ public class PlayerController : HumanoidController
 		updateSpeed(isSprinting);
 		
 		//arbre de competence Survie
-		skillManager.addSkill(new SurvieSkills("Survie", 0, null, 200, 200, 5, 5));
-		skillManager.addSkill(new ResistanceSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 5, 5)); 
+		skillManager.addSkill(new PassiveSkills("Survie", 0, null, 200, 200, 5f, 5f));
+		skillManager.addSkill(new PassiveSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 1f, 1f)); 
 		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, 5));
 		
 		//arbre de competence Attaque
-		skillManager.addSkill(new BaseAttaqueSkills("Attaque de base", 0, null, 200, 200, 5, 5));
-		skillManager.addSkill(new CounterAttaqueSkills("Contre attaque", 0, skillManager.getSkill(3), 200, 200, 5, 0.1f));
+		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f));
+		skillManager.addSkill(new PassiveSkills("Contre attaque", 0, skillManager.getSkill(3), 200, 200, 5f, 0.1f));
 		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(4), 0, 30, 5f, 1.5f));
 		
 		//arbre de competence Feu
@@ -139,11 +139,14 @@ public class PlayerController : HumanoidController
 						var playerDir = transform.forward;
 						var angle = Vector3.Angle(targetDir, playerDir);
 						if (angle>=-45 && angle<=45)
+						{
+							float damage = -1 + (-1/100 * targets[i].getSkillManager().getPhysicalResistance());
 							targets[i].healthUpdate(-1);
+						}
 					}	
 				}
 			}
-			else if (Input.GetButtonDown("Fire2") && getMana()>=10)
+			else if (Input.GetButtonDown("Fire2") && skillManager.getMana()>=10)
 			{
 				manaUpdate(-10);
 				// Création et initialisation du projectil
@@ -164,7 +167,10 @@ public class PlayerController : HumanoidController
 						var playerDir = transform.forward;
 						var angle = Vector3.Angle(targetDir, playerDir);
 						if (angle>=-45 && angle<=45)
+						{
+							float damage = -5 + (-5/100 * targets[i].getSkillManager().getMagicResistance());
 							targets[i].healthUpdate(-5);
+						}
 					}	
 				}
 			}

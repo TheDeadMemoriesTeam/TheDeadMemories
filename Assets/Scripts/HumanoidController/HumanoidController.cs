@@ -10,6 +10,11 @@ public class HumanoidController : MonoBehaviour
 	
 	//manager des skills
 	protected SkillManager skillManager;
+
+	public SkillManager getSkillManager()
+	{
+		return skillManager;
+	}
 	
 	void Awake()
 	{
@@ -32,21 +37,11 @@ public class HumanoidController : MonoBehaviour
 		regen += Time.deltaTime;
 	}
 	
-	public virtual void healthUpdate(int change)
+	public virtual void healthUpdate(float change)
 	{
 		skillManager.setPv(skillManager.getPv() + change);
 		if (skillManager.getPv() > skillManager.getPvMax())
 			skillManager.setPv(skillManager.getPvMax());
-	}
-	
-	public int getHitPoints()
-	{
-		return skillManager.getPv();
-	}
-	
-	public int getMaxHitPoints()
-	{
-		return skillManager.getPvMax();
 	}
 	
 	public virtual void manaUpdate(int change)
@@ -54,15 +49,5 @@ public class HumanoidController : MonoBehaviour
 		skillManager.setMana(skillManager.getMana() + change);
 		if (skillManager.getMana()>skillManager.getManaMax())
 			skillManager.setMana(skillManager.getManaMax());
-	}
-	
-	public int getMana()
-	{
-		return skillManager.getMana();	
-	}
-	
-	public int getManaMax()
-	{
-		return skillManager.getManaMax();	
 	}
 }

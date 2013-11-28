@@ -10,8 +10,10 @@ public class MeleeController : EnemyController
 		base.Start();
 		
 		skillManager.setBasePvMax(6);
-		skillManager.setPv(skillManager.getPvMax());
-		
+		skillManager.setBaseManaMax(50);
+		skillManager.setBasePhysicalResistance(5f);
+		skillManager.setBaseMagicResistance(0f);
+
 		damageAttack = -3;
 		damageMagic = -2;
 		manaCost = -50;
@@ -19,9 +21,6 @@ public class MeleeController : EnemyController
 		probabilityAttack = 0.1F;
 		
 		xp = 15;
-		
-		skillManager.setBaseManaMax(50);
-		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 6;
 		

@@ -10,7 +10,9 @@ public class DistanceController : EnemyController
 		base.Start();
 		
 		skillManager.setBasePvMax(4);
-		skillManager.setPv(skillManager.getPvMax());
+		skillManager.setBaseManaMax(80);
+		skillManager.setPhysicalResistance(0f);
+		skillManager.setMagicResistance(5f);
 		
 		damageAttack = -1;
 		damageMagic = -5;
@@ -19,9 +21,6 @@ public class DistanceController : EnemyController
 		probabilityAttack = 0.25F;
 		
 		xp = 15;
-		
-		skillManager.setBaseManaMax(80);
-		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 4;
 	}

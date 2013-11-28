@@ -49,10 +49,10 @@ public class Interface : MonoBehaviour
 	void LateUpdate () 
 	{
 		
-		int hp = player.getHitPoints();
-		int hpMax = player.getMaxHitPoints();
-		int mana = player.getMana();
-		int manaMax = player.getManaMax();
+		float hp = player.getSkillManager().getPv();
+		float hpMax = player.getSkillManager().getPvMax();
+		float mana = player.getSkillManager().getMana();
+		float manaMax = player.getSkillManager().getManaMax();
 		int exp = player.getExperience();
 		
 		if(hp <= 0)
