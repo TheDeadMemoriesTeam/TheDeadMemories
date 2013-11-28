@@ -42,7 +42,7 @@ public class PlayerController : HumanoidController
 	private float magicTime;
 	// Type de magie
 	enum magicTypes{Fire=0, Ice=1, Wind=2};
-	int currentMagicType = magicTypes.Fire;
+	int currentMagicType = (int)magicTypes.Fire;
 	
 	private bool pause = false;
 
@@ -134,43 +134,67 @@ public class PlayerController : HumanoidController
 			rotation *= rotationFactor * Time.timeScale;
 			transform.Rotate(rotation);
 			
-			if (Input.GetButtonDown("Fire1"))
+			mouseHandler();
+
+			// Permet le changement de type de magie
+			if (Input.GetKeyDown(KeyCode.F1))
+				currentMagicType = (int)magicTypes.Fire;
+			else if (Input.GetKeyDown(KeyCode.F2))
+				currentMagicType = (int)magicTypes.Ice;
+			else if (Input.GetKeyDown(KeyCode.F3))
+				currentMagicType = (int)magicTypes.Wind;
+			if (isSprinting)
+				Debug.Log("sprint !!");
+		}
+	}
+
+	// Récupère les évènements souris et agis en fonction
+	void mouseHandler()
+	{
+		// Si le joueur effectue une attaque physique
+		if (Input.GetButtonDown("Fire1"))
+		{
+			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+			for (int i=0; i<targets.Length; i++)
 			{
-				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-				for (int i=0; i<targets.Length; i++)
+				Vector3 distance = transform.position-targets[i].transform.position;
+				if(distance.magnitude <= skillManager.getDistanceP())
 				{
-					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= skillManager.getDistanceP())
+					var targetDir = targets[i].transform.position - transform.position;
+					var playerDir = transform.forward;
+					var angle = Vector3.Angle(targetDir, playerDir);
+					if (angle>=-45 && angle<=45)
 					{
-						var targetDir = targets[i].transform.position - transform.position;
-						var playerDir = transform.forward;
-						var angle = Vector3.Angle(targetDir, playerDir);
-						if (angle>=-45 && angle<=45)
-						{
-							float damage = -1 + (-1/100 * targets[i].getSkillManager().getPhysicalResistance());
-							targets[i].healthUpdate(-1);
-						}
-					}	
-				}
+						float damage = -1 + (-1/100 * targets[i].getSkillManager().getPhysicalResistance());
+						targets[i].healthUpdate(-1);
+					}
+				}	
 			}
-			else if (Input.GetButtonUp("Fire2") && skillManager.getMana()>=10)
+		}
+		// Si le joueur lance une attaque magique
+		else if (Input.GetButtonUp("Fire2") && skillManager.getMana()>=10)
+		{
+			float duration = Time.time - magicTime;
+			// Lancer de projectile
+			if(duration<2f)
 			{
-				float duration = Time.time - magicTime;
-				// Lancer de projectile
-				if(duration<2f)
+				if(currentMagicType == (int)magicTypes.Fire)
 				{
 					manaUpdate(-10);
 					// Création et initialisation du projectile
 					Transform projectileTransform = (Transform)Instantiate(fireball,
 					                                                       new Vector3(transform.position.x + transform.forward.x, 
-																			            transform.position.y + 1.5f + transform.forward.y, 
-																			            transform.position.z + transform.forward.z),
+					            transform.position.y + 1.5f + transform.forward.y, 
+					            transform.position.z + transform.forward.z),
 					                                                       Quaternion.identity);
 					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
 					projectile.init(10f, 20f, -200f, transform.forward);
 				}
-				// Lancer d'attaque de zone
-				else
+			}
+			// Lancer d'attaque de zone
+			else
+			{
+				if(currentMagicType == (int)magicTypes.Fire)
 				{
 					manaUpdate(-20);
 					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
@@ -191,21 +215,11 @@ public class PlayerController : HumanoidController
 					}
 				}
 			}
-			else if (Input.GetButtonDown("Fire2"))
-				magicTime = Time.time;
-			// Permet le changement de type de magie
-			else if (Input.GetKeyDown(KeyCode.F1))
-				currentMagicType = magicTypes.Fire;
-			else if (Input.GetKeyDown(KeyCode.F2))
-				currentMagicType = magicTypes.Ice;
-			else if (Input.GetKeyDown(KeyCode.F3))
-				currentMagicType = magicTypes.Wind;
-			if (isSprinting)
-				Debug.Log("sprint !!");
 		}
+		// Si le joueur commence à préparer une attaque magique
+		else if (Input.GetButtonDown("Fire2"))
+			magicTime = Time.time;
 	}
-	
-	
 	
 	void OnTriggerEnter (Collider other)
 	{
