@@ -6,7 +6,7 @@ public class ProjectilController : MonoBehaviour {
 	private float m_speed;
 	private float m_distance;
 
-	private int m_damage;
+	private float m_damage;
 
 	private Vector3 m_origin;
 	private Vector3 direction;
@@ -37,7 +37,7 @@ public class ProjectilController : MonoBehaviour {
 		}
 	}
 
-	public void init(float speed, float distance, int damage, Vector3 forward)
+	public void init(float speed, float distance, float damage, Vector3 forward)
 	{
 		m_speed = speed;
 		m_distance = distance;

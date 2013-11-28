@@ -156,7 +156,7 @@ public class PlayerController : HumanoidController
 												            			transform.position.z + transform.forward.z),
 												            Quaternion.identity);
 				ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
-				projectile.init(10f, 20f, 200, transform.forward);
+				projectile.init(10f, 20f, -200f, transform.forward);
 				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 				for (int i=0; i<targets.Length; i++)
 				{
