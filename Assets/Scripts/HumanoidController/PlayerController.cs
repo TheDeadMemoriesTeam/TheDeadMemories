@@ -36,8 +36,11 @@ public class PlayerController : HumanoidController
 
 	// Particule magie
 	public Transform fireball;
+	public Transform firezone;
 	public Transform iceball;
+	public Transform icezone;
 	public Transform propulsion;
+	public Transform tornade;
 	// Compteur de temps
 	private float magicTime;
 	// Type de magie
@@ -184,11 +187,11 @@ public class PlayerController : HumanoidController
 					// Création et initialisation du projectile
 					Transform projectileTransform = (Transform)Instantiate(fireball,
 					                                                       new Vector3(transform.position.x + transform.forward.x, 
-					            transform.position.y + 1.5f + transform.forward.y, 
-					            transform.position.z + transform.forward.z),
+																			           transform.position.y + 1.5f + transform.forward.y, 
+																			           transform.position.z + transform.forward.z),
 					                                                       Quaternion.identity);
 					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
-					projectile.init(10f, 20f, -200f, transform.forward);
+					projectile.init(10f, 20f, -5f, transform.forward);
 				}
 			}
 			// Lancer d'attaque de zone
@@ -197,6 +200,12 @@ public class PlayerController : HumanoidController
 				if(currentMagicType == (int)magicTypes.Fire)
 				{
 					manaUpdate(-20);
+					// Création et initialisation de la zone de feu
+					Transform magicZoneTransform = (Transform)Instantiate(firezone,
+					                                                      new Vector3(transform.position.x, 
+																		  	         transform.position.y,
+																		  	         transform.position.z),
+					                                                      Quaternion.identity);
 					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 					for (int i=0; i<targets.Length; i++)
 					{
@@ -206,11 +215,6 @@ public class PlayerController : HumanoidController
 							var targetDir = targets[i].transform.position - transform.position;
 							var playerDir = transform.forward;
 							var angle = Vector3.Angle(targetDir, playerDir);
-							if (angle>=-45 && angle<=45)
-							{
-								float damage = -5 + (-5/100 * targets[i].getSkillManager().getMagicResistance());
-								targets[i].healthUpdate(-5);
-							}
 						}	
 					}
 				}
