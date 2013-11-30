@@ -147,6 +147,7 @@ public class PlayerController : HumanoidController
 			Vector3 vec = transform.position;
 	        controller.Move(moveDirection * Time.deltaTime);
 			achievementManager.updateTravel(vec, transform.position);
+			achievementManager.setPlayerPos(transform.position);
 	
 			// Rotation
 			rotation = new Vector3(0, Input.GetAxis("Rotation")+Input.GetAxis("Mouse X"), 0);
