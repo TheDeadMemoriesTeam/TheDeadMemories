@@ -199,8 +199,8 @@ public class PlayerController : HumanoidController
 					// Création et initialisation du projectile
 					Transform projectileTransform = (Transform)Instantiate(iceball,
 					                                                       new Vector3(transform.position.x + transform.forward.x, 
-					            transform.position.y + 1.5f + transform.forward.y, 
-					            transform.position.z + transform.forward.z),
+																			            transform.position.y + 1.5f + transform.forward.y, 
+																			            transform.position.z + transform.forward.z),
 					                                                       Quaternion.identity);
 					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
 					projectile.init(10f, 20f, -5f, transform.forward);
@@ -223,11 +223,24 @@ public class PlayerController : HumanoidController
 					{
 						Vector3 distance = transform.position-targets[i].transform.position;
 						if(distance.magnitude <= skillManager.getDistanceM())
-						{
-							var targetDir = targets[i].transform.position - transform.position;
-							var playerDir = transform.forward;
-							var angle = Vector3.Angle(targetDir, playerDir);
-						}	
+							targets[i].healthUpdate(-5);
+					}
+				}
+				if(currentMagicType == magicTypes.Ice)
+				{
+					manaUpdate(-20);
+					// Création et initialisation de la zone de glace
+					Transform magicZoneTransform = (Transform)Instantiate(icezone,
+					                                                      new Vector3(transform.position.x, 
+																		            transform.position.y,
+																		            transform.position.z),
+					                                                      Quaternion.identity);
+					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+					for (int i=0; i<targets.Length; i++)
+					{
+						Vector3 distance = transform.position-targets[i].transform.position;
+						if(distance.magnitude <= skillManager.getDistanceM())
+							targets[i].healthUpdate(-5);
 					}
 				}
 			}
