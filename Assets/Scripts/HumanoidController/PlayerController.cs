@@ -45,7 +45,7 @@ public class PlayerController : HumanoidController
 	private float magicTime;
 	// Type de magie
 	enum magicTypes{Fire=0, Ice=1, Wind=2};
-	int currentMagicType = (int)magicTypes.Fire;
+	magicTypes currentMagicType = magicTypes.Fire;
 	
 	private bool pause = false;
 
@@ -157,11 +157,11 @@ public class PlayerController : HumanoidController
 
 			// Permet le changement de type de magie
 			if (Input.GetKeyDown(KeyCode.F1))
-				currentMagicType = (int)magicTypes.Fire;
+				currentMagicType = magicTypes.Fire;
 			else if (Input.GetKeyDown(KeyCode.F2))
-				currentMagicType = (int)magicTypes.Ice;
+				currentMagicType = magicTypes.Ice;
 			else if (Input.GetKeyDown(KeyCode.F3))
-				currentMagicType = (int)magicTypes.Wind;
+				currentMagicType = magicTypes.Wind;
 			if (isSprinting)
 				Debug.Log("sprint !!");
 		}
@@ -197,7 +197,7 @@ public class PlayerController : HumanoidController
 			// Lancer de projectile
 			if(duration<2f)
 			{
-				if(currentMagicType == (int)magicTypes.Fire)
+				if(currentMagicType == magicTypes.Fire)
 				{
 					manaUpdate(-10);
 					// Création et initialisation du projectile
@@ -209,11 +209,23 @@ public class PlayerController : HumanoidController
 					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
 					projectile.init(10f, 20f, -5f, transform.forward);
 				}
+				if(currentMagicType == magicTypes.Ice)
+				{
+					manaUpdate(-10);
+					// Création et initialisation du projectile
+					Transform projectileTransform = (Transform)Instantiate(iceball,
+					                                                       new Vector3(transform.position.x + transform.forward.x, 
+																			            transform.position.y + 1.5f + transform.forward.y, 
+																			            transform.position.z + transform.forward.z),
+					                                                       Quaternion.identity);
+					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
+					projectile.init(10f, 20f, -5f, transform.forward);
+				}
 			}
 			// Lancer d'attaque de zone
 			else
 			{
-				if(currentMagicType == (int)magicTypes.Fire)
+				if(currentMagicType == magicTypes.Fire)
 				{
 					manaUpdate(-20);
 					// Création et initialisation de la zone de feu
@@ -227,11 +239,24 @@ public class PlayerController : HumanoidController
 					{
 						Vector3 distance = transform.position-targets[i].transform.position;
 						if(distance.magnitude <= skillManager.getDistanceM())
-						{
-							var targetDir = targets[i].transform.position - transform.position;
-							var playerDir = transform.forward;
-							var angle = Vector3.Angle(targetDir, playerDir);
-						}	
+							targets[i].healthUpdate(-5);
+					}
+				}
+				if(currentMagicType == magicTypes.Ice)
+				{
+					manaUpdate(-20);
+					// Création et initialisation de la zone de glace
+					Transform magicZoneTransform = (Transform)Instantiate(icezone,
+					                                                      new Vector3(transform.position.x, 
+																		            transform.position.y,
+																		            transform.position.z),
+					                                                      Quaternion.identity);
+					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+					for (int i=0; i<targets.Length; i++)
+					{
+						Vector3 distance = transform.position-targets[i].transform.position;
+						if(distance.magnitude <= skillManager.getDistanceM())
+							targets[i].healthUpdate(-5);
 					}
 				}
 			}
