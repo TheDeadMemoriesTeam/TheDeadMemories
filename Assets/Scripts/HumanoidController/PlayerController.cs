@@ -6,7 +6,7 @@ public class PlayerController : HumanoidController
 {
 	// Speeds
 	public float walkSpeed = 6.0F;
-	public float sprintSpeed;
+	private float sprintSpeed;
     public float jumpSpeed = 8.0F;
 	private float speed = 6.0F;		// CurrentSpeed
 	
@@ -19,7 +19,7 @@ public class PlayerController : HumanoidController
 	private float sprintTimeStart;
 	public float maxTimeSprinting = 10f; // temps de sprint maximum
 	private float pauseAfterSprint;
-	private float sprintAugmentation = 0.75f;	// Pourcentage d'accélération du joueur en sprint
+	public float sprintAugmentation = 0.75f;	// Pourcentage d'accélération du joueur en sprint
 	
     private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
@@ -113,7 +113,23 @@ public class PlayerController : HumanoidController
 	            moveDirection *= speed;
 				// Handle jumps
 	            if (Input.GetButton("Jump"))
-	                moveDirection.y = jumpSpeed;
+				{
+					Vector3 startRay = new Vector3(transform.position.x,
+					                               transform.position.y + 2,
+					                               transform.position.z);
+
+					RaycastHit rayToSkyHit;
+					Ray rayToSky = new Ray(startRay, Vector3.up);
+
+
+					if (Physics.Raycast(rayToSky, out rayToSkyHit, 1))
+					{
+						if (rayToSkyHit.collider.tag != "InvisibleCeiling")
+							moveDirection.y = jumpSpeed;
+					}
+					else
+						moveDirection.y = jumpSpeed;
+				}
 				if (Input.GetKeyDown(KeyCode.LeftShift) && pauseAfterSprint <= 0)
 				{
 					isSprinting = true;
