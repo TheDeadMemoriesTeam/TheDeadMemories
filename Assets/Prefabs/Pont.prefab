@@ -59,6 +59,7 @@ GameObject:
   - 4: {fileID: 400006}
   - 33: {fileID: 3300004}
   - 23: {fileID: 2300004}
+  - 64: {fileID: 6400000}
   m_Layer: 0
   m_Name: Planches pont
   m_TagString: Untagged
@@ -165,7 +166,7 @@ Transform:
   m_GameObject: {fileID: 100010}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
   m_LocalPosition: {x: -.0972916409, y: .616753995, z: 1.68288767}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalScale: {x: 10, y: 10, z: 5}
   m_Children:
   - {fileID: 400008}
   - {fileID: 400006}
@@ -283,9 +284,22 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_Mesh: {fileID: 4300006, guid: f0bd3f19c2d415b48a18ede19c90bd16, type: 3}
+--- !u!64 &6400000
+MeshCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100006}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_SmoothSphereCollisions: 0
+  m_Convex: 1
+  m_Mesh: {fileID: 4300000, guid: f0bd3f19c2d415b48a18ede19c90bd16, type: 3}
 --- !u!65 &6500000
 BoxCollider:
-  m_ObjectHideFlags: 1
+  m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100010}
