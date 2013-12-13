@@ -8,15 +8,27 @@ AnimatorController:
   m_Name: Skull
   serializedVersion: 2
   m_AnimatorParameters:
-  - m_Name: Speed
+  - m_Name: speed
     m_Type: 1
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isHitting
+    m_Type: 4
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 9100000}
+  - m_Name: isDead
+    m_Type: 4
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
   m_AnimatorLayers:
   - serializedVersion: 3
-    m_Name: Base Layer
+    m_Name: Base
     m_StateMachine: {fileID: 110700000}
     m_Mask: {fileID: 0}
     m_BlendingMode: 0
@@ -51,7 +63,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 4
-    m_ConditionEvent: Speed
+    m_ConditionEvent: speed
     m_EventTreshold: .100000001
     m_ExitTime: .925000012
   m_Atomic: 1
@@ -69,7 +81,7 @@ Transition:
   m_TransitionOffset: 0
   m_Conditions:
   - m_ConditionMode: 3
-    m_ConditionEvent: Speed
+    m_ConditionEvent: speed
     m_EventTreshold: .100000001
     m_ExitTime: 0
   m_Atomic: 1
@@ -96,7 +108,7 @@ State:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Mouvement
-  m_Speed: 1
+  m_Speed: 3
   m_CycleOffset: 0
   m_Motions:
   - {fileID: 7400000, guid: 881646286410e6e4cb3d91950cdf63d5, type: 3}
@@ -111,7 +123,7 @@ StateMachine:
   m_ObjectHideFlags: 3
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Base Layer
+  m_Name: Base
   m_DefaultState: {fileID: 110233970}
   m_States:
   - {fileID: 110255490}
@@ -120,6 +132,9 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
+      first: {fileID: 0}
+      second: []
+    data:
       first: {fileID: 110233970}
       second:
       - {fileID: 110184269}
@@ -127,18 +142,6 @@ StateMachine:
       first: {fileID: 110255490}
       second:
       - {fileID: 110111028}
-    data:
-      first: {fileID: 0}
-      second: []
-    data:
-      first: {fileID: 0}
-      second: []
-    data:
-      first: {fileID: 0}
-      second: []
-    data:
-      first: {fileID: 0}
-      second: []
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 72, y: 120, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
