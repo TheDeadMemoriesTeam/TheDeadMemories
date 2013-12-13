@@ -49,6 +49,10 @@ public class PlayerController : HumanoidController
 	
 	private bool pause = false;
 
+	// Animations
+	private Animator anim;
+	private PlayerHashIDs hash;
+
 	// Use this for initialization
 	void Start () 
 	{
@@ -92,6 +96,11 @@ public class PlayerController : HumanoidController
 		skillManager.addSkill(new PorteeSkills("Soufle", 1000, null, 1f, 10, 10, 200, 200, 2f));
 		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(12), 2f, 15, 15, 200, 200, 2f));
 		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 3f, 20, 20, 10f, 10f));
+
+		// Animations
+		hash = GetComponent<PlayerHashIDs>();
+		anim = GetComponentInChildren<Animator>();
+		anim.SetLayerWeight(0,1f);
 	}
 	
 	// Update is called once per frame
@@ -165,6 +174,8 @@ public class PlayerController : HumanoidController
 				currentMagicType = magicTypes.Wind;
 			if (isSprinting)
 				Debug.Log("sprint !!");
+
+			AnimationManager();
 		}
 	}
 
@@ -265,6 +276,18 @@ public class PlayerController : HumanoidController
 		// Si le joueur commence à préparer une attaque magique
 		else if (Input.GetButtonDown("Fire2"))
 			magicTime = Time.time;
+	}
+
+	void AnimationManager()
+	{
+		if(Input.GetAxis("Horizontal") != 0f || 
+		   Input.GetAxis("Vertical") != 0f)
+		{
+			anim.SetFloat(hash.speed, 5.5f);
+		}
+		else
+			// Otherwise set the speed parameter to 0.
+			anim.SetFloat(hash.speed, 0);
 	}
 	
 	void OnTriggerEnter (Collider other)
