@@ -13,9 +13,9 @@ public class BossController : EnemyController
 		skillManager.setBaseManaMax(50);
 		skillManager.setPhysicalResistance(5f);
 		skillManager.setMagicResistance(5f);
-		
-		damageAttack = -10;
-		damageMagic = -20;
+		skillManager.setBasePhysicAttack(10f);
+		skillManager.setBaseMagicAttack(20f);
+
 		manaCost = -50;
 		timeAttack = 1.5F;
 		probabilityAttack = 0.1F;

@@ -13,9 +13,9 @@ public class DistanceController : EnemyController
 		skillManager.setBaseManaMax(80);
 		skillManager.setPhysicalResistance(0f);
 		skillManager.setMagicResistance(5f);
-		
-		damageAttack = -1;
-		damageMagic = -5;
+		skillManager.setBasePhysicAttack(1f);
+		skillManager.setBaseMagicAttack(5f);
+
 		manaCost = -40;
 		timeAttack = 1F;
 		probabilityAttack = 0.25F;
