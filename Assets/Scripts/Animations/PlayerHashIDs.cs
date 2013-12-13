@@ -10,6 +10,7 @@ public class PlayerHashIDs : MonoBehaviour {
 	// Variables
 	public int speed;
 	public int isHitting;
+	public int isJumping;
 	public int isDead;
 
 	void Awake()
@@ -21,6 +22,7 @@ public class PlayerHashIDs : MonoBehaviour {
 		// Variable
 		speed = Animator.StringToHash("speed");
 		isHitting = Animator.StringToHash("isHitting");
+		isJumping = Animator.StringToHash("isJumping");
 		isDead = Animator.StringToHash("isDead");
 	}
 }

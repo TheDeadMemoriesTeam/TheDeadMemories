@@ -117,6 +117,7 @@ public class PlayerController : HumanoidController
 			
 	        if (controller.isGrounded) 
 			{
+				anim.SetBool(hash.isJumping, false);
 				// Moves forward, left, right, backward
 	            moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
 	            moveDirection = transform.TransformDirection(moveDirection);
@@ -139,6 +140,7 @@ public class PlayerController : HumanoidController
 					}
 					else
 						moveDirection.y = jumpSpeed;
+					anim.SetBool(hash.isJumping, true);
 				}
 				if (Input.GetKeyDown(KeyCode.LeftShift) && pauseAfterSprint <= 0)
 				{
