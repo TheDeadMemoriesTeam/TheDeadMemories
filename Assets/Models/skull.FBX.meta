@@ -11,6 +11,28 @@ ModelImporter:
     100010: Jambe gauche
     100012: Jambe gauche001
     100014: //RootNode
+    100016: Avant Bras D
+    100018: Avant bras G
+    100020: Bras D
+    100022: bras droit001
+    100024: Bras G
+    100026: col1
+    100028: col2
+    100030: col3
+    100032: col4
+    100034: col5
+    100036: Cuisse G
+    100038: Genou D
+    100040: Genou G
+    100042: Jambe D
+    100044: Jambe G
+    100046: Main D
+    100048: Main G
+    100050: Mollet D
+    100052: Mollet G
+    100054: Pied D
+    100056: Pied G
+    100058: T__te
     400000: bras droit
     400002: Bras gauche
     400004: Cage thoracique
@@ -19,6 +41,28 @@ ModelImporter:
     400010: Jambe gauche
     400012: Jambe gauche001
     400014: //RootNode
+    400016: Avant Bras D
+    400018: Avant bras G
+    400020: Bras D
+    400022: bras droit001
+    400024: Bras G
+    400026: col1
+    400028: col2
+    400030: col3
+    400032: col4
+    400034: col5
+    400036: Cuisse G
+    400038: Genou D
+    400040: Genou G
+    400042: Jambe D
+    400044: Jambe G
+    400046: Main D
+    400048: Main G
+    400050: Mollet D
+    400052: Mollet G
+    400054: Pied D
+    400056: Pied G
+    400058: T__te
     2300000: bras droit
     2300002: Bras gauche
     2300004: Cage thoracique
@@ -40,6 +84,8 @@ ModelImporter:
     4300008: Colonne vertebrale
     4300010: Cage thoracique
     4300012: Bras gauche
+    4300014: Jambe G
+    4300016: bras droit001
     6400000: bras droit
     6400002: Bras gauche
     6400004: Cage thoracique
@@ -47,7 +93,15 @@ ModelImporter:
     6400008: Cr__ne
     6400010: Jambe gauche
     6400012: Jambe gauche001
+    7400000: Take 001
     9500000: //RootNode
+    13700000: bras droit
+    13700002: bras droit001
+    13700004: Cage thoracique
+    13700006: Colonne vertebrale
+    13700008: Cr__ne
+    13700010: Jambe G
+    13700012: Jambe gauche001
   materials:
     importMaterials: 1
     materialName: 0
@@ -55,11 +109,13 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 0
   meshes:
@@ -87,7 +143,6 @@ ModelImporter:
   humanDescription:
     human: []
     skeleton: []
-    handles: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -97,6 +152,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  additionalBone: 1
   animationType: 2
   userData: 

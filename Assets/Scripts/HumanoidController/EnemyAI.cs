@@ -32,12 +32,12 @@ public class EnemyAI : MonoBehaviour
     void Update ()
     {
         // If the player is in sight and is alive...
-        if(enemySight.playerInSight && enemySight.getDistanceToPlayer() < shootDistance && player.getHitPoints() > 0f)
+		if(enemySight.playerInSight && enemySight.getDistanceToPlayer() < shootDistance && player.getSkillManager().getPv() > 0f)
             // ... shoot.
             Shooting();
         
         // If the player has been sighted and isn't dead...
-        else if(enemySight.personalLastSighting != Utils.GetInfiniteVector3() && player.getHitPoints() > 0f)
+		else if(enemySight.personalLastSighting != Utils.GetInfiniteVector3() && player.getSkillManager().getPv() > 0f)
             // ... chase.
             Chasing();
         

@@ -6,8 +6,7 @@ public class PlayerController : HumanoidController
 {
 	// Speeds
 	public float walkSpeed = 6.0F;
-	public float sprintSpeed = 10.0F;
-	public float sprintDuration = 6.0F;
+	private float sprintSpeed;
     public float jumpSpeed = 8.0F;
 	private float speed = 6.0F;		// CurrentSpeed
 	
@@ -15,10 +14,12 @@ public class PlayerController : HumanoidController
 	public float rotationFactor = 5.0F;
     public float gravity = 20.0F;
 	
-	// Sprint
+	// Gestion Sprint
 	private bool isSprinting;
-	private float sprintedTime;
+	private float sprintTimeStart;
+	public float maxTimeSprinting = 10f; // temps de sprint maximum
 	private float pauseAfterSprint;
+	public float sprintAugmentation = 0.75f;	// Pourcentage d'accélération du joueur en sprint
 	
     private Vector3 moveDirection = Vector3.zero;
 	private Vector3 rotation = Vector3.zero;
@@ -32,6 +33,19 @@ public class PlayerController : HumanoidController
 	
 	// Inventaire du joueur
 	public Inventory inventory;
+
+	// Particule magie
+	public Transform fireball;
+	public Transform firezone;
+	public Transform iceball;
+	public Transform icezone;
+	public Transform propulsion;
+	public Transform tornade;
+	// Compteur de temps
+	private float magicTime;
+	// Type de magie
+	enum magicTypes{Fire=0, Ice=1, Wind=2};
+	magicTypes currentMagicType = magicTypes.Fire;
 	
 	private bool pause = false;
 
@@ -39,25 +53,29 @@ public class PlayerController : HumanoidController
 	void Start () 
 	{
 		controller = GetComponent<CharacterController>();
-		skillManager.setPvMax(200);
-		skillManager.setPv(skillManager.getPvMax());
-		skillManager.setManaMax(100);
-		skillManager.setMana(skillManager.getManaMax());
+		skillManager.setBasePvMax(200f);
+		skillManager.setBaseManaMax(100f);
+		skillManager.setBasePhysicalResistance(0f);
+		skillManager.setBaseMagicResistance(0f);
 		skillManager.setDistanceP(4f);
 		skillManager.setDistanceM(4f);
 		
 		timeRegen = 2;
 		
+		// Affecte la valeur du sprint de sprintAugmentation% de plus que la marche normale
+		sprintSpeed = walkSpeed + sprintAugmentation*walkSpeed;
+		sprintTimeStart = Time.time;
 		isSprinting = false;
+		updateSpeed(isSprinting);
 		
 		//arbre de competence Survie
-		skillManager.addSkill(new SurvieSkills("Survie", 0, null, 200, 200, 5, 5));
-		skillManager.addSkill(new ResistanceSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 5, 5)); 
+		skillManager.addSkill(new PassiveSkills("Survie", 0, null, 200, 200, 5f, 5f));
+		skillManager.addSkill(new PassiveSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 1f, 1f)); 
 		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, 5));
 		
 		//arbre de competence Attaque
-		skillManager.addSkill(new BaseAttaqueSkills("Attaque de base", 0, null, 200, 200, 5, 5));
-		skillManager.addSkill(new CounterAttaqueSkills("Contre attaque", 0, skillManager.getSkill(3), 200, 200, 5, 0.1f));
+		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f));
+		skillManager.addSkill(new PassiveSkills("Contre attaque", 0, skillManager.getSkill(3), 200, 200, 5f, 0.1f));
 		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(4), 0, 30, 5f, 1.5f));
 		
 		//arbre de competence Feu
@@ -95,67 +113,159 @@ public class PlayerController : HumanoidController
 	            moveDirection *= speed;
 				// Handle jumps
 	            if (Input.GetButton("Jump"))
-	                moveDirection.y = jumpSpeed;
-				if (Input.GetKeyDown(KeyCode.LeftShift) )
+				{
+					Vector3 startRay = new Vector3(transform.position.x,
+					                               transform.position.y + 2,
+					                               transform.position.z);
+
+					RaycastHit rayToSkyHit;
+					Ray rayToSky = new Ray(startRay, Vector3.up);
+
+
+					if (Physics.Raycast(rayToSky, out rayToSkyHit, 1))
+					{
+						if (rayToSkyHit.collider.tag != "InvisibleCeiling")
+							moveDirection.y = jumpSpeed;
+					}
+					else
+						moveDirection.y = jumpSpeed;
+				}
+				if (Input.GetKeyDown(KeyCode.LeftShift) && pauseAfterSprint <= 0)
 				{
 					isSprinting = true;
-					doSprint(isSprinting);					
+					updateSpeed(isSprinting);				
 				}
-				if ( (isSprinting && Time.time > sprintedTime+sprintDuration) || (Input.GetKeyUp(KeyCode.LeftShift)) )
+				if ((isSprinting && Time.time > sprintTimeStart + maxTimeSprinting) || (Input.GetKeyUp(KeyCode.LeftShift)))
 				{
-					
 					isSprinting = false;
-					doSprint(isSprinting);
+					updateSpeed(isSprinting);
 				}
+				updateStandOffTime();
 	        }
 			// Applies move
 	        moveDirection.y -= gravity * Time.deltaTime;
 			Vector3 vec = transform.position;
 	        controller.Move(moveDirection * Time.deltaTime);
 			achievementManager.updateTravel(vec, transform.position);
+			achievementManager.setPlayerPos(transform.position);
 	
 			// Rotation
 			rotation = new Vector3(0, Input.GetAxis("Rotation")+Input.GetAxis("Mouse X"), 0);
 			rotation *= rotationFactor * Time.timeScale;
 			transform.Rotate(rotation);
 			
-			if (Input.GetButtonDown("Fire1"))
+			mouseHandler();
+
+			// Permet le changement de type de magie
+			if (Input.GetKeyDown(KeyCode.F1))
+				currentMagicType = magicTypes.Fire;
+			else if (Input.GetKeyDown(KeyCode.F2))
+				currentMagicType = magicTypes.Ice;
+			else if (Input.GetKeyDown(KeyCode.F3))
+				currentMagicType = magicTypes.Wind;
+			if (isSprinting)
+				Debug.Log("sprint !!");
+		}
+	}
+
+	// Récupère les évènements souris et agis en fonction
+	void mouseHandler()
+	{
+		// Si le joueur effectue une attaque physique
+		if (Input.GetButtonDown("Fire1"))
+		{
+			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+			for (int i=0; i<targets.Length; i++)
 			{
-				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-				for (int i=0; i<targets.Length; i++)
+				Vector3 distance = transform.position-targets[i].transform.position;
+				if(distance.magnitude <= skillManager.getDistanceP())
 				{
-					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= skillManager.getDistanceP())
+					var targetDir = targets[i].transform.position - transform.position;
+					var playerDir = transform.forward;
+					var angle = Vector3.Angle(targetDir, playerDir);
+					if (angle>=-45 && angle<=45)
 					{
-						var targetDir = targets[i].transform.position - transform.position;
-						var playerDir = transform.forward;
-						var angle = Vector3.Angle(targetDir, playerDir);
-						if (angle>=-45 && angle<=45)
-							targets[i].healthUpdate(-1);
-					}	
+						float damage = -1 + (-1/100 * targets[i].getSkillManager().getPhysicalResistance());
+						targets[i].healthUpdate(-1);
+					}
+				}	
+			}
+		}
+		// Si le joueur lance une attaque magique
+		else if (Input.GetButtonUp("Fire2") && skillManager.getMana()>=10)
+		{
+			float duration = Time.time - magicTime;
+			// Lancer de projectile
+			if(duration<2f)
+			{
+				if(currentMagicType == magicTypes.Fire)
+				{
+					manaUpdate(-10);
+					// Création et initialisation du projectile
+					Transform projectileTransform = (Transform)Instantiate(fireball,
+					                                                       new Vector3(transform.position.x + transform.forward.x, 
+																			           transform.position.y + 1.5f + transform.forward.y, 
+																			           transform.position.z + transform.forward.z),
+					                                                       Quaternion.identity);
+					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
+					projectile.init(10f, 20f, -5f, transform.forward);
+				}
+				if(currentMagicType == magicTypes.Ice)
+				{
+					manaUpdate(-10);
+					// Création et initialisation du projectile
+					Transform projectileTransform = (Transform)Instantiate(iceball,
+					                                                       new Vector3(transform.position.x + transform.forward.x, 
+																			            transform.position.y + 1.5f + transform.forward.y, 
+																			            transform.position.z + transform.forward.z),
+					                                                       Quaternion.identity);
+					ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
+					projectile.init(10f, 20f, -5f, transform.forward);
 				}
 			}
-			else if (Input.GetButtonDown("Fire2") && getMana()>=10)
+			// Lancer d'attaque de zone
+			else
 			{
-				manaUpdate(-10);
-				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-				for (int i=0; i<targets.Length; i++)
+				if(currentMagicType == magicTypes.Fire)
 				{
-					Vector3 distance = transform.position-targets[i].transform.position;
-					if(distance.magnitude <= skillManager.getDistanceM())
+					manaUpdate(-20);
+					// Création et initialisation de la zone de feu
+					Transform magicZoneTransform = (Transform)Instantiate(firezone,
+					                                                      new Vector3(transform.position.x, 
+																		  	         transform.position.y,
+																		  	         transform.position.z),
+					                                                      Quaternion.identity);
+					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+					for (int i=0; i<targets.Length; i++)
 					{
-						var targetDir = targets[i].transform.position - transform.position;
-						var playerDir = transform.forward;
-						var angle = Vector3.Angle(targetDir, playerDir);
-						if (angle>=-45 && angle<=45)
+						Vector3 distance = transform.position-targets[i].transform.position;
+						if(distance.magnitude <= skillManager.getDistanceM())
 							targets[i].healthUpdate(-5);
-					}	
+					}
+				}
+				if(currentMagicType == magicTypes.Ice)
+				{
+					manaUpdate(-20);
+					// Création et initialisation de la zone de glace
+					Transform magicZoneTransform = (Transform)Instantiate(icezone,
+					                                                      new Vector3(transform.position.x, 
+																		            transform.position.y,
+																		            transform.position.z),
+					                                                      Quaternion.identity);
+					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+					for (int i=0; i<targets.Length; i++)
+					{
+						Vector3 distance = transform.position-targets[i].transform.position;
+						if(distance.magnitude <= skillManager.getDistanceM())
+							targets[i].healthUpdate(-5);
+					}
 				}
 			}
 		}
+		// Si le joueur commence à préparer une attaque magique
+		else if (Input.GetButtonDown("Fire2"))
+			magicTime = Time.time;
 	}
-	
-	
 	
 	void OnTriggerEnter (Collider other)
 	{
@@ -192,16 +302,24 @@ public class PlayerController : HumanoidController
 		return pause;
 	}
 	
-	public void doSprint(bool isSprinting)		
+	void updateSpeed(bool isSprinting)
 	{
-		
+		// Met à jour la vitesse du joueur selon son status (sprint ou non)
 		if (isSprinting)
 		{
-			sprintedTime = Time.time;
-			pauseAfterSprint = sprintedTime*1.5F;
+			sprintTimeStart = Time.time;
 			speed = sprintSpeed;
-		}			
+		}
 		else
-			speed = walkSpeed;		
+			speed = walkSpeed;
+	}
+	
+	void updateStandOffTime()
+	{
+		// Met à jour le temps pendant lequel le joueur ne peut pas sprinter
+		if (isSprinting)
+			pauseAfterSprint = (Time.time - sprintTimeStart) * 1.5f;
+		else
+			pauseAfterSprint -= Time.deltaTime;
 	}
 }

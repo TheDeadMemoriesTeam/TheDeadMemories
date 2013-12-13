@@ -9,8 +9,10 @@ public class BossController : EnemyController
 	{
 		base.Start();
 		
-		skillManager.setPvMax(10);
-		skillManager.setPv(skillManager.getPvMax());
+		skillManager.setBasePvMax(10);
+		skillManager.setBaseManaMax(50);
+		skillManager.setPhysicalResistance(5f);
+		skillManager.setMagicResistance(5f);
 		
 		damageAttack = -10;
 		damageMagic = -20;
@@ -19,9 +21,6 @@ public class BossController : EnemyController
 		probabilityAttack = 0.1F;
 		
 		xp = 30;
-		
-		skillManager.setManaMax(50);
-		skillManager.setMana(skillManager.getManaMax());
 		
 		timeRegen = 6;
 		

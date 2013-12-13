@@ -47,7 +47,7 @@ public class Inventory : PauseSystem
 		
 		inventory = new Dictionary<Item, int>();
 		
-		for(int i=0; i<9; i++)
+		for(int i=0; i<nbLocationInInventory; i++)
 			listeButton[i] = false;
 	}
 	

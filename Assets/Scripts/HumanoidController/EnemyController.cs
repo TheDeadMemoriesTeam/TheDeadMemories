@@ -79,18 +79,25 @@ public class EnemyController : HumanoidController
 		{
 			if (Random.value > probabilityAttack)
 			{
-				if (getMana() >= -manaCost)
+				if (skillManager.getMana() >= -manaCost)
 				{
 					if (Random.value > 0.5)
-						target.healthUpdate(damageAttack);
+					{
+						float damage = damageAttack + (damageAttack/100 * target.getSkillManager().getPhysicalResistance());
+						target.healthUpdate(damage);
+					}
 					else
 					{
-						target.healthUpdate(damageMagic);
+						float damage = damageMagic + (damageMagic/100 * target.getSkillManager().getPhysicalResistance());
+						target.healthUpdate(damage);
 						manaUpdate(manaCost);
 					}					
 				}
 				else
-					target.healthUpdate(damageAttack);
+				{
+					float damage = damageAttack + (damageAttack/100 * target.getSkillManager().getPhysicalResistance());
+					target.healthUpdate(damage);
+				}
 				target.achievementManager.updateTimeNotTouched(0);
 			}
 			timeCountAttack = 0;

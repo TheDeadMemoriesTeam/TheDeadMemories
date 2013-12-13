@@ -30,6 +30,7 @@ public class AchievementManager : MonoBehaviour {
 	private float timeNotTouched = 0;		// untouch achievement
 	private float timeSurvived = 0;			// survive achievement
 	private float maxTimeLimit = 0;			// kill x ennemies in x time achievement
+	private Vector3 playerPosition = Vector3.zero;	// zone achievement
 	
 	// Associe le nom de l'achievement à son état (bool) => équivalent map de la STL
 	private Dictionary<string, bool> AchievementsStates;
@@ -84,6 +85,10 @@ public class AchievementManager : MonoBehaviour {
 		// Famille d'achievements ne pas etre touché x temps
 		achievements.Add(new UntouchedAchievement(this, "Uncatchable", "Not being touched during 1 min !", 60));
 		achievements.Add(new UntouchedAchievement(this, "Really Uncatchable", "Not being touched during 5 min !", 300));
+
+		// Famille d'achievements avec triggers de zone
+		achievements.Add(new ZoneAchievement(this, "Dracula is not here", "Arrive to the castle", "castle"));
+		achievements.Add(new ZoneAchievement(this, "Welcome !", "Discover the village", "village"));
 		
 		// Récupère l'interval de temps maximal à conserver en historique pour les TimedKillAchievement
 		for (int i = 0 ; i < achievements.Count ; i++)
@@ -299,5 +304,15 @@ public class AchievementManager : MonoBehaviour {
 		}
 		
 		return nbKillPerDuration;
+	}
+
+	public Vector3 getPlayerPos()
+	{
+		return playerPosition;
+	}
+
+	public void setPlayerPos(Vector3 pos)
+	{
+		playerPosition = pos;
 	}
 }

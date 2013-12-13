@@ -110,6 +110,7 @@ ModelImporter:
     2300060: Poignet G
     2300062: Talon D
     2300064: Talon G
+    2300066: //RootNode
     3300000: __paule D
     3300002: __paule G
     3300004: __paulette D
@@ -143,6 +144,7 @@ ModelImporter:
     3300060: Poignet G
     3300062: Talon D
     3300064: Talon G
+    3300066: //RootNode
     4300000: Box013
     4300002: buste armure
     4300004: cuisse G
@@ -176,6 +178,7 @@ ModelImporter:
     4300060: botte D
     4300062: Box014
     4300064: casque
+    4300066: Chevalier
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -184,11 +187,13 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -216,7 +221,6 @@ ModelImporter:
   humanDescription:
     human: []
     skeleton: []
-    handles: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -226,6 +230,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  additionalBone: 1
   animationType: 2
   userData: 
