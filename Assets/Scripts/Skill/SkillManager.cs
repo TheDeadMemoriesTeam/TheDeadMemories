@@ -20,8 +20,14 @@ public class SkillManager : MonoBehaviour
 	//resistance magique
 	private float m_baseMagicResistance, m_magicResistance;
 
+	//attaque physic
+	private float m_basePhysicAttack, m_physicAttack;
+
+	//attaque magic
+	private float m_baseMagicAttack, m_magicAttack;
+
 	//distance d'attaque
-	private float m_distanceP, m_distanceM;
+	private float m_distancePhysicAttack, m_distanceMagicAttack;
 	
 	//acesseur
 	//mana
@@ -80,7 +86,7 @@ public class SkillManager : MonoBehaviour
 		return m_pv;	
 	}
 
-	//resistance physique
+	//resistance physic
 	public void setBasePhysicalResistance(float basePhysicalResistance)
 	{
 		m_basePhysicalResistance = basePhysicalResistance;
@@ -114,25 +120,59 @@ public class SkillManager : MonoBehaviour
 		return m_magicResistance;	
 	}
 
+	//Attack physic
+	public void setBasePhysicAttack(float basePhysicAttack)
+	{
+		m_basePhysicAttack = basePhysicAttack;
+		m_physicAttack = m_basePhysicAttack;
+	}
+	
+	public void setPhysicAttack(float physicAttack)
+	{
+		m_physicAttack = physicAttack;
+	}
+	
+	public float getPhysicAttack()
+	{
+		return m_physicAttack;	
+	}
+
+	//Attack magic
+	public void setBaseMagicAttack(float baseMagicAttack)
+	{
+		m_baseMagicAttack = baseMagicAttack;
+		m_magicAttack = m_baseMagicAttack;
+	}
+	
+	public void setMagicAttack(float magicAttack)
+	{
+		m_magicAttack = magicAttack;
+	}
+	
+	public float getMagicAttack()
+	{
+		return m_magicAttack;	
+	}
+
 	//distance d'attaque
-	public void setDistanceM(float distanceM)
+	public void setDistanceMagicAttack(float distanceMagicAttack)
 	{
-		m_distanceM = distanceM;
+		m_distanceMagicAttack = distanceMagicAttack;
 	}
 	
-	public float getDistanceM()
+	public float getDistanceMagicAttack()
 	{
-		return m_distanceM;	
+		return m_distanceMagicAttack;	
 	}
 	
-	public void setDistanceP(float distanceP)
+	public void setDistancePhysicAttack(float distancePhysicAttack)
 	{
-		m_distanceP = distanceP;
+		m_distancePhysicAttack = distancePhysicAttack;
 	}
 	
-	public float getDistanceP()
+	public float getDistancePhysicAttack()
 	{
-		return m_distanceP;	
+		return m_distancePhysicAttack;	
 	}
 	
 	//constructor
@@ -161,6 +201,8 @@ public class SkillManager : MonoBehaviour
 						tmp.update(ref m_manaMax, m_baseManaMax, ref m_pvMax, m_basePvMax);
 					else if(tmp.getName() == "Resistance")
 						tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
+					else if(tmp.getName() == "Attaque de base")
+						tmp.update(ref m_physicAttack, m_basePhysicAttack, ref m_magicAttack, m_baseMagicAttack);
 				}
 			}
 		}
