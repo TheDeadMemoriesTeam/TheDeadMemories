@@ -80,19 +80,19 @@ public class EnemyController : HumanoidController
 				{
 					if (Random.value > 0.5)
 					{
-						float damage = skillManager.getPhysicAttack() + (skillManager.getPhysicAttack()/100 * target.getSkillManager().getPhysicalResistance());
+						float damage = -skillManager.getPhysicAttack() + (-skillManager.getPhysicAttack()/100 * target.getSkillManager().getPhysicalResistance());
 						target.healthUpdate(damage);
 					}
 					else
 					{
-						float damage = skillManager.getMagicAttack() + (skillManager.getMagicAttack()/100 * target.getSkillManager().getPhysicalResistance());
+						float damage = -skillManager.getMagicAttack() + (-skillManager.getMagicAttack()/100 * target.getSkillManager().getPhysicalResistance());
 						target.healthUpdate(damage);
 						manaUpdate(manaCost);
 					}					
 				}
 				else
 				{
-					float damage = skillManager.getPhysicAttack() + (skillManager.getPhysicAttack()/100 * target.getSkillManager().getPhysicalResistance());
+					float damage = -skillManager.getPhysicAttack() + (-skillManager.getPhysicAttack()/100 * target.getSkillManager().getPhysicalResistance());
 					target.healthUpdate(damage);
 				}
 				target.achievementManager.updateTimeNotTouched(0);
