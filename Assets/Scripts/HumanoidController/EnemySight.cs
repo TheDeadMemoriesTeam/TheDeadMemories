@@ -7,7 +7,7 @@ public class EnemySight : MonoBehaviour
 	public float viewingDistance = 24f;             // Distance from where the player will be viewed
     public bool playerInSight;                      // Whether or not the player is currently sighted.
     public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
-	public float hearingDistance = 5f;              // Distance from where the player will be heard
+	public float hearingDistance = 8f;              // Distance from where the player will be heard
     
     private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
 	private Animator anim;							// Reference to the Animator.
@@ -48,6 +48,7 @@ public class EnemySight : MonoBehaviour
         
         // Create a vector from the enemy to the player and store the angle between it and forward.
         Vector3 direction = player.transform.position - transform.position;
+		direction.y = 0;
         float angle = Vector3.Angle(direction, transform.forward);
         
         // If the angle between forward and where the player is, is less than half the angle of view...
@@ -60,7 +61,7 @@ public class EnemySight : MonoBehaviour
 	            RaycastHit hit;
 	            
 	            // ... and if a raycast towards the player hits something...
-				//Debug.DrawRay(transform.position, direction.normalized * viewingDistance, new Color(1f, 0, 0, 1f));
+				Debug.DrawRay(transform.position, direction.normalized * viewingDistance, new Color(1f, 0, 0, 1f));
 	            if(Physics.Raycast(transform.position, direction.normalized, out hit, viewingDistance))
 	            {
 	                // ... and if the raycast hits the player...

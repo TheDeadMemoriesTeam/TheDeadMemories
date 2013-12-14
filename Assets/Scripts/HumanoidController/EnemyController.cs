@@ -1,15 +1,33 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class EnemyController : HumanoidController 
+public class EnemyController : HumanoidController
 {
+
+	public float shootDistance = 4f;            // Distance from where the player will be shot
+	public float chaseSpeed = 5f;               // The nav mesh agent's speed when chasing.
+	public float chaseWaitTime = 5f;            // The amount of time to wait when the last sighting is reached.
+	public float patrolSpeed = 2f;              // The nav mesh agent's speed when patrolling.
+	public float patrolWaitTime = 1f;           // The amount of time to wait when the patrol way point is reached.
+	public Transform[] patrolWayPoints;         // An array of transforms for the patrol route.
 	
-	protected PlayerController target;
-	protected NavMeshAgent agent;
+
+	protected PlayerController player;          // Reference to the player.
+	private EnemySight enemySight;              // Reference to the EnemySight script.
+	private NavMeshAgent nav;                   // Reference to the nav mesh agent.
+
+	private bool shooting;
+	private float chaseTimer;                   // A timer for the chaseWaitTime.
+	private float patrolTimer;                  // A timer for the patrolWaitTime.
+
+	private int wayPointIndex = 0;              // A counter for the way point array.
+	private Transform waysNetwork;				// Object that will store all way points.
+
+
 	protected float timeCountAttack;
 	protected int damageAttack;
 	protected int damageMagic;
-	protected int manaCost;
+	protected int manaCost;          public int getManaCost() {return manaCost;}
 	protected float timeAttack;
 	protected float probabilityAttack;
 	protected int xp;
@@ -18,9 +36,21 @@ public class EnemyController : HumanoidController
 	public float[] itemsDropProbability;
 	
 	private bool inCrypte = false;
-	
+
+	protected override void Awake ()
+	{
+		base.Awake();
+
+		// Setting up the references.
+		enemySight = GetComponent<EnemySight>();
+		nav = GetComponent<NavMeshAgent>();
+		player = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
+		shooting = false;
+		waysNetwork = null;
+	}
+
 	// Use this for initialization
-	protected virtual void Start () 
+	protected override void Start () 
 	{
 		// Check attributs droppableItems and itemsDropProbability
 		bool validAttributs = true;
@@ -34,74 +64,141 @@ public class EnemyController : HumanoidController
 			Debug.LogError("The enemy has its droppable items that are not correctly configured.");
 			Application.Quit();
 		}
-		
-		// Init the instance
-		target = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
-		agent = GetComponent<NavMeshAgent>();
-		timeCountAttack = 0;
 	}
 	
 	// Update is called once per frame
 	protected override void Update () 
 	{	
 		base.Update();
+
+		// Destroy the ennemy if he is dead
 		if (skillManager.getPv() <= 0)
 		{
 			((SpawnManager)FindObjectOfType(System.Type.GetType("SpawnManager"))).decNbEnnemies();
-			target.experienceUpdate(xp);
+			player.experienceUpdate(xp);
 			dropItems();
 			Destroy(gameObject);
 			return;
 		}
+
+		shooting = false;
+
+		// If the player is in sight and is alive...
+		if(enemySight.playerInSight && enemySight.getDistanceToPlayer() < shootDistance && player.getSkillManager().getPv() > 0f)
+			// ... shoot.
+			Shooting();
 		
-		if(!inCrypte)
-		{
-//			agent.destination = target.transform.position;
-			timeCountAttack += Time.deltaTime;
-			Vector3 distance = transform.position-target.transform.position;
+		// If the player has been sighted and isn't dead...
+		else if(enemySight.personalLastSighting != Utils.GetInfiniteVector3() && player.getSkillManager().getPv() > 0f)
+			// ... chase.
+			Chasing();
 		
-			if(distance.magnitude <= agent.stoppingDistance)
-			{
-				transform.LookAt(new Vector3(target.transform.position.x, transform.position.y, target.transform.position.z));
-//				attack();
-			}
-		}
-//		//les enemis vont vers une direction aleatoire pendent un certain temp et change au boutd'un moment
-//		else if((int)Time.timeSinceLevelLoad%10 == 0)
-//		{			
-//			agent.destination = Random.onUnitSphere*100;
-//		}
+		// Otherwise...
+		else
+			// ... patrol.
+			Patrolling();
+	}
+
+	void Shooting ()
+	{
+		// Stop the enemy where it is.
+		nav.Stop();
+		shooting = true;
 	}
 	
-	void attack()
+	
+	void Chasing ()
 	{
-		if (timeCountAttack >= timeAttack)
+		// Create a vector from the enemy to the last sighting of the player.
+		Vector3 sightingDeltaPos = (Vector3)enemySight.personalLastSighting - transform.position;
+		// If the the last personal sighting of the player is not close...
+		if(sightingDeltaPos.sqrMagnitude > 4f)
+			// ... set the destination for the NavMeshAgent to the last personal sighting of the player.
+			nav.destination = (Vector3)enemySight.personalLastSighting;
+		
+		// Set the appropriate speed for the NavMeshAgent.
+		nav.speed = chaseSpeed;
+		
+		// If near the last personal sighting...
+		if(nav.remainingDistance < nav.stoppingDistance)
 		{
-			if (Random.value > probabilityAttack)
+			// ... increment the timer.
+			chaseTimer += Time.deltaTime;
+			
+			// If the timer exceeds the wait time...
+			if(chaseTimer >= chaseWaitTime)
 			{
-				if (skillManager.getMana() >= -manaCost)
-				{
-					if (Random.value > 0.5)
-					{
-						float damage = damageAttack + (damageAttack/100 * target.getSkillManager().getPhysicalResistance());
-						target.healthUpdate(damage);
-					}
-					else
-					{
-						float damage = damageMagic + (damageMagic/100 * target.getSkillManager().getPhysicalResistance());
-						target.healthUpdate(damage);
-						manaUpdate(manaCost);
-					}					
-				}
-				else
-				{
-					float damage = damageAttack + (damageAttack/100 * target.getSkillManager().getPhysicalResistance());
-					target.healthUpdate(damage);
-				}
-				target.achievementManager.updateTimeNotTouched(0);
+				// ... reset last global sighting, the last personal sighting and the timer.
+				enemySight.personalLastSighting = Utils.GetInfiniteVector3();
+				chaseTimer = 0f;
 			}
-			timeCountAttack = 0;
 		}
+		else
+			// If not near the last sighting personal sighting of the player, reset the timer.
+			chaseTimer = 0f;
+	}
+	
+	
+	void Patrolling ()
+	{
+		if (patrolWayPoints.Length == 0) {
+			generatePatrolWayPoints();
+			return;
+		}
+		
+		// Set an appropriate speed for the NavMeshAgent.
+		nav.speed = patrolSpeed;
+		
+		// If near the next waypoint or there is no destination...
+		if(nav.destination == Utils.GetInfiniteVector3() || nav.remainingDistance < nav.stoppingDistance)
+		{
+			// ... increment the timer.
+			patrolTimer += Time.deltaTime;
+			
+			// If the timer exceeds the wait time...
+			if(patrolTimer >= patrolWaitTime)
+			{
+				// ... increment the wayPointIndex.
+				if(wayPointIndex == patrolWayPoints.Length - 1)
+					wayPointIndex = 0;
+				else
+					wayPointIndex++;
+				
+				// Reset the timer.
+				patrolTimer = 0;
+			}
+		}
+		else
+			// If not near a destination, reset the timer.
+			patrolTimer = 0;
+		
+		// Set the destination to the patrolWayPoint.
+		nav.destination = patrolWayPoints[wayPointIndex].position;
+	}
+	
+	void generatePatrolWayPoints()
+	{
+		waysNetwork = getNearestWaysNetwork();
+		patrolWayPoints = waysNetwork.gameObject.GetComponentsInChildren<Transform>();
+		wayPointIndex = 0;
+	}
+	
+	Transform getNearestWaysNetwork()
+	{
+		GameObject[] waysNetworks = GameObject.FindGameObjectsWithTag("WaysNetwork");
+		
+		Transform nearestWaysNetwork = null;
+		float minDistance = float.PositiveInfinity;
+		for (int i = 0; i < waysNetworks.Length; i++)
+		{
+			float d = Vector3.Distance(transform.position, waysNetworks[i].transform.position);
+			if (d < minDistance) {
+				minDistance = d;
+				nearestWaysNetwork = waysNetworks[i].transform;
+			}
+		}
+		
+		return nearestWaysNetwork;
 	}
 	
 	void dropItems()
@@ -112,7 +209,17 @@ public class EnemyController : HumanoidController
 				Instantiate(droppableItems[i], transform.position, Quaternion.identity);
 		}
 	}
-	
+
+	public bool isShooting()
+	{
+		return shooting;
+	}
+
+	public bool isInCrypt()
+	{
+		return inCrypte;
+	}
+
 	public void setInCrypts(bool b)
 	{
 		inCrypte = b;	

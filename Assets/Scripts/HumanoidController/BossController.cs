@@ -31,6 +31,6 @@ public class BossController : EnemyController
 	{
 		base.Update();
 		if (skillManager.getPv() <= 0)
-			target.achievementManager.updateKillsBerseker();
+			player.achievementManager.updateKillsBerseker();
 	}
 }
