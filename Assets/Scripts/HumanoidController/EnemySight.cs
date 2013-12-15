@@ -76,6 +76,9 @@ public class EnemySight : MonoBehaviour
 	                }
 	            }
 			}
+			else {
+				playerInSight = true;
+			}
         }
         
         // If the player is walking/running...

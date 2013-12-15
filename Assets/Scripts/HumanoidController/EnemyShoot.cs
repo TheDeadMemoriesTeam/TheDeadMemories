@@ -56,7 +56,7 @@ public class EnemyShoot : MonoBehaviour
 				// The fractional distance from the player, 1 is next to the player, 0.5 is at the max shooting distance.
 				float fractionalDistance = (enemyController.shootDistance * 2 - d) / enemyController.shootDistance;
 				// The damage is the scaled damage, scaled by the fractional distance, plus the minimum damage.
-				// float damage = damageAttack + (damageAttack/100 * target.getSkillManager().getPhysicalResistance());
+				// float damage = -damageAttack + (-damageAttack/100 * target.getSkillManager().getPhysicalResistance());
 				float damage = scaledDamage * fractionalDistance + minimumDamage;
 				player.healthUpdate(-damage);
 				enemyController.manaUpdate(enemyController.getManaCost());
@@ -66,7 +66,7 @@ public class EnemyShoot : MonoBehaviour
 				// The fractional distance from the player, 1 is next to the player, 0.5 is at the max shooting distance.
 				float fractionalDistance = (enemyController.shootDistance * 2 - d) / enemyController.shootDistance;
 				// The damage is the scaled damage, scaled by the fractional distance, plus the minimum damage.
-				// float damage = damageAttack + (damageAttack/100 * target.getSkillManager().getPhysicalResistance());
+				// float damage = -damageAttack + (-damageAttack/100 * target.getSkillManager().getPhysicalResistance());
 				float damage = scaledDamage * fractionalDistance + minimumDamage;
 				player.healthUpdate(-damage);
 			}
