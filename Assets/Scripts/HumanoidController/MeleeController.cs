@@ -13,9 +13,9 @@ public class MeleeController : EnemyController
 		skillManager.setBaseManaMax(50);
 		skillManager.setBasePhysicalResistance(5f);
 		skillManager.setBaseMagicResistance(0f);
-
-		damageAttack = -3;
-		damageMagic = -2;
+		skillManager.setBasePhysicAttack(3f);
+		skillManager.setBaseMagicAttack(2f);
+		
 		manaCost = -50;
 		timeAttack = 1F;
 		probabilityAttack = 0.1F;
