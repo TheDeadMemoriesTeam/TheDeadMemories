@@ -54,7 +54,7 @@ public class PlayerController : HumanoidController
 	private PlayerHashIDs hash;
 
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 		controller = GetComponent<CharacterController>();
 		skillManager.setBasePvMax(200f);

@@ -133,7 +133,7 @@ public class EnemySight : MonoBehaviour
 		return Vector3.Distance(transform.position, player.transform.position);
 	}
 	
-	void alertOthers(Vector3 pos, int broadcastingLevel = 0)
+	void alertOthers(Vector3 pos, int broadcastingLevel)
 	{
 		const int maxBroadcastingLevel = 2;
 		if ( broadcastingLevel < maxBroadcastingLevel)
@@ -152,8 +152,13 @@ public class EnemySight : MonoBehaviour
 		}
 		
 	}
-	
-	void playerPosition(Vector3 pos, int broadcastingLevel = 0)
+
+	void playerPosition(Vector3 pos)
+	{
+		playerPosition(pos, 0);
+	}
+
+	void playerPosition(Vector3 pos, int broadcastingLevel)
 	{
 		if (personalLastSighting != pos)
 		{
