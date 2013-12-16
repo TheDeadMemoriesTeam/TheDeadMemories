@@ -50,8 +50,8 @@ public class BaseSkills : DamageSkills
 	}
 	
 	// Use this for initialization
-	public BaseSkills (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, int costIncDamage, int costIncAd) 
-		:base(name, price, father, timeIncantation, manaCost, damage)
+	public BaseSkills (string name, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float damage, int costIncDamage, int costIncAd) 
+		:base(name, price, father, timeIncantation, manaCost, particule, damage)
 	{
 		m_costIncDamage = costIncDamage;
 		m_costIncAd = costIncAd;
