@@ -215,58 +215,67 @@ public class PlayerController : HumanoidController
 			ZoneSkills zoneSkill = skillManager.getSkill((int)currentMagicType + 1) as ZoneSkills;
 			SuperSkills superSkill = skillManager.getSkill((int)currentMagicType + 2) as SuperSkills;
 
-			//determination de la skill en fonction du temp de maintien du bouton droit
-			//attaque de portee
-			if(duration >= porteeSkill.getTimeIncantation() && duration < zoneSkill.getTimeIncantation())
+			if(porteeSkill.getIsBought())
 			{
-				//test si la mana du joeur est sufisante pour la skill choisi
-				if(skillManager.getMana() > porteeSkill.getManaCost())
+				//determination de la skill en fonction du temp de maintien du bouton droit
+				//attaque de portee
+				if(duration >= porteeSkill.getTimeIncantation() && duration < zoneSkill.getTimeIncantation())
 				{
-					//decrementation de la mana du coup de la skill
-					skillManager.setMana(skillManager.getMana() - porteeSkill.getManaCost());
-
-					//execution de la skill
-					porteeSkill.launch(transform.position, transform.forward, skillManager.getMagicAttack());
-				}
-			}
-			//determination de la skill en fonction du temp de maintien du bouton droit
-			//attaque de zone
-			else if(duration >= zoneSkill.getTimeIncantation() && duration < superSkill.getTimeIncantation())
-			{
-				//test si la mana du joeur est sufisante pour la skill choisi
-				if(skillManager.getMana() > zoneSkill.getManaCost())
-				{
-					//decrementation de la mana du coup de la skill
-					skillManager.setMana(skillManager.getMana() - zoneSkill.getManaCost());
-
-					//execution de la skill
-					zoneSkill.launch(transform.position);
-
-					//on inflige des degas au ennemis si il sont dans la zone 
-					EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-					for (int i=0; i<targets.Length; i++)
+					//test si la mana du joeur est sufisante pour la skill choisi
+					if(skillManager.getMana() > porteeSkill.getManaCost())
 					{
-						Vector3 distance = transform.position-targets[i].transform.position;
-						if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getZone())
-						{
-							float damage = -skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()) + (-skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())/100 * targets[i].getSkillManager().getMagicResistance());
-							targets[i].healthUpdate(damage);
-						}
+						//decrementation de la mana du coup de la skill
+						skillManager.setMana(skillManager.getMana() - porteeSkill.getManaCost());
+
+						//execution de la skill
+						porteeSkill.launch(transform.position, transform.forward, skillManager.getMagicAttack());
 					}
 				}
-			}
-			//determination de la skill en fonction du temp de maintien du bouton droit
-			//super attaque
-			else if(duration >= superSkill.getTimeIncantation())
-			{
-				//test si la mana du joeur est sufisante pour la skill choisi
-				if(skillManager.getMana() > superSkill.getManaCost())
+				//determination de la skill en fonction du temp de maintien du bouton droit
+				//attaque de zone
+				else if(zoneSkill.getIsBought())
 				{
-					//decrementation de la mana du coup de la skill
-					skillManager.setMana(skillManager.getMana() - superSkill.getManaCost());
+					if(duration >= zoneSkill.getTimeIncantation() && duration < superSkill.getTimeIncantation())
+					{
+						//test si la mana du joeur est sufisante pour la skill choisi
+						if(skillManager.getMana() > zoneSkill.getManaCost())
+						{
+							//decrementation de la mana du coup de la skill
+							skillManager.setMana(skillManager.getMana() - zoneSkill.getManaCost());
 
-					//execution de la skill
-					//zoneSkill.launch(transform.position);
+							//execution de la skill
+							zoneSkill.launch(transform.position);
+
+							//on inflige des degas au ennemis si il sont dans la zone 
+							EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+							for (int i=0; i<targets.Length; i++)
+							{
+								Vector3 distance = transform.position-targets[i].transform.position;
+								if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getZone())
+								{
+									float damage = -skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()) + (-skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())/100 * targets[i].getSkillManager().getMagicResistance());
+									targets[i].healthUpdate(damage);
+								}
+							}
+						}
+					}
+					//determination de la skill en fonction du temp de maintien du bouton droit
+					//super attaque
+					else if(superSkill.getIsBought())
+					{
+						if(duration >= superSkill.getTimeIncantation())
+						{
+							//test si la mana du joeur est sufisante pour la skill choisi
+							if(skillManager.getMana() > superSkill.getManaCost())
+							{
+								//decrementation de la mana du coup de la skill
+								skillManager.setMana(skillManager.getMana() - superSkill.getManaCost());
+
+								//execution de la skill
+								//zoneSkill.launch(transform.position);
+							}
+						}
+					}
 				}
 			}
 		}
