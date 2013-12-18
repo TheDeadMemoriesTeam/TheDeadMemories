@@ -18,8 +18,8 @@ public class FurieSkills : ActiveSkills
 	}
 	
 	// Use this for initialization
-	public FurieSkills (string name, int price, Skills father, float timeIncantation, int manaCost, float time, float damageFactor) 
-		:base(name, price, father, timeIncantation, manaCost)
+	public FurieSkills (string name, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float time, float damageFactor) 
+		:base(name, price, father, timeIncantation, manaCost, particule)
 	{
 		m_time = time;
 		m_damageFactor = damageFactor;
