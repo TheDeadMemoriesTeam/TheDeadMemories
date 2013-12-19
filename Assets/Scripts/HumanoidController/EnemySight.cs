@@ -13,6 +13,7 @@ public class EnemySight : MonoBehaviour
 	private Animator anim;							// Reference to the Animator.
     private PlayerController player;                // Reference to the player.
     private Animator playerAnim;                    // Reference to the player's animator component.
+	private PlayerHashIDs playerHashIds;
     
     
     void Awake ()
@@ -20,7 +21,6 @@ public class EnemySight : MonoBehaviour
         // Setting up the references.
         nav = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
-        //playerAnim = player.GetComponent<Animator>();
         
         // Set the personal sighting and the previous sighting to the reset position.
         personalLastSighting = Utils.GetInfiniteVector3();
@@ -29,6 +29,8 @@ public class EnemySight : MonoBehaviour
 	void Start()
 	{
 		player = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
+		playerAnim = player.GetComponentInChildren<Animator>();
+		playerHashIds = player.GetComponent<PlayerHashIDs>();
 		viewingDistance = 24f;
 	}
     
@@ -82,7 +84,12 @@ public class EnemySight : MonoBehaviour
         }
         
         // If the player is walking/running...
-//        if(playerLayerZeroStateHash == hash.locomotionState)
+
+
+		int walking = playerAnim.GetCurrentAnimatorStateInfo(0).nameHash;
+		if(walking == playerHashIds.movingState ||
+		   walking == playerHashIds.beginMovingState ||
+		   walking == playerHashIds.beginMovingState)
         {
             // ... and if the player is within hearing range...
             if(CalculatePathLength(player.transform.position) <= hearingDistance) {
