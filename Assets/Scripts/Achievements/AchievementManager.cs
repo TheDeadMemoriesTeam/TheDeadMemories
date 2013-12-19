@@ -166,29 +166,19 @@ public class AchievementManager : MonoBehaviour {
 		//fileGet.Close();
 	}
 	
-	void loadAchievements()
+	public void loadAchievements(List<string> achievementsGet)
 	{
-		//Si le fichier de sauvegarde existe on les charge
-		//if(File.Exists(Application.persistentDataPath + "/achievementsTodo.dat"))
-		//{
-			//BinaryFormatter pour charger les nouvelles données
-		//	var binFormatter = new BinaryFormatter();
-			//Ouvre le fichier
-		//	var fileTodo = File.Open(Application.persistentDataPath + "/achievementsTodo.dat", FileMode.Open);
-			//Charge les achievements non réalisés
-		//	achievements = (List<Achievement>)binFormatter.Deserialize(fileTodo);
-		//	fileTodo.Close();
-		//}
-		/*if(File.Exists(Application.persistentDataPath + "/achievementsGet.dat"))
+		// Parcours la liste des achievements aquis pour mettre à jour la liste générale des achievements
+		for (int i = 0 ; i < achievementsGet.Count() ; i++)
 		{
-			//BinaryFormatter pour charger les nouvelles données
-			var binFormatter = new BinaryFormatter();
-			//Ouvre le fichier
-			var fileGet = File.Open(Application.persistentDataPath + "/achievementsGet.dat", FileMode.Open);
-			//Charge les achievements réalisés
-			achievementsGet = (List<Achievement>)binFormatter.Deserialize(fileGet);
-			fileGet.Close();
-		}*/
+			for (int j = 0 ; j < achievements.Count() ; j++)
+			{
+				if (achievements.ElementAt(j).getName() == achievementsGet.ElementAt(i))
+					achievements.ElementAt(j).setAchieved();
+			}
+		}
+
+		refreshListAchievements();
 	}
 	
 	
