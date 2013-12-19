@@ -12,8 +12,8 @@ public class ZoneSkills : BaseSkills
 	}
 	
 	// Use this for initialization
-	public ZoneSkills (string name, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float damage, int costIncDamage, int costIncZone, float zone) 
-		:base(name, price, father, timeIncantation, manaCost, particule, damage, costIncDamage, costIncZone)
+	public ZoneSkills (string name, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float damage, int costIncDamage, int costIncZone, string nameDamage, string nameZone, float zone) 
+		:base(name, price, father, timeIncantation, manaCost, particule, damage, costIncDamage, costIncZone, nameDamage, nameZone)
 	{
 		m_zone = zone;
 

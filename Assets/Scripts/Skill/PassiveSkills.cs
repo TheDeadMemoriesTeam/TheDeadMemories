@@ -4,10 +4,12 @@ using System.Collections;
 public class PassiveSkills : Skills 
 {
 	private float m_firstAd;
+	private string m_nameFirstAd;
 	private int m_lvlFirstAd = 0;
 	private int m_costIncFirstAd;
 
 	private float m_secAd;
+	private string m_nameSecAd;
 	private int m_lvlSecAd = 0;
 	private int m_costIncSecAd;
 	
@@ -37,7 +39,7 @@ public class PassiveSkills : Skills
 		m_costIncFirstAd = cost;	
 	}
 	
-	public int setCostIncFirstAd()
+	public int getCostIncFirstAd()
 	{
 		return m_costIncFirstAd;	
 	}
@@ -47,19 +49,31 @@ public class PassiveSkills : Skills
 		m_costIncSecAd = cost;	
 	}
 	
-	public int setCostIncSecAd()
+	public int getCostIncSecAd()
 	{
 		return m_costIncSecAd;	
 	}
+
+	public string getNameFirstAd()
+	{
+		return m_nameFirstAd;	
+	}
+
+	public string getNameSecAd()
+	{
+		return m_nameSecAd;	
+	}
 	
 	// Use this for initialization
-	public PassiveSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, float firstAd, float secAd) 
+	public PassiveSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, float firstAd, float secAd, string nameFirstAd, string nameSecAd) 
 		:base (name, price, father)
 	{
 		m_costIncFirstAd = costIncFirstAd;
 		m_costIncSecAd = costIncSecAd;
 		m_firstAd = firstAd;
 		m_secAd = secAd;
+		m_nameFirstAd = nameFirstAd;
+		m_nameSecAd = m_nameSecAd;
 	}
 
 	public void update(ref float firstAd, float baseFirstAd, ref float secAd, float basesecAd)
