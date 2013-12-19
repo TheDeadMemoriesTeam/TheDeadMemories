@@ -5,7 +5,9 @@ public class PlayerHashIDs : MonoBehaviour {
 
 	// Animations
 	public int baseState;
+	public int beginMovingState;
 	public int movingState;
+	public int endMovingState;
 
 	// Variables
 	public int speed;
@@ -13,11 +15,13 @@ public class PlayerHashIDs : MonoBehaviour {
 	public int isJumping;
 	public int isDead;
 
-	void Awake()
+	void Start()
 	{
 		// Animation
 		baseState = Animator.StringToHash("Base.Base");
+		beginMovingState = Animator.StringToHash("Base.MouvementBegin");
 		movingState = Animator.StringToHash("Base.Mouvement");
+		endMovingState = Animator.StringToHash("Base.MouvementEnd");
 
 		// Variable
 		speed = Animator.StringToHash("speed");
