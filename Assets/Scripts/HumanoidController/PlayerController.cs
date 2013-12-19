@@ -298,14 +298,18 @@ public class PlayerController : HumanoidController
 	
 	void OnTriggerEnter (Collider other)
 	{
-		try 
-		{
-			inventory.addItem(other.gameObject.tag);
-			DestroyObject(other.gameObject);
-		}
-		catch (System.InvalidOperationException ex)
-		{
-			Debug.Log(ex);	
+		if(other.gameObject.tag == "ManaPotion"
+		   || other.gameObject.tag == "Bone")
+		{	
+			try 
+			{
+				inventory.addItem(other.gameObject.tag);
+				DestroyObject(other.gameObject);
+			}
+			catch (System.InvalidOperationException ex)
+			{
+				Debug.Log(ex);	
+			}
 		}
 	}
 	
