@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ProjectilController : MonoBehaviour {
+public class ProjectilController : MonoBehaviour 
+{
 
 	private float m_speed;
 	private float m_distance;
@@ -12,12 +13,14 @@ public class ProjectilController : MonoBehaviour {
 	private Vector3 direction;
 
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		m_origin = transform.position;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		transform.position = new Vector3(transform.position.x + direction.x * m_speed * Time.deltaTime,
 		                                 transform.position.y,
 		                                 transform.position.z + direction.z * m_speed * Time.deltaTime);
@@ -32,7 +35,8 @@ public class ProjectilController : MonoBehaviour {
 		if(other.gameObject.tag == "Enemy")
 		{
 			HumanoidController enemy = other.gameObject.GetComponent<HumanoidController>() as HumanoidController;
-			enemy.healthUpdate(m_damage);
+			float damage = -m_damage + (-m_damage/100 * enemy.getSkillManager().getMagicResistance());
+			enemy.healthUpdate(damage);
 			Destroy(gameObject);
 		}
 	}

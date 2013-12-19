@@ -16,14 +16,14 @@ public class HumanoidController : MonoBehaviour
 		return skillManager;
 	}
 	
-	void Awake()
+	protected virtual void Awake()
 	{
-		skillManager = GetComponent<SkillManager>();	
+		skillManager = GetComponent<SkillManager>();
 	}
 
 	// Use this for initialization
-	void Start () 
-	{	
+	protected virtual void Start () 
+	{
 	}
 	
 	// Update is called once per frame

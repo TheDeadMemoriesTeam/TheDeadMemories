@@ -5,8 +5,11 @@ public class BaseSkills : DamageSkills
 {
 	private int m_lvlDamage = 0;
 	private int m_costIncDamage;
+	private string m_nameDamage;
+
 	private int m_lvlAd = 0;
 	private int m_costIncAd;
+	private string m_nameAd;
 	
 	//acsessor
 	public void setLvlDamage(int lvl)
@@ -48,12 +51,24 @@ public class BaseSkills : DamageSkills
 	{
 		return m_costIncAd;	
 	}
+
+	public string getNameAd()
+	{
+		return m_nameAd;	
+	}
+
+	public string getNameDamage()
+	{
+		return m_nameDamage;	
+	}
 	
 	// Use this for initialization
-	public BaseSkills (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, int costIncDamage, int costIncAd) 
-		:base(name, price, father, timeIncantation, manaCost, damage)
+	public BaseSkills (string name, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float damage, int costIncDamage, int costIncAd, string nameDamage, string nameAd) 
+		:base(name, price, father, timeIncantation, manaCost, particule, damage)
 	{
 		m_costIncDamage = costIncDamage;
 		m_costIncAd = costIncAd;
+		m_nameAd = nameAd;
+		m_nameDamage = nameDamage;
 	}
 }
