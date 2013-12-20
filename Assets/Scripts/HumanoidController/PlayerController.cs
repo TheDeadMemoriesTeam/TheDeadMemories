@@ -107,7 +107,7 @@ public class PlayerController : HumanoidController
 		anim.SetLayerWeight(0,1f);
 
 		saveManager = new SaveManager();//FindObjectOfType(System.Type.GetType("SaveManager")) as SaveManager;
-		saveManager.save();
+		saveManager.load();
 	}
 	
 	// Update is called once per frame

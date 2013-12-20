@@ -5,27 +5,49 @@ using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveManager : MonoBehaviour {
-
-	private AchievementManager achievement;
+	
+	private AchievementManager achievement = FindObjectOfType(System.Type.GetType("AchievementManager")) as AchievementManager;
 	private List<Achievement> achievements;
 
-	// Use this for initialization
-	void Start () {
-
-		// Chargement à la suite
-	}
+	// Chemin vers les fichiers de sauvegarde
+	private string achievementPath = "./save/achievement.dat";
+	private string skillPath;
 
 	// Fonction de sauvegarde
 	public void save()
 	{
-		achievement = FindObjectOfType(System.Type.GetType("AchievementManager")) as AchievementManager;
+		//achievement = FindObjectOfType(System.Type.GetType("AchievementManager")) as AchievementManager;
 		achievements = achievement.getAchievementsUnlocked();
 
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
 		// Crée le fichier
-		Stream saveFile = File.Create("./save/achievement.dat");
+		Stream saveFile = File.Create(achievementPath);
 		// Sauvegarde les achivements
 		formater.Serialize(saveFile, "toto");
+
+		saveFile.Close();
+	}
+
+	// Fonction de chargement
+	public void load()
+	{
+		// Si le fichier existe
+		if(File.Exists(achievementPath))
+		{
+			// Créé le formateur
+			BinaryFormatter formater = new BinaryFormatter();
+
+			// Créé le fichier
+			Stream file = File.Open (achievementPath, FileMode.Open);
+
+			// Charge la liste des achievements
+			//achievements = formater.Deserialize(file) as List<Achievement>;
+			object test = formater.Deserialize(file);
+
+			print (test);
+
+			file.Close();
+		}
 	}
 }
