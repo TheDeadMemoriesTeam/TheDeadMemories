@@ -53,6 +53,9 @@ public class PlayerController : HumanoidController
 	private Animator anim;
 	private PlayerHashIDs hash;
 
+	// dfghjkl
+	SaveManager saveManager;
+
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -102,6 +105,9 @@ public class PlayerController : HumanoidController
 		hash = GetComponent<PlayerHashIDs>();
 		anim = GetComponentInChildren<Animator>();
 		anim.SetLayerWeight(0,1f);
+
+		saveManager = new SaveManager();//FindObjectOfType(System.Type.GetType("SaveManager")) as SaveManager;
+		saveManager.save();
 	}
 	
 	// Update is called once per frame

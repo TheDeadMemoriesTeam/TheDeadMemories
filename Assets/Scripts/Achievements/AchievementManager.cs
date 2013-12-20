@@ -190,7 +190,11 @@ public class AchievementManager : MonoBehaviour {
 			fileGet.Close();
 		}*/
 	}
-	
+
+	public List<Achievement> getAchievementsUnlocked()
+	{
+		return achievementsUnlock;
+	}
 	
 	// Méthodes permettant un Update des variables des achievements
 	public void updateTravel(Vector3 fromWhere, Vector3 to)
