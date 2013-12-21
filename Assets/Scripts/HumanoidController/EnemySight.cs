@@ -8,14 +8,15 @@ public class EnemySight : MonoBehaviour
     public bool playerInSight;                      // Whether or not the player is currently sighted.
     public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	public float hearingDistance = 8f;              // Distance from where the player will be heard
-	public float alertDistance = 25f;
+	public Vector3 playerLastDirection;             // Last direction of the player
     
     private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
 	private Animator anim;							// Reference to the Animator.
     private PlayerController player;                // Reference to the player.
     private Animator playerAnim;                    // Reference to the player's animator component.
 	private PlayerHashIDs playerHashIds;
-    
+	
+	private float alertDistance = 25f;              // Distance from where ennemies can be alerted
     
     void Awake ()
     {
@@ -25,6 +26,8 @@ public class EnemySight : MonoBehaviour
         
         // Set the personal sighting and the previous sighting to the reset position.
         personalLastSighting = Utils.GetInfiniteVector3();
+
+		playerLastDirection = Utils.GetInfiniteVector3();
     }
 	
 	void Start()
@@ -37,6 +40,7 @@ public class EnemySight : MonoBehaviour
     
     void Update ()
     {
+		playerLastDirection = player.transform.position - personalLastSighting;
 		playerInSight = false;
 		if (getDistanceToPlayer() < viewingDistance)
 			updateSighting();
