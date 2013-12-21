@@ -184,6 +184,12 @@ public class PlayerController : HumanoidController
 				Debug.Log("sprint !!");
 
 			AnimationManager();
+
+			// Test du saveManager
+			if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+				saveManager.save();
+			if (Input.GetKeyDown(KeyCode.KeypadDivide))
+				saveManager.load();
 		}
 	}
 
