@@ -4,20 +4,26 @@ using System.IO;
 using System.Runtime.Serialization;
 using System.Runtime.Serialization.Formatters.Binary;
 
-public class SaveManager : MonoBehaviour {
+public class SaveManager{
 	
-	private AchievementManager achievement = FindObjectOfType(System.Type.GetType("AchievementManager")) as AchievementManager;
+	private AchievementManager achievement;
 	private List<Achievement> achievements;
 
 	// Chemin vers les fichiers de sauvegarde
 	private string achievementPath = "./save/achievement.dat";
 	private string skillPath;
 
+	public SaveManager(AchievementManager achievementManager)
+	{
+		achievement = achievementManager;
+	}
+
 	// Fonction de sauvegarde
 	public void save()
 	{
 		//achievement = FindObjectOfType(System.Type.GetType("AchievementManager")) as AchievementManager;
 		achievements = achievement.getAchievementsUnlocked();
+		Debug.Log ("a que coucou");
 
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
@@ -45,7 +51,7 @@ public class SaveManager : MonoBehaviour {
 			//achievements = formater.Deserialize(file) as List<Achievement>;
 			object test = formater.Deserialize(file);
 
-			print (test);
+			Debug.Log (test);
 
 			file.Close();
 		}
