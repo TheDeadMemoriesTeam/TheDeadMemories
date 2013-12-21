@@ -3,11 +3,12 @@ using System.Collections;
 
 public class EnemySight : MonoBehaviour
 {
-    public float fieldOfViewAngle = 110f;           // Number of degrees, centred on forward, for the enemy see.
+    public float fieldOfViewAngle = 120f;           // Number of degrees, centred on forward, for the enemy see.
 	public float viewingDistance = 24f;             // Distance from where the player will be viewed
     public bool playerInSight;                      // Whether or not the player is currently sighted.
     public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	public float hearingDistance = 8f;              // Distance from where the player will be heard
+	public float alertDistance = 25f;
     
     private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
 	private Animator anim;							// Reference to the Animator.
@@ -31,7 +32,6 @@ public class EnemySight : MonoBehaviour
 		player = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
 		playerAnim = player.GetComponentInChildren<Animator>();
 		playerHashIds = player.GetComponent<PlayerHashIDs>();
-		viewingDistance = 24f;
 	}
     
     
@@ -48,18 +48,18 @@ public class EnemySight : MonoBehaviour
         // By default the player is not in sight.
         playerInSight = false;
         
-        // Create a vector from the enemy to the player and store the angle between it and forward.
-        Vector3 direction = player.transform.position - transform.position;
-		direction.y = 0;
-        float angle = Vector3.Angle(direction, transform.forward);
-        
-        // If the angle between forward and where the player is, is less than half the angle of view...
-        if(angle < fieldOfViewAngle * 0.5f)
-        {
-			// If the ennemi was not alerted and if the player is not stopped
-			// This is to decrease the performance impact of the raycasting
-			if (personalLastSighting != player.transform.position)
-			{
+		// If the ennemi was not alerted and if the player is not stopped
+		// This is to decrease the performance impact of the raycasting
+		if (personalLastSighting != player.transform.position)
+		{
+	        // Create a vector from the enemy to the player and store the angle between it and forward.
+	        Vector3 direction = player.transform.position - transform.position;
+			direction.y = 0;
+	        float angle = Vector3.Angle(direction, transform.forward);
+	        
+	        // If the angle between forward and where the player is, is less than half the angle of view...
+	        if(angle < fieldOfViewAngle * 0.5f)
+	        {
 	            RaycastHit hit;
 	            
 	            // ... and if a raycast towards the player hits something...
@@ -78,14 +78,14 @@ public class EnemySight : MonoBehaviour
 	                }
 	            }
 			}
-			else {
-				playerInSight = true;
-			}
+
         }
+		else {
+			playerInSight = true;
+		}
         
+
         // If the player is walking/running...
-
-
 		int walking = playerAnim.GetCurrentAnimatorStateInfo(0).nameHash;
 		if(walking == playerHashIds.movingState ||
 		   walking == playerHashIds.beginMovingState ||
@@ -152,7 +152,7 @@ public class EnemySight : MonoBehaviour
 			for (int i = 0; i < ennemies.Length; i++)
 			{
 				Vector3 vect = ennemies[i].transform.position - transform.position;
-				if (vect.magnitude < 25f) {
+				if (vect.magnitude < alertDistance) {
 					ennemies[i].playerPosition(pos, broadcastingLevel);
 				}
 			}

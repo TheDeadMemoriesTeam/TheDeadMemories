@@ -80,7 +80,7 @@ public class EnemyController : HumanoidController
 		}
 
 		shooting = false;
-
+		//nav.destination = (Vector3)enemySight.personalLastSighting;
 		// If the player is in sight and is alive...
 		if(enemySight.playerInSight && enemySight.getDistanceToPlayer() < shootDistance && player.getSkillManager().getPv() > 0f)
 			// ... shoot.
@@ -99,6 +99,7 @@ public class EnemyController : HumanoidController
 
 	void Shooting ()
 	{
+		Debug.Log ("shooting");
 		// Stop the enemy where it is.
 		nav.Stop();
 		shooting = true;
@@ -107,10 +108,11 @@ public class EnemyController : HumanoidController
 	
 	void Chasing ()
 	{
+		Debug.Log ("chasing");
 		// Create a vector from the enemy to the last sighting of the player.
 		Vector3 sightingDeltaPos = (Vector3)enemySight.personalLastSighting - transform.position;
 		// If the the last personal sighting of the player is not close...
-		if(sightingDeltaPos.sqrMagnitude > 4f)
+		if(sightingDeltaPos.sqrMagnitude > 2f)
 			// ... set the destination for the NavMeshAgent to the last personal sighting of the player.
 			nav.destination = (Vector3)enemySight.personalLastSighting;
 		
@@ -139,6 +141,7 @@ public class EnemyController : HumanoidController
 	
 	void Patrolling ()
 	{
+		Debug.Log ("potrolling");
 		if (patrolWayPoints.Length == 0) {
 			generatePatrolWayPoints();
 			return;
