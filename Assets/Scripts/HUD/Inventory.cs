@@ -26,7 +26,12 @@ public class Inventory : PauseSystem
 	
 	// Inventaire <item, quantité possédée>
 	private Dictionary<Item, int> inventory;
+
+	//Image des Items
+	public Texture bonesImg;
+	public Texture manaPotionImg;
 	
+
 	
 	
 	protected void Awake()
@@ -42,8 +47,8 @@ public class Inventory : PauseSystem
 		
 		// Liste de tous les items
 		listOfItem = new List<Item>();
-		listOfItem.Add(new Item(0, "Bone", "Restaure de la vie"));
-		listOfItem.Add(new Item(1, "ManaPotion", "Restaure de la mana"));
+		listOfItem.Add(new Item(0, "Bone", "Restaure de la vie", bonesImg));
+		listOfItem.Add(new Item(1, "ManaPotion", "Restaure de la mana", manaPotionImg));
 		
 		inventory = new Dictionary<Item, int>();
 		
@@ -102,7 +107,7 @@ public class Inventory : PauseSystem
 			GUILayout.BeginHorizontal();
 			for (int j = 0 ; j < nbItemPerLine ; j++)
 			{
-				listeButton[i*nbItemPerLine+j] = GUILayout.Button(getNameOfItemForId(inventoryItem[i*nbItemPerLine+j]), GUILayout.Height(50), GUILayout.Width(80));
+				listeButton[i*nbItemPerLine+j] = GUILayout.Button(getIconOfItemForId(inventoryItem[i*nbItemPerLine+j]), GUILayout.Height(50), GUILayout.Width(80));
 				hover(inventoryItem[i*nbItemPerLine+j]);
 			}
 			GUILayout.EndHorizontal();
@@ -247,6 +252,17 @@ public class Inventory : PauseSystem
 		}
 		return "";
 	}
+
+	// Retourne l'icon d'un item en sachant son id
+	Texture getIconOfItemForId(int id)
+	{
+		for (int i = 0 ; i < listOfItem.Count ; i++)
+		{
+			if (listOfItem[i].getId() == id)
+				return listOfItem[i].getIcon();
+		}
+		return null;
+	}
 	
 	// Retourne la description d'un item en sachant son id
 	string getDescriptionOfItemForId(int id)
@@ -281,18 +297,19 @@ public class Item
 {
 	private int id;
 	private string name;
-	//private Texture2D icon;
+	private Texture icon;
 	private string resume;
 	
-	public Item(int in_id, string in_name, string in_resume)
+	public Item(int in_id, string in_name, string in_resume, Texture in_icon)
 	{
 		id = in_id;
 		name = in_name;
-		//icon = in_icon;
+		icon = in_icon;
 		resume = in_resume;
 	}
 	
 	public int getId(){return id;}
 	public string getName(){return name;}
 	public string getResume(){return resume;}
+	public Texture getIcon(){return icon;}
 }
