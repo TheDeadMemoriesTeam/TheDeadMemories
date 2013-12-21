@@ -74,17 +74,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootDistance: 4
-  chaseSpeed: 5
-  chaseWaitTime: 5
-  patrolSpeed: 2
-  patrolWaitTime: 1
+  chaseSpeed: 5.5
+  chaseWaitTime: 3
+  patrolSpeed: 2.5
+  patrolWaitTime: .5
   patrolWayPoints: []
-  droppableItems:
-  - {fileID: 5400000, guid: 00e6f55288c657d42976a57a746e78ef, type: 2}
-  - {fileID: 5400000, guid: b66e8926d3c80274ebea26acfbc8e4a8, type: 2}
-  itemsDropProbability:
-  - 1
-  - 1
+  droppableItems: []
+  itemsDropProbability: []
 --- !u!114 &11400002
 MonoBehaviour:
   m_ObjectHideFlags: 1

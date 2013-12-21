@@ -5,10 +5,10 @@ public class EnemyController : HumanoidController
 {
 
 	public float shootDistance = 4f;            // Distance from where the player will be shot
-	public float chaseSpeed = 5f;               // The nav mesh agent's speed when chasing.
-	public float chaseWaitTime = 5f;            // The amount of time to wait when the last sighting is reached.
-	public float patrolSpeed = 2f;              // The nav mesh agent's speed when patrolling.
-	public float patrolWaitTime = 1f;           // The amount of time to wait when the patrol way point is reached.
+	public float chaseSpeed = 5.5f;             // The nav mesh agent's speed when chasing.
+	public float chaseWaitTime = 3f;            // The amount of time to wait when the last sighting is reached.
+	public float patrolSpeed = 2.5f;            // The nav mesh agent's speed when patrolling.
+	public float patrolWaitTime = 0.5f;         // The amount of time to wait when the patrol way point is reached.
 	public Transform[] patrolWayPoints;         // An array of transforms for the patrol route.
 	
 
