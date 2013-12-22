@@ -206,6 +206,10 @@ public class SaveManager{
 			skillManager.setMagicResistance( float.Parse (skillsLoaded[5]) );
 			skillManager.setMagicAttack( float.Parse (skillsLoaded[6]) );
 			skillManager.setDistanceMagicAttack( float.Parse (skillsLoaded[7]) );
+
+			// Mise à jour extérieur
+			skillManager.setPv(skillManager.getPvMax());
+			skillManager.setMana(skillManager.getManaMax());
 			
 			file.Close();
 
