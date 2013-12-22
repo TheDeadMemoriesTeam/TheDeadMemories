@@ -196,9 +196,11 @@ public class PlayerController : HumanoidController
 	// Récupère les évènements souris et agis en fonction
 	void mouseHandler()
 	{
+		anim.SetBool(hash.isHitting, false);
 		// Si le joueur effectue une attaque physique
 		if (Input.GetButtonDown("Fire1"))
 		{
+			anim.SetBool(hash.isHitting, true);
 			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 			for (int i=0; i<targets.Length; i++)
 			{
