@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public class SkillManager : MonoBehaviour 
 {
-	//list des competances
+	//list des competences
 	private List<Skills> listSkills;
 
 	//variable afectant le joueur
@@ -266,5 +266,10 @@ public class SkillManager : MonoBehaviour
 	public List<Skills> getListOfSkills()
 	{
 		return listSkills;
+	}
+
+	public void setListOfSkills(List<Skills> other)
+	{
+		listSkills = other;
 	}
 }

@@ -82,7 +82,7 @@ public class PlayerController : HumanoidController
 		skillManager.addSkill(new PassiveSkills("Survie", 0, null, 200, 200, 5f, 5f, "pv+", "mana+"));
 		skillManager.addSkill(new PassiveSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-")); 
 		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, null, 5));
-		
+
 		//arbre de competence Attaque
 		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
 		skillManager.addSkill(new PassiveSkills("Critique", 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+"));
@@ -108,7 +108,7 @@ public class PlayerController : HumanoidController
 		anim = GetComponentInChildren<Animator>();
 		anim.SetLayerWeight(0,1f);
 
-		saveManager = new SaveManager(achievementManager);
+		saveManager = new SaveManager(achievementManager, skillManager);
 	}
 	
 	// Update is called once per frame
@@ -334,8 +334,8 @@ public class PlayerController : HumanoidController
 	public void experienceUpdate(int change)
 	{
 		xp += change;
-		
-		achievementManager.updateKills();
+		if (change > 0)
+			achievementManager.updateKills();
 	}
 	
 	public int getExperience()
