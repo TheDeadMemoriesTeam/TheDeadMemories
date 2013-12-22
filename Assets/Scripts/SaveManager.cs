@@ -23,23 +23,32 @@ public class SaveManager{
 	// Fonction de sauvegarde
 	public void save()
 	{
-		List<Achievement> achievements = achievementManager.getAchievementsUnlocked();
+		saveAchievements();
+		saveSkillsActive();
+		saveSkillsPassive();
 
+		Debug.Log("save completed");
+	}
+
+	private void saveAchievements()
+	{
+		List<Achievement> achievements = achievementManager.getAchievementsUnlocked();
+		
 		List<string> achievementList = new List<string>();
 		achievementList.Capacity = achievements.Capacity;
 		for (int i=0; i<achievements.Count; i++)
-		     achievementList.Add(achievements[i].getName());
-
+			achievementList.Add(achievements[i].getName());
+		
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
 		// Crée le fichier
 		Stream saveFile = File.Create(achievementPath);
 		// Sauvegarde les achivements
-		//formater.Serialize(saveFile, "toto");
 		formater.Serialize(saveFile, achievementList);
-
+		// Libère la mémoire
 		saveFile.Close();
-		Debug.Log("save completed");
+
+		Debug.Log("save achievements");
 	}
 
 	private void saveSkillsPassive()
@@ -67,6 +76,8 @@ public class SaveManager{
 		formater.Serialize(saveFile, skills);
 		// Libère la mémoire
 		saveFile.Close();
+
+		Debug.Log("save passive skills");
 	}
 
 	private void saveSkillsActive()
@@ -89,27 +100,116 @@ public class SaveManager{
 		formater.Serialize(saveFile, skillsStr);
 		// Libère la mémoire
 		saveFile.Close();
+
+		Debug.Log("save active skills");
 	}
 
 	// Fonction de chargement
 	public void load()
+	{
+		loadAchievements();
+		loadSkillsActive();
+		loadSkillsPassive();
+		Debug.Log("save loaded");
+	}
+
+	private void loadAchievements()
 	{
 		// Si le fichier existe
 		if(File.Exists(achievementPath))
 		{
 			// Créé le formateur
 			BinaryFormatter formater = new BinaryFormatter();
-
+			
 			// Créé le fichier
 			Stream file = File.Open (achievementPath, FileMode.Open);
-
+			
 			// Charge la liste des achievements
 			List<string> achievementsLoaded = formater.Deserialize(file) as List<string>;
-
+			
 			achievementManager.loadAchievements(achievementsLoaded);
-
+			
 			file.Close();
-			Debug.Log("save loaded");
+
+			Debug.Log("load achievements");
+		}
+	}
+
+	private void loadSkillsActive()
+	{
+		// Si le fichier existe
+		if(File.Exists(achievementPath))
+		{
+			// Créé le formateur
+			BinaryFormatter formater = new BinaryFormatter();
+			
+			// Créé le fichier
+			Stream file = File.Open (activeSkillPath, FileMode.Open);
+			
+			// Charge la liste des achievements
+			List<string> skillsLoaded = formater.Deserialize(file) as List<string>;
+			
+			List<Skills> skills = skillManager.getListOfSkills();
+
+			// Réinitiale la liste
+			for (int i=0; i<skills.Count; i++)
+			{
+				skills[i].setIsBought(false);
+				skills[i].setIsUnlock(false);
+			}
+
+			// Récupère les compétences déjà achetées
+			int index;
+			for (int i=0; i<skillsLoaded.Count; i++)
+			{
+				index = skills.FindIndex(
+					delegate(Skills obj) {
+					return obj.getName() == skillsLoaded[i];
+				});
+				if(index != -1)
+					skills[index].setIsBought(true);
+			}
+
+			// Retrouve les compétences débloquées
+			for (int i=0; i<skills.Count; i++)
+				skills[i].unlockedSkill();
+
+			skillManager.setListOfSkills(skills);
+			
+			file.Close();
+
+			Debug.Log("load active skills");
+		}
+	}
+
+	private void loadSkillsPassive()
+	{
+		// Si le fichier existe
+		if(File.Exists(achievementPath))
+		{
+			// Créé le formateur
+			BinaryFormatter formater = new BinaryFormatter();
+			
+			// Créé le fichier
+			Stream file = File.Open (passiveSkillPath, FileMode.Open);
+			
+			// Charge la liste des achievements
+			List<string> skillsLoaded = formater.Deserialize(file) as List<string>;
+
+			skillManager.setPvMax( float.Parse (skillsLoaded[0]) );
+			skillManager.setManaMax( float.Parse (skillsLoaded[1]) );
+			// 		Compétences physiques
+			skillManager.setPhysicalResistance( float.Parse (skillsLoaded[2]) );
+			skillManager.setPhysicAttack( float.Parse (skillsLoaded[3]) );
+			skillManager.setDistancePhysicAttack( float.Parse (skillsLoaded[4]) );
+			// 		Compétences magiques
+			skillManager.setMagicResistance( float.Parse (skillsLoaded[5]) );
+			skillManager.setMagicAttack( float.Parse (skillsLoaded[6]) );
+			skillManager.setDistanceMagicAttack( float.Parse (skillsLoaded[7]) );
+			
+			file.Close();
+
+			Debug.Log("save passive skills");
 		}
 	}
 }

@@ -222,4 +222,9 @@ public class SkillManager : MonoBehaviour
 	{
 		return listSkills;
 	}
+
+	public void setListOfSkills(List<Skills> other)
+	{
+		listSkills = other;
+	}
 }
