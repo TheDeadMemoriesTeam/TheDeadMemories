@@ -7,14 +7,17 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveManager{
 	
 	private AchievementManager achievementManager;
+	private SkillManager skillManager;
 
 	// Chemin vers les fichiers de sauvegarde
 	private string achievementPath = "./save/achievement.dat";
-	private string skillPath;
+	private string passiveSkillPath =  "./save/skillsPassive.dat";
+	private string activeSkillPath =  "./save/skillsActive.dat";
 
-	public SaveManager(AchievementManager other)
+	public SaveManager(AchievementManager otherA, SkillManager otherS)
 	{
-		achievementManager = other;
+		achievementManager = otherA;
+		skillManager = otherS;
 	}
 
 	// Fonction de sauvegarde
@@ -35,6 +38,55 @@ public class SaveManager{
 		//formater.Serialize(saveFile, "toto");
 		formater.Serialize(saveFile, achievementList);
 
+		saveFile.Close();
+	}
+
+	private void saveSkillsPassive()
+	{
+		List<string> skills = new List<string>();
+
+		// Compétences passive
+		// 		Consumable
+		skills.Add (skillManager.getPvMax().ToString());
+		skills.Add (skillManager.getManaMax().ToString());
+		// 		Compétences physiques
+		skills.Add (skillManager.getPhysicalResistance().ToString());
+		skills.Add (skillManager.getPhysicAttack().ToString());
+		skills.Add (skillManager.getDistancePhysicAttack().ToString());
+		// 		Compétences magiques
+		skills.Add (skillManager.getMagicResistance().ToString());
+		skills.Add (skillManager.getMagicAttack().ToString());
+		skills.Add (skillManager.getDistanceMagicAttack().ToString());
+
+		// Créé le formater
+		BinaryFormatter formater = new BinaryFormatter();
+		// Crée le fichier
+		Stream saveFile = File.Create(passiveSkillPath);
+		// Sauvegarde les achivements
+		formater.Serialize(saveFile, skills);
+		// Libère la mémoire
+		saveFile.Close();
+	}
+
+	private void saveSkillsActive()
+	{
+		// Compétences actives
+		List<Skills> skillsSk = skillManager.getListOfSkills();
+		List<string> skillsStr = new List<string>();
+		
+		for (int i=0; i<skillsSk.Count; i++)
+		{
+			if(skillsSk[i].getIsBought())
+				skillsStr.Add(skillsSk[i].getName());
+		}
+
+		// Créé le formater
+		BinaryFormatter formater = new BinaryFormatter();
+		// Crée le fichier
+		Stream saveFile = File.Create(activeSkillPath);
+		// Sauvegarde les achivements
+		formater.Serialize(saveFile, skillsStr);
+		// Libère la mémoire
 		saveFile.Close();
 	}
 

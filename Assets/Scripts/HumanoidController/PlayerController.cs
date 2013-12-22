@@ -106,7 +106,7 @@ public class PlayerController : HumanoidController
 		anim = GetComponentInChildren<Animator>();
 		anim.SetLayerWeight(0,1f);
 
-		saveManager = new SaveManager(achievementManager);
+		saveManager = new SaveManager(achievementManager, skillManager);
 	}
 	
 	// Update is called once per frame
