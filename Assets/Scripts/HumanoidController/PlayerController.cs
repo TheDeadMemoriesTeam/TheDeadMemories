@@ -331,8 +331,8 @@ public class PlayerController : HumanoidController
 	public void experienceUpdate(int change)
 	{
 		xp += change;
-		
-		achievementManager.updateKills();
+		if (change > 0)
+			achievementManager.updateKills();
 	}
 	
 	public int getExperience()
