@@ -12,6 +12,7 @@ public class PlayerHashIDs : MonoBehaviour {
 	// Variables
 	public int speed;
 	public int isHitting;
+	public int isSmallSummoning;
 	public int isJumping;
 	public int isDead;
 
@@ -26,6 +27,7 @@ public class PlayerHashIDs : MonoBehaviour {
 		// Variable
 		speed = Animator.StringToHash("speed");
 		isHitting = Animator.StringToHash("isHitting");
+		isSmallSummoning = Animator.StringToHash("isSmallSummoning");
 		isJumping = Animator.StringToHash("isJumping");
 		isDead = Animator.StringToHash("isDead");
 	}
