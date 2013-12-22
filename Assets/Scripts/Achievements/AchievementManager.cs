@@ -200,7 +200,13 @@ public class AchievementManager : MonoBehaviour {
 	{
 		return achievements;
 	}
-	
+
+	public void setAchievements(List<Achievement> locked, List<Achievement> unlocked)
+	{
+		achievements = locked;
+		achievementsUnlock = unlocked;
+	}
+
 	// Méthodes permettant un Update des variables des achievements
 	public void updateTravel(Vector3 fromWhere, Vector3 to)
 	{

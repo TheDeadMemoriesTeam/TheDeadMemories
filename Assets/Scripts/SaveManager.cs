@@ -6,23 +6,21 @@ using System.Runtime.Serialization.Formatters.Binary;
 
 public class SaveManager{
 	
-	private AchievementManager achievement;
-	private List<Achievement> achievements;
+	private AchievementManager achievementManager;
 
 	// Chemin vers les fichiers de sauvegarde
 	private string achievementPath = "./save/achievement.dat";
 	private string skillPath;
 
-	public SaveManager(AchievementManager achievementManager)
+	public SaveManager(AchievementManager other)
 	{
-		achievement = achievementManager;
+		achievementManager = other;
 	}
 
 	// Fonction de sauvegarde
 	public void save()
 	{
-		//achievement = FindObjectOfType(System.Type.GetType("AchievementManager")) as AchievementManager;
-		achievements = achievement.getAchievementsUnlocked();
+		List<Achievement> achievements = achievementManager.getAchievementsUnlocked();
 
 		List<string> achievementList = new List<string>();
 		achievementList.Capacity = achievements.Capacity;
@@ -36,7 +34,6 @@ public class SaveManager{
 		// Sauvegarde les achivements
 		//formater.Serialize(saveFile, "toto");
 		formater.Serialize(saveFile, achievementList);
-		Debug.Log ("Succés sauvegardés");
 
 		saveFile.Close();
 	}
@@ -54,30 +51,31 @@ public class SaveManager{
 			Stream file = File.Open (achievementPath, FileMode.Open);
 
 			// Charge la liste des achievements
-			List<string> test = formater.Deserialize(file) as List<string>;
-			//string test = formater.Deserialize(file) as string;
+			List<string> achievementsLoaded = formater.Deserialize(file) as List<string>;
 
-			Debug.Log ("Succés chargés");
-			for (int i=0; i<test.Count; i++)
-				Debug.Log (test[i]);
+			// Récupère les achiements
+			List<Achievement> achievementsUnlocked = achievementManager.getAchievementsUnlocked();
+			List<Achievement> achievementsLocked = achievementManager.getAchievementsLocked();
 
-			List<Achievement> achievementsUnlocked = achievement.getAchievementsUnlocked();
-			List<Achievement> achievementLocked = achievement.getAchievementsLocked();
+			// Rassemble tous les achievements
+			for (int i=0; i<achievementsUnlocked.Count; i++)
+				achievementsLocked.Add(achievementsUnlocked[i]);
+
 			int index;
-
-			Debug.Log (achievementsUnlocked.Count);
-
-			for (int i=0; i<test.Count; i++)
+			for (int i=0; i<achievementsLoaded.Count; i++)
 			{
-				index = achievementLocked.FindIndex(
+				index = achievementsLocked.FindIndex(
 					delegate(Achievement obj) {
-					return obj.getName() == test[i];
+					return obj.getName() == achievementsLoaded[i];
 				});
-				achievementsUnlocked.Add (achievementLocked[index]);
-				achievementLocked.RemoveAt(index);
+				if (index>=0)
+				{
+					achievementsUnlocked.Add(achievementsLocked[index]);
+					achievementsLocked.RemoveAt(index);
+				}
 			}
 
-			Debug.Log (achievementsUnlocked.Count);
+			achievementManager.setAchievements(achievementsLocked, achievementsUnlocked);
 
 			file.Close();
 		}
