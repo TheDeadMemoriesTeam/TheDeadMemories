@@ -17,7 +17,7 @@ public class SkillManager : MonoBehaviour
 	//resistance physic
 	private float m_basePhysicalResistance, m_physicalResistance;
 
-	//resistance magique
+	//resistance magic
 	private float m_baseMagicResistance, m_magicResistance;
 
 	//attaque physic
@@ -26,8 +26,16 @@ public class SkillManager : MonoBehaviour
 	//attaque magic
 	private float m_baseMagicAttack, m_magicAttack;
 
+	//critique physic
+	private float m_baseCriticPhysic, m_criticPhysic;
+
+	//critique magic
+	private float m_baseCriticMagic, m_criticMagic;
+
 	//distance d'attaque
 	private float m_distancePhysicAttack, m_distanceMagicAttack;
+
+
 	
 	//acesseur
 	//mana
@@ -154,6 +162,40 @@ public class SkillManager : MonoBehaviour
 		return m_magicAttack;	
 	}
 
+	//Critic physic
+	public void setBaseCriticPhysic(float baseCriticPhysic)
+	{
+		m_baseCriticPhysic = baseCriticPhysic;
+		m_criticPhysic = m_baseCriticPhysic;
+	}
+	
+	public void setCriticPhysic(float criticPhysic)
+	{
+		m_criticPhysic = criticPhysic;
+	}
+	
+	public float getCriticPhysic()
+	{
+		return m_criticPhysic;	
+	}
+
+	//Critic magic
+	public void setBaseCriticMagic(float baseCriticMagic)
+	{
+		m_baseCriticMagic = baseCriticMagic;
+		m_criticMagic = m_baseCriticMagic;
+	}
+	
+	public void setCriticMagic(float criticMagic)
+	{
+		m_criticMagic = criticMagic;
+	}
+	
+	public float getCriticMagic()
+	{
+		return m_criticMagic;	
+	}
+
 	//distance d'attaque
 	public void setDistanceMagicAttack(float distanceMagicAttack)
 	{
@@ -200,6 +242,8 @@ public class SkillManager : MonoBehaviour
 					tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
 				else if(tmp.getName() == "Attaque de base")
 					tmp.update(ref m_physicAttack, m_basePhysicAttack, ref m_magicAttack, m_baseMagicAttack);
+				else if(tmp.getName() == "Critique")
+					tmp.update(ref m_criticPhysic, m_baseCriticPhysic, ref m_criticMagic, m_baseCriticMagic);
 			}
 			else if(listSkills[i].GetType() == System.Type.GetType("BaseSkills"))
 			{

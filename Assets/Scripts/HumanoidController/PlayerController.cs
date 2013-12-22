@@ -66,6 +66,7 @@ public class PlayerController : HumanoidController
 		skillManager.setBaseMagicResistance(0f);
 		skillManager.setBasePhysicAttack(1f);
 		skillManager.setBaseMagicAttack(5f);
+		skillManager.setCriticPhysic(0f);
 		skillManager.setDistancePhysicAttack(4f);
 		skillManager.setDistanceMagicAttack(4f);
 		
@@ -84,7 +85,8 @@ public class PlayerController : HumanoidController
 		
 		//arbre de competence Attaque
 		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
-		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(3), 0, 30, null, 5f, 1.5f));
+		skillManager.addSkill(new PassiveSkills("Critique", 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+"));
+		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
 		
 		//arbre de competence Feu
 		skillManager.addSkill(new PorteeSkills("Boule de feu", 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", 20f));
@@ -208,12 +210,13 @@ public class PlayerController : HumanoidController
 				Vector3 distance = transform.position-targets[i].transform.position;
 				if(distance.magnitude <= skillManager.getDistancePhysicAttack())
 				{
-					var targetDir = targets[i].transform.position - transform.position;
-					var playerDir = transform.forward;
-					var angle = Vector3.Angle(targetDir, playerDir);
+					Vector3 targetDir = targets[i].transform.position - transform.position;
+					Vector3 playerDir = transform.forward;
+					float angle = Vector3.Angle(targetDir, playerDir);
 					if (angle>=-45 && angle<=45)
 					{
 						float damage = -skillManager.getPhysicAttack() + (-skillManager.getPhysicAttack()/100 * targets[i].getSkillManager().getPhysicalResistance());
+						//if 
 						targets[i].healthUpdate(damage);
 					}
 				}	
