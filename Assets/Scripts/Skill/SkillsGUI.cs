@@ -14,6 +14,8 @@ public class SkillsGUI : MonoBehaviour
 	
 	public GUIText openSkills;
 	
+	private int marginBetweenSkillTree = 100; 	// Marge en pixel entre 2 arbres de compétences 
+	
 	// Use this for initialization
 	void Start () 
 	{
@@ -59,34 +61,44 @@ public class SkillsGUI : MonoBehaviour
 		
 		GUILayout.BeginArea(new Rect(10, 20, Screen.width-10, Screen.height-20));
 
+		showGUIPassiveSkills(0, 1);
+
+		//for (int i = 0 ; i < listSkills.Count ; i++)
+			//GUI.Button(new Rect(i*50, i*50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
+		
+		GUILayout.EndArea();
+	}
+
+	void showGUIPassiveSkills(int beginIndex, int skillTree)
+	{
 		List<Skills> listSkills = player.getSkillManager().getListOfSkills();
 
-		// Parcours de la liste des skills par sous arbre
-		for (int i = 0 ; i < 1/*listSkills.Count*/ ; i+=3)
+		int heightFromTop = -50;	// On démarre à 50 pixels du bord supérieur
+		// Parcours de la liste des skills pour le nombre de sous arbre demandés
+		for (int i = beginIndex ; i < skillTree*3 ; i+=3)
 		{
+			heightFromTop += marginBetweenSkillTree;
+
 			// Si le premier skill est déjà acheté
 			if (listSkills[i].getIsBought())
 			{
 				PassiveSkills passiveSkillRank1 = listSkills[i] as PassiveSkills;
-				int lvl = passiveSkillRank1.getLvlFirstAd() + passiveSkillRank1.getLvlSecAd();
-				print("somme des level acheté: " + lvl);
-				print("player xp : " + player.getExperience());
-
+				
 				// Le skill étant acheté on l'affiche avec un bouton grisé
 				GUI.enabled = false;
-				GUI.Button(new Rect(50, 50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
-
+				GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
+				
 				
 				// On affiche les boutons des 2 branches de skills qui suivent
 				GUI.enabled = passiveSkillRank1.getCostIncFirstAd() <= player.getExperience();
-				if (GUI.Button(new Rect(125, 25, passiveSkillRank1.getNameFirstAd().Length * 11, 30), passiveSkillRank1.getNameFirstAd()))
+				if (GUI.Button(new Rect(125, heightFromTop-25, passiveSkillRank1.getNameFirstAd().Length * 11, 30), passiveSkillRank1.getNameFirstAd()))
 				{
 					int newLevel = passiveSkillRank1.getLvlFirstAd() + 1;
 					passiveSkillRank1.setLvlFirstAd(newLevel);
 					player.experienceUpdate(-passiveSkillRank1.getCostIncFirstAd());
 				}
 				GUI.enabled = passiveSkillRank1.getCostIncSecAd() <= player.getExperience();
-				if (GUI.Button(new Rect(125, 75, passiveSkillRank1.getNameSecAd().Length * 11, 30), passiveSkillRank1.getNameSecAd()))
+				if (GUI.Button(new Rect(125, heightFromTop+25, passiveSkillRank1.getNameSecAd().Length * 11, 30), passiveSkillRank1.getNameSecAd()))
 				{
 					int newLevel = passiveSkillRank1.getLvlSecAd() + 1;
 					passiveSkillRank1.setLvlSecAd(newLevel);
@@ -94,26 +106,26 @@ public class SkillsGUI : MonoBehaviour
 				}
 				// Vérifie si le second skill peut etre débloqué
 				listSkills[i+1].unlockedSkill();
-
+				
 				// Si le second skill est déjà acheté
 				if (listSkills[i+1].getIsBought())
 				{
 					PassiveSkills passiveSkillRank2 = listSkills[i+1] as PassiveSkills;
-
+					
 					// Le skill étant acheté on l'affiche avec un bouton grisé
 					GUI.enabled = false;
-					GUI.Button(new Rect(195, 50, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName());
-
+					GUI.Button(new Rect(195, heightFromTop, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName());
+					
 					// On affiche les boutons des 2 branches de skills qui suivent
 					GUI.enabled = passiveSkillRank2.getCostIncFirstAd() <= player.getExperience();
-					if (GUI.Button(new Rect(300, 25, passiveSkillRank2.getNameFirstAd().Length * 11, 30), passiveSkillRank2.getNameFirstAd()))
+					if (GUI.Button(new Rect(300, heightFromTop-25, passiveSkillRank2.getNameFirstAd().Length * 11, 30), passiveSkillRank2.getNameFirstAd()))
 					{
 						int newLevel = passiveSkillRank2.getLvlFirstAd() + 1;
 						passiveSkillRank2.setLvlFirstAd(newLevel);
 						player.experienceUpdate(-passiveSkillRank2.getCostIncFirstAd());
 					}
 					GUI.enabled = passiveSkillRank2.getCostIncFirstAd() <= player.getExperience();
-					if (GUI.Button(new Rect(300, 75, passiveSkillRank2.getNameSecAd().Length * 11, 30), passiveSkillRank2.getNameSecAd()))
+					if (GUI.Button(new Rect(300, heightFromTop+25, passiveSkillRank2.getNameSecAd().Length * 11, 30), passiveSkillRank2.getNameSecAd()))
 					{
 						int newLevel = passiveSkillRank2.getLvlSecAd() + 1;
 						passiveSkillRank2.setLvlSecAd(newLevel);
@@ -121,66 +133,61 @@ public class SkillsGUI : MonoBehaviour
 					}
 					// Vérifie si le dernier skill peut etre débloqué
 					listSkills[i+2].unlockedSkill();
-
+					
 					// Si le dernier skill est déjà acheté
 					if (listSkills[i+2].getIsBought())
 					{
 						// Le skill étant acheté on l'affiche avec un bouton grisé
 						GUI.enabled = false;
-						GUI.Button(new Rect(450, 50, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName());
+						GUI.Button(new Rect(450, heightFromTop, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName());
 					}
 					// Si le dernier skill est débloqué
 					else if (listSkills[i+2].getIsUnlock())
 					{
 						// On active ou non le bouton si on a suffisamment d'expérience
 						GUI.enabled = listSkills[i+2].getPrice() <= player.getExperience();
-
+						
 						// Si on achète le skill on met à jour l'expérience du joueur
-						if (GUI.Button(new Rect(450, 50, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName()))
+						if (GUI.Button(new Rect(450, heightFromTop, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName()))
 						{
 							listSkills[i+2].setIsBought(true);
 							player.experienceUpdate(-listSkills[i+2].getPrice());
 						}
 					}
-
+					
 				}
 				// Si le deuxième skill est débloqué
 				else if (listSkills[i+1].getIsUnlock())
 				{
 					// On active ou non le bouton si on a suffisamment d'expérience
 					GUI.enabled = listSkills[i+1].getPrice() <= player.getExperience();
-
+					
 					// Si on achète le skill on met à jour l'expérience du joueur
-					if (GUI.Button(new Rect(195, 50, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName()))
+					if (GUI.Button(new Rect(195, heightFromTop, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName()))
 					{
 						listSkills[i+1].setIsBought(true);
 						player.experienceUpdate(-listSkills[i+1].getPrice());
 					}
 				}
-
+				
 			}
 			// Si le premier skill est débloqué
 			else if (listSkills[i].getIsUnlock())
 			{
 				// On active ou non le bouton si on a suffisamment d'expérience
 				GUI.enabled = listSkills[i].getPrice() <= player.getExperience();
-
+				
 				// Si on achète le skill on met à jour l'expérience du joueur
-				if (GUI.Button(new Rect(50, 50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName()))
+				if (GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName()))
 				{
 					listSkills[i].setIsBought(true);
 					player.experienceUpdate(-listSkills[i].getPrice());
 				}
 			}
-
+			
 		}
-
-		//for (int i = 0 ; i < listSkills.Count ; i++)
-			//GUI.Button(new Rect(i*50, i*50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
-		
-		GUILayout.EndArea();
 	}
-	
+
 	void OnTriggerEnter (Collider other)
 	{
 		if (other.gameObject.tag == "Player")

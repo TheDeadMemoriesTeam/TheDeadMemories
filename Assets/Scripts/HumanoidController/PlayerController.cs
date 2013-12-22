@@ -81,7 +81,7 @@ public class PlayerController : HumanoidController
 		skillManager.addSkill(new PassiveSkills("Survie", 0, null, 200, 200, 5f, 5f, "pv+", "mana+"));
 		skillManager.addSkill(new PassiveSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-")); 
 		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, null, 5));
-		
+
 		//arbre de competence Attaque
 		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
 		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(3), 0, 30, null, 5f, 1.5f));
