@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class SkillsGUI : MonoBehaviour 
 {
@@ -54,13 +55,29 @@ public class SkillsGUI : MonoBehaviour
 	{
 		
 		GUILayout.BeginArea(new Rect(10, 20, Screen.width-10, Screen.height-20));
-		
-		/*for (int i = 0 ; i < player.getSkillManager().getListOfSkills().Count ; i++)
+
+		List<Skills> listSkills = player.getSkillManager().getListOfSkills();
+
+		for (int i = 0 ; i < 1/*listSkills.Count*/ ; i++)
 		{
-			GUILayout.BeginHorizontal();
-			GUI.Button(new Rect(i%3 * 30, i*30, 80, 25), player.getSkillManager().getListOfSkills()[i].getName());
-			GUILayout.EndHorizontal();
-		}*/
+			PassiveSkills skill = listSkills[i] as PassiveSkills;
+			if (listSkills[i].getIsBought())
+			{
+				GUI.enabled=false;
+				GUI.Button(new Rect(50, 50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
+
+				GUI.enabled = true;
+				GUI.Button(new Rect(150, 25, skill.getNameFirstAd().Length * 11, 30), skill.getNameFirstAd());
+				GUI.Button(new Rect(150, 75, skill.getNameSecAd().Length * 11, 30), skill.getNameSecAd());
+			}
+			else if (listSkills[i].getIsUnlock())
+			{
+				GUI.enabled = true;
+				if (GUI.Button(new Rect(50, 50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName()))
+					listSkills[i].setIsBought(true);
+			}
+
+		}
 		
 		GUILayout.EndArea();
 	}

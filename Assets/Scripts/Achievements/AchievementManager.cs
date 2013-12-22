@@ -116,7 +116,7 @@ public class AchievementManager : MonoBehaviour {
 	{
 		//File.Delete("/achievements.dat");
 		//PlayerPrefs.DeleteAll();
-		loadAchievements();
+		//loadAchievements();
 		// Supprime de la liste des achievements a check tous ceux déjà réalisés et les ajoute à une liste de ceux réalisés
 		refreshListAchievements();
 

@@ -73,7 +73,7 @@ public class PassiveSkills : Skills
 		m_firstAd = firstAd;
 		m_secAd = secAd;
 		m_nameFirstAd = nameFirstAd;
-		m_nameSecAd = m_nameSecAd;
+		m_nameSecAd = nameSecAd;
 	}
 
 	public void update(ref float firstAd, float baseFirstAd, ref float secAd, float basesecAd)
