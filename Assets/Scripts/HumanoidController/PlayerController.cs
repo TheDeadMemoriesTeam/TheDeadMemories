@@ -53,6 +53,9 @@ public class PlayerController : HumanoidController
 	private Animator anim;
 	private PlayerHashIDs hash;
 
+	// dfghjkl
+	SaveManager saveManager;
+
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -102,6 +105,8 @@ public class PlayerController : HumanoidController
 		hash = GetComponent<PlayerHashIDs>();
 		anim = GetComponentInChildren<Animator>();
 		anim.SetLayerWeight(0,1f);
+
+		saveManager = new SaveManager(achievementManager);
 	}
 	
 	// Update is called once per frame
@@ -179,6 +184,12 @@ public class PlayerController : HumanoidController
 				Debug.Log("sprint !!");
 
 			AnimationManager();
+
+			// Test du saveManager
+			if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+				saveManager.save();
+			if (Input.GetKeyDown(KeyCode.KeypadDivide))
+				saveManager.load();
 		}
 	}
 

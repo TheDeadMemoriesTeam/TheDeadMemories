@@ -5,10 +5,10 @@ public class EnemyController : HumanoidController
 {
 
 	public float shootDistance = 4f;            // Distance from where the player will be shot
-	public float chaseSpeed = 5f;               // The nav mesh agent's speed when chasing.
-	public float chaseWaitTime = 5f;            // The amount of time to wait when the last sighting is reached.
-	public float patrolSpeed = 2f;              // The nav mesh agent's speed when patrolling.
-	public float patrolWaitTime = 1f;           // The amount of time to wait when the patrol way point is reached.
+	public float chaseSpeed = 5.5f;             // The nav mesh agent's speed when chasing.
+	public float chaseWaitTime = 3f;            // The amount of time to wait when the last sighting is reached.
+	public float patrolSpeed = 2.5f;            // The nav mesh agent's speed when patrolling.
+	public float patrolWaitTime = 0.5f;         // The amount of time to wait when the patrol way point is reached.
 	public Transform[] patrolWayPoints;         // An array of transforms for the patrol route.
 	
 
@@ -120,15 +120,22 @@ public class EnemyController : HumanoidController
 		// If near the last personal sighting...
 		if(nav.remainingDistance < nav.stoppingDistance)
 		{
-			// ... increment the timer.
-			chaseTimer += Time.deltaTime;
-			
-			// If the timer exceeds the wait time...
-			if(chaseTimer >= chaseWaitTime)
+			if (enemySight.playerLastDirection != Utils.GetInfiniteVector3())
 			{
-				// ... reset last global sighting, the last personal sighting and the timer.
-				enemySight.personalLastSighting = Utils.GetInfiniteVector3();
-				chaseTimer = 0f;
+				Debug.Log (enemySight.playerLastDirection.ToString());
+				nav.SetDestination(nav.destination + enemySight.playerLastDirection);
+			}
+			else{
+				// ... or increment the timer.
+				chaseTimer += Time.deltaTime;
+				
+				// If the timer exceeds the wait time...
+				if(chaseTimer >= chaseWaitTime)
+				{
+					// ... reset last global sighting, the last personal sighting and the timer.
+					enemySight.personalLastSighting = Utils.GetInfiniteVector3();
+					chaseTimer = 0f;
+				}
 			}
 		}
 		else
