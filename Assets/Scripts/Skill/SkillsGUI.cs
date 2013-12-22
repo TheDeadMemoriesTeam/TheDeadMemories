@@ -61,7 +61,7 @@ public class SkillsGUI : MonoBehaviour
 		
 		GUILayout.BeginArea(new Rect(10, 20, Screen.width-10, Screen.height-20));
 
-		showGUIPassiveSkills(0, 1);
+		showGUIPassiveSkills(0, 2);
 
 		//for (int i = 0 ; i < listSkills.Count ; i++)
 			//GUI.Button(new Rect(i*50, i*50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
