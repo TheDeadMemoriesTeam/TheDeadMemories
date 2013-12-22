@@ -196,9 +196,12 @@ public class PlayerController : HumanoidController
 	// Récupère les évènements souris et agis en fonction
 	void mouseHandler()
 	{
+		anim.SetBool(hash.isHitting, false);
+		anim.SetBool(hash.isSmallSummoning, false);
 		// Si le joueur effectue une attaque physique
 		if (Input.GetButtonDown("Fire1"))
 		{
+			anim.SetBool(hash.isHitting, true);
 			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
 			for (int i=0; i<targets.Length; i++)
 			{
@@ -220,6 +223,7 @@ public class PlayerController : HumanoidController
 		else if (Input.GetButtonUp("Fire2"))
 		{
 			float duration = Time.time - magicTime;
+			anim.SetBool(hash.isSmallSummoning, true);
 
 			//recuperation des skills celon le type selectionné
 			PorteeSkills porteeSkill = skillManager.getSkill((int)currentMagicType) as PorteeSkills;
