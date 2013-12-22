@@ -19,7 +19,7 @@ public class PassiveSkills : Skills
 		m_lvlFirstAd = lvl;	
 	}
 
-	public float getLvlFirstAd()
+	public int getLvlFirstAd()
 	{
 		return m_lvlFirstAd;
 	}
@@ -29,7 +29,7 @@ public class PassiveSkills : Skills
 		m_lvlSecAd = lvl;	
 	}
 
-	public float getLvlSecAd()
+	public int getLvlSecAd()
 	{
 		return m_lvlSecAd;
 	}
