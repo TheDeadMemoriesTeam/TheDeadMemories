@@ -36,6 +36,7 @@ public class SaveManager{
 		formater.Serialize(saveFile, achievementList);
 
 		saveFile.Close();
+		Debug.Log("save completed");
 	}
 
 	// Fonction de chargement
@@ -53,31 +54,10 @@ public class SaveManager{
 			// Charge la liste des achievements
 			List<string> achievementsLoaded = formater.Deserialize(file) as List<string>;
 
-			// Récupère les achiements
-			List<Achievement> achievementsUnlocked = achievementManager.getAchievementsUnlocked();
-			List<Achievement> achievementsLocked = achievementManager.getAchievementsLocked();
-
-			// Rassemble tous les achievements
-			for (int i=0; i<achievementsUnlocked.Count; i++)
-				achievementsLocked.Add(achievementsUnlocked[i]);
-
-			int index;
-			for (int i=0; i<achievementsLoaded.Count; i++)
-			{
-				index = achievementsLocked.FindIndex(
-					delegate(Achievement obj) {
-					return obj.getName() == achievementsLoaded[i];
-				});
-				if (index>=0)
-				{
-					achievementsUnlocked.Add(achievementsLocked[index]);
-					achievementsLocked.RemoveAt(index);
-				}
-			}
-
-			achievementManager.setAchievements(achievementsLocked, achievementsUnlocked);
+			achievementManager.loadAchievements(achievementsLoaded);
 
 			file.Close();
+			Debug.Log("save loaded");
 		}
 	}
 }

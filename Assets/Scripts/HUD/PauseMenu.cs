@@ -38,7 +38,6 @@ public class PauseMenu : PauseSystem
 			}
 			if(GUILayout.Button("Menu"))
 			{
-				player.achievementManager.saveAchievements();
 				Application.LoadLevel(0);
 			}
 			

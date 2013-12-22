@@ -53,7 +53,7 @@ public class PlayerController : HumanoidController
 	private Animator anim;
 	private PlayerHashIDs hash;
 
-	// dfghjkl
+	// Manager de sauvegarde
 	SaveManager saveManager;
 
 	// Use this for initialization
