@@ -10,6 +10,7 @@
 *.sln
 *.suo
 *.pdb
+*.dat
 
 # User Specific
 *.userprefs

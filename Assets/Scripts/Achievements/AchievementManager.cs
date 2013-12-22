@@ -148,24 +148,6 @@ public class AchievementManager : MonoBehaviour {
 		updateEnnemiesKilledHistorical();
 	}
 	
-	public void saveAchievements()
-	{
-		// Sauvegarde des achievements non réalisés
-		//Crée un BinaryFormatter
-		//var binFormatter = new BinaryFormatter();
-		//Crée un fichier
-		//var fileTodo = File.Create(Application.persistentDataPath + "/achievementsTodo.dat");
-		//binFormatter.Serialize(fileTodo, achievements);
-		//fileTodo.Close();
-		
-		// Sauvegarde des achievements réalisés
-		//Crée un fichier
-		//var fileGet = File.Create(Application.persistentDataPath + "/achievementsGet.dat");
-		//Sauvegarde les achievements
-		//binFormatter.Serialize(fileGet, achievementsGet);
-		//fileGet.Close();
-	}
-	
 	public void loadAchievements(List<string> achievementsGet)
 	{
 		// Parcours la liste des achievements aquis pour mettre à jour la liste générale des achievements
@@ -184,17 +166,6 @@ public class AchievementManager : MonoBehaviour {
 	public List<Achievement> getAchievementsUnlocked()
 	{
 		return achievementsUnlock;
-	}
-
-	public List<Achievement> getAchievementsLocked()
-	{
-		return achievements;
-	}
-
-	public void setAchievements(List<Achievement> locked, List<Achievement> unlocked)
-	{
-		achievements = locked;
-		achievementsUnlock = unlocked;
 	}
 
 	// Méthodes permettant un Update des variables des achievements
