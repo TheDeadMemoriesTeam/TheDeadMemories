@@ -88,22 +88,15 @@ public class SkillsGUI : MonoBehaviour
 				GUI.enabled = false;
 				GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
 				
-				
 				// On affiche les boutons des 2 branches de skills qui suivent
 				GUI.enabled = passiveSkillRank1.getCostIncFirstAd() <= player.getExperience();
 				if (GUI.Button(new Rect(125, heightFromTop-25, passiveSkillRank1.getNameFirstAd().Length * 11, 30), passiveSkillRank1.getNameFirstAd()))
-				{
-					int newLevel = passiveSkillRank1.getLvlFirstAd() + 1;
-					passiveSkillRank1.setLvlFirstAd(newLevel);
-					player.experienceUpdate(-passiveSkillRank1.getCostIncFirstAd());
-				}
+					upgradePassiveLittleSkill(passiveSkillRank1);
+
 				GUI.enabled = passiveSkillRank1.getCostIncSecAd() <= player.getExperience();
 				if (GUI.Button(new Rect(125, heightFromTop+25, passiveSkillRank1.getNameSecAd().Length * 11, 30), passiveSkillRank1.getNameSecAd()))
-				{
-					int newLevel = passiveSkillRank1.getLvlSecAd() + 1;
-					passiveSkillRank1.setLvlSecAd(newLevel);
-					player.experienceUpdate(-passiveSkillRank1.getCostIncSecAd());
-				}
+					upgradePassiveLittleSkill(passiveSkillRank1, false);
+
 				// Vérifie si le second skill peut etre débloqué
 				listSkills[i+1].unlockedSkill();
 				
@@ -119,18 +112,12 @@ public class SkillsGUI : MonoBehaviour
 					// On affiche les boutons des 2 branches de skills qui suivent
 					GUI.enabled = passiveSkillRank2.getCostIncFirstAd() <= player.getExperience();
 					if (GUI.Button(new Rect(300, heightFromTop-25, passiveSkillRank2.getNameFirstAd().Length * 11, 30), passiveSkillRank2.getNameFirstAd()))
-					{
-						int newLevel = passiveSkillRank2.getLvlFirstAd() + 1;
-						passiveSkillRank2.setLvlFirstAd(newLevel);
-						player.experienceUpdate(-passiveSkillRank2.getCostIncFirstAd());
-					}
+						upgradePassiveLittleSkill(passiveSkillRank2);
+
 					GUI.enabled = passiveSkillRank2.getCostIncFirstAd() <= player.getExperience();
 					if (GUI.Button(new Rect(300, heightFromTop+25, passiveSkillRank2.getNameSecAd().Length * 11, 30), passiveSkillRank2.getNameSecAd()))
-					{
-						int newLevel = passiveSkillRank2.getLvlSecAd() + 1;
-						passiveSkillRank2.setLvlSecAd(newLevel);
-						player.experienceUpdate(-passiveSkillRank2.getCostIncSecAd());
-					}
+						upgradePassiveLittleSkill(passiveSkillRank2, false);
+
 					// Vérifie si le dernier skill peut etre débloqué
 					listSkills[i+2].unlockedSkill();
 					
@@ -149,10 +136,7 @@ public class SkillsGUI : MonoBehaviour
 						
 						// Si on achète le skill on met à jour l'expérience du joueur
 						if (GUI.Button(new Rect(450, heightFromTop, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName()))
-						{
-							listSkills[i+2].setIsBought(true);
-							player.experienceUpdate(-listSkills[i+2].getPrice());
-						}
+							unlockSkill(listSkills[i+2]);
 					}
 					
 				}
@@ -164,10 +148,7 @@ public class SkillsGUI : MonoBehaviour
 					
 					// Si on achète le skill on met à jour l'expérience du joueur
 					if (GUI.Button(new Rect(195, heightFromTop, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName()))
-					{
-						listSkills[i+1].setIsBought(true);
-						player.experienceUpdate(-listSkills[i+1].getPrice());
-					}
+						unlockSkill(listSkills[i+1]);
 				}
 				
 			}
@@ -179,13 +160,32 @@ public class SkillsGUI : MonoBehaviour
 				
 				// Si on achète le skill on met à jour l'expérience du joueur
 				if (GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName()))
-				{
-					listSkills[i].setIsBought(true);
-					player.experienceUpdate(-listSkills[i].getPrice());
-				}
+					unlockSkill(listSkills[i]);
 			}
 			
 		}
+	}
+
+	void upgradePassiveLittleSkill(PassiveSkills skillRank, bool first = true)
+	{
+		if (first)
+		{
+			int newLevel = skillRank.getLvlFirstAd() + 1;
+			skillRank.setLvlFirstAd(newLevel);
+			player.experienceUpdate(-skillRank.getCostIncFirstAd());
+		}
+		else
+		{
+			int newLevel = skillRank.getLvlSecAd() + 1;
+			skillRank.setLvlSecAd(newLevel);
+			player.experienceUpdate(-skillRank.getCostIncSecAd());
+		}
+	}
+
+	void unlockSkill(Skills skill)
+	{
+		skill.setIsBought(true);
+		player.experienceUpdate(-skill.getPrice());
 	}
 
 	void OnTriggerEnter (Collider other)
