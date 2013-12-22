@@ -216,7 +216,8 @@ public class PlayerController : HumanoidController
 					if (angle>=-45 && angle<=45)
 					{
 						float damage = -skillManager.getPhysicAttack() + (-skillManager.getPhysicAttack()/100 * targets[i].getSkillManager().getPhysicalResistance());
-						//if 
+						//gestion des critique
+						//if
 						targets[i].healthUpdate(damage);
 					}
 				}	
@@ -246,7 +247,7 @@ public class PlayerController : HumanoidController
 						skillManager.setMana(skillManager.getMana() - porteeSkill.getManaCost());
 
 						//execution de la skill
-						porteeSkill.launch(transform.position, transform.forward, skillManager.getMagicAttack());
+						porteeSkill.launch(transform.position, transform.forward, skillManager.getMagicAttack(), skillManager.getCriticPhysic());
 					}
 				}
 				//determination de la skill en fonction du temp de maintien du bouton droit
@@ -272,6 +273,8 @@ public class PlayerController : HumanoidController
 								if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getAd())
 								{
 									float damage = -skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()) + (-skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())/100 * targets[i].getSkillManager().getMagicResistance());
+									//gestion des critique
+									//if
 									targets[i].healthUpdate(damage);
 								}
 							}
@@ -290,7 +293,7 @@ public class PlayerController : HumanoidController
 								skillManager.setMana(skillManager.getMana() - superSkill.getManaCost());
 
 								//execution de la skill
-								//zoneSkill.launch(transform.position);
+								zoneSkill.launch(transform.position);
 							}
 						}
 					}
