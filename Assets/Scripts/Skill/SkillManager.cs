@@ -217,4 +217,9 @@ public class SkillManager : MonoBehaviour
 	{
 		return listSkills[rang];
 	}
+
+	public List<Skills> getListOfSkills()
+	{
+		return listSkills;
+	}
 }

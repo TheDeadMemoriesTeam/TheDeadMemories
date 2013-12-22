@@ -33,6 +33,11 @@ public abstract class Achievement
 	{
 		return _achieved;
 	}
+
+	public void setAchieved()
+	{
+		_achieved = true;
+	}
 	
 	public abstract bool achieved();
 	
