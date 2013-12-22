@@ -47,6 +47,7 @@ public class SkillsGUI : MonoBehaviour
 	
 	void OnGUI()
 	{
+		// Ouvre la fenetre des arbres de compétences
 		if (isActive && skillsOpen)
 			skillsWindowRect = GUI.Window(1, skillsWindowRect, skillsWindowOpen, "Arbre des compétences");
 	}
@@ -57,18 +58,63 @@ public class SkillsGUI : MonoBehaviour
 		GUILayout.BeginArea(new Rect(10, 20, Screen.width-10, Screen.height-20));
 
 		List<Skills> listSkills = player.getSkillManager().getListOfSkills();
-
+		//print("acheté : " + listSkills[0].getIsBought() + " débloqué : " + listSkills[0].getIsUnlock());
 		for (int i = 0 ; i < 1/*listSkills.Count*/ ; i++)
 		{
-			PassiveSkills skill = listSkills[i] as PassiveSkills;
 			if (listSkills[i].getIsBought())
 			{
-				GUI.enabled=false;
+				PassiveSkills passiveSkillRank1 = listSkills[i] as PassiveSkills;
+
+				GUI.enabled = false;
 				GUI.Button(new Rect(50, 50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
 
 				GUI.enabled = true;
-				GUI.Button(new Rect(150, 25, skill.getNameFirstAd().Length * 11, 30), skill.getNameFirstAd());
-				GUI.Button(new Rect(150, 75, skill.getNameSecAd().Length * 11, 30), skill.getNameSecAd());
+				if (GUI.Button(new Rect(125, 25, passiveSkillRank1.getNameFirstAd().Length * 11, 30), passiveSkillRank1.getNameFirstAd()))
+				{
+					// todo update les incrémentation
+				}
+				if (GUI.Button(new Rect(125, 75, passiveSkillRank1.getNameSecAd().Length * 11, 30), passiveSkillRank1.getNameSecAd()))
+				{
+					// todo update les incrémentation
+				}
+
+				if (listSkills[i+1].getIsBought())
+				{
+					PassiveSkills passiveSkillRank2 = listSkills[i+1] as PassiveSkills;
+
+					GUI.enabled = false;
+					GUI.Button(new Rect(195, 50, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName());
+
+					GUI.enabled = true;
+					if (GUI.Button(new Rect(300, 25, passiveSkillRank2.getNameFirstAd().Length * 11, 30), passiveSkillRank2.getNameFirstAd()))
+					{
+						// todo update les incrémentation
+					}
+					if (GUI.Button(new Rect(300, 75, passiveSkillRank2.getNameSecAd().Length * 11, 30), passiveSkillRank2.getNameSecAd()))
+					{
+						// todo update les incrémentation
+					}
+
+					if (listSkills[i+2].getIsBought())
+					{
+						GUI.enabled = false;
+						GUI.Button(new Rect(450, 50, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName());
+					}
+					else if (listSkills[i+2].getIsUnlock())
+					{
+						GUI.enabled = true;
+						if (GUI.Button(new Rect(450, 50, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName()))
+							listSkills[i+2].setIsBought(true);
+					}
+
+				}
+				else if (listSkills[i+1].getIsUnlock())
+				{
+					GUI.enabled = true;
+					if (GUI.Button(new Rect(195, 50, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName()))
+						listSkills[i+1].setIsBought(true);
+				}
+
 			}
 			else if (listSkills[i].getIsUnlock())
 			{
@@ -78,6 +124,9 @@ public class SkillsGUI : MonoBehaviour
 			}
 
 		}
+
+		//for (int i = 0 ; i < listSkills.Count ; i++)
+			//GUI.Button(new Rect(i*50, i*50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
 		
 		GUILayout.EndArea();
 	}
