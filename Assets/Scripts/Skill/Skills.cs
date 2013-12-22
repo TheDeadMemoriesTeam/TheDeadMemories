@@ -61,14 +61,14 @@ public abstract class Skills
 			PassiveSkills fatherP = m_father as  PassiveSkills;
 			if(fatherP != null)
 			{
-				if(fatherP.getLvlFirstAd() + fatherP.getLvlSecAd() > lvlToUnlock)
+				if(fatherP.getLvlFirstAd() + fatherP.getLvlSecAd() >= lvlToUnlock)
 					setIsUnlock(true);
 			}
 			
 			BaseSkills fatherB = m_father as BaseSkills;
 			if(fatherB != null)
 			{
-				if(fatherB.getLvlDamage() + fatherB.getLvlAd() > lvlToUnlock)
+				if(fatherB.getLvlDamage() + fatherB.getLvlAd() >= lvlToUnlock)
 					setIsUnlock(true);
 			}
  		}

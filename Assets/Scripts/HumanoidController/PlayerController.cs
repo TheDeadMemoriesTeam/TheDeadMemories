@@ -26,7 +26,7 @@ public class PlayerController : HumanoidController
 	
 	private CharacterController controller;
 	
-	private int xp = 0;
+	private int xp = 20000;
 	
 	// Variables servants aux achievements
 	public AchievementManager achievementManager;

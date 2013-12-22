@@ -29,6 +29,8 @@ public class SkillsGUI : MonoBehaviour
 		
 		if (Input.GetKeyUp(KeyCode.P))
 		{
+			//les stats skills
+			player.getSkillManager().update();
 			// Met le joueur en pause pour qu'il ne se déplace pas en meme temps qu'il achète ses skills
 			player.onPause();
 			// Change l'état affiché/masqué du panneau d'achat des skills
@@ -91,7 +93,7 @@ public class SkillsGUI : MonoBehaviour
 					player.experienceUpdate(-passiveSkillRank1.getCostIncSecAd());
 				}
 				// Vérifie si le second skill peut etre débloqué
-				listSkills[i].unlockedSkill();
+				listSkills[i+1].unlockedSkill();
 
 				// Si le second skill est déjà acheté
 				if (listSkills[i+1].getIsBought())
@@ -118,7 +120,7 @@ public class SkillsGUI : MonoBehaviour
 						player.experienceUpdate(-passiveSkillRank2.getCostIncSecAd());
 					}
 					// Vérifie si le dernier skill peut etre débloqué
-					listSkills[i+1].unlockedSkill();
+					listSkills[i+2].unlockedSkill();
 
 					// Si le dernier skill est déjà acheté
 					if (listSkills[i+2].getIsBought())

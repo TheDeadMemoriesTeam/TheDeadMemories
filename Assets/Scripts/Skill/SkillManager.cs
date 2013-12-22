@@ -186,24 +186,20 @@ public class SkillManager : MonoBehaviour
 	void Start () 
 	{
 	}
-	
-	// Update is called once per frame
-	void Update () 
+
+	public void update () 
 	{
-		if(Input.GetKeyDown(KeyCode.A))
+		for (int i=0; i<listSkills.Count; i++)
 		{
-			for (int i=0; i<listSkills.Count; i++)
+			if(listSkills[i].GetType() == System.Type.GetType("PassiveSkills"))
 			{
-				if(listSkills[i].GetType() == System.Type.GetType("PassiveSkills"))
-				{
-					PassiveSkills tmp = listSkills[i] as PassiveSkills;
-					if(tmp.getName() == "Survie")
-						tmp.update(ref m_manaMax, m_baseManaMax, ref m_pvMax, m_basePvMax);
-					else if(tmp.getName() == "Resistance")
-						tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
-					else if(tmp.getName() == "Attaque de base")
-						tmp.update(ref m_physicAttack, m_basePhysicAttack, ref m_magicAttack, m_baseMagicAttack);
-				}
+				PassiveSkills tmp = listSkills[i] as PassiveSkills;
+				if(tmp.getName() == "Survie")
+					tmp.update(ref m_pvMax, m_basePvMax, ref m_manaMax, m_baseManaMax);
+				else if(tmp.getName() == "Resistance")
+					tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
+				else if(tmp.getName() == "Attaque de base")
+					tmp.update(ref m_physicAttack, m_basePhysicAttack, ref m_magicAttack, m_baseMagicAttack);
 			}
 		}
 	}
