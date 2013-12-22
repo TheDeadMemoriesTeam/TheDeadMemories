@@ -5,7 +5,7 @@ public abstract class ActiveSkills : Skills
 {
 	private float m_timeIncantation;
 	private int m_manaCost;
-	private Transform m_particule;
+	protected Transform m_particule;
 	
 	//acsessor	
 	public float getTimeIncantation()

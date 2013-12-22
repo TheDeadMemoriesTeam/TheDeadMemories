@@ -201,6 +201,11 @@ public class SkillManager : MonoBehaviour
 				else if(tmp.getName() == "Attaque de base")
 					tmp.update(ref m_physicAttack, m_basePhysicAttack, ref m_magicAttack, m_baseMagicAttack);
 			}
+			else if(listSkills[i].GetType() == System.Type.GetType("BaseSkills"))
+			{
+				BaseSkills tmp = listSkills[i] as BaseSkills;
+				tmp.update();
+			}
 		}
 	}
 	

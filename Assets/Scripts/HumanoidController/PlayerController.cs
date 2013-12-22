@@ -266,7 +266,7 @@ public class PlayerController : HumanoidController
 							for (int i=0; i<targets.Length; i++)
 							{
 								Vector3 distance = transform.position-targets[i].transform.position;
-								if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getZone())
+								if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getAd())
 								{
 									float damage = -skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()) + (-skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())/100 * targets[i].getSkillManager().getMagicResistance());
 									targets[i].healthUpdate(damage);
