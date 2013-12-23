@@ -22,6 +22,8 @@ public class SkillsGUI : MonoBehaviour
 	private int marginBetweenSkillTree = 150;
 	// Pourcentage de décalage sur la droite après chaque bouton
 	private float horizontalMarginBetweenButton = 0.05f;
+	// Permet de régler le décalage vertical des branches des arbres de compétences (en pixels)
+	private int verticalSpace = 25;
 	// Coefficient pour la largeur des boutons en fonction du texte à afficher
 	private int coefSize = 9;
 	// Largeur en pixel de l'arbre de compétence le plus long
@@ -83,7 +85,7 @@ public class SkillsGUI : MonoBehaviour
 		// Mise en place des scroll Bars
 		scrollPosition = GUI.BeginScrollView(	new Rect(0, 0, Screen.width-30, Screen.height-50),
 		                                     	scrollPosition,
-		                                     	new Rect(0, 0, maxTreeWidth, nbTree*marginBetweenSkillTree+25));
+		                                     	new Rect(0, 0, maxTreeWidth, nbTree*marginBetweenSkillTree+verticalSpace));
 
 		nbTreeAlreadyDrawn = 0;
 
@@ -146,7 +148,7 @@ public class SkillsGUI : MonoBehaviour
 				// On affiche les boutons des 2 branches de skills qui suivent
 				GUI.enabled = baseSkillRank1.getCostIncDamage() <= player.getExperience();
 				if (GUI.Button(new Rect(marginLeft,
-				                        heightFromTop-25,
+				                        heightFromTop-verticalSpace,
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
 				               baseSkillRank1.getNameDamage()))
@@ -156,7 +158,7 @@ public class SkillsGUI : MonoBehaviour
 				
 				GUI.enabled = baseSkillRank1.getCostIncAd() <= player.getExperience();
 				if (GUI.Button(new Rect(marginLeft,
-				                        heightFromTop+25,
+				                        heightFromTop+verticalSpace,
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
 				               baseSkillRank1.getNameAd()))
@@ -197,7 +199,7 @@ public class SkillsGUI : MonoBehaviour
 					// On affiche les boutons des 2 branches de skills qui suivent
 					GUI.enabled = baseSkillRank2.getCostIncDamage() <= player.getExperience();
 					if (GUI.Button(new Rect(marginLeft,
-					                        heightFromTop-25,
+					                        heightFromTop-verticalSpace,
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
 					               baseSkillRank2.getNameDamage()))
@@ -207,7 +209,7 @@ public class SkillsGUI : MonoBehaviour
 					
 					GUI.enabled = baseSkillRank2.getCostIncAd() <= player.getExperience();
 					if (GUI.Button(new Rect(marginLeft,
-					                        heightFromTop+25,
+					                        heightFromTop+verticalSpace,
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
 					               baseSkillRank2.getNameAd()))
@@ -349,7 +351,7 @@ public class SkillsGUI : MonoBehaviour
 				// On affiche les boutons des 2 branches de skills qui suivent
 				GUI.enabled = passiveSkillRank1.getCostIncFirstAd() <= player.getExperience();
 				if (GUI.Button(new Rect(marginLeft,
-				                        heightFromTop-25,
+				                        heightFromTop-verticalSpace,
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
 				               passiveSkillRank1.getNameFirstAd()))
@@ -359,7 +361,7 @@ public class SkillsGUI : MonoBehaviour
 				
 				GUI.enabled = passiveSkillRank1.getCostIncSecAd() <= player.getExperience();
 				if (GUI.Button(new Rect(marginLeft,
-				                        heightFromTop+25,
+				                        heightFromTop+verticalSpace,
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
 				               passiveSkillRank1.getNameSecAd()))
@@ -398,7 +400,7 @@ public class SkillsGUI : MonoBehaviour
 					// On affiche les boutons des 2 branches de skills qui suivent
 					GUI.enabled = passiveSkillRank2.getCostIncFirstAd() <= player.getExperience();
 					if (GUI.Button(new Rect(marginLeft,
-					                        heightFromTop-25,
+					                        heightFromTop-verticalSpace,
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
 					               passiveSkillRank2.getNameFirstAd()))
@@ -408,7 +410,7 @@ public class SkillsGUI : MonoBehaviour
 					
 					GUI.enabled = passiveSkillRank2.getCostIncSecAd() <= player.getExperience();
 					if (GUI.Button(new Rect(marginLeft,
-					                        heightFromTop+25,
+					                        heightFromTop+verticalSpace,
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
 					               passiveSkillRank2.getNameSecAd()))
