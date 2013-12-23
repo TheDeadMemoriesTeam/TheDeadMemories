@@ -44,7 +44,7 @@ public class PlayerController : HumanoidController
 	// Compteur de temps
 	private float magicTime;
 	// Type de magie
-	enum magicTypes{Fire=5, Ice=8, Wind=11};
+	enum magicTypes{Fire=6, Ice=9, Wind=12};
 	magicTypes currentMagicType = magicTypes.Fire;
 	
 	private bool pause = false;
