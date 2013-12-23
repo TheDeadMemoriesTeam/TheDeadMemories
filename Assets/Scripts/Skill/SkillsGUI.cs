@@ -74,7 +74,9 @@ public class SkillsGUI : MonoBehaviour
 		if (isActive && skillsOpen)
 			skillsWindowRect = GUI.Window(1, skillsWindowRect, skillsWindowOpen, "Arbre des compétences");
 	}
-	
+
+
+	// Rempli la fenetre des arbres des compétences avec les arbres !
 	void skillsWindowOpen(int windowId)
 	{
 		
@@ -166,7 +168,7 @@ public class SkillsGUI : MonoBehaviour
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
 				               new GUIContent(	baseSkillRank1.getNameDamage(),
-				               					"non dispo")))
+				               					baseSkillRank1.getDescriptionDamage())))
 				{
 					upgradeMagicLittleSkill(baseSkillRank1);
 				}
@@ -177,7 +179,7 @@ public class SkillsGUI : MonoBehaviour
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
 				               new GUIContent(	baseSkillRank1.getNameAd(),
-				               					"non dispo")))
+				               					baseSkillRank1.getDescriptionAd())))
 				{
 					upgradeMagicLittleSkill(baseSkillRank1, false);
 				}
@@ -220,7 +222,7 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
 					               new GUIContent(	baseSkillRank2.getNameDamage(),
-					              					"non dispo")))
+					              					baseSkillRank2.getDescriptionDamage())))
 					{
 						upgradeMagicLittleSkill(baseSkillRank2);
 					}
@@ -231,7 +233,7 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
 					               new GUIContent(	baseSkillRank2.getNameAd(),
-					               					"non dispo")))
+					               					baseSkillRank2.getDescriptionAd())))
 					{
 						upgradeMagicLittleSkill(baseSkillRank2, false);
 					}
@@ -379,7 +381,7 @@ public class SkillsGUI : MonoBehaviour
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
 				               new GUIContent(	passiveSkillRank1.getNameFirstAd(),
-				               					"non dispo")))
+				               					passiveSkillRank1.getDescriptionFirstAd())))
 				{
 					upgradePassiveLittleSkill(passiveSkillRank1);
 				}
@@ -390,7 +392,7 @@ public class SkillsGUI : MonoBehaviour
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
 				               new GUIContent(	passiveSkillRank1.getNameSecAd(),
-				               					"non dispo")))
+				               					passiveSkillRank1.getDescriptionSecAd())))
 				{
 					upgradePassiveLittleSkill(passiveSkillRank1, false);
 				}
@@ -431,7 +433,7 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
 					               new GUIContent(	passiveSkillRank2.getNameFirstAd(),
-					               					"non dispo")))
+					               					passiveSkillRank2.getDescriptionFirstAd())))
 					{
 						upgradePassiveLittleSkill(passiveSkillRank2);
 					}
@@ -442,7 +444,7 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
 					               new GUIContent(	passiveSkillRank2.getNameSecAd(),
-					               					"non dispo")))
+					               					passiveSkillRank2.getDescriptionSecAd())))
 					{
 						upgradePassiveLittleSkill(passiveSkillRank2, false);
 					}
@@ -620,4 +622,3 @@ public class SkillsGUI : MonoBehaviour
 		}
 	}
 }
-

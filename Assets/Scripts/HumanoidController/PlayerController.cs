@@ -77,31 +77,34 @@ public class PlayerController : HumanoidController
 		sprintTimeStart = Time.time;
 		isSprinting = false;
 		updateSpeed(isSprinting);
-		
+
+		// Liste des descriptions des compétences
+		List<string> skillsDescriptions = initSkillsDescriptions();
+
 		//arbre de competence Survie
-		skillManager.addSkill(new PassiveSkills("Survie", "a", 0, null, 200, 200, 5f, 5f, "pv+", "mana+"));
-		skillManager.addSkill(new PassiveSkills("Resistance", "b", 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-")); 
-		skillManager.addSkill(new InvincibleSkill("Invincible", "c", 3000, skillManager.getSkill(1), 0, 30, null, 5));
+		skillManager.addSkill(new PassiveSkills("Survie", skillsDescriptions[0], 0, null, 200, 200, 5f, 5f, "pv+", "mana+", skillsDescriptions[1], skillsDescriptions[2]));
+		skillManager.addSkill(new PassiveSkills("Resistance", skillsDescriptions[3], 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-", skillsDescriptions[4], skillsDescriptions[5])); 
+		skillManager.addSkill(new InvincibleSkill("Invincible", skillsDescriptions[6], 3000, skillManager.getSkill(1), 0, 30, null, 5));
 
 		//arbre de competence Attaque
-		skillManager.addSkill(new PassiveSkills("Attaque de base", "d", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
-		skillManager.addSkill(new PassiveSkills("Critique", "e", 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+"));
-		skillManager.addSkill(new FurieSkills("Furie", "f", 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
+		skillManager.addSkill(new PassiveSkills("Attaque de base", skillsDescriptions[7], 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+", skillsDescriptions[8], skillsDescriptions[9]));
+		skillManager.addSkill(new PassiveSkills("Critique", skillsDescriptions[10], 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+", skillsDescriptions[11], skillsDescriptions[12]));
+		skillManager.addSkill(new FurieSkills("Furie", skillsDescriptions[13], 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
 
 		//arbre de competence Feu
-		skillManager.addSkill(new PorteeSkills("Boule de feu", "g", 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Lance flames", "gg", 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Meteor", "h", 3000, skillManager.getSkill(7), 2f, 20, null, 20f, 10f, 10f)); 
+		skillManager.addSkill(new PorteeSkills("Boule de feu", skillsDescriptions[14], 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", skillsDescriptions[15], skillsDescriptions[16], 20f));
+		skillManager.addSkill(new ZoneSkills("Lance flames", skillsDescriptions[17], 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", skillsDescriptions[18], skillsDescriptions[19], 10f));
+		skillManager.addSkill(new SuperSkills("Meteor", skillsDescriptions[20], 3000, skillManager.getSkill(7), 2f, 20, null, 20f, 10f, 10f)); 
 		
 		//arbre de competence Glace
-		skillManager.addSkill(new PorteeSkills("Glacon", "i", 1000, null, 0f, 10, iceball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Iceberg", "j", 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Ere glaciere", "k", 3000, skillManager.getSkill(10), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new PorteeSkills("Glacon", skillsDescriptions[21], 1000, null, 0f, 10, iceball, 10f, 200, 200, "Degat+", "Portee+", skillsDescriptions[22], skillsDescriptions[23], 20f));
+		skillManager.addSkill(new ZoneSkills("Iceberg", skillsDescriptions[24], 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 200, 200, "Degat+", "Zone+", skillsDescriptions[25], skillsDescriptions[26], 10f));
+		skillManager.addSkill(new SuperSkills("Ere glaciere", skillsDescriptions[27], 3000, skillManager.getSkill(10), 2f, 20, null, 20f, 10f, 10f));
 		
 		//arbre de competence Vent
-		skillManager.addSkill(new PorteeSkills("Soufle", "l", 1000, null, 0f, 10, propulsion, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Bourasque", "m", 1000, skillManager.getSkill(12), 1f, 15, tornade, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Tornade", "n", 3000, skillManager.getSkill(13), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new PorteeSkills("Soufle", skillsDescriptions[28], 1000, null, 0f, 10, propulsion, 10f, 200, 200, "Degat+", "Portee+", skillsDescriptions[29], skillsDescriptions[30], 20f));
+		skillManager.addSkill(new ZoneSkills("Bourasque", skillsDescriptions[31], 1000, skillManager.getSkill(12), 1f, 15, tornade, 15f, 200, 200, "Degat+", "Zone+", skillsDescriptions[32], skillsDescriptions[33], 10f));
+		skillManager.addSkill(new SuperSkills("Tornade", skillsDescriptions[34], 3000, skillManager.getSkill(13), 2f, 20, null, 20f, 10f, 10f));
 
 		// Animations
 		hash = GetComponent<PlayerHashIDs>();
@@ -376,5 +379,47 @@ public class PlayerController : HumanoidController
 			pauseAfterSprint = (Time.time - sprintTimeStart) * 1.5f;
 		else
 			pauseAfterSprint -= Time.deltaTime;
+	}
+
+	List<string> initSkillsDescriptions()
+	{
+		List<string> list = new List<string>();
+		list.Add("TODO1");
+		list.Add("TODO2");
+		list.Add("TODO3");
+		list.Add("TODO4");
+		list.Add("TODO5");
+		list.Add("TODO6");
+		list.Add("TODO7");
+		list.Add("TODO8");
+		list.Add("TODO9");
+		list.Add("TODO10");
+		list.Add("TODO11");
+		list.Add("TODO12");
+		list.Add("TODO13");
+		list.Add("TODO14");
+		list.Add("TODO15");
+		list.Add("TODO16");
+		list.Add("TODO17");
+		list.Add("TODO18");
+		list.Add("TODO19");
+		list.Add("TODO20");
+		list.Add("TODO21");
+		list.Add("TODO22");
+		list.Add("TODO23");
+		list.Add("TODO24");
+		list.Add("TODO25");
+		list.Add("TODO26");
+		list.Add("TODO27");
+		list.Add("TODO28");
+		list.Add("TODO29");
+		list.Add("TODO30");
+		list.Add("TODO31");
+		list.Add("TODO32");
+		list.Add("TODO33");
+		list.Add("TODO34");
+		list.Add("TODO35");
+
+		return list;
 	}
 }

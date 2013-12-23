@@ -4,8 +4,8 @@ using System.Collections;
 public class PorteeSkills : BaseSkills 
 {	
 	// Use this for initialization
-	public PorteeSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float damage, int costIncDamage, int costIncPortee, string nameDamage, string namePortee, float basePortee) 
-		:base(name, description, price, father, timeIncantation, manaCost, particule, damage, costIncDamage, costIncPortee, nameDamage, namePortee, basePortee)
+	public PorteeSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float damage, int costIncDamage, int costIncPortee, string nameDamage, string namePortee, string descriptionDamage, string descriptionPortee, float basePortee) 
+		:base(name, description, price, father, timeIncantation, manaCost, particule, damage, costIncDamage, costIncPortee, nameDamage, namePortee, descriptionDamage, descriptionPortee, basePortee)
 	{
 	}
 
