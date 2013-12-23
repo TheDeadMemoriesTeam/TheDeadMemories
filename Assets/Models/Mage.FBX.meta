@@ -1,146 +1,36 @@
 fileFormatVersion: 2
-guid: 3e684883ee28ade4a87e2b7501d4b778
+guid: 28e91c4861848244c836b2ab6f751cd6
 ModelImporter:
   serializedVersion: 15
   fileIDToRecycleName:
-    100000: Box003
-    100002: Box004
-    100004: Box005
-    100006: Box006
-    100008: Box010
-    100010: Box011
-    100012: Box012
-    100014: Box013
-    100016: Box014
-    100018: Box015
-    100020: Box016
-    100022: Box017
-    100024: Box018
-    100026: Box019
-    100028: Corps
-    100030: Jambe D
-    100032: Jambe G
-    100034: //RootNode
-    100036: Oeil D
-    100038: Oeil G
-    100040: Sphere001
-    100042: Sphere002
-    100044: Sphere003
-    100046: Sphere004
-    100048: Sphere005
-    100050: Sphere006
-    100052: Sphere007
-    100054: Sphere008
-    100056: Sphere009
-    100058: Sphere010
-    100060: Tete
-    100062: Tete 1
-    100064: Tete 2
-    400000: Box003
-    400002: Box004
-    400004: Box005
-    400006: Box006
-    400008: Box010
-    400010: Box011
-    400012: Box012
-    400014: Box013
-    400016: Box014
-    400018: Box015
-    400020: Box016
-    400022: Box017
-    400024: Box018
-    400026: Box019
-    400028: Corps
-    400030: Jambe D
-    400032: Jambe G
-    400034: //RootNode
-    400036: Oeil D
-    400038: Oeil G
-    400040: Sphere001
-    400042: Sphere002
-    400044: Sphere003
-    400046: Sphere004
-    400048: Sphere005
-    400050: Sphere006
-    400052: Sphere007
-    400054: Sphere008
-    400056: Sphere009
-    400058: Sphere010
-    400060: Tete
-    400062: Tete 1
-    400064: Tete 2
-    2300000: Box003
-    2300002: Box004
-    2300004: Box005
-    2300006: Box006
-    2300008: Box010
-    2300010: Box011
-    2300012: Box012
-    2300014: Box013
-    2300016: Box014
-    2300018: Box015
-    2300020: Box016
-    2300022: Box017
-    2300024: Box018
-    2300026: Box019
-    2300028: Sphere001
-    2300030: Sphere002
-    2300032: Sphere003
-    2300034: Sphere004
-    2300036: Sphere005
-    2300038: Sphere006
-    2300040: Sphere007
-    2300042: Sphere008
-    2300044: Sphere009
-    2300046: Sphere010
-    3300000: Box003
-    3300002: Box004
-    3300004: Box005
-    3300006: Box006
-    3300008: Box010
-    3300010: Box011
-    3300012: Box012
-    3300014: Box013
-    3300016: Box014
-    3300018: Box015
-    3300020: Box016
-    3300022: Box017
-    3300024: Box018
-    3300026: Box019
-    3300028: Sphere001
-    3300030: Sphere002
-    3300032: Sphere003
-    3300034: Sphere004
-    3300036: Sphere005
-    3300038: Sphere006
-    3300040: Sphere007
-    3300042: Sphere008
-    3300044: Sphere009
-    3300046: Sphere010
-    4300000: Box004
-    4300002: Box018
-    4300004: Box019
-    4300006: Box017
-    4300008: Box016
-    4300010: Box015
-    4300012: Sphere008
-    4300014: Sphere009
-    4300016: Sphere010
-    4300018: Sphere005
-    4300020: Sphere007
-    4300022: Sphere006
-    4300024: Box003
-    4300026: Sphere004
-    4300028: Box006
-    4300030: Box005
-    4300032: Box011
-    4300034: Box010
-    4300036: Box012
-    4300038: Box013
-    4300040: Sphere001
-    4300042: Box014
-    4300044: Sphere002
-    4300046: Sphere003
+    100000: Bo__te001
+    100002: Circle_003
+    100004: Circle_011
+    100006: //RootNode
+    100008: SIMONE_BODY_000
+    100010: SIMONE_BODY_001
+    400000: Bo__te001
+    400002: Circle_003
+    400004: Circle_011
+    400006: //RootNode
+    400008: SIMONE_BODY_000
+    400010: SIMONE_BODY_001
+    2300000: Bo__te001
+    2300002: Circle_003
+    2300004: Circle_011
+    2300006: SIMONE_BODY_000
+    2300008: SIMONE_BODY_001
+    3300000: Bo__te001
+    3300002: Circle_003
+    3300004: Circle_011
+    3300006: SIMONE_BODY_000
+    3300008: SIMONE_BODY_001
+    4300000: Circle_011
+    4300002: SIMONE_BODY_000
+    4300004: SIMONE_BODY_001
+    4300006: Circle_003
+    4300008: Bo__te001
+    7400000: Take 001
     9500000: //RootNode
   materials:
     importMaterials: 1
@@ -149,11 +39,13 @@ ModelImporter:
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
+    optimizeGameObjects: 0
     animationCompression: 1
     animationRotationError: .5
     animationPositionError: .5
     animationScaleError: .5
     animationWrapMode: 0
+    extraExposedTransformPaths: []
     clipAnimations: []
     isReadable: 1
   meshes:
@@ -181,7 +73,6 @@ ModelImporter:
   humanDescription:
     human: []
     skeleton: []
-    handles: []
     armTwist: .5
     foreArmTwist: .5
     upperLegTwist: .5
@@ -191,6 +82,5 @@ ModelImporter:
     feetSpacing: 0
     rootMotionBoneName: 
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  additionalBone: 1
   animationType: 2
   userData: 
