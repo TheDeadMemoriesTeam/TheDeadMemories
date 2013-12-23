@@ -4,14 +4,18 @@ using System.Collections.Generic;
 
 public class SkillsGUI : MonoBehaviour 
 {
+	// Indique si le joueur est à proximité
 	private bool isActive = false;
+	// Indique si la fenetre des arbre de compétences est ouverte
 	private bool skillsOpen = false;
 	
 	//Fenetre d'achat des skills
 	private Rect skillsWindowRect = new Rect(0,0, Screen.width, Screen.height);
-	
+
+	// Joueur
 	public PlayerController player;
-	
+
+	// Message affiché lorsque on s'approche de l'élément portant ce script
 	public GUIText openSkills;
 
 	// Marge en pixels entre 2 arbres de compétences
@@ -20,6 +24,8 @@ public class SkillsGUI : MonoBehaviour
 	private float horizontalMarginBetweenButton = 0.05f;
 	// Coefficient pour la largeur des boutons en fonction du texte à afficher
 	private int coefSize = 9;
+	// Largeur en pixel de l'arbre de compétence le plus long
+	private int maxTreeWidth = 0;
 
 	// Position sur la scrollBar
 	private Vector2 scrollPosition = Vector2.zero;
@@ -74,9 +80,10 @@ public class SkillsGUI : MonoBehaviour
 
 		// Nombre de sous arbre de compétence à afficher
 		float nbTree = (int)(player.getSkillManager().getListOfSkills().Count/3);
+		// Mise en place des scroll Bars
 		scrollPosition = GUI.BeginScrollView(	new Rect(0, 0, Screen.width-30, Screen.height-50),
 		                                     	scrollPosition,
-		                                     	new Rect(0, 0, Screen.width-50, nbTree*marginBetweenSkillTree+25));
+		                                     	new Rect(0, 0, maxTreeWidth, nbTree*marginBetweenSkillTree+25));
 
 		nbTreeAlreadyDrawn = 0;
 
@@ -89,6 +96,12 @@ public class SkillsGUI : MonoBehaviour
 		GUILayout.EndArea();
 	}
 
+
+	/*
+	*	Affiche un/des arbre(s) de compétence(s) Magique
+	*	params 	=> firstTreePosition : numéro du premier arbre à dessiner dans l'ordre de la liste des skills du player
+	*		   	=> nbSkillTree : nombre d'arbre à afficher à partir de firstTreePosition
+	*/
 	void showGUIMagicSkills(int firstTreePosition, int nbSkillTree)
 	{
 		List<Skills> listSkills = player.getSkillManager().getListOfSkills();
@@ -223,6 +236,9 @@ public class SkillsGUI : MonoBehaviour
 						                    lastSkillButtonWidth,
 						                    30),
 						           listSkills[i+2].getName());
+
+						// Met à jour la marge gauche
+						marginLeft += (lastSkillButtonWidth + 20);
 					}
 					// Si le dernier skill est débloqué
 					else if (listSkills[i+2].getIsUnlock())
@@ -239,7 +255,12 @@ public class SkillsGUI : MonoBehaviour
 						{
 							unlockSkill(listSkills[i+2]);
 						}
+
+						// Met à jour la marge gauche
+						marginLeft += (lastSkillButtonWidth + 20);
 					}
+					// Met à jour la taille de l'arbre le plus long a affich
+					updateMaxTreeWidth((int)marginLeft);
 
 				}
 				// Si le deuxième skill est débloqué
@@ -281,6 +302,11 @@ public class SkillsGUI : MonoBehaviour
 		}
 	}
 
+	/*
+	*	Affiche un/des arbre(s) de compétence(s) passives
+	*	params 	=> firstTreePosition : numéro du premier arbre à dessiner dans l'ordre de la liste des skills du player
+	*		   	=> nbSkillTree : nombre d'arbre à afficher à partir de firstTreePosition
+	*/
 	void showGUIPassiveSkills(int firstTreePosition, int nbSkillTree)
 	{
 		List<Skills> listSkills = player.getSkillManager().getListOfSkills();
@@ -410,6 +436,9 @@ public class SkillsGUI : MonoBehaviour
 						                    lastSkillButtonWidth,
 						                    30),
 						           listSkills[i+2].getName());
+
+						// Met à jour la marge gauche
+						marginLeft += (lastSkillButtonWidth + 20);
 					}
 					// Si le dernier skill est débloqué
 					else if (listSkills[i+2].getIsUnlock())
@@ -426,7 +455,12 @@ public class SkillsGUI : MonoBehaviour
 						{
 							unlockSkill(listSkills[i+2]);
 						}
+
+						// Met à jour la marge gauche
+						marginLeft += (lastSkillButtonWidth + 20);
 					}
+					// Met à jour la taille de l'arbre le plus long a affich
+					updateMaxTreeWidth((int)marginLeft);
 					
 				}
 				// Si le deuxième skill est débloqué
@@ -467,7 +501,13 @@ public class SkillsGUI : MonoBehaviour
 			nbTreeAlreadyDrawn++;
 		}
 	}
-
+	
+	/*
+	*	Augmente le niveau d'un sous skill passif de 1
+	*	params 	=> skillRank : Skill qui dont le niveau doit etre augmenté
+	*		   	=> first : 	true si c'est le premier skill qui doit etre augmenté
+	*						false si c'est le second
+	*/
 	void upgradePassiveLittleSkill(PassiveSkills skillRank, bool first = true)
 	{
 		if (first)
@@ -484,6 +524,12 @@ public class SkillsGUI : MonoBehaviour
 		}
 	}
 
+	/*
+	*	Augmente le niveau d'un sous skill magique de 1
+	*	params 	=> skillRank : Skill qui dont le niveau doit etre augmenté
+	*		   	=> first : 	true si c'est le premier skill qui doit etre augmenté
+	*						false si c'est le second
+	*/
 	void upgradeMagicLittleSkill(BaseSkills skillRank, bool first = true)
 	{
 		if (first)
@@ -500,10 +546,24 @@ public class SkillsGUI : MonoBehaviour
 		}
 	}
 
+	/*
+	*	Débloque un skill est met à jour l'expérience du joueur
+	*	params 	=> skill : débloque le skill skill
+	*/
 	void unlockSkill(Skills skill)
 	{
 		skill.setIsBought(true);
 		player.experienceUpdate(-skill.getPrice());
+	}
+
+	/*
+	*	Met à jour la taille en pixel de l'arbre le plus long
+	*	params 	=> witdh : taille en pixel d'un arbre
+	*/
+	void updateMaxTreeWidth(int width)
+	{
+		if (maxTreeWidth < width)
+			maxTreeWidth = width;
 	}
 
 	void OnTriggerEnter (Collider other)
