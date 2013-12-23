@@ -27,13 +27,9 @@ public class Inventory : PauseSystem
 	// Inventaire <item, quantité possédée>
 	private Dictionary<Item, int> inventory;
 
-	//Image des Items
-	public Texture bonesImg;
-	public Texture manaPotionImg;
-	
+	// Images des Items
+	public Texture[] itemImage;
 
-	
-	
 	protected void Awake()
 	{
 		nbLocationInInventory = nbItemPerLine*nbItemPerLine;
@@ -47,8 +43,8 @@ public class Inventory : PauseSystem
 		
 		// Liste de tous les items
 		listOfItem = new List<Item>();
-		listOfItem.Add(new Item(0, "Bone", "Restaure de la vie", bonesImg));
-		listOfItem.Add(new Item(1, "ManaPotion", "Restaure de la mana", manaPotionImg));
+		listOfItem.Add(new Item(0, "Bone", "Restaure de la vie", itemImage[0]));
+		listOfItem.Add(new Item(1, "ManaPotion", "Restaure de la mana", itemImage[1]));
 		
 		inventory = new Dictionary<Item, int>();
 		
