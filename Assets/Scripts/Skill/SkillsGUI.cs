@@ -76,9 +76,9 @@ public class SkillsGUI : MonoBehaviour
 
 		nbTreeAlreadyDrawn = 0;
 
-		// Affiche les arbres de compétences passives
-		//showGUIPassiveSkills(1, 2);
-		showGUIMagicSkills(3, 1);
+		// Affiche les arbres de compétences
+		showGUIPassiveSkills(1, 2);
+		showGUIMagicSkills(3, 3);
 
 		GUI.EndScrollView();
 
@@ -108,12 +108,6 @@ public class SkillsGUI : MonoBehaviour
 			{
 				BaseSkills baseSkillRank1 = listSkills[i] as BaseSkills;
 
-				//TO REMOVE
-				//int lvl = baseSkillRank1.getLvlDamage() + baseSkillRank1.getLvlAd();
-				//print ("somme lvl : " + lvl);
-				//print ("player xp : " + player.getExperience());
-				//TO REMOVE
-
 				// Le skill étant acheté on l'affiche avec un bouton grisé
 				GUI.enabled = false;
 				GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
@@ -129,15 +123,6 @@ public class SkillsGUI : MonoBehaviour
 				
 				// Vérifie si le second skill peut etre débloqué
 				listSkills[i+1].unlockedSkill();
-
-				//TO REMOVE
-				print ("lvl requiered reached: " + listSkills[i+1].getLvlToUnlock());
-				print ("skill : " + listSkills[i+1].getifskill());
-				print ("skill name : " + listSkills[i+1].getParent().getName());
-				//print ("lvl ad : " + listSkills[i+1].getLvla());
-				//print ("lvl damage : " + listSkills[i+1].getLvld());
-				//print("skill 2 débloqué : " + listSkills[i+1].getIsUnlock());
-				//TO REMOVE
 
 				// Si le second skill est déjà acheté
 				if (listSkills[i+1].getIsBought())
