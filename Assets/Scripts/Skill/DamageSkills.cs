@@ -28,8 +28,8 @@ public abstract class DamageSkills : ActiveSkills
 	}
 	
 	// Use this for initialization
-	public DamageSkills (string name, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float baseDamage) 
-		:base(name, price, father, timeIncantation, manaCost, particule)
+	public DamageSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float baseDamage) 
+		:base(name, description, price, father, timeIncantation, manaCost, particule)
 	{
 		m_baseDamage = baseDamage;
 		m_damage = m_baseDamage;

@@ -83,7 +83,7 @@ public class SkillsGUI : MonoBehaviour
 		// Nombre de sous arbre de compétence à afficher
 		float nbTree = (int)(player.getSkillManager().getListOfSkills().Count/3);
 		// Mise en place des scroll Bars
-		scrollPosition = GUI.BeginScrollView(	new Rect(0, 0, Screen.width-30, Screen.height-50),
+		scrollPosition = GUI.BeginScrollView(	new Rect(0, 0, Screen.width-30, Screen.height-100),
 		                                     	scrollPosition,
 		                                     	new Rect(0, 0, maxTreeWidth, nbTree*marginBetweenSkillTree+verticalSpace));
 
@@ -94,6 +94,19 @@ public class SkillsGUI : MonoBehaviour
 		showGUIMagicSkills(3, 3);
 
 		GUI.EndScrollView();
+
+		// Affiche le tooltip du sort survolé : description
+		if (GUI.tooltip != null
+		    && GUI.tooltip != "")
+		{
+			GUI.Label(new Rect(0.08f*Screen.width,
+			                   Screen.height-75,
+			                   Screen.width/2,
+			                   50f),
+			          "Description du sort : "
+			          + System.Environment.NewLine
+			          + GUI.tooltip);
+		}
 
 		GUILayout.EndArea();
 	}
@@ -137,7 +150,8 @@ public class SkillsGUI : MonoBehaviour
 				                    heightFromTop,
 				                    firstSkillButtonWidth,
 				                    30),
-				           listSkills[i].getName());
+				           new GUIContent(	listSkills[i].getName(),
+				               				listSkills[i].getDescription()));
 
 				// Met à jour la marge gauche
 				marginLeft += (firstSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -151,7 +165,8 @@ public class SkillsGUI : MonoBehaviour
 				                        heightFromTop-verticalSpace,
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
-				               baseSkillRank1.getNameDamage()))
+				               new GUIContent(	baseSkillRank1.getNameDamage(),
+				               					"non dispo")))
 				{
 					upgradeMagicLittleSkill(baseSkillRank1);
 				}
@@ -161,7 +176,8 @@ public class SkillsGUI : MonoBehaviour
 				                        heightFromTop+verticalSpace,
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
-				               baseSkillRank1.getNameAd()))
+				               new GUIContent(	baseSkillRank1.getNameAd(),
+				               					"non dispo")))
 				{
 					upgradeMagicLittleSkill(baseSkillRank1, false);
 				}
@@ -188,7 +204,8 @@ public class SkillsGUI : MonoBehaviour
 					                    heightFromTop,
 					                    secondSkillButtonWidth,
 					                    30),
-					           listSkills[i+1].getName());
+					           new GUIContent(	listSkills[i+1].getName(),
+					               				listSkills[i+1].getDescription()));
 
 					// Met à jour la marge gauche
 					marginLeft += (secondSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -202,7 +219,8 @@ public class SkillsGUI : MonoBehaviour
 					                        heightFromTop-verticalSpace,
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
-					               baseSkillRank2.getNameDamage()))
+					               new GUIContent(	baseSkillRank2.getNameDamage(),
+					              					"non dispo")))
 					{
 						upgradeMagicLittleSkill(baseSkillRank2);
 					}
@@ -212,7 +230,8 @@ public class SkillsGUI : MonoBehaviour
 					                        heightFromTop+verticalSpace,
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
-					               baseSkillRank2.getNameAd()))
+					               new GUIContent(	baseSkillRank2.getNameAd(),
+					               					"non dispo")))
 					{
 						upgradeMagicLittleSkill(baseSkillRank2, false);
 					}
@@ -237,7 +256,8 @@ public class SkillsGUI : MonoBehaviour
 						                    heightFromTop,
 						                    lastSkillButtonWidth,
 						                    30),
-						           listSkills[i+2].getName());
+						           new GUIContent(	listSkills[i+2].getName(),
+						               				listSkills[i+2].getDescription()));
 
 						// Met à jour la marge gauche
 						marginLeft += (lastSkillButtonWidth + 20);
@@ -253,7 +273,8 @@ public class SkillsGUI : MonoBehaviour
 						                        heightFromTop,
 						                        lastSkillButtonWidth,
 						                        30),
-						               listSkills[i+2].getName()))
+						               new GUIContent(	listSkills[i+2].getName(),
+						               					listSkills[i+2].getDescription())))
 						{
 							unlockSkill(listSkills[i+2]);
 						}
@@ -276,7 +297,8 @@ public class SkillsGUI : MonoBehaviour
 					                        heightFromTop,
 					                        secondSkillButtonWidth,
 					                        30),
-					               listSkills[i+1].getName()))
+					               new GUIContent(	listSkills[i+1].getName(),
+					               					listSkills[i+1].getDescription())))
 					{
 						unlockSkill(listSkills[i+1]);
 					}
@@ -294,7 +316,8 @@ public class SkillsGUI : MonoBehaviour
 				                        heightFromTop,
 				                        firstSkillButtonWidth,
 				                        30),
-				               listSkills[i].getName()))
+				               new GUIContent(	listSkills[i].getName(),
+				               					listSkills[i].getDescription())))
 				{
 					unlockSkill(listSkills[i]);
 				}
@@ -341,7 +364,8 @@ public class SkillsGUI : MonoBehaviour
 				                    heightFromTop,
 				                    firstSkillButtonWidth,
 				                    30),
-				           listSkills[i].getName());
+				           new GUIContent(	listSkills[i].getName(),
+				               				listSkills[i].getDescription()));
 				
 				// Met à jour la marge gauche
 				marginLeft += (firstSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -354,7 +378,8 @@ public class SkillsGUI : MonoBehaviour
 				                        heightFromTop-verticalSpace,
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
-				               passiveSkillRank1.getNameFirstAd()))
+				               new GUIContent(	passiveSkillRank1.getNameFirstAd(),
+				               					"non dispo")))
 				{
 					upgradePassiveLittleSkill(passiveSkillRank1);
 				}
@@ -364,7 +389,8 @@ public class SkillsGUI : MonoBehaviour
 				                        heightFromTop+verticalSpace,
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
-				               passiveSkillRank1.getNameSecAd()))
+				               new GUIContent(	passiveSkillRank1.getNameSecAd(),
+				               					"non dispo")))
 				{
 					upgradePassiveLittleSkill(passiveSkillRank1, false);
 				}
@@ -390,7 +416,8 @@ public class SkillsGUI : MonoBehaviour
 					                    heightFromTop,
 					                    secondSkillButtonWidth,
 					                    30),
-					           listSkills[i+1].getName());
+					           new GUIContent(	listSkills[i+1].getName(),
+					              			 	listSkills[i+1].getDescription()));
 					
 					// Met à jour la marge gauche
 					marginLeft += (secondSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -403,7 +430,8 @@ public class SkillsGUI : MonoBehaviour
 					                        heightFromTop-verticalSpace,
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
-					               passiveSkillRank2.getNameFirstAd()))
+					               new GUIContent(	passiveSkillRank2.getNameFirstAd(),
+					               					"non dispo")))
 					{
 						upgradePassiveLittleSkill(passiveSkillRank2);
 					}
@@ -413,7 +441,8 @@ public class SkillsGUI : MonoBehaviour
 					                        heightFromTop+verticalSpace,
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
-					               passiveSkillRank2.getNameSecAd()))
+					               new GUIContent(	passiveSkillRank2.getNameSecAd(),
+					               					"non dispo")))
 					{
 						upgradePassiveLittleSkill(passiveSkillRank2, false);
 					}
@@ -437,7 +466,8 @@ public class SkillsGUI : MonoBehaviour
 						                    heightFromTop,
 						                    lastSkillButtonWidth,
 						                    30),
-						           listSkills[i+2].getName());
+						           new GUIContent(	listSkills[i+2].getName(),
+						               				listSkills[i+2].getDescription()));
 
 						// Met à jour la marge gauche
 						marginLeft += (lastSkillButtonWidth + 20);
@@ -453,7 +483,8 @@ public class SkillsGUI : MonoBehaviour
 						                        heightFromTop,
 						                        lastSkillButtonWidth,
 						                        30),
-						               listSkills[i+2].getName()))
+						               new GUIContent(	listSkills[i+2].getName(),
+						               					listSkills[i+2].getDescription())))
 						{
 							unlockSkill(listSkills[i+2]);
 						}
@@ -476,7 +507,8 @@ public class SkillsGUI : MonoBehaviour
 					                        heightFromTop,
 					                        secondSkillButtonWidth,
 					                        30),
-					               listSkills[i+1].getName()))
+					               new GUIContent(	listSkills[i+1].getName(),
+					              	 				listSkills[i+1].getDescription())))
 					{
 						unlockSkill(listSkills[i+1]);
 					}
@@ -494,7 +526,8 @@ public class SkillsGUI : MonoBehaviour
 				                        heightFromTop,
 				                        firstSkillButtonWidth,
 				                        30),
-				               listSkills[i].getName()))
+				               new GUIContent(	listSkills[i].getName(),
+				               					listSkills[i].getDescription())))
 				{
 					unlockSkill(listSkills[i]);
 				}

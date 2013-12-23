@@ -65,8 +65,8 @@ public class PassiveSkills : Skills
 	}
 	
 	// Use this for initialization
-	public PassiveSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, float firstAd, float secAd, string nameFirstAd, string nameSecAd) 
-		:base (name, price, father)
+	public PassiveSkills (string name, string description, int price, Skills father, int costIncFirstAd, int costIncSecAd, float firstAd, float secAd, string nameFirstAd, string nameSecAd) 
+		:base (name, description, price, father)
 	{
 		m_costIncFirstAd = costIncFirstAd;
 		m_costIncSecAd = costIncSecAd;

@@ -79,29 +79,29 @@ public class PlayerController : HumanoidController
 		updateSpeed(isSprinting);
 		
 		//arbre de competence Survie
-		skillManager.addSkill(new PassiveSkills("Survie", 0, null, 200, 200, 5f, 5f, "pv+", "mana+"));
-		skillManager.addSkill(new PassiveSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-")); 
-		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, null, 5));
+		skillManager.addSkill(new PassiveSkills("Survie", "a", 0, null, 200, 200, 5f, 5f, "pv+", "mana+"));
+		skillManager.addSkill(new PassiveSkills("Resistance", "b", 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-")); 
+		skillManager.addSkill(new InvincibleSkill("Invincible", "c", 3000, skillManager.getSkill(1), 0, 30, null, 5));
 
 		//arbre de competence Attaque
-		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
-		skillManager.addSkill(new PassiveSkills("Critique", 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+"));
-		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
+		skillManager.addSkill(new PassiveSkills("Attaque de base", "d", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
+		skillManager.addSkill(new PassiveSkills("Critique", "e", 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+"));
+		skillManager.addSkill(new FurieSkills("Furie", "f", 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
 
 		//arbre de competence Feu
-		skillManager.addSkill(new PorteeSkills("Boule de feu", 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Lance flames", 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Meteor", 3000, skillManager.getSkill(7), 2f, 20, null, 20f, 10f, 10f)); 
+		skillManager.addSkill(new PorteeSkills("Boule de feu", "g", 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", 20f));
+		skillManager.addSkill(new ZoneSkills("Lance flames", "gg", 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
+		skillManager.addSkill(new SuperSkills("Meteor", "h", 3000, skillManager.getSkill(7), 2f, 20, null, 20f, 10f, 10f)); 
 		
 		//arbre de competence Glace
-		skillManager.addSkill(new PorteeSkills("Glacon", 1000, null, 0f, 10, iceball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Iceberg", 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Ere glaciere", 3000, skillManager.getSkill(10), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new PorteeSkills("Glacon", "i", 1000, null, 0f, 10, iceball, 10f, 200, 200, "Degat+", "Portee+", 20f));
+		skillManager.addSkill(new ZoneSkills("Iceberg", "j", 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
+		skillManager.addSkill(new SuperSkills("Ere glaciere", "k", 3000, skillManager.getSkill(10), 2f, 20, null, 20f, 10f, 10f));
 		
 		//arbre de competence Vent
-		skillManager.addSkill(new PorteeSkills("Soufle", 1000, null, 0f, 10, propulsion, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(12), 1f, 15, tornade, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new PorteeSkills("Soufle", "l", 1000, null, 0f, 10, propulsion, 10f, 200, 200, "Degat+", "Portee+", 20f));
+		skillManager.addSkill(new ZoneSkills("Bourasque", "m", 1000, skillManager.getSkill(12), 1f, 15, tornade, 15f, 200, 200, "Degat+", "Zone+", 10f));
+		skillManager.addSkill(new SuperSkills("Tornade", "n", 3000, skillManager.getSkill(13), 2f, 20, null, 20f, 10f, 10f));
 
 		// Animations
 		hash = GetComponent<PlayerHashIDs>();

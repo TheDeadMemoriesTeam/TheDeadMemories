@@ -24,8 +24,8 @@ public abstract class ActiveSkills : Skills
 	}
 	
 	// Use this for initialization
-	public ActiveSkills (string name, int price, Skills father, float timeIncantation, int manaCost, Transform particule) 
-		:base(name, price, father)
+	public ActiveSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule) 
+		:base(name, description, price, father)
 	{
 		m_manaCost = manaCost;
 		m_timeIncantation = timeIncantation;
