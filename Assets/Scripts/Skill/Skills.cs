@@ -42,7 +42,61 @@ public abstract class Skills
 	{
 		return m_isUnlock;	
 	}
-	
+
+	// TO REMOVE
+	public bool getLvlToUnlock()
+	{
+		BaseSkills fatherB = m_father as BaseSkills;
+		bool b = false;
+		if(fatherB != null)
+		{
+			b = fatherB.getLvlDamage() + fatherB.getLvlAd() >= lvlToUnlock;
+		}
+		return b;
+	}
+	public int getLvld()
+	{
+		BaseSkills fatherB = m_father as BaseSkills;;
+		return fatherB.getLvlDamage();
+	}
+
+	public int getLvla()
+	{
+		BaseSkills fatherB = m_father as BaseSkills;;
+		return fatherB.getLvlAd();
+	}
+	public string getifskill()
+	{
+		PorteeSkills fatherB1 = m_father as PorteeSkills;
+		if (fatherB1 != null)
+			return "cest un skill portee";
+		ZoneSkills fatherB2 = m_father as ZoneSkills;
+		if (fatherB2 != null)
+			return "cest un skill zone";
+		BaseSkills fatherB = m_father as BaseSkills;
+		if (fatherB != null)
+			return "cest un skill base";
+		SuperSkills fatherB3 = m_father as SuperSkills;
+		if (fatherB3 != null)
+			return "cest un skill super";
+		DamageSkills fatherB4 = m_father as DamageSkills;
+		if (fatherB4 != null)
+			return "cest un skill damage";
+		ActiveSkills fatherB5 = m_father as ActiveSkills;
+		if (fatherB5 != null)
+			return "cest un skill active";
+		Skills fatherB6 = m_father as Skills;
+		if (fatherB6 != null)
+			return "cest un skill skills";
+
+		return "null";
+	}
+	public Skills getParent()
+	{
+		return m_father;
+	}
+	// TO REMOVE
+
 	// Use this for initialization
 	public Skills (string name, int price, Skills father) 
 	{

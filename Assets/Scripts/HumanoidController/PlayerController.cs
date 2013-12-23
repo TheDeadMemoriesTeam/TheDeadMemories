@@ -90,18 +90,18 @@ public class PlayerController : HumanoidController
 
 		//arbre de competence Feu
 		skillManager.addSkill(new PorteeSkills("Boule de feu", 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Lance flames", 1000, skillManager.getSkill(5), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Meteor", 3000, skillManager.getSkill(6), 2f, 20, null, 20f, 10f, 10f)); 
+		skillManager.addSkill(new ZoneSkills("Lance flames", 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
+		skillManager.addSkill(new SuperSkills("Meteor", 3000, skillManager.getSkill(7), 2f, 20, null, 20f, 10f, 10f)); 
 		
 		//arbre de competence Glace
 		skillManager.addSkill(new PorteeSkills("Glacon", 1000, null, 0f, 10, iceball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Iceberg", 1000, skillManager.getSkill(8), 1f, 15, icezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Ere glaciere", 3000, skillManager.getSkill(9), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new ZoneSkills("Iceberg", 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
+		skillManager.addSkill(new SuperSkills("Ere glaciere", 3000, skillManager.getSkill(10), 2f, 20, null, 20f, 10f, 10f));
 		
 		//arbre de competence Vent
 		skillManager.addSkill(new PorteeSkills("Soufle", 1000, null, 0f, 10, propulsion, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(11), 1f, 15, tornade, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(12), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(12), 1f, 15, tornade, 15f, 200, 200, "Degat+", "Zone+", 10f));
+		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(13), 2f, 20, null, 20f, 10f, 10f));
 
 		// Animations
 		hash = GetComponent<PlayerHashIDs>();
