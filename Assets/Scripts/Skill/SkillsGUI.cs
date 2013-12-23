@@ -98,11 +98,109 @@ public class SkillsGUI : MonoBehaviour
 		int heightFromTop = -50 + nbTreeAlreadyDrawn*marginBetweenSkillTree;
 		
 		// Parcours de la liste des skills pour le nombre de sous arbre demandés
+		// Un tour de boucle affiche 1 arbre
 		for (int i = beginFor ; i < endFor ; i+=3)
 		{
 			heightFromTop += marginBetweenSkillTree;
 
-			// TODO
+			// Si le premier skill est déjà acheté
+			if (listSkills[i].getIsBought())
+			{
+				BaseSkills baseSkillRank1 = listSkills[i] as BaseSkills;
+
+				//TO REMOVE
+				//int lvl = baseSkillRank1.getLvlDamage() + baseSkillRank1.getLvlAd();
+				//print ("somme lvl : " + lvl);
+				//print ("player xp : " + player.getExperience());
+				//TO REMOVE
+
+				// Le skill étant acheté on l'affiche avec un bouton grisé
+				GUI.enabled = false;
+				GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
+
+				// On affiche les boutons des 2 branches de skills qui suivent
+				GUI.enabled = baseSkillRank1.getCostIncDamage() <= player.getExperience();
+				if (GUI.Button(new Rect(125, heightFromTop-25, baseSkillRank1.getNameDamage().Length * 11, 30), baseSkillRank1.getNameDamage()))
+					upgradeMagicLittleSkill(baseSkillRank1);
+				
+				GUI.enabled = baseSkillRank1.getCostIncAd() <= player.getExperience();
+				if (GUI.Button(new Rect(125, heightFromTop+25, baseSkillRank1.getNameAd().Length * 11, 30), baseSkillRank1.getNameAd()))
+					upgradeMagicLittleSkill(baseSkillRank1, false);
+				
+				// Vérifie si le second skill peut etre débloqué
+				listSkills[i+1].unlockedSkill();
+
+				//TO REMOVE
+				print ("lvl requiered reached: " + listSkills[i+1].getLvlToUnlock());
+				print ("skill : " + listSkills[i+1].getifskill());
+				print ("skill name : " + listSkills[i+1].getParent().getName());
+				//print ("lvl ad : " + listSkills[i+1].getLvla());
+				//print ("lvl damage : " + listSkills[i+1].getLvld());
+				//print("skill 2 débloqué : " + listSkills[i+1].getIsUnlock());
+				//TO REMOVE
+
+				// Si le second skill est déjà acheté
+				if (listSkills[i+1].getIsBought())
+				{
+					BaseSkills baseSkillRank2 = listSkills[i+1] as BaseSkills;
+					
+					// Le skill étant acheté on l'affiche avec un bouton grisé
+					GUI.enabled = false;
+					GUI.Button(new Rect(195, heightFromTop, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName());
+					
+					// On affiche les boutons des 2 branches de skills qui suivent
+					GUI.enabled = baseSkillRank2.getCostIncDamage() <= player.getExperience();
+					if (GUI.Button(new Rect(300, heightFromTop-25, baseSkillRank2.getNameDamage().Length * 11, 30), baseSkillRank2.getNameDamage()))
+						upgradeMagicLittleSkill(baseSkillRank2);
+					
+					GUI.enabled = baseSkillRank2.getCostIncAd() <= player.getExperience();
+					if (GUI.Button(new Rect(300, heightFromTop+25, baseSkillRank2.getNameAd().Length * 11, 30), baseSkillRank2.getNameAd()))
+						upgradeMagicLittleSkill(baseSkillRank2, false);
+					
+					// Vérifie si le dernier skill peut etre débloqué
+					listSkills[i+2].unlockedSkill();
+
+					// Si le dernier skill est déjà acheté
+					if (listSkills[i+2].getIsBought())
+					{
+						// Le skill étant acheté on l'affiche avec un bouton grisé
+						GUI.enabled = false;
+						GUI.Button(new Rect(450, heightFromTop, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName());
+					}
+					// Si le dernier skill est débloqué
+					else if (listSkills[i+2].getIsUnlock())
+					{
+						// On active ou non le bouton si on a suffisamment d'expérience
+						GUI.enabled = listSkills[i+2].getPrice() <= player.getExperience();
+						
+						// Si on achète le skill on met à jour l'expérience du joueur
+						if (GUI.Button(new Rect(450, heightFromTop, listSkills[i+2].getName().Length * 9, 30), listSkills[i+2].getName()))
+							unlockSkill(listSkills[i+2]);
+					}
+
+				}
+				// Si le deuxième skill est débloqué
+				else if (listSkills[i+1].getIsUnlock())
+				{
+					// On active ou non le bouton si on a suffisamment d'expérience
+					GUI.enabled = listSkills[i+1].getPrice() <= player.getExperience();
+					
+					// Si on achète le skill on met à jour l'expérience du joueur
+					if (GUI.Button(new Rect(195, heightFromTop, listSkills[i+1].getName().Length * 9, 30), listSkills[i+1].getName()))
+						unlockSkill(listSkills[i+1]);
+				}
+
+			}
+			// Si le premier skill est débloqué
+			else if (listSkills[i].getIsUnlock())
+			{
+				// On active ou non le bouton si on a suffisamment d'expérience
+				GUI.enabled = listSkills[i].getPrice() <= player.getExperience();
+				
+				// Si on achète le skill on met à jour l'expérience du joueur
+				if (GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName()))
+					unlockSkill(listSkills[i]);
+			}
 
 			nbTreeAlreadyDrawn++;
 		}
@@ -121,6 +219,7 @@ public class SkillsGUI : MonoBehaviour
 		int heightFromTop = -50 + nbTreeAlreadyDrawn*marginBetweenSkillTree;
 
 		// Parcours de la liste des skills pour le nombre de sous arbre demandés
+		// Un tour de boucle affiche 1 arbre
 		for (int i = beginFor ; i < endFor ; i+=3)
 		{
 			heightFromTop += marginBetweenSkillTree;
@@ -145,7 +244,7 @@ public class SkillsGUI : MonoBehaviour
 
 				// Vérifie si le second skill peut etre débloqué
 				listSkills[i+1].unlockedSkill();
-				
+
 				// Si le second skill est déjà acheté
 				if (listSkills[i+1].getIsBought())
 				{
@@ -226,6 +325,22 @@ public class SkillsGUI : MonoBehaviour
 			int newLevel = skillRank.getLvlSecAd() + 1;
 			skillRank.setLvlSecAd(newLevel);
 			player.experienceUpdate(-skillRank.getCostIncSecAd());
+		}
+	}
+
+	void upgradeMagicLittleSkill(BaseSkills skillRank, bool first = true)
+	{
+		if (first)
+		{
+			int newLevel = skillRank.getLvlDamage() + 1;
+			skillRank.setLvlDamage(newLevel);
+			player.experienceUpdate(-skillRank.getCostIncDamage());
+		}
+		else
+		{
+			int newLevel = skillRank.getLvlAd() + 1;
+			skillRank.setLvlAd(newLevel);
+			player.experienceUpdate(-skillRank.getCostIncAd());
 		}
 	}
 
