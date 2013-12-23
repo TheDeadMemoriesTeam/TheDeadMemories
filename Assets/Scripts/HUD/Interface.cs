@@ -7,7 +7,6 @@ public class Interface : MonoBehaviour
 	public PlayerController player;
 	
 	public GUIText gameOverText;
-	public float lifeShaker;
 
 	public GUITexture healthManaTextureEmpty;
 
@@ -18,16 +17,14 @@ public class Interface : MonoBehaviour
 	void Start ()
 	{
 		gameOverText.enabled=false;
-		
-		lifeShaker = 0;
 
-		healthManaTextureEmpty.pixelInset = new Rect(Screen.width/2-260, -256, 521, 256);
+		healthManaTextureEmpty.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		healthManaTextureEmpty.border = new RectOffset(0,0,0,511);
 
-		ManaTexture.pixelInset = new Rect(Screen.width/2-260, -256, 521, 256);
+		ManaTexture.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		ManaTexture.border = new RectOffset(0,0,0,511);
 		
-		VieTexture.pixelInset = new Rect(Screen.width/2-260, -256, 521, 256);
+		VieTexture.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VieTexture.border = new RectOffset(0,0,0,511);
 
 	}
