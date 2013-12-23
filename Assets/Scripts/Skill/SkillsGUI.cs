@@ -77,11 +77,35 @@ public class SkillsGUI : MonoBehaviour
 		nbTreeAlreadyDrawn = 0;
 
 		// Affiche les arbres de compétences passives
-		showGUIPassiveSkills(1, 2);
+		//showGUIPassiveSkills(1, 2);
+		showGUIMagicSkills(3, 1);
 
 		GUI.EndScrollView();
 
 		GUILayout.EndArea();
+	}
+
+	void showGUIMagicSkills(int firstTreePosition, int nbSkillTree)
+	{
+		List<Skills> listSkills = player.getSkillManager().getListOfSkills();
+
+		// Pour le parcours de la liste des compétences, assigne les bons index
+		int beginFor = (firstTreePosition-1)*3;
+		int endFor = beginFor + nbSkillTree*3;
+		
+		// On démarre à 50 pixels du bord supérieur
+		// et on se décale du si d'autre arbre sont avant
+		int heightFromTop = -50 + nbTreeAlreadyDrawn*marginBetweenSkillTree;
+		
+		// Parcours de la liste des skills pour le nombre de sous arbre demandés
+		for (int i = beginFor ; i < endFor ; i+=3)
+		{
+			heightFromTop += marginBetweenSkillTree;
+
+			// TODO
+
+			nbTreeAlreadyDrawn++;
+		}
 	}
 
 	void showGUIPassiveSkills(int firstTreePosition, int nbSkillTree)
