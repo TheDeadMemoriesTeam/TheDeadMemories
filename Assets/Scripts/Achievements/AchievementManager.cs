@@ -8,9 +8,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 
-public class AchievementManager : MonoBehaviour {
-	
-	
+public class AchievementManager : MonoBehaviour 
+{
+
+	// Pause
+	private bool pause = false;
+
 	private List<Achievement> achievements;
 	private List<Achievement> achievementsUnlock;
 	// Stocke un historique des ennemis tués <temps, nb Ennemis Tués sur la frame>
@@ -125,6 +128,8 @@ public class AchievementManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if (pause)
+			return;
 
 		// Manage achievements
 		for (int i = 0; i < achievements.Count(); i++)
@@ -256,7 +261,7 @@ public class AchievementManager : MonoBehaviour {
 	{
 		return timeSurvived;
 	}
-	
+
 	public int getNbAssassinKills()
 	{
 		return nbAssassinKill;
@@ -266,7 +271,12 @@ public class AchievementManager : MonoBehaviour {
 	{
 		return assassin;
 	}
-	
+
+	public void setPause(bool state)
+	{
+		pause = state;
+	}
+
 	public int getNbEnnemiesKilledPerDuration(float duration)
 	{
 		int nbKillPerDuration = 0;

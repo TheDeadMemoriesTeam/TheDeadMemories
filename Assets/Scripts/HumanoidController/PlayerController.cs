@@ -349,6 +349,7 @@ public class PlayerController : HumanoidController
 	public void onPause()
 	{
 		pause = !pause;
+		achievementManager.setPause(pause);
 	}
 	
 	public bool getPause()
