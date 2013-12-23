@@ -13,8 +13,12 @@ public class SkillsGUI : MonoBehaviour
 	public PlayerController player;
 	
 	public GUIText openSkills;
-	
-	private int marginBetweenSkillTree = 100; 	// Marge en pixel entre 2 arbres de compétences 
+
+	// Marge en pixel entre 2 arbres de compétences
+	private int marginBetweenSkillTree = 100;
+
+	// Position sur la scrollBar
+	private Vector2 scrollPosition = Vector2.zero;
 	
 	// Use this for initialization
 	void Start () 
@@ -59,13 +63,19 @@ public class SkillsGUI : MonoBehaviour
 	void skillsWindowOpen(int windowId)
 	{
 		
-		GUILayout.BeginArea(new Rect(10, 20, Screen.width-10, Screen.height-20));
+		GUILayout.BeginArea(new Rect(20, 20, Screen.width-10, Screen.height-20));
 
+		// Nombre de sous arbre de compétence à afficher
+		float nbTree = (int)(player.getSkillManager().getListOfSkills().Count/3);
+		scrollPosition = GUI.BeginScrollView(	new Rect(0, 0, Screen.width-30, Screen.height-50),
+		                                     	scrollPosition,
+		                                     	new Rect(0, 0, Screen.width-50, nbTree*marginBetweenSkillTree+25));
+
+		// Affiche les 2 arbres de compétences passives
 		showGUIPassiveSkills(0, 2);
 
-		//for (int i = 0 ; i < listSkills.Count ; i++)
-			//GUI.Button(new Rect(i*50, i*50, listSkills[i].getName().Length * 9, 30), listSkills[i].getName());
-		
+		GUI.EndScrollView();
+
 		GUILayout.EndArea();
 	}
 

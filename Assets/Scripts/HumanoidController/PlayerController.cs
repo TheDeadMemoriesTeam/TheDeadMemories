@@ -87,7 +87,7 @@ public class PlayerController : HumanoidController
 		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
 		skillManager.addSkill(new PassiveSkills("Critique", 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+"));
 		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
-		
+
 		//arbre de competence Feu
 		skillManager.addSkill(new PorteeSkills("Boule de feu", 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", 20f));
 		skillManager.addSkill(new ZoneSkills("Lance flames", 1000, skillManager.getSkill(5), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
