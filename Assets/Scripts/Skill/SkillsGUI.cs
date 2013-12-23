@@ -19,6 +19,9 @@ public class SkillsGUI : MonoBehaviour
 
 	// Position sur la scrollBar
 	private Vector2 scrollPosition = Vector2.zero;
+
+	// Nombre d'arbre de compétences déjà affichés
+	private int nbTreeAlreadyDrawn = 0;
 	
 	// Use this for initialization
 	void Start () 
@@ -71,21 +74,30 @@ public class SkillsGUI : MonoBehaviour
 		                                     	scrollPosition,
 		                                     	new Rect(0, 0, Screen.width-50, nbTree*marginBetweenSkillTree+25));
 
-		// Affiche les 2 arbres de compétences passives
-		showGUIPassiveSkills(0, 2);
+		nbTreeAlreadyDrawn = 0;
+
+		// Affiche les arbres de compétences passives
+		showGUIPassiveSkills(1, 2);
 
 		GUI.EndScrollView();
 
 		GUILayout.EndArea();
 	}
 
-	void showGUIPassiveSkills(int beginIndex, int skillTree)
+	void showGUIPassiveSkills(int firstTreePosition, int nbSkillTree)
 	{
 		List<Skills> listSkills = player.getSkillManager().getListOfSkills();
 
-		int heightFromTop = -50;	// On démarre à 50 pixels du bord supérieur
+		// Pour le parcours de la liste des compétences, assigne les bons index
+		int beginFor = (firstTreePosition-1)*3;
+		int endFor = beginFor + nbSkillTree*3;
+
+		// On démarre à 50 pixels du bord supérieur
+		// et on se décale du si d'autre arbre sont avant
+		int heightFromTop = -50 + nbTreeAlreadyDrawn*marginBetweenSkillTree;
+
 		// Parcours de la liste des skills pour le nombre de sous arbre demandés
-		for (int i = beginIndex ; i < skillTree*3 ; i+=3)
+		for (int i = beginFor ; i < endFor ; i+=3)
 		{
 			heightFromTop += marginBetweenSkillTree;
 
@@ -172,7 +184,8 @@ public class SkillsGUI : MonoBehaviour
 				if (GUI.Button(new Rect(50, heightFromTop, listSkills[i].getName().Length * 9, 30), listSkills[i].getName()))
 					unlockSkill(listSkills[i]);
 			}
-			
+
+			nbTreeAlreadyDrawn++;
 		}
 	}
 
