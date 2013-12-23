@@ -67,12 +67,12 @@ public class BaseSkills : DamageSkills
 
 	public string getNameAd()
 	{
-		return m_nameAd;	
+		return m_nameAd + " (" + m_lvlAd + ")";	
 	}
 
 	public string getNameDamage()
 	{
-		return m_nameDamage;	
+		return m_nameDamage + " (" + m_lvlDamage + ")";	
 	}
 	
 	// Use this for initialization

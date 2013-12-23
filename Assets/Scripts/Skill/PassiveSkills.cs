@@ -56,12 +56,12 @@ public class PassiveSkills : Skills
 
 	public string getNameFirstAd()
 	{
-		return m_nameFirstAd;	
+		return m_nameFirstAd + " (" + m_lvlFirstAd + ")";	
 	}
 
 	public string getNameSecAd()
 	{
-		return m_nameSecAd;	
+		return m_nameSecAd + " (" + m_lvlSecAd + ")";	
 	}
 	
 	// Use this for initialization

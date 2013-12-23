@@ -18,6 +18,8 @@ public class SkillsGUI : MonoBehaviour
 	private int marginBetweenSkillTree = 150;
 	// Pourcentage de décalage sur la droite après chaque bouton
 	private float horizontalMarginBetweenButton = 0.05f;
+	// Coefficient pour la largeur des boutons en fonction du texte à afficher
+	private int coefSize = 9;
 
 	// Position sur la scrollBar
 	private Vector2 scrollPosition = Vector2.zero;
@@ -94,7 +96,7 @@ public class SkillsGUI : MonoBehaviour
 		// Pour le parcours de la liste des compétences, assigne les bons index
 		int beginFor = (firstTreePosition-1)*3;
 		int endFor = beginFor + nbSkillTree*3;
-		
+
 		// On démarre à 50 pixels du bord supérieur
 		// et on se décale du si d'autre arbre sont avant
 		int heightFromTop = -50 + nbTreeAlreadyDrawn*marginBetweenSkillTree;
@@ -106,7 +108,7 @@ public class SkillsGUI : MonoBehaviour
 			heightFromTop += marginBetweenSkillTree;
 
 			// Largeur du bouton en fonction du texte
-			float firstSkillButtonWidth = listSkills[i].getName().Length * 9;
+			float firstSkillButtonWidth = listSkills[i].getName().Length * coefSize;
 			// Met à jour la marge gauche
 			float marginLeft = 0.05f*Screen.width;
 			// Si le premier skill est déjà acheté
@@ -126,8 +128,8 @@ public class SkillsGUI : MonoBehaviour
 				marginLeft += (firstSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
 
 				// Largeur des boutons en fonction du texte
-				float firstLittleSkillButtonWidthUp = baseSkillRank1.getNameDamage().Length * 11;
-				float firstLittleSkillButtonWidthDown = baseSkillRank1.getNameAd().Length * 11;
+				float firstLittleSkillButtonWidthUp = baseSkillRank1.getNameDamage().Length * coefSize;
+				float firstLittleSkillButtonWidthDown = baseSkillRank1.getNameAd().Length * coefSize;
 				// On affiche les boutons des 2 branches de skills qui suivent
 				GUI.enabled = baseSkillRank1.getCostIncDamage() <= player.getExperience();
 				if (GUI.Button(new Rect(marginLeft,
@@ -159,7 +161,7 @@ public class SkillsGUI : MonoBehaviour
 				listSkills[i+1].unlockedSkill();
 
 				// Largeur du bouton en fonction du texte
-				float secondSkillButtonWidth = listSkills[i+1].getName().Length * 9;
+				float secondSkillButtonWidth = listSkills[i+1].getName().Length * coefSize;
 				// Si le second skill est déjà acheté
 				if (listSkills[i+1].getIsBought())
 				{
@@ -177,8 +179,8 @@ public class SkillsGUI : MonoBehaviour
 					marginLeft += (secondSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
 
 					// Largeur des boutons en fonction du texte
-					float secondLittleSkillButtonWidthUp = baseSkillRank2.getNameDamage().Length * 11;
-					float secondLittleSkillButtonWidthDown = baseSkillRank2.getNameAd().Length * 11;
+					float secondLittleSkillButtonWidthUp = baseSkillRank2.getNameDamage().Length * coefSize;
+					float secondLittleSkillButtonWidthDown = baseSkillRank2.getNameAd().Length * coefSize;
 					// On affiche les boutons des 2 branches de skills qui suivent
 					GUI.enabled = baseSkillRank2.getCostIncDamage() <= player.getExperience();
 					if (GUI.Button(new Rect(marginLeft,
@@ -210,7 +212,7 @@ public class SkillsGUI : MonoBehaviour
 					listSkills[i+2].unlockedSkill();
 
 					// Largeur du bouton en fonction du texte
-					float lastSkillButtonWidth = listSkills[i+2].getName().Length * 9;
+					float lastSkillButtonWidth = listSkills[i+2].getName().Length * coefSize;
 					// Si le dernier skill est déjà acheté
 					if (listSkills[i+2].getIsBought())
 					{
@@ -297,7 +299,7 @@ public class SkillsGUI : MonoBehaviour
 		{
 			heightFromTop += marginBetweenSkillTree;
 			
-			float firstSkillButtonWidth = listSkills[i].getName().Length * 9;
+			float firstSkillButtonWidth = listSkills[i].getName().Length * coefSize;
 			// Met à jour la marge gauche
 			float marginLeft = 0.05f*Screen.width;
 			// Si le premier skill est déjà acheté
@@ -316,8 +318,8 @@ public class SkillsGUI : MonoBehaviour
 				// Met à jour la marge gauche
 				marginLeft += (firstSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
 				
-				float firstLittleSkillButtonWidthUp = passiveSkillRank1.getNameFirstAd().Length * 11;
-				float firstLittleSkillButtonWidthDown = passiveSkillRank1.getNameSecAd().Length * 11;
+				float firstLittleSkillButtonWidthUp = passiveSkillRank1.getNameFirstAd().Length * coefSize;
+				float firstLittleSkillButtonWidthDown = passiveSkillRank1.getNameSecAd().Length * coefSize;
 				// On affiche les boutons des 2 branches de skills qui suivent
 				GUI.enabled = passiveSkillRank1.getCostIncFirstAd() <= player.getExperience();
 				if (GUI.Button(new Rect(marginLeft,
@@ -348,7 +350,7 @@ public class SkillsGUI : MonoBehaviour
 				// Vérifie si le second skill peut etre débloqué
 				listSkills[i+1].unlockedSkill();
 				
-				float secondSkillButtonWidth = listSkills[i+1].getName().Length * 9;
+				float secondSkillButtonWidth = listSkills[i+1].getName().Length * coefSize;
 				// Si le second skill est déjà acheté
 				if (listSkills[i+1].getIsBought())
 				{
@@ -365,8 +367,8 @@ public class SkillsGUI : MonoBehaviour
 					// Met à jour la marge gauche
 					marginLeft += (secondSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
 					
-					float secondLittleSkillButtonWidthUp = passiveSkillRank2.getNameFirstAd().Length * 11;
-					float secondLittleSkillButtonWidthDown = passiveSkillRank2.getNameSecAd().Length * 11;
+					float secondLittleSkillButtonWidthUp = passiveSkillRank2.getNameFirstAd().Length * coefSize;
+					float secondLittleSkillButtonWidthDown = passiveSkillRank2.getNameSecAd().Length * coefSize;
 					// On affiche les boutons des 2 branches de skills qui suivent
 					GUI.enabled = passiveSkillRank2.getCostIncFirstAd() <= player.getExperience();
 					if (GUI.Button(new Rect(marginLeft,
@@ -397,7 +399,7 @@ public class SkillsGUI : MonoBehaviour
 					// Vérifie si le dernier skill peut etre débloqué
 					listSkills[i+2].unlockedSkill();
 					
-					float lastSkillButtonWidth = listSkills[i+2].getName().Length * 9;
+					float lastSkillButtonWidth = listSkills[i+2].getName().Length * coefSize;
 					// Si le dernier skill est déjà acheté
 					if (listSkills[i+2].getIsBought())
 					{
