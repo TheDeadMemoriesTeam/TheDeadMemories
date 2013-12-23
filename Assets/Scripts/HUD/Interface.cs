@@ -13,6 +13,14 @@ public class Interface : MonoBehaviour
 	public GUITexture ManaTexture;
 	public GUITexture VieTexture;
 
+	public GUITexture FeuOmbres;
+	public GUITexture GlaceOmbres;
+	public GUITexture VentOmbres;
+
+	public GUITexture FeuCache;
+	public GUITexture GlaceCache;
+	public GUITexture VentCache;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -26,7 +34,20 @@ public class Interface : MonoBehaviour
 		
 		VieTexture.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VieTexture.border = new RectOffset(0,0,0,511);
+		
+		FeuOmbres.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
+		FeuOmbres.border = new RectOffset(0,0,0,511);
+		GlaceOmbres.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
+		GlaceOmbres.border = new RectOffset(0,0,0,511);
+		VentOmbres.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
+		VentOmbres.border = new RectOffset(0,0,0,511);
 
+		FeuCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
+		FeuCache.border = new RectOffset(0,0,0,511);
+		GlaceCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
+		GlaceCache.border = new RectOffset(0,0,0,511);
+		VentCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
+		VentCache.border = new RectOffset(0,0,0,511);
 	}
 	
 	// Update is called once per frame
