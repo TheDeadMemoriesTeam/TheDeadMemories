@@ -150,10 +150,7 @@ public class SaveManager{
 			List<Skills> skillsList = skillManager.getListOfSkills();
 			// Réinitiale la liste
 			for (int i=0; i<skillsList.Count; i++)
-			{
 				skillsList[i].setIsBought(false);
-				skillsList[i].setIsUnlock(false);
-			}
 
 			// Récupère les compétences déjà achetées
 			int index;
