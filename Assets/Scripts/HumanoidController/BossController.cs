@@ -23,8 +23,6 @@ public class BossController : EnemyController
 		xp = 30;
 		
 		timeRegen = 6;
-		
-		gameObject.renderer.material.color = new Color(0.341F, 0.725F, 0.478F);
 	}
 	
 	protected override void Update ()
