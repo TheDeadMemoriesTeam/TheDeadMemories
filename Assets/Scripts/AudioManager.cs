@@ -1,79 +1,102 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AudioManager : MonoBehaviour {
-
-	public AudioClip Track1;
-	public AudioClip Track2;
-	public AudioClip Track3;
-	public AudioClip Track4;
-	public AudioClip Track5;
-	public AudioClip Track6;
-	public AudioClip Track7;
-	public AudioClip Track8;
-	public AudioClip Track9;
-	private int randomInt;
-
+public class AudioManager : MonoBehaviour 
+{
+	
+	public AudioClip[] Tracks;
+	
 	// Son de Noel
 	public AudioClip NoelTrack;
 	private AudioClip lastPlayingTrack;
-
+	
+	//private float trackLength; Inutilisé, est ce utile ?
+	
+	private AudioSource audioSource;
+	private bool isPlay;
+	
+	
 	// Use this for initialization
-	void Start () {
-		randomInt = Random.Range(1,9)%1;
-		switch(randomInt)
-		{
-		case 1:
-			break;
-		case 2:
-			break;
-		case 3:
-			break;
-		case 4:
-			break;
-		case 5:
-			break;
-		case 6:
-			break;
-		case 7:
-			break;
-		case 8:
-			break;
-		case 9:
-			break;
-		}
+	void Start () 
+	{
+		audioSource = GetComponent<AudioSource> ();
+		changeTrack();
+		//trackLength = 100;
+		isPlay = true;
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
+		if (!isPlay)
+			return;
+		
 		// EASTER EGG NOEL
 		if (Input.GetKeyUp(KeyCode.N))
 		{
 			if (System.DateTime.Now.Month == 12
 			    && (System.DateTime.Now.Day >= 24 && System.DateTime.Now.Day <= 26))
 			{
-				//if (!audio.isPlaying)
-				//audio.Stop();
-
-				if (/*audio.isPlaying && */audio.clip != NoelTrack)
+				if (audio.clip != NoelTrack)
 				{
-					lastPlayingTrack = audio.clip;
-
-					audio.Stop();
-					audio.clip = NoelTrack;
-					audio.Play();
+					stopTrack();
+					audioSource.clip = NoelTrack;
+					audioSource.Play();
 				}
-				else if (audio.clip == NoelTrack) 
+				else
 				{
-					audio.Stop();
-					audio.clip = lastPlayingTrack;
-					audio.Play();
+					audioSource.Stop();
+					audioSource.clip = lastPlayingTrack;
+					audioSource.Play();
 				}
-				//audio.
-				//audio.PlayOneShot(NoelTrack);
-
 			}
 		}
+		
+		if (!audioSource.isPlaying)
+			changeTrack();
+	}
+	
+	public void changeTrack()
+	{
+		if (!isPlay)
+			return;
+		
+		if(audioSource.isPlaying)
+			audioSource.Stop();
+		
+		int randomTrack = Random.Range(0, Tracks.Length-1);
+		lastPlayingTrack = Tracks[randomTrack];
+		
+		startTrack();
+	}
+	
+	public void stopTrack()
+	{
+		lastPlayingTrack = audioSource.clip;
+		audioSource.Stop();
+	}
+	
+	public void pauseTrack()
+	{
+		audioSource.Pause();
+	}
+	
+	public void startTrack()
+	{
+		if (lastPlayingTrack != null)
+			audioSource.clip = lastPlayingTrack;
+		else
+			changeTrack();
+		audioSource.Play();
+	}
+	
+	public void changePlayState()
+	{
+		isPlay = !isPlay;
+	}
+	
+	public bool getPlayState()
+	{
+		return isPlay;
 	}
 }
