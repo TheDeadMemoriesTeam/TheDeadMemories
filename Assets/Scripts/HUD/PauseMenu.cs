@@ -95,7 +95,9 @@ public class PauseMenu : PauseSystem
 	{
 		base.UpdateState();
 		GetComponent<Inventory>().enabled = !paused;
-		isOption = false;
-	}
+
+isOption = false;SkillsGUI[] GUIskills = FindObjectsOfType<SkillsGUI>();
+		for (int i = 0 ; i  < GUIskills.Length ; i++)
+			GUIskills[i].enabled = !paused;	}
 	
 }

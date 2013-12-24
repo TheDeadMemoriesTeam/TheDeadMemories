@@ -3,9 +3,6 @@ using System.Collections;
 
 public class EnemyShoot : MonoBehaviour
 {
-	public float maximumDamage = 12f;					// The maximum potential damage per shot.
-	public float minimumDamage = 7f;					// The minimum potential damage per shot.
-	
 	public float maximumTimeDelay = 1.5f;		        // The maximum time between shots.
 	public float minimumTimeDelay = 0.8f;		        // The minimum time between shots.
 	
@@ -19,9 +16,6 @@ public class EnemyShoot : MonoBehaviour
 
 	void Awake ()
 	{
-		// The scaledDamage is the difference between the maximum and the minimum damage.
-		scaledDamage = maximumDamage - minimumDamage;
-
 		scaledTimeDelay = maximumTimeDelay - minimumTimeDelay;
 		timeCount = 0;
 		timeDelay = 0;
@@ -55,20 +49,30 @@ public class EnemyShoot : MonoBehaviour
 			{
 				// The fractional distance from the player, 1 is next to the player, 0.5 is at the max shooting distance.
 				float fractionalDistance = (enemyController.shootDistance * 2 - d) / enemyController.shootDistance;
-				// The damage is the scaled damage, scaled by the fractional distance, plus the minimum damage.
-				// float damage = -damageAttack + (-damageAttack/100 * target.getSkillManager().getPhysicalResistance());
-				float damage = scaledDamage * fractionalDistance + minimumDamage;
-				player.healthUpdate(-damage);
+				// The damage depend of...
+				float damage = -enemyController.getSkillManager().getMagicAttack();
+				// ...the skill
+				damage+= (-enemyController.getSkillManager().getMagicAttack()/100 * player.getSkillManager().getMagicResistance());
+				// ...a random factor (luck)
+				damage *= (Random.value * 0.4f + 0.8f);
+				// ...the distance with the target
+				damage *= fractionalDistance;
+				player.healthUpdate(damage);
 				enemyController.manaUpdate(enemyController.getManaCost());
 			}
 			else // Melee attack
 			{
 				// The fractional distance from the player, 1 is next to the player, 0.5 is at the max shooting distance.
 				float fractionalDistance = (enemyController.shootDistance * 2 - d) / enemyController.shootDistance;
-				// The damage is the scaled damage, scaled by the fractional distance, plus the minimum damage.
-				// float damage = -damageAttack + (-damageAttack/100 * target.getSkillManager().getPhysicalResistance());
-				float damage = scaledDamage * fractionalDistance + minimumDamage;
-				player.healthUpdate(-damage);
+				// The damage depend of...
+				float damage = -enemyController.getSkillManager().getPhysicAttack();
+				// ...the skill
+				damage += (-enemyController.getSkillManager().getPhysicAttack()/100 * player.getSkillManager().getPhysicalResistance());
+				// ...a random factor (luck)
+				damage *= (Random.value * 0.4f + 0.8f);
+				// ...the distance with the target
+				damage *= fractionalDistance;
+				player.healthUpdate(damage);
 			}
 
 			player.achievementManager.updateTimeNotTouched(0);
