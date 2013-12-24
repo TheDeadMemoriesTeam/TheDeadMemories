@@ -53,25 +53,27 @@ public class AudioManager : MonoBehaviour {
 			if (System.DateTime.Now.Month == 12
 			    && (System.DateTime.Now.Day >= 24 && System.DateTime.Now.Day <= 26))
 			{
-				if (audio.clip != NoelTrack)
+				//if (!audio.isPlaying)
+				//audio.Stop();
+
+				if (/*audio.isPlaying && */audio.clip != NoelTrack)
 				{
 					lastPlayingTrack = audio.clip;
+
 					audio.Stop();
 					audio.clip = NoelTrack;
 					audio.Play();
 				}
-				else
+				else if (audio.clip == NoelTrack) 
 				{
 					audio.Stop();
 					audio.clip = lastPlayingTrack;
 					audio.Play();
 				}
+				//audio.
+				//audio.PlayOneShot(NoelTrack);
+
 			}
-		}
-		if (!audio.isPlaying)
-		{
-			audio.clip = lastPlayingTrack;
-			audio.Play();
 		}
 	}
 }
