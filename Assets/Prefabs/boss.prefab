@@ -29,9 +29,9 @@ GameObject:
   - 195: {fileID: 19500000}
   - 114: {fileID: 11400004}
   - 136: {fileID: 13600000}
+  - 114: {fileID: 11400006}
   - 114: {fileID: 11400002}
   - 114: {fileID: 11400000}
-  - 114: {fileID: 11400006}
   m_Layer: 0
   m_Name: boss
   m_TagString: Enemy
@@ -115,8 +115,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437eef1bebd97e84db6611f0b6015c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumDamage: 12
-  minimumDamage: 7
   maximumTimeDelay: 1.5
   minimumTimeDelay: .800000012
 --- !u!114 &11400002
@@ -163,7 +161,6 @@ MonoBehaviour:
   chaseWaitTime: 3
   patrolSpeed: 2.5
   patrolWaitTime: .5
-  patrolWayPoints: []
   droppableItems: []
   itemsDropProbability: []
 --- !u!136 &13600000

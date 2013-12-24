@@ -9,7 +9,6 @@ public class EnemyController : HumanoidController
 	public float chaseWaitTime = 3f;            // The amount of time to wait when the last sighting is reached.
 	public float patrolSpeed = 2.5f;            // The nav mesh agent's speed when patrolling.
 	public float patrolWaitTime = 0.5f;         // The amount of time to wait when the patrol way point is reached.
-	public Transform[] patrolWayPoints;         // An array of transforms for the patrol route.
 	
 
 	protected PlayerController player;          // Reference to the player.
@@ -21,7 +20,8 @@ public class EnemyController : HumanoidController
 	private float patrolTimer;                  // A timer for the patrolWaitTime.
 
 	private int wayPointIndex = 0;              // A counter for the way point array.
-	private Transform waysNetwork;				// Object that will store all way points.
+	private WaysNetwork waysNetwork;			// Object that will store all way points.
+	private Vector3[] patrolWayPoints;        // An array of transforms for the patrol route.
 
 
 	protected float timeCountAttack;
@@ -45,6 +45,7 @@ public class EnemyController : HumanoidController
 		player = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
 		shooting = false;
 		waysNetwork = null;
+		patrolWayPoints = new Vector3[0];
 	}
 
 	// Use this for initialization
@@ -165,7 +166,7 @@ public class EnemyController : HumanoidController
 			{
 				// ... increment the wayPointIndex.
 				if(wayPointIndex == patrolWayPoints.Length - 1)
-					wayPointIndex = 0;
+					generatePatrolWayPoints();
 				else
 					wayPointIndex++;
 				
@@ -178,28 +179,39 @@ public class EnemyController : HumanoidController
 			patrolTimer = 0;
 		
 		// Set the destination to the patrolWayPoint.
-		nav.destination = patrolWayPoints[wayPointIndex].position;
+		if (wayPointIndex < patrolWayPoints.Length)
+			nav.destination = patrolWayPoints[wayPointIndex];
 	}
 	
 	void generatePatrolWayPoints()
 	{
+		// Get the WaysNetwork where the patrol will occur
 		waysNetwork = getNearestWaysNetwork();
-		patrolWayPoints = waysNetwork.gameObject.GetComponentsInChildren<Transform>();
+		// Determine the start node (the closest node to the transform position).
+		Transform from = waysNetwork.getNearestNode(transform.position);
+		// Choose a random destination
+		Transform to = waysNetwork.getRandomNode();
+		if (waysNetwork.getNbNodes() >= 2) {
+			while (to == from)
+				to = waysNetwork.getRandomNode();
+		}
+		// Generate path
+		patrolWayPoints = waysNetwork.getShortestPath(from.position, to.position);
 		wayPointIndex = 0;
 	}
 	
-	Transform getNearestWaysNetwork()
+	WaysNetwork getNearestWaysNetwork()
 	{
-		GameObject[] waysNetworks = GameObject.FindGameObjectsWithTag("WaysNetwork");
+		WaysNetwork[] waysNetworks = FindObjectsOfType(System.Type.GetType("WaysNetwork")) as WaysNetwork[];
 		
-		Transform nearestWaysNetwork = null;
+		WaysNetwork nearestWaysNetwork = null;
 		float minDistance = float.PositiveInfinity;
 		for (int i = 0; i < waysNetworks.Length; i++)
 		{
 			float d = Vector3.Distance(transform.position, waysNetworks[i].transform.position);
 			if (d < minDistance) {
 				minDistance = d;
-				nearestWaysNetwork = waysNetworks[i].transform;
+				nearestWaysNetwork = waysNetworks[i];
 			}
 		}
 		
