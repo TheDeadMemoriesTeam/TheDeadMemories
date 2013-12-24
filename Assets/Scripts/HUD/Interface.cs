@@ -22,6 +22,10 @@ public class Interface : MonoBehaviour
 	public GUITexture GlaceCache;
 	public GUITexture VentCache;
 
+	// Score
+	public GUIText playerXp;
+	public GUITexture panelXp;
+
 	// Use this for initialization
 	void Start ()
 	{
@@ -49,6 +53,9 @@ public class Interface : MonoBehaviour
 		GlaceCache.border = new RectOffset(0,0,0,511);
 		VentCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VentCache.border = new RectOffset(0,0,0,511);
+
+		playerXp.pixelOffset = new Vector2(Screen.width - 204f, Screen.height/2+75);
+		panelXp.pixelInset = new Rect(Screen.width-244, Screen.height/2, 256, 128);
 	}
 	
 	// Update is called once per frame
@@ -97,6 +104,8 @@ public class Interface : MonoBehaviour
 				VentOmbres.border = new RectOffset(0,0,0,0);
 			}
 		}
+
+		playerXp.text = "XP : "+player.getExperience();
 
 
 		float hp = player.getSkillManager().getPv();
