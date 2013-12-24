@@ -14,6 +14,8 @@ public class SkillsGUI : MonoBehaviour
 
 	// Joueur
 	public PlayerController player;
+	// Caméra du joueur
+	private CameraController cam;
 
 	// Message affiché lorsque on s'approche de l'élément portant ce script
 	public GUIText openSkills;
@@ -40,6 +42,7 @@ public class SkillsGUI : MonoBehaviour
 	{
 		openSkills.text = "Press P to buy Skills";
 		openSkills.enabled = false;
+		cam = FindObjectOfType<CameraController>();
 	}
 	
 	// Update is called once per frame
@@ -63,9 +66,15 @@ public class SkillsGUI : MonoBehaviour
 		
 		// Affiche ou non le message
 		if (!skillsOpen)
+		{
+			cam.setIsActive(true);
 			openSkills.enabled = true;
+		}
 		else
+		{
+			cam.setIsActive(false);
 			openSkills.enabled = false;
+		}
 	}
 	
 	void OnGUI()

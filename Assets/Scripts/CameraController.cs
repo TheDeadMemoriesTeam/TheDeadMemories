@@ -33,6 +33,8 @@ public class CameraController : MonoBehaviour
     private float desiredDistance;
     private float correctedDistance;
 
+	private bool isActive = true;
+
     void Start ()
 	{
 		// Angles de la caméra
@@ -50,6 +52,9 @@ public class CameraController : MonoBehaviour
    
     void LateUpdate ()
 	{
+		if (!isActive)
+			return;
+
         // Mouvements de rotation
 		// Si appui sur H permet de tourner le joueur sur lui meme
 		if (!Input.GetKey(KeyCode.H))
@@ -105,7 +110,10 @@ public class CameraController : MonoBehaviour
         transform.position = position;
     }
 
- 
+ 	public void setIsActive(bool state)
+	{
+		isActive = state;
+	}
 
     private static float ClampAngle(float angle, float min, float max)
     {
