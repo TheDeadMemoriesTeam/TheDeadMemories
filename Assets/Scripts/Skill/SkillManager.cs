@@ -238,7 +238,7 @@ public class SkillManager : MonoBehaviour
 				PassiveSkills tmp = listSkills[i] as PassiveSkills;
 				if(tmp.getName() == "Survie")
 					tmp.update(ref m_pvMax, m_basePvMax, ref m_manaMax, m_baseManaMax);
-				else if(tmp.getName() == "Resistance")
+				else if(tmp.getName() == "Résistance")
 					tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
 				else if(tmp.getName() == "Attaque de base")
 					tmp.update(ref m_physicAttack, m_basePhysicAttack, ref m_magicAttack, m_baseMagicAttack);

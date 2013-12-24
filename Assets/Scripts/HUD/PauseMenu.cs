@@ -5,14 +5,12 @@ public class PauseMenu : PauseSystem
 {
 
 	private bool isOption;
-	public Camera cam;
-	private AudioManager aManager;
+	public AudioManager aManager;
 	
 	protected override void Start()
 	{
 		base.Start();
 		isOption = false;
-		aManager = cam.GetComponent<AudioManager> ();
 	}
 	
 	
@@ -70,12 +68,12 @@ public class PauseMenu : PauseSystem
 		{
 			aManager.changeTrack();
 		}
-		if(aManager.getPlayState() == true)
+		if(aManager.getPlayState())
 		{
 			if(GUILayout.Button ("Desactiver musique"))
 			{
 				aManager.changePlayState();
-				aManager.stopTrack();
+				aManager.pauseTrack();
 			}
 		}
 		else
@@ -83,7 +81,7 @@ public class PauseMenu : PauseSystem
 			if(GUILayout.Button ("Réactiver musique"))
 			{
 				aManager.changePlayState();
-				aManager.changeTrack();
+				aManager.startTrack();
 			}
 		}
 
@@ -96,8 +94,11 @@ public class PauseMenu : PauseSystem
 		base.UpdateState();
 		GetComponent<Inventory>().enabled = !paused;
 
-isOption = false;SkillsGUI[] GUIskills = FindObjectsOfType<SkillsGUI>();
+		isOption = false;
+
+		SkillsGUI[] GUIskills = FindObjectsOfType<SkillsGUI>();
 		for (int i = 0 ; i  < GUIskills.Length ; i++)
-			GUIskills[i].enabled = !paused;	}
+			GUIskills[i].enabled = !paused;	
+	}
 	
 }
