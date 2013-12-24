@@ -72,21 +72,30 @@ public class Interface : MonoBehaviour
 		// Permet le changement de type de magie
 		if (Input.GetKeyDown(KeyCode.F1))
 		{
-			FeuOmbres.border = new RectOffset(0,0,0,0);
+			if(playerSkill.getSkill(6).getIsBought())
+			{
+				FeuOmbres.border = new RectOffset(0,0,0,0);
+			}
 			GlaceOmbres.border = new RectOffset(0,0,0,511);
 			VentOmbres.border = new RectOffset(0,0,0,511);
 		}
 		else if (Input.GetKeyDown(KeyCode.F2))
 		{	
 			FeuOmbres.border = new RectOffset(0,0,0,511);
-			GlaceOmbres.border = new RectOffset(0,0,0,0);
+			if(playerSkill.getSkill(9).getIsBought())
+			{
+				GlaceOmbres.border = new RectOffset(0,0,0,0);
+			}
 			VentOmbres.border = new RectOffset(0,0,0,511);
 		}
 		else if (Input.GetKeyDown(KeyCode.F3))
 		{
 			FeuOmbres.border = new RectOffset(0,0,0,511);
 			GlaceOmbres.border = new RectOffset(0,0,0,511);
-			VentOmbres.border = new RectOffset(0,0,0,0);
+			if(playerSkill.getSkill(12).getIsBought())
+			{
+				VentOmbres.border = new RectOffset(0,0,0,0);
+			}
 		}
 
 
