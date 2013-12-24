@@ -14,6 +14,9 @@ public class AudioManager : MonoBehaviour {
 	public AudioClip Track9;
 	private int randomInt;
 
+	// Son de Noel
+	public AudioClip NoelTrack;
+	private AudioClip lastPlayingTrack;
 
 	// Use this for initialization
 	void Start () {
@@ -42,7 +45,33 @@ public class AudioManager : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
-	
+	void Update () 
+	{
+		// EASTER EGG NOEL
+		if (Input.GetKeyUp(KeyCode.N))
+		{
+			if (System.DateTime.Now.Month == 12
+			    && (System.DateTime.Now.Day >= 24 && System.DateTime.Now.Day <= 26))
+			{
+				if (audio.clip != NoelTrack)
+				{
+					lastPlayingTrack = audio.clip;
+					audio.Stop();
+					audio.clip = NoelTrack;
+					audio.Play();
+				}
+				else
+				{
+					audio.Stop();
+					audio.clip = lastPlayingTrack;
+					audio.Play();
+				}
+			}
+		}
+		if (!audio.isPlaying)
+		{
+			audio.clip = lastPlayingTrack;
+			audio.Play();
+		}
 	}
 }
