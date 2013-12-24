@@ -5,11 +5,13 @@ public class PassiveSkills : Skills
 {
 	private float m_firstAd;
 	private string m_nameFirstAd;
+	private string m_descriptionFirstAd;
 	private int m_lvlFirstAd = 0;
 	private int m_costIncFirstAd;
 
 	private float m_secAd;
 	private string m_nameSecAd;
+	private string m_descriptionSecAd;
 	private int m_lvlSecAd = 0;
 	private int m_costIncSecAd;
 	
@@ -56,17 +58,27 @@ public class PassiveSkills : Skills
 
 	public string getNameFirstAd()
 	{
-		return m_nameFirstAd;	
+		return m_nameFirstAd + " (" + m_lvlFirstAd + ")";	
+	}
+
+	public string getDescriptionFirstAd()
+	{
+		return m_descriptionFirstAd;	
 	}
 
 	public string getNameSecAd()
 	{
-		return m_nameSecAd;	
+		return m_nameSecAd + " (" + m_lvlSecAd + ")";	
+	}
+
+	public string getDescriptionSecAd()
+	{
+		return m_descriptionSecAd;	
 	}
 	
 	// Use this for initialization
-	public PassiveSkills (string name, int price, Skills father, int costIncFirstAd, int costIncSecAd, float firstAd, float secAd, string nameFirstAd, string nameSecAd) 
-		:base (name, price, father)
+	public PassiveSkills (string name, string description, int price, Skills father, int costIncFirstAd, int costIncSecAd, float firstAd, float secAd, string nameFirstAd, string nameSecAd, string descriptionFirstAd, string descriptionSecAd) 
+		:base (name, description, price, father)
 	{
 		m_costIncFirstAd = costIncFirstAd;
 		m_costIncSecAd = costIncSecAd;
@@ -74,6 +86,8 @@ public class PassiveSkills : Skills
 		m_secAd = secAd;
 		m_nameFirstAd = nameFirstAd;
 		m_nameSecAd = nameSecAd;
+		m_descriptionFirstAd = descriptionFirstAd;
+		m_descriptionSecAd = descriptionSecAd;
 	}
 
 	public void update(ref float firstAd, float baseFirstAd, ref float secAd, float basesecAd)

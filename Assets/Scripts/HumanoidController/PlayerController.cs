@@ -26,7 +26,7 @@ public class PlayerController : HumanoidController
 	
 	private CharacterController controller;
 	
-	private int xp = 20000;
+	private int xp = 200000;
 	
 	// Variables servants aux achievements
 	public AchievementManager achievementManager;
@@ -44,7 +44,7 @@ public class PlayerController : HumanoidController
 	// Compteur de temps
 	private float magicTime;
 	// Type de magie
-	enum magicTypes{Fire=5, Ice=8, Wind=11};
+	enum magicTypes{Fire=6, Ice=9, Wind=12};
 	magicTypes currentMagicType = magicTypes.Fire;
 	
 	private bool pause = false;
@@ -77,31 +77,34 @@ public class PlayerController : HumanoidController
 		sprintTimeStart = Time.time;
 		isSprinting = false;
 		updateSpeed(isSprinting);
-		
+
+		// Liste des descriptions des compétences
+		List<string> skillsDescriptions = initSkillsDescriptions();
+
 		//arbre de competence Survie
-		skillManager.addSkill(new PassiveSkills("Survie", 0, null, 200, 200, 5f, 5f, "pv+", "mana+"));
-		skillManager.addSkill(new PassiveSkills("Resistance", 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-")); 
-		skillManager.addSkill(new InvincibleSkill("Invincible", 3000, skillManager.getSkill(1), 0, 30, null, 5));
+		skillManager.addSkill(new PassiveSkills("Survie", skillsDescriptions[0], 0, null, 200, 200, 5f, 5f, "pv+", "mana+", skillsDescriptions[1], skillsDescriptions[2]));
+		skillManager.addSkill(new PassiveSkills("Résistance", skillsDescriptions[3], 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-", skillsDescriptions[4], skillsDescriptions[5])); 
+		skillManager.addSkill(new InvincibleSkill("Invincible", skillsDescriptions[6], 3000, skillManager.getSkill(1), 0, 30, null, 5));
 
 		//arbre de competence Attaque
-		skillManager.addSkill(new PassiveSkills("Attaque de base", 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+"));
-		skillManager.addSkill(new PassiveSkills("Critique", 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+"));
-		skillManager.addSkill(new FurieSkills("Furie", 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
+		skillManager.addSkill(new PassiveSkills("Attaque de base", skillsDescriptions[7], 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+", skillsDescriptions[8], skillsDescriptions[9]));
+		skillManager.addSkill(new PassiveSkills("Critique", skillsDescriptions[10], 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+", skillsDescriptions[11], skillsDescriptions[12]));
+		skillManager.addSkill(new FurieSkills("Furie", skillsDescriptions[13], 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
 
 		//arbre de competence Feu
-		skillManager.addSkill(new PorteeSkills("Boule de feu", 1000, null, 0f, 10, fireball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Lance flames", 1000, skillManager.getSkill(5), 1f, 15, firezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Meteor", 3000, skillManager.getSkill(6), 2f, 20, null, 20f, 10f, 10f)); 
+		skillManager.addSkill(new PorteeSkills("Boule de feu", skillsDescriptions[14], 1000, null, 0f, 10, fireball, 10f, 200, 200, "Dégat+", "Portée+", skillsDescriptions[15], skillsDescriptions[16], 20f));
+		skillManager.addSkill(new ZoneSkills("Lance flammes", skillsDescriptions[17], 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 200, 200, "Dégat+", "Zone+", skillsDescriptions[18], skillsDescriptions[19], 10f));
+		skillManager.addSkill(new SuperSkills("Méteore", skillsDescriptions[20], 3000, skillManager.getSkill(7), 2f, 20, null, 20f, 10f, 10f)); 
 		
 		//arbre de competence Glace
-		skillManager.addSkill(new PorteeSkills("Glacon", 1000, null, 0f, 10, iceball, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Iceberg", 1000, skillManager.getSkill(8), 1f, 15, icezone, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Ere glaciere", 3000, skillManager.getSkill(9), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new PorteeSkills("Glaçon", skillsDescriptions[21], 1000, null, 0f, 10, iceball, 10f, 200, 200, "Dégat+", "Portée+", skillsDescriptions[22], skillsDescriptions[23], 20f));
+		skillManager.addSkill(new ZoneSkills("Iceberg", skillsDescriptions[24], 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 200, 200, "Dégat+", "Zone+", skillsDescriptions[25], skillsDescriptions[26], 10f));
+		skillManager.addSkill(new SuperSkills("Ere glacière", skillsDescriptions[27], 3000, skillManager.getSkill(10), 2f, 20, null, 20f, 10f, 10f));
 		
 		//arbre de competence Vent
-		skillManager.addSkill(new PorteeSkills("Soufle", 1000, null, 0f, 10, propulsion, 10f, 200, 200, "Degat+", "Portee+", 20f));
-		skillManager.addSkill(new ZoneSkills("Bourasque", 1000, skillManager.getSkill(11), 1f, 15, tornade, 15f, 200, 200, "Degat+", "Zone+", 10f));
-		skillManager.addSkill(new SuperSkills("Tornade", 3000, skillManager.getSkill(12), 2f, 20, null, 20f, 10f, 10f));
+		skillManager.addSkill(new PorteeSkills("Souffle", skillsDescriptions[28], 1000, null, 0f, 10, propulsion, 10f, 200, 200, "Dégat+", "Portée+", skillsDescriptions[29], skillsDescriptions[30], 20f));
+		skillManager.addSkill(new ZoneSkills("Bourrasque", skillsDescriptions[31], 1000, skillManager.getSkill(12), 1f, 15, tornade, 15f, 200, 200, "Dégat+", "Zone+", skillsDescriptions[32], skillsDescriptions[33], 10f));
+		skillManager.addSkill(new SuperSkills("Tornade", skillsDescriptions[34], 3000, skillManager.getSkill(13), 2f, 20, null, 20f, 10f, 10f));
 
 		// Animations
 		hash = GetComponent<PlayerHashIDs>();
@@ -349,13 +352,14 @@ public class PlayerController : HumanoidController
 	public void onPause()
 	{
 		pause = !pause;
+		achievementManager.setPause(pause);
 	}
 	
 	public bool getPause()
 	{
 		return pause;
 	}
-	
+
 	void updateSpeed(bool isSprinting)
 	{
 		// Met à jour la vitesse du joueur selon son status (sprint ou non)
@@ -375,5 +379,47 @@ public class PlayerController : HumanoidController
 			pauseAfterSprint = (Time.time - sprintTimeStart) * 1.5f;
 		else
 			pauseAfterSprint -= Time.deltaTime;
+	}
+
+	List<string> initSkillsDescriptions()
+	{
+		List<string> list = new List<string>();
+		list.Add("TODO1");
+		list.Add("Augmente la quantité de points de vie maximale");
+		list.Add("Augmente la quantité de points de mana maximale");
+		list.Add("TODO4");
+		list.Add("Augmente la résistance physique de Georges");
+		list.Add("Augmente la résistance aux sorts de Georges");
+		list.Add("Rend Georges invincible pendant une courte période");
+		list.Add("TODO8");
+		list.Add("Augmente les dégats physique infligés à chaque coups");
+		list.Add("Augmente la puissance des sorts");
+		list.Add("Permet d'effectuer des coup critique");
+		list.Add("Augmente les dégats de coup critique physique");
+		list.Add("Augmente les dégats de coup critique magique");
+		list.Add("Laisser sortir la furie qui est en vous!");
+		list.Add("Permet à Georges de lancer des boules de feu");
+		list.Add("Augmente les dégats infligés par les boules de feu");
+		list.Add("Augmente la portée des boules de feu");
+		list.Add("Permet à Georges de lancer un sort de zone de feu");
+		list.Add("Augmente les dégats du sort lance flamme");
+		list.Add("Augmente la zone de feu du sort lance flamme");
+		list.Add("Invoquez la puissance céleste des étoiles !");
+		list.Add("Permet à George de lancer des morceaux de glace");
+		list.Add("Augmente les dégats infligés par les glaçons");
+		list.Add("Augmente la portée des glaçons");
+		list.Add("Permet à Georges de geler les ennemis proches");
+		list.Add("Augmente les dégats infligés par le sort iceberg");
+		list.Add("Augmente la zone de glace du sort iceberg");
+		list.Add("C'est Noel ! Enfin, pour vous");
+		list.Add("Permet à Georges de repousser ces ennemis");
+		list.Add("Augmente les dégats infligés par le souffle");
+		list.Add("Augmente la portée du souffle");
+		list.Add("Permet à Georges de repousser les ennemis qui l'entoure");
+		list.Add("Augmente les dégats infligés par le sort Bourrasque");
+		list.Add("Augmente la zone de souffle du sort Bourrasque");
+		list.Add("Faite disparaitre vos ennemis dans les airs en un clin d'oeil !");
+
+		return list;
 	}
 }
