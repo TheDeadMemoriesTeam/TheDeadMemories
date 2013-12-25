@@ -6,11 +6,13 @@ public class PauseMenu : PauseSystem
 
 	private bool isOption;
 	public AudioManager aManager;
+	public Terrain terrain;
 	
 	protected override void Start()
 	{
 		base.Start();
 		isOption = false;
+		terrain = Terrain.activeTerrain;
 	}
 	
 	
@@ -84,6 +86,9 @@ public class PauseMenu : PauseSystem
 				aManager.startTrack();
 			}
 		}
+
+		GUILayout.Label ("Distance de rendu:");
+		terrain.detailObjectDistance = GUILayout.HorizontalSlider (terrain.detailObjectDistance, 10, 200);
 
 		GUILayout.EndArea();
 	}
