@@ -112,8 +112,14 @@ public class PlayerController : HumanoidController
 		anim.SetLayerWeight(0,1f);
 
 		saveManager = new SaveManager(achievementManager, skillManager);
+		saveManager.load();
 	}
-	
+
+	void onDestroy()
+	{
+		saveManager.save();
+	}
+
 	// Update is called once per frame
 	protected override void Update () 
 	{

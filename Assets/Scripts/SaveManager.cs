@@ -18,6 +18,8 @@ public class SaveManager{
 	{
 		achievementManager = otherA;
 		skillManager = otherS;
+		if(!Directory.Exists("./save/"))
+			Directory.CreateDirectory("./save/");
 	}
 
 	// Fonction de sauvegarde
