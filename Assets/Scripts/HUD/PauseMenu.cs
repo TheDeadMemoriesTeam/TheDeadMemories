@@ -88,7 +88,7 @@ public class PauseMenu : PauseSystem
 		}
 
 		GUILayout.Label ("Distance de rendu:");
-		terrain.detailObjectDistance = GUILayout.HorizontalSlider (terrain.detailObjectDistance, 10, 200);
+		terrain.detailObjectDistance = GUILayout.HorizontalSlider (terrain.detailObjectDistance, 0, 250);
 
 		GUILayout.EndArea();
 	}
