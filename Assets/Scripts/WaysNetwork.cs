@@ -6,8 +6,10 @@ using System.Linq;
 
 public class WaysNetwork : MonoBehaviour {
 
-	public Transform[] headArc;
-	public Transform[] tailArc;
+	public Transform[] headArc;    // Head nodes of arcs
+	public Transform[] tailArc;    // Tail nodes of arcs
+	public bool[] isOrientedArc;   // Is the arc oriented? If not (false), the arc (tail, head) is also considered.
+	                               // If isOrientedArc.Lenght < headArc.Lenght, additional arcs are considered as non-oriented.
 
 	private Transform[] nodes;
 
@@ -37,6 +39,18 @@ public class WaysNetwork : MonoBehaviour {
 			Application.Quit();
 		}
 
+		// Init default values for isOrientedArc if needed.
+		int sizeDiff = headArc.Length - isOrientedArc.Length;
+		if (sizeDiff > 0)
+		{
+			List<bool> orientedList = isOrientedArc.ToList();
+			while (sizeDiff > 0 ) {
+				orientedList.Add (false);
+				sizeDiff--;
+			}
+			isOrientedArc = orientedList.ToArray();
+		}
+
 		generateAdjacencyList();
 	}
 	
@@ -51,11 +65,14 @@ public class WaysNetwork : MonoBehaviour {
 		for (int i = 0; i < nodes.Length; i++)
 		{
 			weightedAdjacencyList.Add(nodes[i].position, new Dictionary<Vector3, float>());
-			for (int j = 0; j < headArc.Length; j++) {
-				if (headArc[j] == nodes[i]) {
-					float weight = Utils.CalculateNavmeshPathLength(nodes[i].position, tailArc[j].position);
-					weightedAdjacencyList[nodes[i].position].Add(tailArc[j].position, weight);
-				}
+		}
+		for (int j = 0; j < headArc.Length; j++)
+		{
+			float weight = Utils.CalculateNavmeshPathLength(headArc[j].position, tailArc[j].position);
+			weightedAdjacencyList[headArc[j].position].Add(tailArc[j].position, weight);
+			if (!isOrientedArc[j]) {
+				weight = Utils.CalculateNavmeshPathLength(tailArc[j].position, headArc[j].position);
+				weightedAdjacencyList[tailArc[j].position].Add(headArc[j].position, weight);
 			}
 		}
 	}
