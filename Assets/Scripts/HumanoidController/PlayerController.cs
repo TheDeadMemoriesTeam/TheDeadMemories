@@ -41,8 +41,11 @@ public class PlayerController : HumanoidController
 	public Transform icezone;
 	public Transform propulsion;
 	public Transform tornade;
+
 	// Compteur de temps
 	private float magicTime;
+	private float skillTime;
+
 	// Type de magie
 	enum magicTypes{Fire=6, Ice=9, Wind=12};
 	magicTypes currentMagicType = magicTypes.Fire;
@@ -84,12 +87,12 @@ public class PlayerController : HumanoidController
 		//arbre de competence Survie
 		skillManager.addSkill(new PassiveSkills("Survie", skillsDescriptions[0], 0, null, 200, 200, 5f, 5f, "pv+", "mana+", skillsDescriptions[1], skillsDescriptions[2]));
 		skillManager.addSkill(new PassiveSkills("Résistance", skillsDescriptions[3], 0, skillManager.getSkill(0), 200, 200, 1f, 1f, "degPhysique-", "degMagic-", skillsDescriptions[4], skillsDescriptions[5])); 
-		skillManager.addSkill(new InvincibleSkill("Invincible", skillsDescriptions[6], 3000, skillManager.getSkill(1), 0, 30, null, 5));
+		skillManager.addSkill(new InvincibleSkill("Invincible", skillsDescriptions[6], 3000, skillManager.getSkill(1), 0, 30, null, 5f));
 
 		//arbre de competence Attaque
 		skillManager.addSkill(new PassiveSkills("Attaque de base", skillsDescriptions[7], 0, null, 200, 200, 5f, 5f, "degCac+", "degMag+", skillsDescriptions[8], skillsDescriptions[9]));
 		skillManager.addSkill(new PassiveSkills("Critique", skillsDescriptions[10], 0, skillManager.getSkill(3), 200, 200, 1f, 1f, "criCac+", "cricMag+", skillsDescriptions[11], skillsDescriptions[12]));
-		skillManager.addSkill(new FurieSkills("Furie", skillsDescriptions[13], 3000, skillManager.getSkill(4), 0, 30, null, 5f, 1.5f));
+		skillManager.addSkill(new FurieSkills("Furie", skillsDescriptions[13], 3000, skillManager.getSkill(4), 0, 30, null, 5f, 10f));
 
 		//arbre de competence Feu
 		skillManager.addSkill(new PorteeSkills("Boule de feu", skillsDescriptions[14], 1000, null, 0f, 10, fireball, 10f, 200, 200, "Dégat+", "Portée+", skillsDescriptions[15], skillsDescriptions[16], 20f));
@@ -177,6 +180,7 @@ public class PlayerController : HumanoidController
 			transform.Rotate(rotation);
 			
 			mouseHandler();
+			buttonHandler();
 
 			// Permet le changement de type de magie
 			if (Input.GetKeyDown(KeyCode.F1))
@@ -219,8 +223,15 @@ public class PlayerController : HumanoidController
 					if (angle>=-45 && angle<=45)
 					{
 						float damage = -skillManager.getPhysicAttack() + (-skillManager.getPhysicAttack()/100 * targets[i].getSkillManager().getPhysicalResistance());
+						//gestion de la furie
+						if(skillManager.getFurie())
+						{
+							FurieSkills skillFurie = skillManager.getSkill(5) as FurieSkills;
+							damage += damage/100 * skillFurie.getDamageFactor();
+						}
 						//gestion des critique
-						//if
+						if(skillManager.getCriticPhysic()/100 < Random.value)
+							damage *= 2;
 						targets[i].healthUpdate(damage);
 					}
 				}	
@@ -249,8 +260,15 @@ public class PlayerController : HumanoidController
 						//decrementation de la mana du coup de la skill
 						skillManager.setMana(skillManager.getMana() - porteeSkill.getManaCost());
 
+						//gestion de la furie
+						if(skillManager.getFurie())
+						{
+							FurieSkills skillFurie = skillManager.getSkill(5) as FurieSkills;
+							//execution de la skill
+							porteeSkill.launch(transform.position, transform.forward, skillManager.getMagicAttack(), skillManager.getCriticMagic(), skillFurie.getDamageFactor());
+						}
 						//execution de la skill
-						porteeSkill.launch(transform.position, transform.forward, skillManager.getMagicAttack(), skillManager.getCriticPhysic());
+						porteeSkill.launch(transform.position, transform.forward, skillManager.getMagicAttack(), skillManager.getCriticMagic(), 0f);
 					}
 				}
 				//determination de la skill en fonction du temp de maintien du bouton droit
@@ -276,8 +294,15 @@ public class PlayerController : HumanoidController
 								if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getAd())
 								{
 									float damage = -skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()) + (-skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())/100 * targets[i].getSkillManager().getMagicResistance());
+									//gestion de la furie
+									if(skillManager.getFurie())
+									{
+										FurieSkills skillFurie = skillManager.getSkill(5) as FurieSkills;
+										damage += damage/100 * skillFurie.getDamageFactor();
+									}
 									//gestion des critique
-									//if
+									if(skillManager.getCriticMagic()/100 < Random.value)
+										damage *= 2;
 									targets[i].healthUpdate(damage);
 								}
 							}
@@ -306,6 +331,53 @@ public class PlayerController : HumanoidController
 		// Si le joueur commence à préparer une attaque magique
 		else if (Input.GetButtonDown("Fire2"))
 			magicTime = Time.time;
+	}
+
+	void buttonHandler()
+	{
+		if(Input.GetKeyDown(KeyCode.Alpha1))
+		{
+			if(skillManager.getInvincibleTime())
+			{
+				float duration = Time.time - skillTime;
+				InvincibleSkill skillInv = skillManager.getSkill(2) as InvincibleSkill;
+				if(skillInv.getIsBought())
+				{
+					if(duration > skillInv.getTimeIncantation())
+					{
+						if(skillManager.getMana() > skillInv.getManaCost())
+						{
+							skillManager.setMana(skillManager.getMana() - skillInv.getManaCost());
+							skillManager.setInvincible(true);
+						}
+					}
+				}
+			}
+		}
+		else if(Input.GetKeyDown(KeyCode.Alpha2))
+		{
+			if(skillManager.getFurieTime())
+			{
+				float duration = Time.time - skillTime;
+				FurieSkills skillFurie = skillManager.getSkill(5) as FurieSkills;
+				if(skillFurie.getIsBought())
+				{
+					if(duration > skillFurie.getTimeIncantation())
+					{
+						if(skillManager.getMana() > skillFurie.getManaCost())
+						{
+							skillManager.setMana(skillManager.getMana() - skillFurie.getManaCost());
+							skillManager.setFurie(true);
+						}
+					}
+				}
+			}
+		}
+
+		if(Input.GetKeyDown(KeyCode.Alpha1) || Input.GetKeyDown(KeyCode.Alpha2))
+			skillTime = Time.time;
+
+		skillManager.updateSpetialSkill();
 	}
 
 	void AnimationManager()

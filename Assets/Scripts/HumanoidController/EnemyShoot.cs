@@ -31,7 +31,7 @@ public class EnemyShoot : MonoBehaviour
 	void Update () {
 		timeCount += Time.deltaTime;
 
-		if (enemyController.isShooting())
+		if (enemyController.isShooting() && !player.getSkillManager().getInvincible())
 			Shoot();
 	}
 
