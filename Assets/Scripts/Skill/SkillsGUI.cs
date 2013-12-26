@@ -59,21 +59,24 @@ public class SkillsGUI : MonoBehaviour
 			player.onPause();
 			// Change l'état affiché/masqué du panneau d'achat des skills
 			skillsOpen = !skillsOpen;
-			// Affiche ou masque le curseur
-			Screen.showCursor = !Screen.showCursor;
-			Screen.lockCursor = !Screen.lockCursor;
 		}
-		
+
 		// Affiche ou non le message
 		if (!skillsOpen)
 		{
 			cam.setIsActive(true);
 			openSkills.enabled = true;
+			// Masque le curseur
+			Screen.showCursor = false;
+			Screen.lockCursor = true;
 		}
 		else
 		{
 			cam.setIsActive(false);
 			openSkills.enabled = false;
+			// Affiche le curseur
+			Screen.showCursor = true;
+			Screen.lockCursor = false;
 		}
 	}
 	
