@@ -9,7 +9,7 @@ public class PorteeSkills : BaseSkills
 	{
 	}
 
-	public void launch(Vector3 position, Vector3 forward, float damageMagic, float critic)
+	public void launch(Vector3 position, Vector3 forward, float damageMagic, float critic, float factor)
 	{
 		// Création et initialisation du projectile
 		Transform projectileTransform = (Transform)GameObject.Instantiate(	m_particule,
@@ -19,8 +19,11 @@ public class PorteeSkills : BaseSkills
 		                                                       	Quaternion.identity);
 		ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
 		float damage = damageMagic + m_damage;
+		//gestion furie
+		damage += damage/100 * factor;
 		//gestion critique
-		//if
+		if(critic/100 < Random.value)
+			damage *= 2;
 		projectile.init(10f, m_ad, damage, forward);
 	}
 }

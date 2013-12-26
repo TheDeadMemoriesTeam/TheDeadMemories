@@ -10,8 +10,7 @@ public class InvincibleSkill : ActiveSkills
 	{
 		return m_time;	
 	}
-	
-	
+
 	// Use this for initialization
 	public InvincibleSkill (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float time) 
 		:base(name, description, price, father, timeIncantation, manaCost, particule)

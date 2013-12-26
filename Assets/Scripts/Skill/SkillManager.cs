@@ -35,7 +35,12 @@ public class SkillManager : MonoBehaviour
 	//distance d'attaque
 	private float m_distancePhysicAttack, m_distanceMagicAttack;
 
-
+	//skills spetiales
+	private bool m_invincible = false;
+	private float m_invincibleTime = 0f;
+	private bool m_furie = false;
+	private float m_furieTime = 0f;
+	private float m_skillDelay = 10f;
 	
 	//acesseur
 	//mana
@@ -216,6 +221,37 @@ public class SkillManager : MonoBehaviour
 	{
 		return m_distancePhysicAttack;	
 	}
+
+	//skills spetiales
+	public void setInvincible(bool invincible)
+	{
+		m_invincible = invincible;
+	}
+
+	public bool getInvincible()
+	{
+		return m_invincible;
+	}
+
+	public bool getInvincibleTime()
+	{
+		return m_invincibleTime == 0f;
+	}
+
+	public void setFurie(bool furie)
+	{
+		m_furie = furie;
+	}
+
+	public bool getFurie()
+	{
+		return m_furie;
+	}
+
+	public bool getFurieTime()
+	{
+		return m_furieTime == 0f;
+	}
 	
 	//constructor
 	public SkillManager()
@@ -229,7 +265,34 @@ public class SkillManager : MonoBehaviour
 	{
 	}
 
-	public void update () 
+	public void updateSpetialSkill()
+	{
+		InvincibleSkill skillInv = listSkills[2] as InvincibleSkill;
+		if(skillInv.getIsBought())
+		{
+			if(m_invincible && m_invincibleTime == 0f)
+				m_invincibleTime = Time.time;
+			else if(Time.time - m_invincibleTime >= m_skillDelay)
+				m_invincibleTime = 0f;
+			else if(Time.time - m_invincibleTime >= skillInv.getTime())
+				m_invincible = false;
+			 
+		}
+
+		FurieSkills skillFurie = listSkills[5] as FurieSkills;
+		if(skillFurie.getIsBought())
+		{
+			if(m_furie && m_furieTime == 0f)
+				m_furieTime = Time.time;
+			else if(Time.time - m_furieTime >= m_skillDelay)
+				m_furieTime = 0f;
+			else if(Time.time - m_furieTime >= skillFurie.getTime())
+				m_furie = false;
+		}
+	}
+
+	//fonction pour l'update des skills
+	public void updateSkill () 
 	{
 		for (int i=0; i<listSkills.Count; i++)
 		{

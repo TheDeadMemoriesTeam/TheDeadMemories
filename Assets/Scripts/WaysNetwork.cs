@@ -151,7 +151,7 @@ public class WaysNetwork : MonoBehaviour {
 
 	public Transform getRandomNode()
 	{
-		return nodes[Random.Range(0, nodes.Length-1)];
+		return nodes[(int) Random.Range(0, nodes.Length - 1e-10f)];
 	}
 
 	public Transform getNearestNode(Vector3 position)
