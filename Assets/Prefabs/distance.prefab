@@ -399,7 +399,6 @@ MonoBehaviour:
   chaseWaitTime: 3
   patrolSpeed: 2.5
   patrolWaitTime: .5
-  patrolWayPoints: []
   droppableItems: []
   itemsDropProbability: []
 --- !u!114 &11400002
@@ -441,8 +440,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 437eef1bebd97e84db6611f0b6015c1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maximumDamage: 12
-  minimumDamage: 7
   maximumTimeDelay: 1.5
   minimumTimeDelay: .800000012
 --- !u!136 &13600000
@@ -476,7 +473,7 @@ NavMeshAgent:
   m_AutoRepath: 1
   m_Height: 1
   m_BaseOffset: .699999988
-  m_WalkableMask: 4294967295
+  m_WalkableMask: 5
   m_ObstacleAvoidanceType: 4
 --- !u!1001 &100100000
 Prefab:
