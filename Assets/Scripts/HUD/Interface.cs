@@ -24,7 +24,6 @@ public class Interface : MonoBehaviour
 
 	// Score
 	public GUIText playerXp;
-	public GUITexture panelXp;
 
 	// Use this for initialization
 	void Start ()
@@ -54,8 +53,7 @@ public class Interface : MonoBehaviour
 		VentCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VentCache.border = new RectOffset(0,0,0,511);
 
-		playerXp.pixelOffset = new Vector2(Screen.width - 204f, Screen.height/2+75);
-		panelXp.pixelInset = new Rect(Screen.width-244, Screen.height/2, 256, 128);
+		playerXp.pixelOffset = new Vector2(Screen.width/2-40, 40);
 	}
 	
 	// Update is called once per frame
@@ -105,7 +103,7 @@ public class Interface : MonoBehaviour
 			}
 		}
 
-		playerXp.text = "XP : "+player.getExperience();
+		playerXp.text = player.getExperience().ToString();
 
 
 		float hp = player.getSkillManager().getPv();
