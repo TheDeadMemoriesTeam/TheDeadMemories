@@ -59,6 +59,9 @@ public class PlayerController : HumanoidController
 	// Manager de sauvegarde
 	SaveManager saveManager;
 
+	//Sound
+	private AudioSource soundWalk;
+
 	// Use this for initialization
 	protected override void Start () 
 	{
@@ -116,6 +119,9 @@ public class PlayerController : HumanoidController
 
 		saveManager = new SaveManager(achievementManager, skillManager);
 		saveManager.load();
+
+		//Sound
+		soundWalk = GetComponent<AudioSource> ();
 	}
 
 	void onDestroy()
@@ -388,14 +394,27 @@ public class PlayerController : HumanoidController
 
 	void AnimationManager()
 	{
-		if(Input.GetAxis("Horizontal") != 0f || 
-		   Input.GetAxis("Vertical") != 0f)
+		if (Input.GetAxis ("Horizontal") != 0f || 
+						Input.GetAxis ("Vertical") != 0f)
 		{
-			anim.SetFloat(hash.speed, 5.5f);
+			float sprint = 1f;
+			if(isSprinting)
+			{
+				sprint = 1.5f;
+			}
+			anim.SetFloat (hash.speed, 5.5f);
+			anim.speed = sprint;
+			if (!soundWalk.isPlaying)
+				soundWalk.Play ();
+			soundWalk.pitch = sprint;
 		}
 		else
+		{
 			// Otherwise set the speed parameter to 0.
-			anim.SetFloat(hash.speed, 0);
+			anim.SetFloat (hash.speed, 0);
+			soundWalk.Stop();
+			soundWalk.pitch = 1;
+		}
 	}
 	
 	void OnTriggerEnter (Collider other)
