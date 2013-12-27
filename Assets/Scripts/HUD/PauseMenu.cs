@@ -64,7 +64,7 @@ public class PauseMenu : PauseSystem
 
 	void option()
 	{
-		GUILayout.BeginArea(new Rect(Screen.width/2+70,Screen.height/2-50, 150,100));
+		GUILayout.BeginArea(new Rect(Screen.width/2+70,Screen.height/2-100, 150,200));
 
 		if(GUILayout.Button("Changer piste"))
 		{
@@ -86,6 +86,9 @@ public class PauseMenu : PauseSystem
 				aManager.startTrack();
 			}
 		}
+
+		GUILayout.Label ("Volume de la musique:");
+		aManager.changeVolume (GUILayout.HorizontalSlider (aManager.getVolume(), 0, 1));
 
 		GUILayout.Label ("Distance de rendu:");
 		terrain.detailObjectDistance = GUILayout.HorizontalSlider (terrain.detailObjectDistance, 0, 250);

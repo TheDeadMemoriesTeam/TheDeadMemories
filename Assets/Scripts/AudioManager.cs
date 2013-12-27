@@ -99,4 +99,14 @@ public class AudioManager : MonoBehaviour
 	{
 		return isPlay;
 	}
+
+	public void changeVolume (float vol)
+	{
+		audioSource.volume = vol;
+	}
+
+	public float getVolume ()
+	{
+		return audioSource.volume;
+	}
 }
