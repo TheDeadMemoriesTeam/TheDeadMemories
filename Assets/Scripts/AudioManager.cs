@@ -10,8 +10,6 @@ public class AudioManager : MonoBehaviour
 	public AudioClip NoelTrack;
 	private AudioClip lastPlayingTrack;
 	
-	//private float trackLength; Inutilisé, est ce utile ?
-	
 	private AudioSource audioSource;
 	private bool isPlay;
 	
@@ -21,7 +19,6 @@ public class AudioManager : MonoBehaviour
 	{
 		audioSource = GetComponent<AudioSource> ();
 		changeTrack();
-		//trackLength = 100;
 		isPlay = true;
 	}
 	

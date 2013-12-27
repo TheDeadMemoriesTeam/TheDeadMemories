@@ -412,7 +412,7 @@ public class PlayerController : HumanoidController
 		{
 			// Otherwise set the speed parameter to 0.
 			anim.SetFloat (hash.speed, 0);
-			soundWalk.Stop();
+			//soundWalk.Stop();
 			soundWalk.pitch = 1;
 		}
 	}
