@@ -52,8 +52,6 @@ public class Interface : MonoBehaviour
 		GlaceCache.border = new RectOffset(0,0,0,511);
 		VentCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VentCache.border = new RectOffset(0,0,0,511);
-
-		playerXp.pixelOffset = new Vector2(Screen.width/2-40, 40);
 	}
 	
 	// Update is called once per frame
@@ -103,6 +101,57 @@ public class Interface : MonoBehaviour
 			}
 		}
 
+
+		if(player.getExperience() < 10)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-5, 50);
+			playerXp.fontSize = 35;
+		}
+		else if(player.getExperience() < 100)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-10, 48);
+			playerXp.fontSize = 33;
+		}
+		else if(player.getExperience() < 1000)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-20, 46);
+			playerXp.fontSize = 31;
+		}
+		else if(player.getExperience() < 10000)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-25, 44);
+			playerXp.fontSize = 29;
+		}
+		else if(player.getExperience() < 100000)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-30, 42);
+			playerXp.fontSize = 27;
+		}
+		else if(player.getExperience() < 1000000)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-30, 40);
+			playerXp.fontSize = 22;
+		}
+		else if(player.getExperience() < 10000000)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-30, 38);
+			playerXp.fontSize = 19;
+		}
+		else if(player.getExperience() < 100000000)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-35, 36);
+			playerXp.fontSize = 17;
+		}
+		else if(player.getExperience() < 1000000000)
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-35, 34);
+			playerXp.fontSize = 16;
+		}
+		else
+		{
+			playerXp.pixelOffset = new Vector2(Screen.width/2-35, 32);
+			playerXp.fontSize = 15;
+		}
 		playerXp.text = player.getExperience().ToString();
 
 
