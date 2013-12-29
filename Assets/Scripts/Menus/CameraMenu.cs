@@ -26,4 +26,9 @@ public class CameraMenu : CameraPath
 	{
 		goTo(25.4f, 1.5f, 19.4f);
 	}
+
+	public void goToSettingsMenu()
+	{
+		goTo(10f, 1.5f, 29f);
+	}
 }
