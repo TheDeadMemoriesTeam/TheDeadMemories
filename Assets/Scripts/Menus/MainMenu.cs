@@ -10,10 +10,19 @@ public class MainMenu : Menu
 	public bool isAchievButton = false;
 	public bool isCreditsButton = false;
 
+	// achievements débloqués
+	private AchievementsSaveReader asr;
+
 	// Use this for initialization
 	void Start () 
 	{
 		base.Start();
+		AchievementsSaveReader asr = FindObjectOfType<AchievementsSaveReader>();
+		if(asr.getAchievementsCompleted() == null)
+		{
+			GameObject txt3DAchiev = GameObject.Find("txt_Achiev");
+			txt3DAchiev.renderer.enabled = false;
+		}
 	}
 	
 	// Update is called once per frame
