@@ -8,9 +8,12 @@ using System.Runtime.Serialization.Formatters.Binary;
 using System.IO;
 
 
-public class AchievementManager : MonoBehaviour {
-	
-	
+public class AchievementManager : MonoBehaviour 
+{
+
+	// Pause
+	private bool pause = false;
+
 	private List<Achievement> achievements;
 	private List<Achievement> achievementsUnlock;
 	// Stocke un historique des ennemis tués <temps, nb Ennemis Tués sur la frame>
@@ -114,9 +117,6 @@ public class AchievementManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () 
 	{
-		//File.Delete("/achievements.dat");
-		//PlayerPrefs.DeleteAll();
-		loadAchievements();
 		// Supprime de la liste des achievements a check tous ceux déjà réalisés et les ajoute à une liste de ceux réalisés
 		refreshListAchievements();
 
@@ -125,6 +125,8 @@ public class AchievementManager : MonoBehaviour {
 	// Update is called once per frame
 	void Update () 
 	{
+		if (pause)
+			return;
 
 		// Manage achievements
 		for (int i = 0; i < achievements.Count(); i++)
@@ -148,50 +150,26 @@ public class AchievementManager : MonoBehaviour {
 		updateEnnemiesKilledHistorical();
 	}
 	
-	public void saveAchievements()
+	public void loadAchievements(List<string> achievementsGet)
 	{
-		// Sauvegarde des achievements non réalisés
-		//Crée un BinaryFormatter
-		//var binFormatter = new BinaryFormatter();
-		//Crée un fichier
-		//var fileTodo = File.Create(Application.persistentDataPath + "/achievementsTodo.dat");
-		//binFormatter.Serialize(fileTodo, achievements);
-		//fileTodo.Close();
-		
-		// Sauvegarde des achievements réalisés
-		//Crée un fichier
-		//var fileGet = File.Create(Application.persistentDataPath + "/achievementsGet.dat");
-		//Sauvegarde les achievements
-		//binFormatter.Serialize(fileGet, achievementsGet);
-		//fileGet.Close();
-	}
-	
-	void loadAchievements()
-	{
-		//Si le fichier de sauvegarde existe on les charge
-		//if(File.Exists(Application.persistentDataPath + "/achievementsTodo.dat"))
-		//{
-			//BinaryFormatter pour charger les nouvelles données
-		//	var binFormatter = new BinaryFormatter();
-			//Ouvre le fichier
-		//	var fileTodo = File.Open(Application.persistentDataPath + "/achievementsTodo.dat", FileMode.Open);
-			//Charge les achievements non réalisés
-		//	achievements = (List<Achievement>)binFormatter.Deserialize(fileTodo);
-		//	fileTodo.Close();
-		//}
-		/*if(File.Exists(Application.persistentDataPath + "/achievementsGet.dat"))
+		// Parcours la liste des achievements aquis pour mettre à jour la liste générale des achievements
+		for (int i = 0 ; i < achievementsGet.Count() ; i++)
 		{
-			//BinaryFormatter pour charger les nouvelles données
-			var binFormatter = new BinaryFormatter();
-			//Ouvre le fichier
-			var fileGet = File.Open(Application.persistentDataPath + "/achievementsGet.dat", FileMode.Open);
-			//Charge les achievements réalisés
-			achievementsGet = (List<Achievement>)binFormatter.Deserialize(fileGet);
-			fileGet.Close();
-		}*/
+			for (int j = 0 ; j < achievements.Count() ; j++)
+			{
+				if (achievements.ElementAt(j).getName() == achievementsGet.ElementAt(i))
+					achievements.ElementAt(j).setAchieved();
+			}
+		}
+
+		refreshListAchievements();
 	}
-	
-	
+
+	public List<Achievement> getAchievementsUnlocked()
+	{
+		return achievementsUnlock;
+	}
+
 	// Méthodes permettant un Update des variables des achievements
 	public void updateTravel(Vector3 fromWhere, Vector3 to)
 	{
@@ -280,7 +258,7 @@ public class AchievementManager : MonoBehaviour {
 	{
 		return timeSurvived;
 	}
-	
+
 	public int getNbAssassinKills()
 	{
 		return nbAssassinKill;
@@ -290,7 +268,12 @@ public class AchievementManager : MonoBehaviour {
 	{
 		return assassin;
 	}
-	
+
+	public void setPause(bool state)
+	{
+		pause = state;
+	}
+
 	public int getNbEnnemiesKilledPerDuration(float duration)
 	{
 		int nbKillPerDuration = 0;

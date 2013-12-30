@@ -335,7 +335,7 @@ public class LanguageManager : MonoBehaviour
 			return thisObject.TextValue;	
 		}
 
-		Debug.LogError("LanguageManager.cs: Invalid Key:" + key + "for language: " + language);
+		Debug.LogError("LanguageManager.cs: Invalid Key:" + key + " for language: " + language);
         return null;
     }
 	/// <summary>
