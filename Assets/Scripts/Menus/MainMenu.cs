@@ -10,9 +10,6 @@ public class MainMenu : Menu
 	public bool isAchievButton = false;
 	public bool isCreditsButton = false;
 
-	// achievements débloqués
-	private AchievementsSaveReader asr;
-
 	// Use this for initialization
 	void Start () 
 	{

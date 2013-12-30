@@ -4,12 +4,13 @@ using System.Collections;
 public class Menu : MonoBehaviour 
 {
 	// Caméra du menu
-	protected CameraMenu cam;
+	public CameraMenu cam;
 
 	// Use this for initialization
 	protected virtual void Start () 
 	{
-		cam = FindObjectOfType<CameraMenu>();
+		if (cam == null)
+			cam = FindObjectOfType<CameraMenu>();
 	}
 	
 	// Update is called once per frame
@@ -19,11 +20,13 @@ public class Menu : MonoBehaviour
 
 	void OnMouseEnter() 
 	{
-		renderer.material.color = Color.red;
+		if (renderer != null)
+			renderer.material.color = Color.red;
 	}
 	
 	void OnMouseExit() 
 	{
-		renderer.material.color = Color.white;
+		if (renderer != null)
+			renderer.material.color = Color.white;
 	}
 }
