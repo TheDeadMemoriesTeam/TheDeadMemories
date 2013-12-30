@@ -145,10 +145,27 @@ public class SettingsMenu : SubMenu
 
 		GUI.EndScrollView();
 
-		// Bouton de retour au menu principal
+
 		float buttonWidth = 0.33f * windowWidth;
 		float buttonHeight = 0.1f * windowHeight;
-		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth/2,
+		// Bouton de valeurs par défaut
+		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth - 20,
+		                         windowHeight - 2*buttonHeight,
+		                         buttonWidth,
+		                         buttonHeight),
+		               "Default Values"))
+		{
+			// Restaure les valeurs par défaut
+			QualitySettings.SetQualityLevel(4, true);
+			PlayerPrefs.SetInt("qualityLevel", 4);
+
+			Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+			PlayerPrefs.SetInt("ResolutionWidth", Screen.currentResolution.width);
+			PlayerPrefs.SetInt("ResolutionHeight", Screen.currentResolution.height);
+			
+		}
+		// Bouton de retour au menu principal
+		if (GUI.Button(	new Rect((windowWidth-10)/2 + 10,
 		                         windowHeight - 2*buttonHeight,
 		                         buttonWidth,
 		                         buttonHeight),
