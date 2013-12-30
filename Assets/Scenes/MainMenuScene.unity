@@ -2555,6 +2555,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cam: {fileID: 1533108016}
+  spaceBetweenItem: 30
+  paddingTop: 35
+  letterSize: 10
+  coefWidth: .75
+  coefHeight: .800000012
 --- !u!65 &1819776203
 BoxCollider:
   m_ObjectHideFlags: 0
