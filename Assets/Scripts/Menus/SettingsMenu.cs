@@ -8,6 +8,8 @@ public class SettingsMenu : SubMenu
 	
 	// Position sur la scrollBar gauche
 	private Vector2 scrollPositionLeft = Vector2.zero;
+	// Position sur la scrollBar gauche
+	private Vector2 scrollPositionRight = Vector2.zero;
 	
 	// variables de placement (en pixels)
 	public int spaceBetweenItem = 30;
@@ -59,6 +61,10 @@ public class SettingsMenu : SubMenu
 		GUI.Label(	new Rect(20, 10, 200, 30),
 					"Available Resolutions :");
 
+		/**********************************************
+		 *************** Partie Gauche ****************
+		**********************************************/
+
 		// Récupère les résolutions disponibles
 		Resolution[] resolutions = Screen.resolutions;
 
@@ -73,7 +79,7 @@ public class SettingsMenu : SubMenu
 			string textButton = resolutions[i].width.ToString() + "*" + resolutions[i].height.ToString();
 			int resButtonWidth = textButton.Length * letterSize;
 			if (GUI.Button(new Rect(20,
-			                   		paddingTop + i*spaceBetweenItem,
+			                   		paddingTop + i*(spaceBetweenItem + 10),
 			                   	 	maxButtonSize,
 			                    	spaceBetweenItem),
 			           		textButton))
@@ -85,6 +91,36 @@ public class SettingsMenu : SubMenu
 				maxButtonSize = resButtonWidth;
 		}
 		
+		GUI.EndScrollView();
+
+
+		GUI.Label(	new Rect(windowWidth/2, 10, 200, 30),
+		          "Available Graphics Quality :");
+
+		/**********************************************
+		 *************** Partie Droite ****************
+		**********************************************/
+
+		string[] qualities = QualitySettings.names;
+
+		// Scroll bar droite
+		scrollPositionRight = GUI.BeginScrollView(	new Rect(windowWidth/2, paddingTop, windowWidth/2-20, 0.68f*windowHeight),
+		                                          	scrollPositionRight,
+		                                          	new Rect(windowWidth/2, paddingTop, windowWidth/2-40, qualities.Length * spaceBetweenItem));
+
+		// Affiche les qualités graphiques possibles
+		for (int i = 0 ; i < qualities.Length ; i++)
+		{
+			if (GUI.Button(new Rect(windowWidth/2 + 20,
+			                        paddingTop + i*(spaceBetweenItem + 10),
+			                        100,
+			                        spaceBetweenItem),
+			               qualities[i]))
+			{
+				QualitySettings.SetQualityLevel(i, true);
+			}
+		}
+
 		GUI.EndScrollView();
 
 		// Bouton de retour au menu principal
