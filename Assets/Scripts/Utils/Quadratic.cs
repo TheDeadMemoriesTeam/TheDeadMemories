@@ -31,7 +31,6 @@ public class Quadratic {
 		{
 			res.Add (-b/(2*a));
 		}
-		Debug.Log(delta);
 		return res;
 	}
 	
