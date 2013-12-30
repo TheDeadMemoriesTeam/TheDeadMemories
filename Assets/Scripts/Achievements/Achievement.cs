@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public abstract class Achievement
 {
@@ -31,6 +32,11 @@ public abstract class Achievement
 	public bool getAchieved()
 	{
 		return _achieved;
+	}
+
+	public void setAchieved()
+	{
+		_achieved = true;
 	}
 	
 	public abstract bool achieved();

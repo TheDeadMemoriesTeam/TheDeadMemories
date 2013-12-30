@@ -11,19 +11,23 @@ public class HumanoidController : MonoBehaviour
 	//manager des skills
 	protected SkillManager skillManager;
 
+	//SoundHitManager
+	private SoundHitManager soundHit;
+
 	public SkillManager getSkillManager()
 	{
 		return skillManager;
 	}
 	
-	void Awake()
+	protected virtual void Awake()
 	{
-		skillManager = GetComponent<SkillManager>();	
+		skillManager = GetComponent<SkillManager>();
+		soundHit = GetComponent<SoundHitManager> ();
 	}
 
 	// Use this for initialization
-	void Start () 
-	{	
+	protected virtual void Start () 
+	{
 	}
 	
 	// Update is called once per frame
@@ -42,6 +46,8 @@ public class HumanoidController : MonoBehaviour
 		skillManager.setPv(skillManager.getPv() + change);
 		if (skillManager.getPv() > skillManager.getPvMax())
 			skillManager.setPv(skillManager.getPvMax());
+		if (change < 0)
+			soundHit.playHitSound ();
 	}
 	
 	public virtual void manaUpdate(int change)

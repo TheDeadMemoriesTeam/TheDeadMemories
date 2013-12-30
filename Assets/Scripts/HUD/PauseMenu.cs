@@ -4,15 +4,15 @@ using System.Collections;
 public class PauseMenu : PauseSystem
 {
 
-	public GUITexture pausePanel;
-	public GUIStyle buttonGUIStyle;
-	public Font buttonFont;
-
+	private bool isOption;
+	public AudioManager aManager;
+	public Terrain terrain;
+	
 	protected override void Start()
 	{
 		base.Start();
-		//on cache le fond du menu pause
-		pausePanel.pixelInset=new Rect(100, -64, 256, 64);
+		isOption = false;
+		terrain = Terrain.activeTerrain;
 	}
 	
 	
@@ -26,47 +26,74 @@ public class PauseMenu : PauseSystem
 				paused = true;
 				
 				UpdateState();
-
-				pausePanel.pixelInset = new Rect(0, 0, Screen.width, Screen.height);
-
 			}
 		}
 	}
-
-
+	
 	void OnGUI()
 	{
-		buttonGUIStyle = new GUIStyle();
-		buttonGUIStyle.normal.textColor = Color.white;
-		buttonGUIStyle.fontStyle=FontStyle.Bold;
-		buttonGUIStyle.fontSize = 40;  
-		buttonGUIStyle.font = buttonFont;
-
 		if(paused)
 		{
+			GUILayout.BeginArea(new Rect(Screen.width/2-50,Screen.height/2-50, 100,100));
 			
-
-
-			GUILayout.BeginArea(new Rect(Screen.width/2-50,Screen.height/2-50, 200,200));
-			
-			if(GUILayout.Button("Continuer", buttonGUIStyle))
+			if(GUILayout.Button("Continuer"))
 			{
 				paused = false;
 				
 				UpdateState();
-
-				//on cache le fond du menu pause
-				pausePanel.pixelInset=new Rect(100, -64, 256, 64);
 			}
-			if(GUILayout.Button("Menu", buttonGUIStyle))
+
+			if(GUILayout.Button("Option"))
 			{
-				player.achievementManager.saveAchievements();
+				isOption = true;
+			}
+
+			if(GUILayout.Button("Menu"))
+			{
 				Application.LoadLevel(0);
 			}
 			
 			GUILayout.EndArea();
-			
+
+			if (isOption == true)
+			{
+				option();
+			}
 		}
+	}
+
+	void option()
+	{
+		GUILayout.BeginArea(new Rect(Screen.width/2+70,Screen.height/2-100, 150,200));
+
+		if(GUILayout.Button("Changer piste"))
+		{
+			aManager.changeTrack();
+		}
+		if(aManager.getPlayState())
+		{
+			if(GUILayout.Button ("Desactiver musique"))
+			{
+				aManager.changePlayState();
+				aManager.pauseTrack();
+			}
+		}
+		else
+		{
+			if(GUILayout.Button ("Réactiver musique"))
+			{
+				aManager.changePlayState();
+				aManager.startTrack();
+			}
+		}
+
+		GUILayout.Label ("Volume de la musique:");
+		aManager.changeVolume (GUILayout.HorizontalSlider (aManager.getVolume(), 0, 1));
+
+		GUILayout.Label ("Distance de rendu:");
+		terrain.detailObjectDistance = GUILayout.HorizontalSlider (terrain.detailObjectDistance, 0, 250);
+
+		GUILayout.EndArea();
 	}
 	
 	
@@ -74,6 +101,12 @@ public class PauseMenu : PauseSystem
 	{
 		base.UpdateState();
 		GetComponent<Inventory>().enabled = !paused;
+
+		isOption = false;
+
+		SkillsGUI[] GUIskills = FindObjectsOfType<SkillsGUI>();
+		for (int i = 0 ; i  < GUIskills.Length ; i++)
+			GUIskills[i].enabled = !paused;	
 	}
 	
 }

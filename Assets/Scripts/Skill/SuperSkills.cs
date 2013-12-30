@@ -18,8 +18,8 @@ public class SuperSkills : DamageSkills
 	}
 
 	// Use this for initialization
-	public SuperSkills (string name, int price, Skills father, float timeIncantation, int manaCost, int damage, float portee, float zone) 
-		:base(name, price, father, timeIncantation, manaCost, damage)
+	public SuperSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float damage, float portee, float zone) 
+		:base(name, description, price, father, timeIncantation, manaCost, particule, damage)
 	{
 		m_portee = portee;
 		m_zone = zone;

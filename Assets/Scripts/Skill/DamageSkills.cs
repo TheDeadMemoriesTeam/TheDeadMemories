@@ -3,23 +3,35 @@ using System.Collections;
 
 public abstract class DamageSkills : ActiveSkills 
 {
-	private int m_damage;
+	protected float m_damage;
+	protected float m_baseDamage;
 	
 	//acsessor
-	public void setDamage(int damage)
+	public void setDamage(float damage)
 	{
 		m_damage = damage;	
 	}
 	
-	public int getDamage()
+	public float getDamage()
 	{
 		return m_damage;	
 	}
+
+	public void setBaseDamage(float baseDamage)
+	{
+		m_baseDamage = baseDamage;	
+	}
+	
+	public float getBaseDamage()
+	{
+		return m_baseDamage;	
+	}
 	
 	// Use this for initialization
-	public DamageSkills (string name, int price, Skills father, float timeIncantation, int manaCost, int damage) 
-		:base(name, price, father, timeIncantation, manaCost)
+	public DamageSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float baseDamage) 
+		:base(name, description, price, father, timeIncantation, manaCost, particule)
 	{
-		m_damage = damage;
+		m_baseDamage = baseDamage;
+		m_damage = m_baseDamage;
 	}
 }

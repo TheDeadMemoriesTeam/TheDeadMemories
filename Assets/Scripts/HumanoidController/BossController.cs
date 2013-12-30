@@ -13,9 +13,9 @@ public class BossController : EnemyController
 		skillManager.setBaseManaMax(50);
 		skillManager.setPhysicalResistance(5f);
 		skillManager.setMagicResistance(5f);
-		
-		damageAttack = -10;
-		damageMagic = -20;
+		skillManager.setBasePhysicAttack(10f);
+		skillManager.setBaseMagicAttack(20f);
+
 		manaCost = -50;
 		timeAttack = 1.5F;
 		probabilityAttack = 0.1F;
@@ -23,14 +23,12 @@ public class BossController : EnemyController
 		xp = 30;
 		
 		timeRegen = 6;
-		
-		gameObject.renderer.material.color = new Color(0.341F, 0.725F, 0.478F);
 	}
 	
 	protected override void Update ()
 	{
 		base.Update();
 		if (skillManager.getPv() <= 0)
-			target.achievementManager.updateKillsBerseker();
+			player.achievementManager.updateKillsBerseker();
 	}
 }

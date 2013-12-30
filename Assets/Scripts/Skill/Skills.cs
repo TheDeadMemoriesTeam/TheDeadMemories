@@ -4,6 +4,7 @@ using System.Collections;
 public abstract class Skills 
 {
 	private string m_name;
+	private string m_description;
 	private int m_price;
 	private bool m_isBought = false;
 	private bool m_isUnlock = false;
@@ -17,7 +18,12 @@ public abstract class Skills
 	{
 		return m_name;	
 	}
-	
+
+	public string getDescription()
+	{
+		return m_description;
+	}
+
 	public int getPrice()
 	{
 		return m_price;	
@@ -42,11 +48,12 @@ public abstract class Skills
 	{
 		return m_isUnlock;	
 	}
-	
+
 	// Use this for initialization
-	public Skills (string name, int price, Skills father) 
+	public Skills (string name, string description, int price, Skills father) 
 	{
-		m_name = name;	
+		m_name = name;
+		m_description = description;
 		m_price = price;
 		m_father = father;
 		
@@ -61,14 +68,14 @@ public abstract class Skills
 			PassiveSkills fatherP = m_father as  PassiveSkills;
 			if(fatherP != null)
 			{
-				if(fatherP.getLvlFirstAd() + fatherP.getLvlSecAd() > lvlToUnlock)
+				if(fatherP.getLvlFirstAd() + fatherP.getLvlSecAd() >= lvlToUnlock)
 					setIsUnlock(true);
 			}
 			
 			BaseSkills fatherB = m_father as BaseSkills;
 			if(fatherB != null)
 			{
-				if(fatherB.getLvlDamage() + fatherB.getLvlAd() > lvlToUnlock)
+				if(fatherB.getLvlDamage() + fatherB.getLvlAd() >= lvlToUnlock)
 					setIsUnlock(true);
 			}
  		}

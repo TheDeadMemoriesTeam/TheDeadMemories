@@ -2,7 +2,11 @@ fileFormatVersion: 2
 guid: 6431d838c916cc34788e45849dd676a9
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - aManager: {instanceID: 0}
+  - gameObjectTerrain: {instanceID: 0}
+  - terrain: {instanceID: 0}
+  - ter: {fileID: 15600000, guid: 5790bad3ce4d5e14fad1ed288b16b60f, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
