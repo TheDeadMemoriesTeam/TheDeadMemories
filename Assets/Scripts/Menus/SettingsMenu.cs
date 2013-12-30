@@ -73,10 +73,19 @@ public class SettingsMenu : SubMenu
 		                                         	scrollPositionLeft,
 		                                         	new Rect(0, paddingTop, windowWidth/2-20, resolutions.Length * spaceBetweenItem));
 
+		// Récupère la résolution actuelle
+		Resolution currentResolution = Screen.currentResolution;
 		// Affiche les résolutions possibles
 		for (int i = 0 ; i < resolutions.Length ; i++)
 		{
-			string textButton = resolutions[i].width.ToString() + "*" + resolutions[i].height.ToString();
+			// Grise le bouton si c'est la résolution actuelle
+			if (resolutions[i].width == currentResolution.width 
+			    && resolutions[i].height == currentResolution.height)
+				GUI.enabled = false;
+			else
+				GUI.enabled = true;
+
+			string textButton = resolutions[i].width.ToString() + " x " + resolutions[i].height.ToString();
 			int resButtonWidth = textButton.Length * letterSize;
 			if (GUI.Button(new Rect(20,
 			                   		paddingTop + i*(spaceBetweenItem + 10),
@@ -90,7 +99,8 @@ public class SettingsMenu : SubMenu
 			if (resButtonWidth > maxButtonSize)
 				maxButtonSize = resButtonWidth;
 		}
-		
+		GUI.enabled = true;
+
 		GUI.EndScrollView();
 
 
@@ -102,15 +112,23 @@ public class SettingsMenu : SubMenu
 		**********************************************/
 
 		string[] qualities = QualitySettings.names;
-
+		
 		// Scroll bar droite
 		scrollPositionRight = GUI.BeginScrollView(	new Rect(windowWidth/2, paddingTop, windowWidth/2-20, 0.68f*windowHeight),
 		                                          	scrollPositionRight,
 		                                          	new Rect(windowWidth/2, paddingTop, windowWidth/2-40, qualities.Length * spaceBetweenItem));
 
+		// Récupère le niveau de qualité actuel
+		int levelQuality = QualitySettings.GetQualityLevel();
 		// Affiche les qualités graphiques possibles
 		for (int i = 0 ; i < qualities.Length ; i++)
 		{
+			// Grise le bouton si c'est le niveau de qualité déjà utilisé
+			if (i == levelQuality)
+				GUI.enabled = false;
+			else
+				GUI.enabled = true;
+
 			if (GUI.Button(new Rect(windowWidth/2 + 20,
 			                        paddingTop + i*(spaceBetweenItem + 10),
 			                        100,
@@ -120,6 +138,7 @@ public class SettingsMenu : SubMenu
 				QualitySettings.SetQualityLevel(i, true);
 			}
 		}
+		GUI.enabled = true;
 
 		GUI.EndScrollView();
 
