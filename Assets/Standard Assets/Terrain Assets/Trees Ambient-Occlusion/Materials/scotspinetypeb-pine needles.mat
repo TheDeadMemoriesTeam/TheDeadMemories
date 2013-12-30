@@ -27,6 +27,10 @@ Material:
         second: .669811308
       data:
         first:
+          name: _SquashAmount
+        second: 1.5
+      data:
+        first:
           name: _BaseLight
         second: .122641511
       data:
@@ -49,7 +53,7 @@ Material:
       data:
         first:
           name: _Scale
-        second: {r: 1, g: 1, b: 1, a: 1}
+        second: {r: 1.5, g: 1.5, b: 1.5, a: 1.5}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
