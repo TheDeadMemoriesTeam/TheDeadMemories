@@ -13,10 +13,14 @@ public class AchievementsSaveReader : MonoBehaviour
 	// Liste des achievements accomplis
 	private List<string> achievementsCompleted;
 
+	void Awake()
+	{
+		readAchievementsSave();
+	}
+
 	// Use this for initialization
 	void Start ()
 	{
-		readAchievementsSave();
 	}
 	
 	// Update is called once per frame
@@ -39,8 +43,6 @@ public class AchievementsSaveReader : MonoBehaviour
 			achievementsCompleted = formater.Deserialize(file) as List<string>;
 			
 			file.Close();
-			
-			Debug.Log("load achievements");
 		}
 		else
 			achievementsCompleted = null;
