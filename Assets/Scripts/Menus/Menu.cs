@@ -9,7 +9,7 @@ public class Menu : MonoBehaviour
 	// Use this for initialization
 	protected virtual void Start () 
 	{
-		cam = FindObjectOfType(System.Type.GetType("CameraMenu")) as CameraMenu;
+		cam = FindObjectOfType<CameraMenu>();
 	}
 	
 	// Update is called once per frame
