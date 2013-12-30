@@ -60,7 +60,7 @@ public class AchievMenu : SubMenu
 		// Zone de dessin + scroll bars
 		GUILayout.BeginArea(new Rect(10, 20, windowWidth, windowHeight));
 		
-		scrollPosition = GUI.BeginScrollView(	new Rect(0, 10, windowWidth-20, windowHeight-40),
+		scrollPosition = GUI.BeginScrollView(	new Rect(0, 10, windowWidth-20, 0.75f*windowHeight),
 		                                     	scrollPosition,
 		                                        new Rect(0, 10, windowWidth-40, achievementsCompleted.Count*spaceBetweenItem + paddingTop));
 
@@ -76,6 +76,19 @@ public class AchievMenu : SubMenu
 		}
 
 		GUI.EndScrollView();
+
+		// Bouton de retour au menu principal
+		float buttonWidth = 0.33f * windowWidth;
+		float buttonHeight = 0.1f * windowHeight;
+		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth/2,
+		                         windowHeight - 2*buttonHeight,
+		                          buttonWidth,
+		                         buttonHeight),
+		           		"Return"))
+		{
+			setInfFrontOf(false);
+			cam.goToMainMenu();
+		}
 		
 		GUILayout.EndArea();
 	}

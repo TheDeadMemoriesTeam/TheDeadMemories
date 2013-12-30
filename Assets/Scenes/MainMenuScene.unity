@@ -238,6 +238,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf394718b43c9c46bd7d16d6503ccf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isQuitButton: 0
   isPlayButton: 0
   isSettingsButton: 1
@@ -497,6 +498,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf394718b43c9c46bd7d16d6503ccf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isQuitButton: 0
   isPlayButton: 0
   isSettingsButton: 0
@@ -598,6 +600,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf394718b43c9c46bd7d16d6503ccf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isQuitButton: 1
   isPlayButton: 0
   isSettingsButton: 0
@@ -990,6 +993,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf394718b43c9c46bd7d16d6503ccf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isQuitButton: 0
   isPlayButton: 0
   isSettingsButton: 0
@@ -1302,6 +1306,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3bf394718b43c9c46bd7d16d6503ccf0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isQuitButton: 0
   isPlayButton: 1
   isSettingsButton: 0
@@ -1762,6 +1767,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb00346f943fb3041a5e93aa096333df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isNewButton: 0
   isLoadButton: 1
   isReturn: 0
@@ -1832,6 +1838,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb00346f943fb3041a5e93aa096333df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isNewButton: 0
   isLoadButton: 0
   isReturn: 1
@@ -2038,9 +2045,9 @@ Transform:
   m_Children:
   - {fileID: 1972925598}
   - {fileID: 1853718548}
-  - {fileID: 1819776200}
-  - {fileID: 422019596}
   - {fileID: 1685273988}
+  - {fileID: 422019596}
+  - {fileID: 1819776200}
   m_Father: {fileID: 0}
 --- !u!1 &1522193434
 GameObject:
@@ -2547,6 +2554,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50cdb9a8ed3968146abede7b02209ffd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1533108016}
 --- !u!65 &1819776203
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2602,6 +2610,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb00346f943fb3041a5e93aa096333df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
   isNewButton: 1
   isLoadButton: 0
   isReturn: 0
@@ -2727,6 +2736,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9edd2a9a9f0649c4880d8233e871098b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1533108016}
 --- !u!65 &1853718550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2901,6 +2911,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83bd40832a383e34998e940689979cd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1533108016}
 --- !u!1001 &1999584582
 Prefab:
   m_ObjectHideFlags: 0
