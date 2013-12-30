@@ -94,6 +94,8 @@ public class SettingsMenu : SubMenu
 			           		textButton))
 			{
 				Screen.SetResolution(resolutions[i].width, resolutions[i].height, true);
+				PlayerPrefs.SetInt("ResolutionWidth", resolutions[i].width);
+				PlayerPrefs.SetInt("ResolutionHeight", resolutions[i].height);
 			}
 
 			if (resButtonWidth > maxButtonSize)
@@ -136,6 +138,7 @@ public class SettingsMenu : SubMenu
 			               qualities[i]))
 			{
 				QualitySettings.SetQualityLevel(i, true);
+				PlayerPrefs.SetInt("qualityLevel", i);
 			}
 		}
 		GUI.enabled = true;
