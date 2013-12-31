@@ -50,11 +50,12 @@ public class SkillsGUI : MonoBehaviour
 	{
 		if (!isActive)
 			return;
-		
+
+		//update les stats skills
+		player.getSkillManager().updateSkill();
+
 		if (Input.GetKeyUp(KeyCode.P))
 		{
-			//les stats skills
-			player.getSkillManager().updateSkill();
 			// Met le joueur en pause pour qu'il ne se déplace pas en meme temps qu'il achète ses skills
 			player.onPause();
 			// Change l'état affiché/masqué du panneau d'achat des skills
@@ -561,15 +562,15 @@ public class SkillsGUI : MonoBehaviour
 	{
 		if (first)
 		{
+			player.experienceUpdate(-skillRank.getCostIncFirstAd());
 			int newLevel = skillRank.getLvlFirstAd() + 1;
 			skillRank.setLvlFirstAd(newLevel);
-			player.experienceUpdate(-skillRank.getCostIncFirstAd());
 		}
 		else
 		{
+			player.experienceUpdate(-skillRank.getCostIncSecAd());
 			int newLevel = skillRank.getLvlSecAd() + 1;
 			skillRank.setLvlSecAd(newLevel);
-			player.experienceUpdate(-skillRank.getCostIncSecAd());
 		}
 	}
 
@@ -583,15 +584,15 @@ public class SkillsGUI : MonoBehaviour
 	{
 		if (first)
 		{
+			player.experienceUpdate(-skillRank.getCostIncDamage());
 			int newLevel = skillRank.getLvlDamage() + 1;
 			skillRank.setLvlDamage(newLevel);
-			player.experienceUpdate(-skillRank.getCostIncDamage());
 		}
 		else
 		{
+			player.experienceUpdate(-skillRank.getCostIncAd());
 			int newLevel = skillRank.getLvlAd() + 1;
 			skillRank.setLvlAd(newLevel);
-			player.experienceUpdate(-skillRank.getCostIncAd());
 		}
 	}
 

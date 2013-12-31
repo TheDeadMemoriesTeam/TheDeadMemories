@@ -24,4 +24,9 @@ public class SuperSkills : DamageSkills
 		m_portee = portee;
 		m_zone = zone;
 	}
+
+	public void launch()
+	{
+
+	}
 }
