@@ -40,7 +40,11 @@ public class EnemySight : MonoBehaviour
     
     void Update ()
     {
-		playerLastDirection = player.transform.position - personalLastSighting;
+		if (personalLastSighting != Utils.GetInfiniteVector3())
+			playerLastDirection = player.transform.position - personalLastSighting;
+		else
+			playerLastDirection = Utils.GetInfiniteVector3();
+
 		playerInSight = false;
 		if (getDistanceToPlayer() < viewingDistance)
 			updateSighting();
