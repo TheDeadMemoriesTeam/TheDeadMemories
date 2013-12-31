@@ -25,7 +25,7 @@ public class AchievMenu : SubMenu
 	private int windowHeight;
 
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 		// Récupère la liste des achievements accomplis
 		AchievementsSaveReader asr = FindObjectOfType<AchievementsSaveReader>();

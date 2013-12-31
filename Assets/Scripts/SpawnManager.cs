@@ -28,8 +28,8 @@ public class SpawnManager : MonoBehaviour
 	{
 		spawns = FindObjectsOfType(System.Type.GetType("SpawnController")) as SpawnController[];
 		
-		// Start with 4 ennemies
-		for (int i=0; i < 4; ++i)
+		// Start with 20 ennemies
+		for (int i=0; i < 20; ++i)
 			addEnnemy();
 		
 		timeLastSpawn = Time.time;

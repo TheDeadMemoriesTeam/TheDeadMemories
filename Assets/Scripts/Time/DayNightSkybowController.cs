@@ -3,7 +3,6 @@ using System.Collections;
 
 public class DayNightSkybowController : MonoBehaviour {
 
-	public Camera camera;
 	public DayNightCycleManager dayNightCycle;
 	public Color lightestColor;
 

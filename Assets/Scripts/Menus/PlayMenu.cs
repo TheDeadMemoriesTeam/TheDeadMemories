@@ -9,7 +9,7 @@ public class PlayMenu : Menu
 	public bool isReturn = false;
 
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 		base.Start();
 	}

@@ -26,7 +26,7 @@ public class SettingsMenu : SubMenu
 	private int maxButtonSize = 0;
 
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 	}
 	

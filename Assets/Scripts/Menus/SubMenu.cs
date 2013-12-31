@@ -7,7 +7,7 @@ public class SubMenu : Menu
 	protected bool inFrontOf = false;
 
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 		base.Start();
 	}
