@@ -27,6 +27,7 @@ public class AchievMenu : SubMenu
 	// Use this for initialization
 	protected override void Start () 
 	{
+		base.Start();
 		// Récupère la liste des achievements accomplis
 		AchievementsSaveReader asr = FindObjectOfType<AchievementsSaveReader>();
 		achievementsCompleted = asr.getAchievementsCompleted();

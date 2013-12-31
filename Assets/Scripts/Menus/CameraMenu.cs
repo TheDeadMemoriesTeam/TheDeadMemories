@@ -9,6 +9,7 @@ public class CameraMenu : CameraPath
 	// Référence vers les différents menus
 	private AchievMenu achievMenu;
 	private SettingsMenu settingsMenu;
+	private AdvancedSettingsMenu advencedSettingsMenu;
 	private Credits credits;
 
 	// Use this for initialization
@@ -17,6 +18,7 @@ public class CameraMenu : CameraPath
 		base.Start();
 		achievMenu = FindObjectOfType<AchievMenu>();
 		settingsMenu = FindObjectOfType<SettingsMenu>();
+		advencedSettingsMenu = FindObjectOfType<AdvancedSettingsMenu>();
 		credits = FindObjectOfType<Credits>();
 	}
 	
@@ -49,6 +51,12 @@ public class CameraMenu : CameraPath
 					desactiveRayCast();
 					credits.setInfFrontOf(true);
 				}
+				// Si on est en face du menu options avancées
+				else if (rayHit.collider.gameObject.name == "advencedSettingsTomb")
+				{
+					desactiveRayCast();
+					advencedSettingsMenu.setInfFrontOf(true);
+				}
 			}
 		}
 	}
@@ -79,7 +87,17 @@ public class CameraMenu : CameraPath
 		goTo(8f, 1.5f, 15f);
 	}
 
+	public void goToAdvancedSettingsMenu()
+	{
+		goTo(19f, 1.5f, 36f);
+	}
+
 	public void activeRayCast()
+	{
+		Invoke("setActiveRayCast", 1f);
+	}
+
+	private void setActiveRayCast()
 	{
 		rayCast = true;
 	}
