@@ -24,7 +24,7 @@ public class WaysNetwork : MonoBehaviour {
 		nodes = nodesList.ToArray();
 
 		if (nodes.Length < 2)
-			Debug.Log ("WaysNetwork: Less that two nodes where detected. This can lead to expected behaviours.");
+			Debug.LogWarning ("WaysNetwork: Less that two nodes where detected. This can lead to expected behaviours.");
 
 		// Check attributs droppableItems and itemsDropProbability
 		bool validAttributs = true;
@@ -135,11 +135,10 @@ public class WaysNetwork : MonoBehaviour {
 			}
 		}
 		if (path.Count < 1 ||path.First() != from || path.Last() != to) {
-			Debug.Log("WaysNetwork: Can not find a path between two nodes. "
-			          + "You should add some arcs to avoid this. "
-			          + "(Position of the affected WaysNetwork: " + transform.position.ToString() + ")");
+			Debug.LogWarning("WaysNetwork: Can not find a path between two nodes. "
+			          		 + "You should add some arcs to avoid this. "
+			          		 + "(Position of the affected WaysNetwork: " + transform.position.ToString() + ")");
 		}
-		Debug.Log (path.Count);
 		return path.ToArray();
 	}
 
