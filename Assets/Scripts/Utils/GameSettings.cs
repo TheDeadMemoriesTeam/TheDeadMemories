@@ -4,6 +4,7 @@ using System.Collections;
 // Charge les réglages du jeu (qualité graphique, résolution, etc..)
 public class GameSettings : MonoBehaviour 
 {
+	// TODO add terrain pour modifier
 
 	// Use this for initialization
 	void Start () 

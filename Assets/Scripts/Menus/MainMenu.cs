@@ -11,7 +11,7 @@ public class MainMenu : Menu
 	public bool isCreditsButton = false;
 
 	// Use this for initialization
-	void Start () 
+	protected override void Start () 
 	{
 		base.Start();
 		AchievementsSaveReader asr = FindObjectOfType<AchievementsSaveReader>();
