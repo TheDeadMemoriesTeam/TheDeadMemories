@@ -12,7 +12,7 @@ GameObject:
   - 23: {fileID: 2300000}
   - 95: {fileID: 9500000}
   m_Layer: 0
-  m_Name: Ranger
+  m_Name: ennemi ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49,7 +49,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_LocalRotation: {x: -.707106829, y: 0, z: -0, w: .707106829}
-  m_LocalPosition: {x: -.648979187, y: -.841967344, z: 0}
+  m_LocalPosition: {x: -0, y: 0, z: 0}
   m_LocalScale: {x: 10, y: 10, z: 10}
   m_Children: []
   m_Father: {fileID: 400002}
@@ -92,7 +92,7 @@ MeshFilter:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
-  m_Mesh: {fileID: 4300000, guid: 6b784346178fcdd4f9bdacf31d29763b, type: 3}
+  m_Mesh: {fileID: 4300000, guid: 3066d8f8d856e04479c40534d916bdf0, type: 3}
 --- !u!82 &8200000
 AudioSource:
   m_ObjectHideFlags: 1
@@ -159,7 +159,7 @@ Animator:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100000}
   m_Enabled: 1
-  m_Avatar: {fileID: 9000000, guid: 6b784346178fcdd4f9bdacf31d29763b, type: 3}
+  m_Avatar: {fileID: 9000000, guid: 3066d8f8d856e04479c40534d916bdf0, type: 3}
   m_Controller: {fileID: 9100000, guid: 7cbbfd17e5cca1a4bad866457d41093f, type: 2}
   m_CullingMode: 0
   m_ApplyRootMotion: 1
