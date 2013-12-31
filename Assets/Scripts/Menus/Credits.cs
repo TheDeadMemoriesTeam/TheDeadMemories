@@ -23,7 +23,7 @@ public class Credits : SubMenu
 	{
 		timeCredit = 0;
 		currentText = 0;
-		intervalTime = 4f;
+		intervalTime = 15f;
 		initText ();
 		listCredit [currentText].renderer.enabled = true;
 		Color couleur = new Color(1f, 1f, 1f, 0f);
@@ -41,25 +41,57 @@ public class Credits : SubMenu
 				curText = listCredit[i].GetComponent<TextMesh>();
 				curText.text = "Credit";
 				break;
+			case "txt_Coord":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Coordinateurs du projet: \n Guillaume Pascal \n Romain Seyer";
+				break;
 			case "txt_Dev":
 				curText = listCredit[i].GetComponent<TextMesh>();
-				curText.text = "Developpeur: \n BA";
+				curText.text = "Developpeurs : \n Geoffrey Clauzier \n Christophe Gaillard";
+				break;
+			case "txt_Dev2":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Clement Janisset \n Arnaud Moncel";
+				break;
+			case "txt_Dev3":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Guillaume Pascal  \n Alexandre Raberin";
+				break;
+			case "txt_DevPonct":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Avec la participation ponctuelle de : \n Elodie Estivale \n Volodia Mandaud";
 				break;
 			case "txt_Mode":
 				curText = listCredit[i].GetComponent<TextMesh>();
-				curText.text = "Modeleur";
+				curText.text = "Graphistes : \n Thibaut Grandclement \n Romain Seyer";
+				break;
+			case "txt_ModePonct":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Avec la participation ponctuelle de : \n Thibault Bertrand \n Gregory Gounon";
+				break;
+			case "txt_ModePonct2":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Alexis Masclaux \n Bastien Mogeot";
+				break;
+			case "txt_ModePonct3":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Leo Solvignon \n Damien Valla";
 				break;
 			case "txt_Musique":
 				curText = listCredit[i].GetComponent<TextMesh>();
-				curText.text = "Musique";
+				curText.text = "Musique : \n Dawid Jaworski \n Plastic3";
+				break;
+			case "txt_Musique2":
+				curText = listCredit[i].GetComponent<TextMesh>();
+				curText.text = "Koke Nez Gmez \n Iska";
 				break;
 			case "txt_Bruitage":
 				curText = listCredit[i].GetComponent<TextMesh>();
-				curText.text = "Bruitage";
+				curText.text = "Bruitage : \n universal-soundbank.com \n sound-fishing.net \n Clement Janisset";
 				break;
 			case "txt_Scenario":
 				curText = listCredit[i].GetComponent<TextMesh>();
-				curText.text = "Scenario";
+				curText.text = "Scenario : ";
 				break;
 			}
 		}
@@ -93,6 +125,7 @@ public class Credits : SubMenu
 		timeCredit += Time.deltaTime;
 		Color couleur = new Color(1f, 1f, 1f, (Mathf.Sin((timeCredit/intervalTime)*Mathf.PI)));
 		listCredit [currentText].renderer.material.color = couleur;
+		Debug.Log (listCredit [currentText].name.ToString ());
 	}
 	
 	//Change le texte en cours d'affichage
