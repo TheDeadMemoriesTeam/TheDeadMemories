@@ -152,7 +152,7 @@ public class SettingsMenu : SubMenu
 
 		// Bouton de valeurs par défaut
 		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth - 20,
-		                         windowHeight - 3.2f*buttonHeight,
+		                         paddingTop + 0.57f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
 		               "Default Values"))
@@ -168,7 +168,7 @@ public class SettingsMenu : SubMenu
 
 		// Bouton des options avancées
 		if (GUI.Button(	new Rect((windowWidth-10)/2 + 10,
-		                         windowHeight - 3.2f*buttonHeight,
+		                         paddingTop + 0.57f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
 		               "Advanced Settings"))
@@ -180,7 +180,7 @@ public class SettingsMenu : SubMenu
 
 		// Bouton de retour au menu principal
 		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth/2,
-		                         windowHeight - 2*buttonHeight,
+		                         paddingTop + buttonHeight + 0.57f*windowHeight + 10,
 		                         buttonWidth,
 		                         buttonHeight),
 		               "Return"))

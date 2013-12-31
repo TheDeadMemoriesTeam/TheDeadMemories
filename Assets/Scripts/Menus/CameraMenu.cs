@@ -94,7 +94,7 @@ public class CameraMenu : CameraPath
 
 	public void activeRayCast()
 	{
-		Invoke("setActiveRayCast", 1f);
+		Invoke("setActiveRayCast", 0.5f);
 	}
 
 	private void setActiveRayCast()

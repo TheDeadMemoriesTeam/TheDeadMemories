@@ -131,22 +131,22 @@ public class EnemyController : HumanoidController
 		// If near the last personal sighting...
 		if(nav.remainingDistance < nav.stoppingDistance)
 		{
-			if (enemySight.playerLastDirection != Utils.GetInfiniteVector3())
+			// Try to find the player in a possible direction
+			if (chaseTimer == 0f && enemySight.playerLastDirection != Utils.GetInfiniteVector3())
 			{
 				Debug.Log (enemySight.playerLastDirection.ToString());
 				nav.SetDestination(nav.destination + enemySight.playerLastDirection);
 			}
-			else{
-				// ... or increment the timer.
-				chaseTimer += Time.deltaTime;
-				
-				// If the timer exceeds the wait time...
-				if(chaseTimer >= chaseWaitTime)
-				{
-					// ... reset last global sighting, the last personal sighting and the timer.
-					enemySight.personalLastSighting = Utils.GetInfiniteVector3();
-					chaseTimer = 0f;
-				}
+
+			// ... increment the timer.
+			chaseTimer += Time.deltaTime;
+
+			// If the timer exceeds the wait time...
+			if(chaseTimer >= chaseWaitTime)
+			{
+				// ... reset last global sighting, the last personal sighting and the timer.
+				enemySight.personalLastSighting = Utils.GetInfiniteVector3();
+				chaseTimer = 0f;
 			}
 		}
 		else
