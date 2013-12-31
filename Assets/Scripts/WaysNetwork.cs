@@ -105,7 +105,6 @@ public class WaysNetwork : MonoBehaviour {
 		{
 			// Extract the node with the minimal distance
 			Vector3 u = F.First();
-			float dmin = float.PositiveInfinity;
 			F.Sort ( (i1, i2) => ((d[i1] < d[i2]) ? -1 : ((d[i1] == d[i2]) ? 0 : 1)) );
 			u = F[0];
 			F.RemoveAt(0);
