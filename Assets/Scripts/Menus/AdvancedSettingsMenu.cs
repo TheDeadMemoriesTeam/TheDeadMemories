@@ -6,6 +6,9 @@ public class AdvancedSettingsMenu : SubMenu
 	// Terrain du jeu
 	private Terrain ground;
 
+	// Position de la scroll bar
+	Vector2 scrollBarPosition = Vector2.zero;
+
 	// variable de tailles (en %)
 	private float coefWidth = 0.55f;
 	private float coefHeight = 0.75f;
@@ -57,6 +60,8 @@ public class AdvancedSettingsMenu : SubMenu
 
 		GUILayout.Label ("Advanced Settings : ");
 
+		scrollBarPosition = GUILayout.BeginScrollView(scrollBarPosition, GUILayout.Height(0.58f * windowHeight));
+
 		// Sliders de réglages
 		float detailDistance = PlayerPrefs.GetFloat("detailDistance");
 		GUILayout.Label ("Details distance : " + truncateValue(detailDistance, 0));
@@ -78,13 +83,14 @@ public class AdvancedSettingsMenu : SubMenu
 		ground.terrainData.wavingGrassStrength = GUILayout.HorizontalSlider (windSpeed, 0, 1, GUILayout.Width(sliderWidth), GUILayout.Height(sliderHeight));
 		PlayerPrefs.SetFloat("windSpeed", ground.terrainData.wavingGrassStrength);
 
+		GUILayout.EndScrollView();
 
 		float buttonWidth = 0.33f * windowWidth;
 		float buttonHeight = 0.1f * windowHeight;
 		
 		// Bouton de valeurs par défaut
 		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth - 20,
-		                         windowHeight - 3.2f*buttonHeight,
+		                         0.68f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
 		               "Default Values"))
@@ -98,7 +104,7 @@ public class AdvancedSettingsMenu : SubMenu
 		
 		// Bouton des options avancées
 		if (GUI.Button(	new Rect((windowWidth-10)/2 + 10,
-		                         windowHeight - 3.2f*buttonHeight,
+		                         0.68f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
 		               "Return"))
@@ -109,12 +115,13 @@ public class AdvancedSettingsMenu : SubMenu
 		
 		// Bouton de retour au menu principal
 		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth/2,
-		                         windowHeight - 2*buttonHeight,
+		                         0.68f*windowHeight + buttonHeight + 10,
 		                         buttonWidth,
 		                         buttonHeight),
 		               "Return Settings"))
 		{
 			setInfFrontOf(false);
+			cam.activeRayCast();
 			cam.goToSettingsMenu();
 		}
 		
