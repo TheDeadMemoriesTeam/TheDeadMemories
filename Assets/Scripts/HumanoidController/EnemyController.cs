@@ -35,6 +35,9 @@ public class EnemyController : HumanoidController
 	
 	private bool inCrypte = false;
 
+	private Animator anim;
+	private EnemyHashIDs hashIDs;
+
 	protected override void Awake ()
 	{
 		base.Awake();
@@ -46,6 +49,11 @@ public class EnemyController : HumanoidController
 		shooting = false;
 		waysNetwork = null;
 		patrolWayPoints = new Vector3[0];
+
+		// Animations
+		hashIDs = GetComponent<EnemyHashIDs>();
+		anim = GetComponentInChildren<Animator>();
+		anim.SetLayerWeight(0,1f);
 	}
 
 	// Use this for initialization
@@ -81,6 +89,7 @@ public class EnemyController : HumanoidController
 		}
 
 		shooting = false;
+		anim.SetBool(hashIDs.isHitting, false);
 
 		// If the player is in sight and is alive...
 		if(enemySight.playerInSight && enemySight.getDistanceToPlayer() < shootDistance && player.getSkillManager().getPv() > 0f)
@@ -103,6 +112,7 @@ public class EnemyController : HumanoidController
 		// Stop the enemy where it is.
 		nav.Stop();
 		shooting = true;
+		anim.SetBool(hashIDs.isHitting, true);
 	}
 	
 	
