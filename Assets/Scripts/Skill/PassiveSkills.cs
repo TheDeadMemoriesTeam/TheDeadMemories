@@ -43,7 +43,7 @@ public class PassiveSkills : Skills
 	
 	public int getCostIncFirstAd()
 	{
-		return (int)(m_costIncFirstAd + Mathf.Exp(m_lvlFirstAd) - Mathf.Exp(m_lvlFirstAd-1)*2);	
+		return (int)(m_costIncFirstAd + Mathf.Pow((m_lvlFirstAd/2),3)*5 + (Mathf.Cos(m_lvlFirstAd)*1.5*Mathf.Pow(m_lvlFirstAd,2)));	
 	}
 	
 	public void setCostIncSecAd(int cost)
@@ -53,7 +53,7 @@ public class PassiveSkills : Skills
 	
 	public int getCostIncSecAd()
 	{
-		return (int)(m_costIncSecAd + Mathf.Exp(m_lvlSecAd) - Mathf.Exp(m_lvlSecAd-1)*2);	
+		return (int)(m_costIncSecAd + Mathf.Pow((m_lvlSecAd/2),3)*5 + (Mathf.Cos(m_lvlSecAd)*1.5*Mathf.Pow(m_lvlSecAd,2)));	
 	}
 
 	public string getNameFirstAd()
