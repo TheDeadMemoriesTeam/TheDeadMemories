@@ -10,7 +10,7 @@ public class SkillsGUI : MonoBehaviour
 	private bool skillsOpen = false;
 	
 	//Fenetre d'achat des skills
-	private Rect skillsWindowRect = new Rect(0,0, Screen.width, Screen.height);
+	private Rect skillsWindowRect;
 
 	// Joueur
 	public PlayerController player;
@@ -85,7 +85,10 @@ public class SkillsGUI : MonoBehaviour
 	{
 		// Ouvre la fenetre des arbres de compétences
 		if (isActive && skillsOpen)
+		{
+			skillsWindowRect = new Rect(0,0, Screen.width, Screen.height);
 			skillsWindowRect = GUI.Window(1, skillsWindowRect, skillsWindowOpen, "Arbre des compétences");
+		}
 	}
 
 
