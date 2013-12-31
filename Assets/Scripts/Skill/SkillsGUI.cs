@@ -51,11 +51,10 @@ public class SkillsGUI : MonoBehaviour
 		if (!isActive)
 			return;
 
-		//update les stats skills
-		player.getSkillManager().updateSkill();
-
 		if (Input.GetKeyUp(KeyCode.P))
 		{
+			//update les stats skills
+			player.getSkillManager().updateSkill();
 			// Met le joueur en pause pour qu'il ne se déplace pas en meme temps qu'il achète ses skills
 			player.onPause();
 			// Change l'état affiché/masqué du panneau d'achat des skills
