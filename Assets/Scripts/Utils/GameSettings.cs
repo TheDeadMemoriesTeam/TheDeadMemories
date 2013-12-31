@@ -8,7 +8,6 @@ public class GameSettings : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		//PlayerPrefs.DeleteAll();
 		QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("qualityLevel", 3), true);
 		Screen.SetResolution(PlayerPrefs.GetInt("ResolutionWidth", Screen.currentResolution.width),
 		                     PlayerPrefs.GetInt("ResolutionHeight", Screen.currentResolution.height),
