@@ -26,10 +26,7 @@ public class SpawnController : MonoBehaviour
 	// The Spawn Point won't be active if the player is around
 	public bool isActive()
 	{
-		return !(player.transform.position.x-spawnRange <= transform.position.x+spawnRange &&
-				player.transform.position.x+spawnRange >= transform.position.x-spawnRange &&
-				player.transform.position.z-spawnRange <= transform.position.z+spawnRange &&
-				player.transform.position.z+spawnRange >= transform.position.z-spawnRange);
+		return (Vector3.Distance(player.transform.position, transform.position) > spawnRange + 25f);
 	}
 	
 	// Create an ennemy
