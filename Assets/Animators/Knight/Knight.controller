@@ -36,7 +36,7 @@ AnimatorController:
     m_Name: Hitting
     m_StateMachine: {fileID: 110795075}
     m_Mask: {fileID: 101100000, guid: 1f07194a006bebb45be29deb4b8cdcc4, type: 2}
-    m_BlendingMode: 0
+    m_BlendingMode: 1
     m_SyncedLayerIndex: -1
     m_StateMachineMotionSetIndex: 0
     m_DefaultWeight: 1
@@ -215,13 +215,13 @@ StateMachine:
   m_ChildStateMachinePosition: []
   m_OrderedTransitions:
     data:
-      first: {fileID: 110256842}
-      second:
-      - {fileID: 110128664}
-    data:
       first: {fileID: 110275017}
       second:
       - {fileID: 110192327}
+    data:
+      first: {fileID: 110256842}
+      second:
+      - {fileID: 110128664}
   m_MotionSetCount: 1
   m_AnyStatePosition: {x: 50, y: 20, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}

@@ -33,6 +33,7 @@ GameObject:
   - 114: {fileID: 11400008}
   - 82: {fileID: 8200000}
   - 114: {fileID: 11400004}
+  - 114: {fileID: 11400010}
   m_Layer: 0
   m_Name: melee
   m_TagString: Enemy
@@ -2167,6 +2168,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maximumTimeDelay: 1.5
   minimumTimeDelay: .800000012
+--- !u!114 &11400010
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 100002}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b1b82216a5d6db49b0fe3219194bb36, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isHitting: 0
+  isWalking: 0
 --- !u!136 &13600000
 CapsuleCollider:
   m_ObjectHideFlags: 1
