@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Credits : SubMenu 
+public class AdvancedSettingsMenu : SubMenu 
 {
 
 	// Use this for initialization
@@ -19,6 +19,7 @@ public class Credits : SubMenu
 	{
 		if (!inFrontOf)
 			return;
-		Debug.Log("dessine credits");
+
+		Debug.Log("options avancées");
 	}
 }

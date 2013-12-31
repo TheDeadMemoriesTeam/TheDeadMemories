@@ -4,13 +4,12 @@ using System.Collections;
 public class Menu : MonoBehaviour 
 {
 	// Caméra du menu
-	public CameraMenu cam;
+	protected CameraMenu cam;
 
 	// Use this for initialization
 	protected virtual void Start () 
 	{
-		if (cam == null)
-			cam = FindObjectOfType<CameraMenu>();
+		cam = FindObjectOfType<CameraMenu>();
 	}
 	
 	// Update is called once per frame

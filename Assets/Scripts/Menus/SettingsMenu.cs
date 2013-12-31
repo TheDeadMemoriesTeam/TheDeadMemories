@@ -12,13 +12,13 @@ public class SettingsMenu : SubMenu
 	private Vector2 scrollPositionRight = Vector2.zero;
 	
 	// variables de placement (en pixels)
-	public int spaceBetweenItem = 30;
-	public int paddingTop = 35;
-	public int letterSize = 9;
+	private int spaceBetweenItem = 30;
+	private int paddingTop = 35;
+	private int letterSize = 9;
 
 	// variable de tailles (en %)
-	public float coefWidth = 0.75f;
-	public float coefHeight = 0.8f;
+	private float coefWidth = 0.75f;
+	private float coefHeight = 0.8f;
 	
 	// Déterminés automatiquement
 	private int windowWidth;
@@ -28,6 +28,7 @@ public class SettingsMenu : SubMenu
 	// Use this for initialization
 	protected override void Start () 
 	{
+		base.Start();
 	}
 	
 	// Update is called once per frame
@@ -69,9 +70,9 @@ public class SettingsMenu : SubMenu
 		Resolution[] resolutions = Screen.resolutions;
 
 		// Scroll bar gauche
-		scrollPositionLeft = GUI.BeginScrollView(	new Rect(0, paddingTop, windowWidth/2, 0.68f*windowHeight),
+		scrollPositionLeft = GUI.BeginScrollView(	new Rect(0, paddingTop, windowWidth/2, 0.55f*windowHeight),
 		                                         	scrollPositionLeft,
-		                                         	new Rect(0, paddingTop, windowWidth/2-20, resolutions.Length * spaceBetweenItem));
+		                                         	new Rect(0, paddingTop, windowWidth/2-20, resolutions.Length * (spaceBetweenItem + 10)));
 
 		// Récupère la résolution actuelle
 		Resolution currentResolution = Screen.currentResolution;
@@ -116,9 +117,9 @@ public class SettingsMenu : SubMenu
 		string[] qualities = QualitySettings.names;
 		
 		// Scroll bar droite
-		scrollPositionRight = GUI.BeginScrollView(	new Rect(windowWidth/2, paddingTop, windowWidth/2-20, 0.68f*windowHeight),
+		scrollPositionRight = GUI.BeginScrollView(	new Rect(windowWidth/2, paddingTop, windowWidth/2-20, 0.55f*windowHeight),
 		                                          	scrollPositionRight,
-		                                          	new Rect(windowWidth/2, paddingTop, windowWidth/2-40, qualities.Length * spaceBetweenItem));
+		                                          	new Rect(windowWidth/2, paddingTop, windowWidth/2-40, qualities.Length * (spaceBetweenItem + 10)));
 
 		// Récupère le niveau de qualité actuel
 		int levelQuality = QualitySettings.GetQualityLevel();
@@ -148,9 +149,10 @@ public class SettingsMenu : SubMenu
 
 		float buttonWidth = 0.33f * windowWidth;
 		float buttonHeight = 0.1f * windowHeight;
+
 		// Bouton de valeurs par défaut
 		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth - 20,
-		                         windowHeight - 2*buttonHeight,
+		                         windowHeight - 3.2f*buttonHeight,
 		                         buttonWidth,
 		                         buttonHeight),
 		               "Default Values"))
@@ -162,10 +164,22 @@ public class SettingsMenu : SubMenu
 			Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
 			PlayerPrefs.SetInt("ResolutionWidth", Screen.currentResolution.width);
 			PlayerPrefs.SetInt("ResolutionHeight", Screen.currentResolution.height);
-			
 		}
-		// Bouton de retour au menu principal
+
+		// Bouton des options avancées
 		if (GUI.Button(	new Rect((windowWidth-10)/2 + 10,
+		                         windowHeight - 3.2f*buttonHeight,
+		                         buttonWidth,
+		                         buttonHeight),
+		               "Advanced Settings"))
+		{
+			setInfFrontOf(false);
+			cam.activeRayCast();
+			cam.goToAdvancedSettingsMenu();
+		}
+
+		// Bouton de retour au menu principal
+		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth/2,
 		                         windowHeight - 2*buttonHeight,
 		                         buttonWidth,
 		                         buttonHeight),
