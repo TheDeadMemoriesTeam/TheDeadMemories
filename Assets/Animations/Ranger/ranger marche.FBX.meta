@@ -1,0 +1,219 @@
+fileFormatVersion: 2
+guid: 372b851c07d8abf40a839436af5d0c78
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: bd1
+    100002: bd2
+    100004: bd3
+    100006: bd4
+    100008: bg1
+    100010: bg2
+    100012: bg3
+    100014: bg4
+    100016: Bras droit
+    100018: bras gauche
+    100020: Buste
+    100022: epee
+    100024: Jambe Droite
+    100026: Jambe Gauche
+    100028: jd1
+    100030: jd2
+    100032: jd3
+    100034: jd4
+    100036: jg1
+    100038: jg2
+    100040: jg3
+    100042: jg4
+    100044: //RootNode
+    100046: Structure020
+    100048: Structure022
+    100050: sword
+    100052: Tete
+    100054: tete1
+    100056: tete2
+    100058: torse
+    400000: bd1
+    400002: bd2
+    400004: bd3
+    400006: bd4
+    400008: bg1
+    400010: bg2
+    400012: bg3
+    400014: bg4
+    400016: Bras droit
+    400018: bras gauche
+    400020: Buste
+    400022: epee
+    400024: Jambe Droite
+    400026: Jambe Gauche
+    400028: jd1
+    400030: jd2
+    400032: jd3
+    400034: jd4
+    400036: jg1
+    400038: jg2
+    400040: jg3
+    400042: jg4
+    400044: //RootNode
+    400046: Structure020
+    400048: Structure022
+    400050: sword
+    400052: Tete
+    400054: tete1
+    400056: tete2
+    400058: torse
+    4300000: Buste
+    4300002: bras gauche
+    4300004: Bras droit
+    4300006: Tete
+    4300008: Jambe Gauche
+    4300010: Jambe Droite
+    4300012: sword
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Bras droit
+    13700002: bras gauche
+    13700004: Buste
+    13700006: Jambe Droite
+    13700008: Jambe Gauche
+    13700010: sword
+    13700012: Tete
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bd1
+        weight: 1
+      - path: bd1/bd2
+        weight: 1
+      - path: bd1/bd2/bd3
+        weight: 1
+      - path: bd1/bd2/bd3/bd4
+        weight: 1
+      - path: bg1
+        weight: 1
+      - path: bg1/bg2
+        weight: 1
+      - path: bg1/bg2/bg3
+        weight: 1
+      - path: bg1/bg2/bg3/bg4
+        weight: 1
+      - path: Bras droit
+        weight: 1
+      - path: bras gauche
+        weight: 1
+      - path: Buste
+        weight: 1
+      - path: epee
+        weight: 1
+      - path: epee/Structure022
+        weight: 1
+      - path: Jambe Droite
+        weight: 1
+      - path: Jambe Gauche
+        weight: 1
+      - path: jd1
+        weight: 1
+      - path: jd1/jd2
+        weight: 1
+      - path: jd1/jd2/jd3
+        weight: 1
+      - path: jd1/jd2/jd3/jd4
+        weight: 1
+      - path: jg1
+        weight: 1
+      - path: jg1/jg2
+        weight: 1
+      - path: jg1/jg2/jg3
+        weight: 1
+      - path: jg1/jg2/jg3/jg4
+        weight: 1
+      - path: sword
+        weight: 1
+      - path: Tete
+        weight: 1
+      - path: tete1
+        weight: 1
+      - path: tete1/tete2
+        weight: 1
+      - path: torse
+        weight: 1
+      - path: torse/Structure020
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00200000009
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
