@@ -59,6 +59,9 @@ public class PlayerController : HumanoidController
 	// Manager de sauvegarde
 	SaveManager saveManager;
 
+	// Afficheur de dégats
+	private DamageShow ds;
+
 	//Sound
 	private AudioSource soundWalk;
 
@@ -119,6 +122,8 @@ public class PlayerController : HumanoidController
 
 		saveManager = new SaveManager(achievementManager, skillManager);
 		saveManager.load();
+
+		ds = GetComponent<DamageShow>();
 
 		//Sound
 		soundWalk = GetComponent<AudioSource> ();
@@ -468,7 +473,13 @@ public class PlayerController : HumanoidController
 		else
 			speed = walkSpeed;
 	}
-	
+
+	public override void healthUpdate(float change)
+	{
+		base.healthUpdate(change);
+		ds.addElementToDisplay(change);
+	}
+
 	void updateStandOffTime()
 	{
 		// Met à jour le temps pendant lequel le joueur ne peut pas sprinter
