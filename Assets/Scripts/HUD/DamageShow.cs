@@ -9,11 +9,20 @@ public class DamageShow : MonoBehaviour
 	// Hiérachie dans laquelle va se placer les GUIText
 	private Transform hierarchy;
 
+	// Joueur
+	private PlayerController player;
+
 	// Liste des éléments à afficher
 	List<GUIText> listOfElementToShow;
 
 	// Détermine si l'élément précédent sera affiché à droite ou à gauche
 	private bool isRight = true;
+	// Moitié du nombre de pixel sur lesquels les texte vont descendre
+	private int traveling = 50;
+	// Décalage des files de dégats par rapport au centre de l'écran (en X)
+	private int offSetFromCenter = 50;
+	// Vitesse de défilement des texte (en pixel par frame)
+	private int speed = 1;
 
 	//public int nbSimultaneousElement;
 
@@ -22,17 +31,37 @@ public class DamageShow : MonoBehaviour
 	{
 		listOfElementToShow = new List<GUIText>();
 		hierarchy = GameObject.Find("DamageGUIText").transform;
+		player = FindObjectOfType<PlayerController>();
 	}
 	
 	// Update is called once per frame
 	void Update () 
 	{
-		if (listOfElementToShow.Count == 0)
+		if (listOfElementToShow.Count == 0 || player.getPause())
 			return;
 
-
+		// Met à jour la position des éléments affichés
 		for (int i = 0 ; i < listOfElementToShow.Count ; i++)
-			Debug.Log(listOfElementToShow[i].text);
+		{
+			// Déplace le texte
+			Vector2 currentPos = listOfElementToShow[i].pixelOffset;
+			listOfElementToShow[i].pixelOffset = new Vector2(currentPos.x, currentPos.y-speed);
+
+			// Supprime l'élément lorsque il a dépassé un certain seuil de l'écran
+			if (listOfElementToShow[i].pixelOffset.y < Screen.height/2 - traveling)
+			{
+				DestroyImmediate(listOfElementToShow[i].gameObject);
+				listOfElementToShow.RemoveAt(i);
+			}
+
+			// Applique un fondu sur le texte
+			Color currentColor = listOfElementToShow[i].color;
+			listOfElementToShow[i].color = new Color(currentColor.r,
+			                                         currentColor.g,
+			                                         currentColor.b,
+			                                         determineAlpha(currentPos.y));
+		}
+		//Debug.Log( listOfElementToShow[0].color.a);
 	}
 
 	public void addElementToDisplay(float damage)
@@ -46,9 +75,9 @@ public class DamageShow : MonoBehaviour
 
 		// Détermine la position du texte
 		if (isRight)
-			txt.pixelOffset = new Vector2(Screen.width/2 - 50, Screen.height/2 - 50);
+			txt.pixelOffset = new Vector2(Screen.width/2 - offSetFromCenter, Screen.height/2 + traveling);
 		else
-			txt.pixelOffset = new Vector2(Screen.width/2 + 50, Screen.height/2 - 50);
+			txt.pixelOffset = new Vector2(Screen.width/2 + offSetFromCenter, Screen.height/2 + traveling);
 		isRight = !isRight;
 
 		// Détermine la couleur du texte (perte ou gain de vie)
@@ -66,5 +95,12 @@ public class DamageShow : MonoBehaviour
 		float power = Mathf.Pow(10, nbDecimal);
 		int temp = (int)(value*power);
 		return temp / power;
+	}
+
+	float determineAlpha(float pos)
+	{
+		int sup = Screen.height/2 + traveling;
+		int descent = (int)(sup - pos);
+		return (1 - ((float)descent/(2*traveling)) * 1);
 	}
 }
