@@ -174,7 +174,6 @@ public class SettingsMenu : SubMenu
 		               "Advanced Settings"))
 		{
 			setInfFrontOf(false);
-			cam.activeRayCast();
 			cam.goToAdvancedSettingsMenu();
 		}
 

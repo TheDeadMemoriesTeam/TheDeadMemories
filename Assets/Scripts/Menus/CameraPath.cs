@@ -30,6 +30,11 @@ public class CameraPath : MonoBehaviour
 	}
 	
 
+	public void goTo(Vector3 d)
+	{
+		goTo (d.x, d.y, d.z);
+	}
+
 	public void goTo(float endX, float endY, float endZ)
 	{
 		float height = 4f; // Parabola vertex height (vertex is the point at the top)
@@ -132,6 +137,11 @@ public class CameraPath : MonoBehaviour
 			velocity = (nextPos - transform.position)/Time.deltaTime;
 			transform.position = nextPos;
 		}
+	}
+
+	public bool isArrived()
+	{
+		return (dest == transform.position);
 	}
 
 }
