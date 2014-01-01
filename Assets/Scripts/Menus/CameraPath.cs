@@ -30,9 +30,14 @@ public class CameraPath : MonoBehaviour
 	}
 	
 
+	public void goTo(Vector3 d)
+	{
+		goTo (d.x, d.y, d.z);
+	}
+
 	public void goTo(float endX, float endY, float endZ)
 	{
-		float height = 4f; // Parabola vertex height (vertex is the point at the top)
+		float height = 3.5f; // Parabola vertex height (vertex is the point at the top)
 		
 		// Init points that will define the parabola
 		Vector3 pos1 = transform.position; // Start
@@ -69,17 +74,21 @@ public class CameraPath : MonoBehaviour
 	
 	public void getNextPosition()
 	{
-		float normalizedStep = 5.5f;
+		float normalizedStep = 8.5f;
 		float step = normalizedStep * Time.deltaTime;
 		
 		// Init nextPos to the current position
 		Vector3 nextPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		
 		// Determine X and Y value for next position
-		float angle = Mathf.Acos(Vector3.Dot((dest - nextPos).normalized, Vector3.right));
+		Vector3 directionVect = (dest - nextPos).normalized;
+		float angle = Vector3.Angle(directionVect, Vector3.right)/360*2*Mathf.PI;
+		if (Vector3.Angle (directionVect, Vector3.forward) > 90f)
+			angle = -angle;
 		nextPos.x = nextPos.x + step * Mathf.Cos(angle);
 		nextPos.y = parabolaXYCoef.getValueFor(nextPos.x);
-		
+		nextPos.z = nextPos.z + step * Mathf.Sin(angle);
+		/*
 		// Validate the Y value, to have at least one result for the Z component below.
 		float vertY = parabolaZYCoef.getVertex().y;
 		bool isAPositive = parabolaXYCoef.isAPositive();
@@ -119,10 +128,11 @@ public class CameraPath : MonoBehaviour
 		}
 		else {
 			throw new System.Exception("CameraPath.getNextPosition: Invalid result of parabolaZYCoef.getArgOf.");
-		}
+		}*/
 		
 		// Update the current position
-		if ((nextPos - transform.position).magnitude > (dest - transform.position).magnitude)
+		//if ((nextPos - transform.position).magnitude > (dest - transform.position).magnitude)
+		if ( Mathf.Sign(nextPos.x - dest.x) != Mathf.Sign(transform.position.x - dest.x) )
 		{
 			velocity = Vector3.zero;
 			transform.position = nextPos = dest;
@@ -132,6 +142,11 @@ public class CameraPath : MonoBehaviour
 			velocity = (nextPos - transform.position)/Time.deltaTime;
 			transform.position = nextPos;
 		}
+	}
+
+	public bool isArrived()
+	{
+		return (dest == transform.position);
 	}
 
 }

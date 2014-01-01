@@ -40,21 +40,18 @@ public class MainMenu : Menu
 		
 		if (isSettingsButton)
 		{
-			cam.activeRayCast();
 			cam.goToSettingsMenu(); // TODO
 			return;
 		}
 
 		if (isAchievButton)
 		{
-			cam.activeRayCast();
 			cam.goToAchievementsMenu(); // TODO
 			return;
 		}
 
 		if (isCreditsButton)
 		{
-			cam.activeRayCast();
 			cam.goToCreditsMenu(); // TODO
 			return;
 		}

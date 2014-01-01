@@ -121,7 +121,6 @@ public class AdvancedSettingsMenu : SubMenu
 		               "Return Settings"))
 		{
 			setInfFrontOf(false);
-			cam.activeRayCast();
 			cam.goToSettingsMenu();
 		}
 		
