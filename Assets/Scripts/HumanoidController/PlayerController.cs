@@ -58,6 +58,10 @@ public class PlayerController : HumanoidController
 
 	// Manager de sauvegarde
 	SaveManager saveManager;
+	// Temps entre chaque sauvegarde automatique
+	private float autoSavTimeLimit = 600f;	// 10 min
+	private float remainingTime;
+	private ShowMessage autoSav;
 
 	// Afficheur de dégats
 	private DamageShow ds;
@@ -122,6 +126,8 @@ public class PlayerController : HumanoidController
 
 		saveManager = new SaveManager(achievementManager, skillManager);
 		saveManager.load();
+		remainingTime = autoSavTimeLimit;
+		autoSav = FindObjectOfType<ShowMessage>();
 
 		ds = GetComponent<DamageShow>();
 
@@ -217,6 +223,9 @@ public class PlayerController : HumanoidController
 			if (Input.GetKeyDown(KeyCode.KeypadDivide))
 				saveManager.load();
 		}
+		remainingTime -= Time.deltaTime;
+		if (remainingTime <= 0)
+			resetAutoSav();
 	}
 
 	// Récupère les évènements souris et agis en fonction
@@ -487,6 +496,13 @@ public class PlayerController : HumanoidController
 			pauseAfterSprint = (Time.time - sprintTimeStart) * 1.5f;
 		else
 			pauseAfterSprint -= Time.deltaTime;
+	}
+
+	void resetAutoSav()
+	{
+		saveManager.save();
+		remainingTime = autoSavTimeLimit;
+		autoSav.showMessage();
 	}
 
 	List<string> initSkillsDescriptions()

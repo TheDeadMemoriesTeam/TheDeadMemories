@@ -27,8 +27,6 @@ public class SaveManager{
 	{
 		saveSkills();
 		saveAchievements();
-
-		Debug.Log("save completed");
 	}
 
 	// Fonction de chargement
@@ -36,8 +34,6 @@ public class SaveManager{
 	{
 		loadSkills();
 		loadAchievements();
-		
-		Debug.Log("save loaded");
 	}
 
 	/****************************/
@@ -60,8 +56,6 @@ public class SaveManager{
 		formater.Serialize(saveFile, achievementList);
 		// Libère la mémoire
 		saveFile.Close();
-
-		Debug.Log("save achievements");
 	}
 
 	private void loadAchievements()
@@ -81,8 +75,6 @@ public class SaveManager{
 			achievementManager.loadAchievements(achievementsLoaded);
 			
 			file.Close();
-			
-			Debug.Log("load achievements");
 		}
 	}
 
@@ -122,7 +114,6 @@ public class SaveManager{
 					// Récupération du nom
 					skills.Add (skill.getName());
 				}
-				Debug.Log(skill.getName());
 			}
 		}
 
@@ -206,7 +197,6 @@ public class SaveManager{
 							}
 						}
 					}
-					Debug.Log(skillsList[index].getName());
 				}
 			}
 			
