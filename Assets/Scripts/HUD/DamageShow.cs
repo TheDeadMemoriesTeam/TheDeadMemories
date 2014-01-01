@@ -47,21 +47,20 @@ public class DamageShow : MonoBehaviour
 			Vector2 currentPos = listOfElementToShow[i].pixelOffset;
 			listOfElementToShow[i].pixelOffset = new Vector2(currentPos.x, currentPos.y-speed);
 
-			// Supprime l'élément lorsque il a dépassé un certain seuil de l'écran
-			if (listOfElementToShow[i].pixelOffset.y < Screen.height/2 - traveling)
-			{
-				DestroyImmediate(listOfElementToShow[i].gameObject);
-				listOfElementToShow.RemoveAt(i);
-			}
-
 			// Applique un fondu sur le texte
 			Color currentColor = listOfElementToShow[i].color;
 			listOfElementToShow[i].color = new Color(currentColor.r,
 			                                         currentColor.g,
 			                                         currentColor.b,
 			                                         determineAlpha(currentPos.y));
+
+			// Supprime l'élément lorsque il a dépassé un certain seuil de l'écran
+			if (listOfElementToShow[i].pixelOffset.y < Screen.height/2 - traveling)
+			{
+				DestroyImmediate(listOfElementToShow[i].gameObject);
+				listOfElementToShow.RemoveAt(i);
+			}
 		}
-		//Debug.Log( listOfElementToShow[0].color.a);
 	}
 
 	public void addElementToDisplay(float damage)
