@@ -81,10 +81,14 @@ public class CameraPath : MonoBehaviour
 		Vector3 nextPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
 		
 		// Determine X and Y value for next position
-		float angle = Mathf.Acos(Vector3.Dot((dest - nextPos).normalized, Vector3.right));
+		Vector3 directionVect = (dest - nextPos).normalized;
+		float angle = Vector3.Angle(directionVect, Vector3.right)/360*2*Mathf.PI;
+		if (Vector3.Angle (directionVect, Vector3.forward) > 90f)
+			angle = -angle;
 		nextPos.x = nextPos.x + step * Mathf.Cos(angle);
 		nextPos.y = parabolaXYCoef.getValueFor(nextPos.x);
-		
+		nextPos.z = nextPos.z + step * Mathf.Sin(angle);
+		/*
 		// Validate the Y value, to have at least one result for the Z component below.
 		float vertY = parabolaZYCoef.getVertex().y;
 		bool isAPositive = parabolaXYCoef.isAPositive();
@@ -124,10 +128,11 @@ public class CameraPath : MonoBehaviour
 		}
 		else {
 			throw new System.Exception("CameraPath.getNextPosition: Invalid result of parabolaZYCoef.getArgOf.");
-		}
+		}*/
 		
 		// Update the current position
-		if ((nextPos - transform.position).magnitude > (dest - transform.position).magnitude)
+		//if ((nextPos - transform.position).magnitude > (dest - transform.position).magnitude)
+		if ( Mathf.Sign(nextPos.x - dest.x) != Mathf.Sign(transform.position.x - dest.x) )
 		{
 			velocity = Vector3.zero;
 			transform.position = nextPos = dest;

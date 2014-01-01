@@ -26,6 +26,10 @@ public class Credits : SubMenu
 		currentText = 0;
 		intervalTime = 15f;
 
+		foreach ( GameObject item in listCredit ) {
+			item.GetComponent<TextMesh>().text = item.GetComponent<TextMesh>().text.Replace("\\n", "\n");
+		}
+
 		listCredit [currentText].renderer.enabled = true;
 		Color couleur = new Color(1f, 1f, 1f, 0f);
 		listCredit [currentText].renderer.material.color = couleur;

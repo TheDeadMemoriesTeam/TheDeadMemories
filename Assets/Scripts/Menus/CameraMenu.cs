@@ -3,56 +3,75 @@ using System.Collections;
 
 public class CameraMenu : CameraPath
 {
-	// Position de la camera face aux menus
-	public Vector3 mainMenuCamPos;
-	public Vector3 launchMenuCamPos;
-	public Vector3 settingsMenuCamPos;
-	public Vector3 advancedSettingsMenuCamPos;
-	public Vector3 achievementsMenuCamPos;
-	public Vector3 creditsMenuCamPos;
+	public GameObject mainMenu;
+	public GameObject launchMenu;
+	public SubMenu settingsMenu;
+	public SubMenu advancedSettingsMenu;
+	public SubMenu achievementsMenu;
+	public SubMenu creditsMenu;
 
+	public Vector3 cameraPositionOffset;
+
+	private bool arrived;
+	private SubMenu callbackObj;
 
 	// Use this for initialization
 	public override void Start () 
 	{
 		base.Start();
+		arrived = true;
+		callbackObj = null;
 	}
 	
 	// Update is called once per frame
 	public override void Update ()
 	{
 		base.Update();
+
+		arrived = isArrived();
+		if (arrived) {
+			if (callbackObj != null) {
+				callbackObj.setInfFrontOf(true);
+				callbackObj = null;
+			}
+		}
 	}
 
 	
 	public void goToMainMenu()
 	{
-		goTo(mainMenuCamPos);
+		goTo(mainMenu.transform.position + cameraPositionOffset);
+		callbackObj = null;
 	}
 	
 	public void goToLaunchMenu()
 	{
-		goTo(launchMenuCamPos);
+		goTo(launchMenu.transform.position + cameraPositionOffset);
+		callbackObj = null;
 	}
 
 	public void goToSettingsMenu()
 	{
-		goTo(settingsMenuCamPos);
+		goTo(settingsMenu.transform.position + cameraPositionOffset);
+		callbackObj = settingsMenu;
 	}
 
 	public void goToAdvancedSettingsMenu()
 	{
-		goTo(advancedSettingsMenuCamPos);
+		goTo(advancedSettingsMenu.transform.position + cameraPositionOffset);
+		callbackObj = advancedSettingsMenu;
 	}
 
 	public void goToAchievementsMenu()
 	{
-		goTo(achievementsMenuCamPos);
+		goTo(achievementsMenu.transform.position + cameraPositionOffset);
+		callbackObj = achievementsMenu;
 	}
 
 	public void goToCreditsMenu()
 	{
-		goTo(creditsMenuCamPos);
+		goTo(creditsMenu.transform.position + cameraPositionOffset);
+		callbackObj = creditsMenu;
 	}
 
 }

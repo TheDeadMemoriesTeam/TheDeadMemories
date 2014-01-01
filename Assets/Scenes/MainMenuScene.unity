@@ -87,7 +87,7 @@ GameObject:
   - 65: {fileID: 78080619}
   - 114: {fileID: 78080618}
   m_Layer: 0
-  m_Name: txt_Mode
+  m_Name: txt8_Mode
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -100,7 +100,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 78080616}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -135,7 +135,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 78080616}
-  m_Text: 'Graphistes : \n Thibaut Grandclement \n Romain Seyer'
+  m_Text: Graphic artists
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -196,18 +196,22 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children:
   - {fileID: 715949616}
+  - {fileID: 1090419027}
   - {fileID: 359090882}
   - {fileID: 1604386082}
   - {fileID: 2111863746}
   - {fileID: 1629644186}
   - {fileID: 1143617511}
+  - {fileID: 2083251129}
   - {fileID: 78080617}
+  - {fileID: 840981352}
   - {fileID: 1142071772}
   - {fileID: 342322293}
   - {fileID: 1870485001}
   - {fileID: 1216421528}
-  - {fileID: 1793481574}
   - {fileID: 457585188}
+  - {fileID: 1326786991}
+  - {fileID: 1793481574}
   - {fileID: 1196888520}
   - {fileID: 2009521839}
   m_Father: {fileID: 1853718548}
@@ -602,9 +606,8 @@ GameObject:
   - 23: {fileID: 342322297}
   - 102: {fileID: 342322296}
   - 65: {fileID: 342322295}
-  - 114: {fileID: 342322294}
   m_Layer: 0
-  m_Name: txt_ModePonct2
+  m_Name: txt11_ModePonct2
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -617,22 +620,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 342322292}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
---- !u!114 &342322294
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 342322292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i18nNamespace: MainMenu
 --- !u!65 &342322295
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -652,7 +643,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 342322292}
-  m_Text: Alexis Masclaux \n Bastien Mogeot
+  m_Text: Thibault Bertrand\nGregory Gounon\nAlexis Masclaux
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -811,9 +802,8 @@ GameObject:
   - 23: {fileID: 359090886}
   - 102: {fileID: 359090885}
   - 65: {fileID: 359090884}
-  - 114: {fileID: 359090883}
   m_Layer: 0
-  m_Name: txt_Coord
+  m_Name: txt2_Coord2
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -826,22 +816,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359090881}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0153046, y: 13.074214, z: -8.45872116}
+  m_LocalPosition: {x: -14.0152836, y: 12.9655342, z: -8.45872116}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
---- !u!114 &359090883
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 359090881}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i18nNamespace: MainMenu
 --- !u!65 &359090884
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -861,7 +839,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359090881}
-  m_Text: 'Coordinateurs du projet: \n Guillaume Pascal \n Romain Seyer'
+  m_Text: Guillaume Pascal\nRomain Seyer
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -1149,9 +1127,8 @@ GameObject:
   - 23: {fileID: 457585192}
   - 102: {fileID: 457585191}
   - 65: {fileID: 457585190}
-  - 114: {fileID: 457585189}
   m_Layer: 0
-  m_Name: txt_Musique2
+  m_Name: txt14_Musique2
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1164,22 +1141,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 457585187}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
---- !u!114 &457585189
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 457585187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i18nNamespace: MainMenu
 --- !u!65 &457585190
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -1199,7 +1164,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 457585187}
-  m_Text: Koke Nez Gmez \n Iska
+  m_Text: Dawid Jaworski\nPlastic3\nKoke Nez Gmez\nIska
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -1590,7 +1555,7 @@ GameObject:
   - 65: {fileID: 715949618}
   - 114: {fileID: 715949617}
   m_Layer: 0
-  m_Name: txt_Credit
+  m_Name: txt0_Credit
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1603,7 +1568,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 715949615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0153046, y: 13.074214, z: -8.47599411}
+  m_LocalPosition: {x: -14.0152836, y: 12.9655342, z: -8.47599411}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -1746,6 +1711,89 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1972925598}
+--- !u!1 &840981351
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 840981352}
+  - 23: {fileID: 840981355}
+  - 102: {fileID: 840981354}
+  - 65: {fileID: 840981353}
+  m_Layer: 0
+  m_Name: txt9_Mode2
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840981352
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840981351}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
+  m_Children: []
+  m_Father: {fileID: 98085470}
+--- !u!65 &840981353
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840981351}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9000001, y: 1.84062505, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!102 &840981354
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840981351}
+  m_Text: Thibaut Grandclement\nRomain Seyer
+  m_OffsetZ: 0
+  m_CharacterSize: .0399999991
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 130
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4291282887
+--- !u!23 &840981355
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 840981351}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!1 &875519074
 GameObject:
   m_ObjectHideFlags: 0
@@ -2049,6 +2097,102 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300002, guid: 1f0db9583fb981943a808e8ce8453dea, type: 3}
+--- !u!1 &1090419026
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1090419027}
+  - 23: {fileID: 1090419031}
+  - 102: {fileID: 1090419030}
+  - 65: {fileID: 1090419029}
+  - 114: {fileID: 1090419028}
+  m_Layer: 0
+  m_Name: txt1_Coord
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1090419027
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1090419026}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.0152836, y: 12.9655342, z: -8.45872116}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
+  m_Children: []
+  m_Father: {fileID: 98085470}
+--- !u!114 &1090419028
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1090419026}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i18nNamespace: MainMenu
+--- !u!65 &1090419029
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1090419026}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9000001, y: 1.84062505, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!102 &1090419030
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1090419026}
+  m_Text: Project coordinators
+  m_OffsetZ: 0
+  m_CharacterSize: .0399999991
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 150
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4291282887
+--- !u!23 &1090419031
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1090419026}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!1 &1142071771
 GameObject:
   m_ObjectHideFlags: 0
@@ -2062,7 +2206,7 @@ GameObject:
   - 65: {fileID: 1142071774}
   - 114: {fileID: 1142071773}
   m_Layer: 0
-  m_Name: txt_ModePonct
+  m_Name: txt10_ModePonct
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2075,7 +2219,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1142071771}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -2110,7 +2254,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1142071771}
-  m_Text: 'Avec la participation ponctuelle de : \n Thibault Bertrand \n Gregory Gounon'
+  m_Text: With the occasional participation of
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -2158,7 +2302,7 @@ GameObject:
   - 65: {fileID: 1143617513}
   - 114: {fileID: 1143617512}
   m_Layer: 0
-  m_Name: txt_DevPonct
+  m_Name: txt6_DevPonct
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2171,7 +2315,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143617510}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -2206,7 +2350,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1143617510}
-  m_Text: 'vec la participation ponctuelle de : \n Elodie Estivale'
+  m_Text: With the occasional participation of
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -2443,7 +2587,7 @@ GameObject:
   - 65: {fileID: 1196888522}
   - 114: {fileID: 1196888521}
   m_Layer: 0
-  m_Name: txt_Scenario
+  m_Name: txt17_Scenario
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2456,7 +2600,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1196888519}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -2491,7 +2635,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1196888519}
-  m_Text: 'Scenario : '
+  m_Text: Scenario
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -2539,7 +2683,7 @@ GameObject:
   - 65: {fileID: 1216421530}
   - 114: {fileID: 1216421529}
   m_Layer: 0
-  m_Name: txt_Musique
+  m_Name: txt13_Musique
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2552,7 +2696,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1216421527}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -2587,7 +2731,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1216421527}
-  m_Text: 'Musique : \n Dawid Jaworski \n Plastic3'
+  m_Text: Music
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -2882,6 +3026,102 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c14a14f2ac7cbf4eb168928eb3e20a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1326786990
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1326786991}
+  - 23: {fileID: 1326786995}
+  - 102: {fileID: 1326786994}
+  - 65: {fileID: 1326786993}
+  - 114: {fileID: 1326786992}
+  m_Layer: 0
+  m_Name: txt15_Bruitage
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1326786991
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326786990}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
+  m_Children: []
+  m_Father: {fileID: 98085470}
+--- !u!114 &1326786992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326786990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  i18nNamespace: MainMenu
+--- !u!65 &1326786993
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326786990}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9000001, y: 1.84062505, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!102 &1326786994
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326786990}
+  m_Text: Sound Effects
+  m_OffsetZ: 0
+  m_CharacterSize: .0399999991
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 130
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4291282887
+--- !u!23 &1326786995
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1326786990}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!1 &1462771551
 GameObject:
   m_ObjectHideFlags: 0
@@ -3112,12 +3352,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 68dfa77c703876b4ca790fde722ffe8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainMenuCamPos: {x: 150, y: 1.5, z: 28}
-  launchMenuCamPos: {x: 140, y: 1.5, z: 58}
-  settingsMenuCamPos: {x: 165, y: 1.5, z: 58}
-  advancedSettingsMenuCamPos: {x: 180, y: 1.5, z: 78}
-  achievementsMenuCamPos: {x: 180, y: 1.5, z: 48}
-  creditsMenuCamPos: {x: 130, y: 1.5, z: 38}
+  mainMenu: {fileID: 1685273987}
+  launchMenu: {fileID: 422019595}
+  settingsMenu: {fileID: 1819776202}
+  advancedSettingsMenu: {fileID: 541318726}
+  achievementsMenu: {fileID: 1972925601}
+  creditsMenu: {fileID: 1853718549}
+  cameraPositionOffset: {x: 0, y: 1.60000002, z: -2.5}
 --- !u!82 &1533108017
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3335,7 +3576,7 @@ GameObject:
   - 65: {fileID: 1604386084}
   - 114: {fileID: 1604386083}
   m_Layer: 0
-  m_Name: txt_Dev
+  m_Name: txt3_Dev
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3348,7 +3589,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1604386081}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -3383,7 +3624,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1604386081}
-  m_Text: 'Developpeurs : \n Geoffrey Clauzier \n Christophe Gaillard'
+  m_Text: Developers
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -3429,9 +3670,8 @@ GameObject:
   - 23: {fileID: 1629644190}
   - 102: {fileID: 1629644189}
   - 65: {fileID: 1629644188}
-  - 114: {fileID: 1629644187}
   m_Layer: 0
-  m_Name: txt_Dev3
+  m_Name: txt5_Dev3
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3444,22 +3684,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629644185}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
---- !u!114 &1629644187
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1629644185}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i18nNamespace: MainMenu
 --- !u!65 &1629644188
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3479,7 +3707,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629644185}
-  m_Text: Guillaume Pascal  \n Alexandre Raberin
+  m_Text: Arnaud Moncel\nGuillaume Pascal\nAlexandre Raberin
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -3717,9 +3945,8 @@ GameObject:
   - 23: {fileID: 1793481578}
   - 102: {fileID: 1793481577}
   - 65: {fileID: 1793481576}
-  - 114: {fileID: 1793481575}
   m_Layer: 0
-  m_Name: txt_Bruitage
+  m_Name: txt16_Bruitage2
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3732,22 +3959,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793481573}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
---- !u!114 &1793481575
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1793481573}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i18nNamespace: MainMenu
 --- !u!65 &1793481576
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3767,7 +3982,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793481573}
-  m_Text: 'Bruitage : \n universal-soundbank.com \n sound-fishing.net \n Clement Janisset'
+  m_Text: "universal-soundbank.com\\nsound-fishing.net\\nCl\xE9ment Janisset"
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -4042,17 +4257,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   listCredit:
   - {fileID: 715949615}
+  - {fileID: 1090419026}
   - {fileID: 359090881}
   - {fileID: 1604386081}
   - {fileID: 2111863745}
   - {fileID: 1629644185}
   - {fileID: 1143617510}
+  - {fileID: 2083251128}
   - {fileID: 78080616}
+  - {fileID: 840981351}
   - {fileID: 1142071771}
   - {fileID: 342322292}
   - {fileID: 1870485000}
   - {fileID: 1216421527}
   - {fileID: 457585187}
+  - {fileID: 1326786990}
   - {fileID: 1793481573}
   - {fileID: 1196888519}
   isReturn: 0
@@ -4181,9 +4400,8 @@ GameObject:
   - 23: {fileID: 1870485005}
   - 102: {fileID: 1870485004}
   - 65: {fileID: 1870485003}
-  - 114: {fileID: 1870485002}
   m_Layer: 0
-  m_Name: txt_ModePonct3
+  m_Name: txt12_ModePonct3
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4196,22 +4414,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870485000}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
---- !u!114 &1870485002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1870485000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i18nNamespace: MainMenu
 --- !u!65 &1870485003
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4231,7 +4437,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870485000}
-  m_Text: Leo Solvignon \n Damien Valla
+  m_Text: Bastien Mogeot\nLeo Solvignon\nDamien Valla
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -4467,7 +4673,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2009521838}
   m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: -13.994894, y: 12.4176016, z: -9.13642883}
+  m_LocalPosition: {x: -13.9948978, y: 12.4465179, z: -9.46780777}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
@@ -4680,6 +4886,89 @@ Prefab:
   m_RootGameObject: {fileID: 1756158159}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &2083251128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2083251129}
+  - 23: {fileID: 2083251132}
+  - 102: {fileID: 2083251131}
+  - 65: {fileID: 2083251130}
+  m_Layer: 0
+  m_Name: txt7_DevPonct2
+  m_TagString: Item
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2083251129
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083251128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
+  m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
+  m_Children: []
+  m_Father: {fileID: 98085470}
+--- !u!65 &2083251130
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083251128}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.9000001, y: 1.84062505, z: 0}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!102 &2083251131
+TextMesh:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083251128}
+  m_Text: Elodie Estivale
+  m_OffsetZ: 0
+  m_CharacterSize: .0399999991
+  m_LineSpacing: 1
+  m_Anchor: 4
+  m_Alignment: 1
+  m_TabSize: 4
+  m_FontSize: 130
+  m_FontStyle: 0
+  m_RichText: 1
+  m_Font: {fileID: 12800000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_Color:
+    serializedVersion: 2
+    rgba: 4291282887
+--- !u!23 &2083251132
+Renderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2083251128}
+  m_Enabled: 0
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 2100000, guid: ce7466a7f64a5df4eb4c9a4443dbefe4, type: 3}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_SortingLayerID: 0
 --- !u!1 &2111863745
 GameObject:
   m_ObjectHideFlags: 0
@@ -4691,9 +4980,8 @@ GameObject:
   - 23: {fileID: 2111863750}
   - 102: {fileID: 2111863749}
   - 65: {fileID: 2111863748}
-  - 114: {fileID: 2111863747}
   m_Layer: 0
-  m_Name: txt_Dev2
+  m_Name: txt4_Dev2
   m_TagString: Item
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4706,22 +4994,10 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2111863745}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.0201607, y: 13.0759001, z: -8.53139305}
+  m_LocalPosition: {x: -14.0201511, y: 12.9672203, z: -8.53139114}
   m_LocalScale: {x: .200000003, y: .200000003, z: .200000003}
   m_Children: []
   m_Father: {fileID: 98085470}
---- !u!114 &2111863747
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2111863745}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 264b47da2afef9749a6b9dbaef72d200, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  i18nNamespace: MainMenu
 --- !u!65 &2111863748
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4741,7 +5017,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2111863745}
-  m_Text: Clement Janisset \n Arnaud Moncel
+  m_Text: Geoffrey Clauzier\nChristophe Gaillard\nClement Janisset
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
