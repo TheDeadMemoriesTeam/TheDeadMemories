@@ -179,7 +179,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 98085470}
   m_Layer: 0
-  m_Name: PlayMenu3DTexts
+  m_Name: Credits3DTexts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
