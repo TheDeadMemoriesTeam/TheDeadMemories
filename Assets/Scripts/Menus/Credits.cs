@@ -21,6 +21,7 @@ public class Credits : SubMenu
 	// Use this for initialization
 	protected override void Start () 
 	{
+		base.Start();
 		timeCredit = 0;
 		currentText = 0;
 		intervalTime = 15f;
