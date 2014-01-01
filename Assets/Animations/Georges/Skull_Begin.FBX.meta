@@ -1,0 +1,129 @@
+fileFormatVersion: 2
+guid: 955b42a1dca28264da9cf103592247a8
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: Avant Bras D
+    100002: Avant bras G
+    100004: Bras D
+    100006: bras droit
+    100008: bras droit001
+    100010: Bras G
+    100012: Cage thoracique
+    100014: col1
+    100016: col2
+    100018: col3
+    100020: col4
+    100022: col5
+    100024: Colonne vertebrale
+    100026: Cr__ne
+    100028: Cuisse G
+    100030: Genou D
+    100032: Genou G
+    100034: Jambe D
+    100036: Jambe G
+    100038: Jambe gauche001
+    100040: Main D
+    100042: Main G
+    100044: Mollet D
+    100046: Mollet G
+    100048: Pied D
+    100050: Pied G
+    100052: //RootNode
+    100054: T__te
+    400000: Avant Bras D
+    400002: Avant bras G
+    400004: Bras D
+    400006: bras droit
+    400008: bras droit001
+    400010: Bras G
+    400012: Cage thoracique
+    400014: col1
+    400016: col2
+    400018: col3
+    400020: col4
+    400022: col5
+    400024: Colonne vertebrale
+    400026: Cr__ne
+    400028: Cuisse G
+    400030: Genou D
+    400032: Genou G
+    400034: Jambe D
+    400036: Jambe G
+    400038: Jambe gauche001
+    400040: Main D
+    400042: Main G
+    400044: Mollet D
+    400046: Mollet G
+    400048: Pied D
+    400050: Pied G
+    400052: //RootNode
+    400054: T__te
+    4300000: Jambe gauche001
+    4300002: bras droit
+    4300004: Cr__ne
+    4300006: Colonne vertebrale
+    4300008: Cage thoracique
+    4300010: Jambe G
+    4300012: bras droit001
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: bras droit
+    13700002: bras droit001
+    13700004: Cage thoracique
+    13700006: Colonne vertebrale
+    13700008: Cr__ne
+    13700010: Jambe G
+    13700012: Jambe gauche001
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
