@@ -23,13 +23,6 @@ public class GameSettings : MonoBehaviour
 		ground.detailObjectDensity = PlayerPrefs.GetFloat("detailDensity", 0.5f);
 		ground.treeCrossFadeLength = PlayerPrefs.GetFloat("fadeLenght", 100f);
 		ground.terrainData.wavingGrassStrength = PlayerPrefs.GetFloat("windSpeed", 0.5f);
-
-		print("Level Quality Loaded : " + QualitySettings.GetQualityLevel() +
-		      " Résolution Loaded : " + Screen.currentResolution.width + " x " + Screen.currentResolution.height
-		      + " detailDistance " + ground.detailObjectDistance
-		      + " detailDensity " + ground.detailObjectDensity
-		      + " fadeLenght " + ground.treeCrossFadeLength
-		      + " windSpeed " + ground.terrainData.wavingGrassStrength);
 	}
 	
 	// Update is called once per frame
