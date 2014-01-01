@@ -37,7 +37,7 @@ public class CameraPath : MonoBehaviour
 
 	public void goTo(float endX, float endY, float endZ)
 	{
-		float height = 4f; // Parabola vertex height (vertex is the point at the top)
+		float height = 3.5f; // Parabola vertex height (vertex is the point at the top)
 		
 		// Init points that will define the parabola
 		Vector3 pos1 = transform.position; // Start
@@ -74,7 +74,7 @@ public class CameraPath : MonoBehaviour
 	
 	public void getNextPosition()
 	{
-		float normalizedStep = 5.5f;
+		float normalizedStep = 8.5f;
 		float step = normalizedStep * Time.deltaTime;
 		
 		// Init nextPos to the current position
