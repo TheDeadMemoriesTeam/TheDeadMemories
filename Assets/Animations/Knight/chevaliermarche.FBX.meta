@@ -123,11 +123,111 @@ ModelImporter:
     animationScaleError: .5
     animationWrapMode: 0
     extraExposedTransformPaths: []
-    clipAnimations: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 100
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: chevalier
+        weight: 1
+      - path: chevalier/avBrasD
+        weight: 1
+      - path: chevalier/avBrasD/poignetD
+        weight: 1
+      - path: chevalier/avBrasG
+        weight: 1
+      - path: chevalier/avBrasG/poignetG
+        weight: 1
+      - path: chevalier/Box005
+        weight: 1
+      - path: chevalier/Box006
+        weight: 1
+      - path: chevalier/brasD
+        weight: 1
+      - path: chevalier/BrasG
+        weight: 1
+      - path: chevalier/bustebas
+        weight: 1
+      - path: chevalier/bustehaut
+        weight: 1
+      - path: chevalier/casque
+        weight: 1
+      - path: chevalier/jambi__re D
+        weight: 1
+      - path: chevalier/jambi__re G
+        weight: 1
+      - path: chevalier/Line001
+        weight: 1
+      - path: chevalier/molletD
+        weight: 1
+      - path: chevalier/molletD/piedD
+        weight: 1
+      - path: chevalier/molletG
+        weight: 1
+      - path: chevalier/molletG/piedG
+        weight: 1
+      - path: OsPereController
+        weight: 1
+      - path: OsPereController/os JambeD
+        weight: 1
+      - path: OsPereController/os JambeD/os MolletD
+        weight: 1
+      - path: OsPereController/os JambeD/os MolletD/os PiedD
+        weight: 1
+      - path: OsPereController/os JambeG
+        weight: 1
+      - path: OsPereController/os JambeG/os MolletG
+        weight: 1
+      - path: OsPereController/os JambeG/os MolletG/os PiedG
+        weight: 1
+      - path: OsPereController/OsBusteBas
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/os BrasD
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/os BrasD/os AvBrasD
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/os BrasD/os AvBrasD/os PoignetD
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/Os BrasG
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/Os BrasG/os AvBrasG
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/Os BrasG/os AvBrasG/os PoignetG
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/OsTete
+        weight: 1
+      - path: OsPereController/OsBusteBas/OsBusteHaut/OsTete/Bone005
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00700000022
+    globalScale: .000300000014
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
