@@ -59,13 +59,34 @@ public class Credits : SubMenu
 			return;
 		}
 		manageText ();
-		
-		Debug.Log("dessine credits");
+	}
+
+	void OnMouseUp()
+	{
+		if(isReturn)
+		{
+			setInfFrontOf(false);
+			cam.goToMainMenu();
+			return;
+		}
+	}
+
+	void OnMouseEnter() 
+	{
+		if (renderer != null)
+			renderer.material.color = Color.red;
+	}
+	
+	void OnMouseExit() 
+	{
+		if (renderer != null)
+			renderer.material.color = Color.white;
 	}
 	
 	//Gere s'il faut changer de texte ou non
 	void manageText()
 	{
+		listCredit [currentText].renderer.enabled = true;
 		timeCredit += Time.deltaTime;
 		if(timeCredit > intervalTime)
 		{
@@ -93,6 +114,7 @@ public class Credits : SubMenu
 	//Redemarre les credits a zero
 	protected void restartCred()
 	{
+		listCredit [currentText].renderer.enabled = false;
 		currentText = 0;
 		timeCredit = 0;
 	}

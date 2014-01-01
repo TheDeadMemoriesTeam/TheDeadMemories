@@ -9,6 +9,7 @@ public class CameraMenu : CameraPath
 	public SubMenu advancedSettingsMenu;
 	public SubMenu achievementsMenu;
 	public SubMenu creditsMenu;
+	private Vector3 creditsPos;
 
 	public Vector3 cameraPositionOffset;
 
@@ -21,6 +22,9 @@ public class CameraMenu : CameraPath
 		base.Start();
 		arrived = true;
 		callbackObj = null;
+
+		Vector3 offset = new Vector3(0, 0, 1.7f);
+		creditsPos = GameObject.Find("creditsTomb").transform.position  + cameraPositionOffset + offset;
 	}
 	
 	// Update is called once per frame
@@ -70,7 +74,7 @@ public class CameraMenu : CameraPath
 
 	public void goToCreditsMenu()
 	{
-		goTo(creditsMenu.transform.position + cameraPositionOffset);
+		goTo(creditsPos);
 		callbackObj = creditsMenu;
 	}
 
