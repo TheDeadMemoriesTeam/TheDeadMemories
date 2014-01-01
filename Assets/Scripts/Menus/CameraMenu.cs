@@ -64,32 +64,32 @@ public class CameraMenu : CameraPath
 	
 	public void goToMainMenu()
 	{
-		goTo(20f, 1.5f, 5f);
+		goTo(150f, 1.5f, 27.8f);
 	}
 	
 	public void goToLaunchMenu()
 	{
-		goTo(25.4f, 1.5f, 19.4f);
+		goTo(140f, 1.5f, 58f);
 	}
 
 	public void goToSettingsMenu()
 	{
-		goTo(10f, 1.5f, 29f);
+		goTo(165f, 1.5f, 57.8f);
 	}
 
 	public void goToAchievementsMenu()
 	{
-		goTo(37f, 1.5f, 29f);
+		goTo(180f, 1.5f, 47.8f);
 	}
 
 	public void goToCreditsMenu()
 	{
-		goTo(8f, 1.5f, 15f);
+		goTo(130.1f, 1.5f, 39.5f);
 	}
 
 	public void goToAdvancedSettingsMenu()
 	{
-		goTo(19f, 1.5f, 36f);
+		goTo(180f, 1.5f, 77.8f);
 	}
 
 	public void activeRayCast()
