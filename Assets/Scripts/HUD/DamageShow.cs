@@ -23,6 +23,8 @@ public class DamageShow : MonoBehaviour
 	private int offSetFromCenter = 50;
 	// Vitesse de défilement des texte (en pixel par frame)
 	private int speed = 1;
+	// taille de la Police utilisée
+	private int policeSize = 20;
 
 	//public int nbSimultaneousElement;
 
@@ -84,6 +86,8 @@ public class DamageShow : MonoBehaviour
 			txt.color = Color.green;
 		else
 			txt.color = Color.red;
+
+		txt.fontSize = policeSize;
 
 		listOfElementToShow.Add(txt);
 	}
