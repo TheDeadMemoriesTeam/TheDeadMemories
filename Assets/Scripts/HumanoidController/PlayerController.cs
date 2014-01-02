@@ -323,7 +323,8 @@ public class PlayerController : HumanoidController
 								Vector3 distance = transform.position-targets[i].transform.position;
 								if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getAd())
 								{
-									float damage = -skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()) + (-skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())/100 * targets[i].getSkillManager().getMagicResistance());
+									float damage = -(skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())) + (-(skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()))/100 * targets[i].getSkillManager().getMagicResistance());
+									Debug.Log(damage);
 									//gestion de la furie
 									if(skillManager.getFurie())
 									{
@@ -350,29 +351,16 @@ public class PlayerController : HumanoidController
 								//decrementation de la mana du coup de la skill
 								skillManager.setMana(skillManager.getMana() - superSkill.getManaCost());
 
-								//execution de la skill
-								superSkill.launch(transform.position);
-
-								//on inflige des degas au ennemis si il sont dans la zone 
-								EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-								for (int i=0; i<targets.Length; i++)
+								//recuperation du facteur de furie
+								if(skillManager.getFurie())
 								{
-									Vector3 distance = transform.position-targets[i].transform.position;
-									if(distance.magnitude <= skillManager.getDistanceMagicAttack() + superSkill.getZone())
-									{
-										float damage = -skillManager.getMagicAttack()+superSkill.getDamage() + (-skillManager.getMagicAttack()+ superSkill.getDamage())/100 * targets[i].getSkillManager().getMagicResistance();
-										//gestion de la furie
-										if(skillManager.getFurie())
-										{
-											FurieSkills skillFurie = skillManager.getSkill(5) as FurieSkills;
-											damage += damage/100 * skillFurie.getDamageFactor();
-										}
-										//gestion des critique
-										if(skillManager.getCriticMagic()/100 < Random.value)
-											damage *= 2;
-										targets[i].healthUpdate(damage);
-									}
+									FurieSkills skillFurie = skillManager.getSkill(5) as FurieSkills;
+									//execution de la skill
+									superSkill.launch(transform.position, skillManager.getDistanceMagicAttack(), skillManager.getMagicAttack(), true, skillFurie.getDamageFactor(), skillManager.getCriticMagic());
 								}
+								else
+									//execution de la skill
+									superSkill.launch(transform.position, skillManager.getDistanceMagicAttack(), skillManager.getMagicAttack(), false, 0, skillManager.getCriticMagic());
 							}
 						}
 					}
