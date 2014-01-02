@@ -113,9 +113,7 @@ public class WaysNetwork : MonoBehaviour {
 			foreach(KeyValuePair<Vector3, float> entry in weightedAdjacencyList[u])
 			{
 				float alt = d[u] + entry.Value;
-				//Debug.Log ("..." + d[entry.Key] + "<>" + alt + "(" + d[u] + "--" + entry.Value + ")");
 				if (d[entry.Key] > alt) {
-					//Debug.Log ("update");
 					d[entry.Key] = alt;
 					pi[entry.Key] = u;
 				}

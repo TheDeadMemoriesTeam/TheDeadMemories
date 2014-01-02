@@ -216,8 +216,6 @@ public class PlayerController : HumanoidController
 				currentMagicType = magicTypes.Ice;
 			else if (Input.GetKeyDown(KeyCode.F3))
 				currentMagicType = magicTypes.Wind;
-			if (isSprinting)
-				Debug.Log("sprint !!");
 
 			AnimationManager();
 
@@ -456,7 +454,7 @@ public class PlayerController : HumanoidController
 			}
 			catch (System.InvalidOperationException ex)
 			{
-				Debug.Log(ex);	
+				Debug.LogException(ex);	
 			}
 		}
 	}
