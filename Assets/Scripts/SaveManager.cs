@@ -7,24 +7,34 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveManager{
 	
 	private AchievementManager achievementManager;
+	private DayNightCycleManager timeManager;
 	private SkillManager skillManager;
+	private PlayerController player;
 
 	// Chemin vers les fichiers de sauvegarde
 	private string achievementPath = "./save/achievement.dat";
+	private string externalPath = "./save/external.dat";
 	private string skillsPath = "./save/skills.dat";
 
+	// Lieu de spawn pour le joueur
+	Vector3 spawn1 = new Vector3 (-14, 8, -20); 	// Crypte du cimetière
+	Vector3 spawn2 = new Vector3 (120, -2, 479); 	// Crypte du village
+	Vector3 spawn3 = new Vector3 (697, -4, 17);		// Crypte de la ferme
 
-	public SaveManager(AchievementManager otherA, SkillManager otherS)
+	public SaveManager(AchievementManager otherA, SkillManager otherS, PlayerController p, DayNightCycleManager otherD)
 	{
 		achievementManager = otherA;
 		skillManager = otherS;
 		if(!Directory.Exists("./save/"))
 			Directory.CreateDirectory("./save/");
+		player = p;
+		timeManager = otherD;
 	}
 
 	// Fonction de sauvegarde
 	public void save()
 	{
+		saveExternal();
 		saveSkills();
 		saveAchievements();
 	}
@@ -32,6 +42,7 @@ public class SaveManager{
 	// Fonction de chargement
 	public void load()
 	{
+		loadExternal();
 		loadSkills();
 		loadAchievements();
 	}
@@ -85,6 +96,9 @@ public class SaveManager{
 	{
 		List<string> skills = new List<string>();
 		List<Skills> skillList = skillManager.getListOfSkills();
+
+		// Récupération de l'experience du joueur
+		skills.Add(player.getExperience().ToString());
 
 		Skills skill;
 		for (int i=0; i<skillList.Count; i++)
@@ -145,9 +159,14 @@ public class SaveManager{
 			for (int i=0; i<skillsList.Count; i++)
 				skillsList[i].setIsBought(false);
 
+			// Réinitialise l'expérience du joueur
+			player.experienceUpdate(-player.getExperience());
+			// Récupère l'expérience sauvegardée
+			player.experienceUpdate(int.Parse (skillsLoaded[0]));
+
 			// Récupère les compétences déjà achetées
 			int index;
-			for (int i=0; i<skillsLoaded.Count; i++)
+			for (int i=1; i<skillsLoaded.Count; i++)
 			{
 				index = skillsList.FindIndex(
 					delegate(Skills obj) {
@@ -210,4 +229,64 @@ public class SaveManager{
 		}
 	}
 
+	/********************/
+	/* Gestion du reste */
+	/********************/
+	private void saveExternal()
+	{
+		List<string> external = new List<string>();
+
+		Vector3 position = player.transform.position;
+
+		if (Vector3.Distance(position, spawn1) < Vector3.Distance(position, spawn2))
+		{
+			if (Vector3.Distance(position, spawn1) < Vector3.Distance(position, spawn3))
+				position = spawn1;
+			else
+				position = spawn3;
+		}
+		else
+		{
+			if (Vector3.Distance(position, spawn2) < Vector3.Distance(position, spawn3))
+				position = spawn2;
+			else
+				position = spawn3;
+		}
+
+		external.Add (position.x.ToString());
+		external.Add (position.y.ToString());
+		external.Add (position.z.ToString());
+		
+		external.Add (timeManager.dayTime.ToString());
+
+		// Créé le formater
+		BinaryFormatter formater = new BinaryFormatter();
+		// Crée le fichier
+		Stream saveFile = File.Create(externalPath);
+		// Sauvegarde les achivements
+		formater.Serialize(saveFile, external);
+		// Libère la mémoire
+		saveFile.Close();
+	}
+
+	private void loadExternal()
+	{
+		// Si le fichier existe
+		if(File.Exists(externalPath))
+		{
+			// Créé le formateur
+			BinaryFormatter formater = new BinaryFormatter();
+			// Créé le fichier
+			Stream file = File.Open (externalPath, FileMode.Open);
+			// Récupère les informations
+			List<string> external = formater.Deserialize(file) as List<string>;
+
+			player.transform.position = new Vector3(float.Parse(external[0]),
+			                                        float.Parse(external[1]),
+			            							float.Parse(external[2]));
+			timeManager.dayTime = float.Parse (external[3]);
+			
+			file.Close();
+		}
+	}
 }
