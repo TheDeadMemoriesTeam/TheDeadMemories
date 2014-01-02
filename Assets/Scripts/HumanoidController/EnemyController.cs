@@ -140,7 +140,6 @@ public class EnemyController : HumanoidController
 			// Try to find the player in a possible direction
 			if (chaseTimer == 0f && enemySight.playerLastDirection != Utils.GetInfiniteVector3())
 			{
-				Debug.Log (enemySight.playerLastDirection.ToString());
 				nav.SetDestination(nav.destination + enemySight.playerLastDirection);
 			}
 
