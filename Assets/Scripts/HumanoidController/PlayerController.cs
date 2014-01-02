@@ -59,7 +59,7 @@ public class PlayerController : HumanoidController
 	// Manager de sauvegarde
 	SaveManager saveManager;
 	// Temps entre chaque sauvegarde automatique
-	private float autoSavTimeLimit = 600f;	// 10 min
+	private float autoSavTimeLimit = 6f;	// 10 min
 	private float remainingTime;
 	private ShowMessage autoSav;
 
