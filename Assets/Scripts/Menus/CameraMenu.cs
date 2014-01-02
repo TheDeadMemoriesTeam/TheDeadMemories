@@ -62,7 +62,8 @@ public class CameraMenu : CameraPath
 
 	public void goToAdvancedSettingsMenu()
 	{
-		goTo(advancedSettingsMenu.transform.position + cameraPositionOffset);
+		Vector3 offset = new Vector3(2f, 4.1f, -6f);
+		goTo(advancedSettingsMenu.transform.position + cameraPositionOffset + offset);
 		callbackObj = advancedSettingsMenu;
 	}
 
