@@ -68,6 +68,7 @@ public class PlayerController : HumanoidController
 
 	//Sound
 	private AudioSource soundWalk;
+	public AudioClip gameSaved;
 
 	// Use this for initialization
 	protected override void Start () 
@@ -503,6 +504,7 @@ public class PlayerController : HumanoidController
 		saveManager.save();
 		remainingTime = autoSavTimeLimit;
 		autoSav.showMessage();
+		audio.PlayOneShot(gameSaved);
 	}
 
 	List<string> initSkillsDescriptions()
