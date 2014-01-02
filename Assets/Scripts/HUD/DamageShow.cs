@@ -26,8 +26,6 @@ public class DamageShow : MonoBehaviour
 	// taille de la Police utilisée
 	private int policeSize = 20;
 
-	//public int nbSimultaneousElement;
-
 	// Use this for initialization
 	void Start () 
 	{
