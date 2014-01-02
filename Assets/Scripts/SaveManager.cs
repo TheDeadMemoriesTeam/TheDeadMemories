@@ -8,18 +8,20 @@ public class SaveManager{
 	
 	private AchievementManager achievementManager;
 	private SkillManager skillManager;
+	private PlayerController player;
 
 	// Chemin vers les fichiers de sauvegarde
 	private string achievementPath = "./save/achievement.dat";
 	private string skillsPath = "./save/skills.dat";
 
 
-	public SaveManager(AchievementManager otherA, SkillManager otherS)
+	public SaveManager(AchievementManager otherA, SkillManager otherS, PlayerController p)
 	{
 		achievementManager = otherA;
 		skillManager = otherS;
 		if(!Directory.Exists("./save/"))
 			Directory.CreateDirectory("./save/");
+		player = p;
 	}
 
 	// Fonction de sauvegarde
@@ -86,6 +88,9 @@ public class SaveManager{
 		List<string> skills = new List<string>();
 		List<Skills> skillList = skillManager.getListOfSkills();
 
+		// Récupération de l'experience du joueur
+		skills.Add(player.getExperience().ToString());
+
 		Skills skill;
 		for (int i=0; i<skillList.Count; i++)
 		{
@@ -145,9 +150,14 @@ public class SaveManager{
 			for (int i=0; i<skillsList.Count; i++)
 				skillsList[i].setIsBought(false);
 
+			// Réinitialise l'expérience du joueur
+			player.experienceUpdate(-player.getExperience());
+			// Récupère l'expérience sauvegardée
+			player.experienceUpdate(int.Parse (skillsLoaded[0]));
+
 			// Récupère les compétences déjà achetées
 			int index;
-			for (int i=0; i<skillsLoaded.Count; i++)
+			for (int i=1; i<skillsLoaded.Count; i++)
 			{
 				index = skillsList.FindIndex(
 					delegate(Skills obj) {
