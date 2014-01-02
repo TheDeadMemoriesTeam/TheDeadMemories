@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BaseSkills : DamageSkills 
 {
-	private int m_lvlDamage = 0;
+	protected int m_lvlDamage = 0;
 	private int m_costIncDamage;
 	private string m_nameDamage;
 	private string m_descriptionDamage;

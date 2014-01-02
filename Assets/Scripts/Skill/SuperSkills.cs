@@ -18,8 +18,9 @@ public class SuperSkills : DamageSkills
 		m_zone = zone;
 	}
 
-	public void launch()
+	public void launch(Vector3 position)
 	{
-
+		for(int i=0; i<5; i++)
+			GameObject.Instantiate(m_particule, new Vector3(Random.Range(position.x - m_zone, position.x + m_zone), 35, Random.Range(position.z - m_zone, position.z + m_zone)), Quaternion.identity);
 	}
 }
