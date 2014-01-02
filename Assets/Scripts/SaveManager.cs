@@ -17,8 +17,9 @@ public class SaveManager{
 	private string skillsPath = "./save/skills.dat";
 
 	// Lieu de spawn pour le joueur
-	Vector3 spawn1 = new Vector3(-14, 8, -20); 		// Crypte du cimetière
-	Vector3 spawn2 = new Vector3(120, -2, 479); 	// Crypte du village
+	Vector3 spawn1 = new Vector3 (-14, 8, -20); 	// Crypte du cimetière
+	Vector3 spawn2 = new Vector3 (120, -2, 479); 	// Crypte du village
+	Vector3 spawn3 = new Vector3 (697, -4, 17);		// Crypte de la ferme
 
 	public SaveManager(AchievementManager otherA, SkillManager otherS, PlayerController p)
 	{
@@ -235,15 +236,21 @@ public class SaveManager{
 		List<string> external = new List<string>();
 
 		Vector3 position = player.transform.position;
-		/*
-		external.Add(position.x.ToString());
-		external.Add((position.y + 1).ToString());
-		external.Add(position.z.ToString());*/
 
-		if(Vector3.Distance(position, spawn1) < Vector3.Distance(position, spawn2))
-			position = spawn1;
+		if (Vector3.Distance(position, spawn1) < Vector3.Distance(position, spawn2))
+		{
+			if (Vector3.Distance(position, spawn1) < Vector3.Distance(position, spawn3))
+				position = spawn1;
+			else
+				position = spawn3;
+		}
 		else
-			position = spawn2;
+		{
+			if (Vector3.Distance(position, spawn2) < Vector3.Distance(position, spawn3))
+				position = spawn2;
+			else
+				position = spawn3;
+		}
 
 		external.Add(position.x.ToString());
 		external.Add(position.y.ToString());
