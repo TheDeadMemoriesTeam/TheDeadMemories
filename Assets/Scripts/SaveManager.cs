@@ -21,13 +21,14 @@ public class SaveManager{
 	Vector3 spawn2 = new Vector3 (120, -2, 479); 	// Crypte du village
 	Vector3 spawn3 = new Vector3 (697, -4, 17);		// Crypte de la ferme
 
-	public SaveManager(AchievementManager otherA, SkillManager otherS, PlayerController p)
+	public SaveManager(AchievementManager otherA, SkillManager otherS, PlayerController p, DayNightCycleManager otherD)
 	{
 		achievementManager = otherA;
 		skillManager = otherS;
 		if(!Directory.Exists("./save/"))
 			Directory.CreateDirectory("./save/");
 		player = p;
+		timeManager = otherD;
 	}
 
 	// Fonction de sauvegarde
@@ -252,9 +253,11 @@ public class SaveManager{
 				position = spawn3;
 		}
 
-		external.Add(position.x.ToString());
-		external.Add(position.y.ToString());
-		external.Add(position.z.ToString());
+		external.Add (position.x.ToString());
+		external.Add (position.y.ToString());
+		external.Add (position.z.ToString());
+		
+		external.Add (timeManager.dayTime.ToString());
 
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
@@ -281,7 +284,7 @@ public class SaveManager{
 			player.transform.position = new Vector3(float.Parse(external[0]),
 			                                        float.Parse(external[1]),
 			            							float.Parse(external[2]));
-			//player.transform.position = spawn2;
+			timeManager.dayTime = float.Parse (external[3]);
 			
 			file.Close();
 		}
