@@ -128,7 +128,7 @@ public class PlayerController : HumanoidController
 		anim = GetComponentInChildren<Animator>();
 		anim.SetLayerWeight(0,1f);
 
-		saveManager = new SaveManager(achievementManager, skillManager);
+		saveManager = new SaveManager(achievementManager, skillManager, this);
 		saveManager.load();
 		remainingTime = autoSavTimeLimit;
 		autoSav = FindObjectOfType<ShowMessage>();

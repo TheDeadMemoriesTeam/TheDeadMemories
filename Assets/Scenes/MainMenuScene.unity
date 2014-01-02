@@ -643,7 +643,8 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 342322292}
-  m_Text: Thibault Bertrand\nGregory Gounon\nAlexis Masclaux
+  m_Text: Thibault Bertrand (Purpl3fox)\nGregory Gounon (gounon)\nAlexis Masclaux
+    (XenoHeart)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -839,7 +840,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 359090881}
-  m_Text: Guillaume Pascal\nRomain Seyer
+  m_Text: Guillaume Pascal (gupascal)\nRomain Seyer (Jeyh)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -1759,7 +1760,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 840981351}
-  m_Text: Thibaut Grandclement\nRomain Seyer
+  m_Text: Thibaut Grandclement (Splachhh)\nRomain Seyer (Jeyh)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -3707,7 +3708,8 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1629644185}
-  m_Text: Arnaud Moncel\nGuillaume Pascal\nAlexandre Raberin
+  m_Text: Arnaud Moncel (Twins43)\nGuillaume Pascal (gupascal)\nAlexandre Raberin
+    (KeRNeLith)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -3982,7 +3984,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1793481573}
-  m_Text: "universal-soundbank.com\\nsound-fishing.net\\nCl\xE9ment Janisset"
+  m_Text: "universal-soundbank.com\\nsound-fishing.net\\nCl\xE9ment Janisset (Janisse)"
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -4405,7 +4407,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1870485000}
-  m_Text: Bastien Mogeot\nLeo Solvignon\nDamien Valla
+  m_Text: Bastien Mogeot (bart182man)\nLeo Solvignon (naralo)\nDamien Valla (vallux)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -4919,7 +4921,7 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2083251128}
-  m_Text: Elodie Estivale
+  m_Text: Elodie Estival (elestival)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
@@ -5002,7 +5004,8 @@ TextMesh:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2111863745}
-  m_Text: Geoffrey Clauzier\nChristophe Gaillard\nClement Janisset
+  m_Text: Geoffrey Clauzier (gclauzier)\nChristophe Gaillard (Altivar)\nClement Janisset
+    (Janisse)
   m_OffsetZ: 0
   m_CharacterSize: .0399999991
   m_LineSpacing: 1
