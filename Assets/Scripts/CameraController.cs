@@ -91,7 +91,8 @@ public class CameraController : MonoBehaviour
 		
 		// S'il y a collision avec un élément du décor on corrige la position caméra avec le distance correcte
         bool isCorrected = false;
-        if (Physics.Linecast(trueTargetPosition, position, out collisionElement))
+        if (Physics.Linecast(trueTargetPosition, position, out collisionElement)
+		    && !collisionElement.collider.isTrigger)
         {
             position = collisionElement.point;
             correctedDistance = Vector3.Distance(trueTargetPosition, position);
