@@ -1,0 +1,191 @@
+fileFormatVersion: 2
+guid: c6581ded4cad8214bb5b037e031df6c8
+ModelImporter:
+  serializedVersion: 15
+  fileIDToRecycleName:
+    100000: bd1
+    100002: bd2
+    100004: bd3
+    100006: bd4
+    100008: bg1
+    100010: bg2
+    100012: bg3
+    100014: bg4
+    100016: Circle_003
+    100018: Circle_011
+    100020: col1
+    100022: col2
+    100024: jd1
+    100026: jd2
+    100028: jg1
+    100030: jg2
+    100032: //RootNode
+    100034: Objet001
+    100036: Objet002
+    100038: Objet003
+    100040: t1
+    100042: t2
+    100044: Objet004
+    400000: bd1
+    400002: bd2
+    400004: bd3
+    400006: bd4
+    400008: bg1
+    400010: bg2
+    400012: bg3
+    400014: bg4
+    400016: Circle_003
+    400018: Circle_011
+    400020: col1
+    400022: col2
+    400024: jd1
+    400026: jd2
+    400028: jg1
+    400030: jg2
+    400032: //RootNode
+    400034: Objet001
+    400036: Objet002
+    400038: Objet003
+    400040: t1
+    400042: t2
+    400044: Objet004
+    2300000: Objet001
+    3300000: Objet001
+    4300000: Circle_011
+    4300002: Circle_003
+    4300004: Objet001
+    4300006: Objet002
+    4300008: Objet003
+    4300010: Objet004
+    7400000: Take 001
+    9500000: //RootNode
+    13700000: Circle_003
+    13700002: Circle_011
+    13700004: Objet001
+    13700006: Objet002
+    13700008: Objet003
+    13700010: Objet004
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations:
+    - serializedVersion: 16
+      name: Take 001
+      takeName: Take 001
+      firstFrame: 0
+      lastFrame: 40
+      wrapMode: 0
+      orientationOffsetY: 0
+      level: 0
+      cycleOffset: 0
+      loop: 0
+      loopTime: 1
+      loopBlend: 0
+      loopBlendOrientation: 0
+      loopBlendPositionY: 0
+      loopBlendPositionXZ: 0
+      keepOriginalOrientation: 0
+      keepOriginalPositionY: 1
+      keepOriginalPositionXZ: 0
+      heightFromFeet: 0
+      mirror: 0
+      bodyMask: 01000000010000000100000001000000010000000100000001000000010000000100000001000000010000000100000001000000
+      curves: []
+      events: []
+      transformMask:
+      - path: 
+        weight: 1
+      - path: bd1
+        weight: 1
+      - path: bd1/bd2
+        weight: 1
+      - path: bd1/bd2/bd3
+        weight: 1
+      - path: bd1/bd2/bd3/bd4
+        weight: 1
+      - path: bg1
+        weight: 1
+      - path: bg1/bg2
+        weight: 1
+      - path: bg1/bg2/bg3
+        weight: 1
+      - path: bg1/bg2/bg3/bg4
+        weight: 1
+      - path: Circle_003
+        weight: 1
+      - path: Circle_011
+        weight: 1
+      - path: col1
+        weight: 1
+      - path: col1/col2
+        weight: 1
+      - path: jd1
+        weight: 1
+      - path: jd1/jd2
+        weight: 1
+      - path: jg1
+        weight: 1
+      - path: jg1/jg2
+        weight: 1
+      - path: Objet001
+        weight: 1
+      - path: Objet002
+        weight: 1
+      - path: Objet003
+        weight: 1
+      - path: Objet004
+        weight: 1
+      - path: t1
+        weight: 1
+      - path: t1/t2
+        weight: 1
+      maskType: 0
+      maskSource: {instanceID: 0}
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: .00999999978
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 2
+  userData: 
