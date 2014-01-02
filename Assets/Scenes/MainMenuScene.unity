@@ -3357,7 +3357,7 @@ MonoBehaviour:
   settingsMenu: {fileID: 1819776202}
   advancedSettingsMenu: {fileID: 541318726}
   achievementsMenu: {fileID: 1972925601}
-  creditsMenu: {fileID: 1853718549}
+  creditsMenu: {fileID: 2009521840}
   cameraPositionOffset: {x: 0, y: 1.60000002, z: -2.5}
 --- !u!82 &1533108017
 AudioSource:
@@ -4206,7 +4206,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 1853718548}
   - 95: {fileID: 1853718547}
-  - 114: {fileID: 1853718549}
   - 65: {fileID: 1853718550}
   m_Layer: 0
   m_Name: creditsTomb
@@ -4244,37 +4243,6 @@ Transform:
   - {fileID: 142947767}
   - {fileID: 98085470}
   m_Father: {fileID: 1500544206}
---- !u!114 &1853718549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1853718546}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9edd2a9a9f0649c4880d8233e871098b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  listCredit:
-  - {fileID: 715949615}
-  - {fileID: 1090419026}
-  - {fileID: 359090881}
-  - {fileID: 1604386081}
-  - {fileID: 2111863745}
-  - {fileID: 1629644185}
-  - {fileID: 1143617510}
-  - {fileID: 2083251128}
-  - {fileID: 78080616}
-  - {fileID: 840981351}
-  - {fileID: 1142071771}
-  - {fileID: 342322292}
-  - {fileID: 1870485000}
-  - {fileID: 1216421527}
-  - {fileID: 457585187}
-  - {fileID: 1326786990}
-  - {fileID: 1793481573}
-  - {fileID: 1196888519}
-  isReturn: 0
 --- !u!65 &1853718550
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4685,11 +4653,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 2009521838}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb00346f943fb3041a5e93aa096333df, type: 3}
+  m_Script: {fileID: 11500000, guid: 9edd2a9a9f0649c4880d8233e871098b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isNewButton: 0
-  isLoadButton: 0
+  listCredit:
+  - {fileID: 715949615}
+  - {fileID: 1090419026}
+  - {fileID: 359090881}
+  - {fileID: 1604386081}
+  - {fileID: 2111863745}
+  - {fileID: 1629644185}
+  - {fileID: 1143617510}
+  - {fileID: 2083251128}
+  - {fileID: 78080616}
+  - {fileID: 840981351}
+  - {fileID: 1142071771}
+  - {fileID: 342322292}
+  - {fileID: 1870485000}
+  - {fileID: 1216421527}
+  - {fileID: 457585187}
+  - {fileID: 1326786990}
+  - {fileID: 1793481573}
+  - {fileID: 1196888519}
   isReturn: 1
 --- !u!114 &2009521841
 MonoBehaviour:
