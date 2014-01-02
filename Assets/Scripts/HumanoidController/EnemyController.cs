@@ -105,6 +105,11 @@ public class EnemyController : HumanoidController
 		else
 			// ... patrol.
 			Patrolling();
+
+		if(nav.velocity.magnitude > 1f)
+			anim.SetBool(hashIDs.isWalking, true);
+		else
+			anim.SetBool(hashIDs.isWalking, false);
 	}
 
 	void Shooting ()
@@ -112,6 +117,7 @@ public class EnemyController : HumanoidController
 		// Stop the enemy where it is.
 		nav.Stop();
 		shooting = true;
+
 		anim.SetBool(hashIDs.isHitting, true);
 	}
 	

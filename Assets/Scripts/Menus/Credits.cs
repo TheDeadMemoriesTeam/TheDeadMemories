@@ -96,7 +96,6 @@ public class Credits : SubMenu
 
 		Color couleur = new Color(1f, 1f, 1f, (Mathf.Sin((timeCredit/intervalTime)*Mathf.PI)));
 		listCredit[currentText].renderer.material.color = couleur;
-		Debug.Log (listCredit [currentText].name.ToString ());
 	}
 	
 	//Change le texte en cours d'affichage

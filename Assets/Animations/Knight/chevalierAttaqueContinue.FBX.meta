@@ -161,59 +161,59 @@ ModelImporter:
       - path: avBrasD
         weight: 1
       - path: avBrasG
-        weight: 1
+        weight: 0
       - path: avBrasG/poignetG
-        weight: 1
+        weight: 0
       - path: Box005
-        weight: 1
+        weight: 0
       - path: Box006
-        weight: 1
+        weight: 0
       - path: brasD
         weight: 1
       - path: BrasG
-        weight: 1
+        weight: 0
       - path: bustebas
-        weight: 1
+        weight: 0
       - path: bustehaut
-        weight: 1
+        weight: 0
       - path: casque
-        weight: 1
+        weight: 0
       - path: IK Chain001
-        weight: 1
+        weight: 0
       - path: IK Chain002
-        weight: 1
+        weight: 0
       - path: jambi__re D
-        weight: 1
+        weight: 0
       - path: jambi__re G
-        weight: 1
+        weight: 0
       - path: Line001
-        weight: 1
+        weight: 0
       - path: molletD
         weight: 0
       - path: molletD/piedD
         weight: 0
       - path: molletG
-        weight: 1
+        weight: 0
       - path: molletG/piedG
-        weight: 1
+        weight: 0
       - path: OsPereController
-        weight: 1
+        weight: 0
       - path: OsPereController/os JambeD
-        weight: 1
+        weight: 0
       - path: OsPereController/os JambeD/os MolletD
-        weight: 1
+        weight: 0
       - path: OsPereController/os JambeD/os MolletD/os PiedD
-        weight: 1
+        weight: 0
       - path: OsPereController/os JambeG
-        weight: 1
+        weight: 0
       - path: OsPereController/os JambeG/os MolletG
-        weight: 1
+        weight: 0
       - path: OsPereController/os JambeG/os MolletG/os PiedG
-        weight: 1
+        weight: 0
       - path: OsPereController/OsBusteBas
-        weight: 1
+        weight: 0
       - path: OsPereController/OsBusteBas/OsBusteHaut
-        weight: 1
+        weight: 0
       - path: OsPereController/OsBusteBas/OsBusteHaut/os BrasD
         weight: 1
       - path: OsPereController/OsBusteBas/OsBusteHaut/os BrasD/os AvBrasD
@@ -221,15 +221,15 @@ ModelImporter:
       - path: OsPereController/OsBusteBas/OsBusteHaut/os BrasD/os AvBrasD/os PoignetD
         weight: 1
       - path: OsPereController/OsBusteBas/OsBusteHaut/Os BrasG
-        weight: 1
+        weight: 0
       - path: OsPereController/OsBusteBas/OsBusteHaut/Os BrasG/os AvBrasG
-        weight: 1
+        weight: 0
       - path: OsPereController/OsBusteBas/OsBusteHaut/Os BrasG/os AvBrasG/os PoignetG
-        weight: 1
+        weight: 0
       - path: OsPereController/OsBusteBas/OsBusteHaut/OsTete
-        weight: 1
+        weight: 0
       - path: OsPereController/OsBusteBas/OsBusteHaut/OsTete/Bone005
-        weight: 1
+        weight: 0
       - path: poignetDepee
         weight: 1
       - path: poignetDepee/Box001
@@ -241,7 +241,7 @@ ModelImporter:
     isReadable: 1
   meshes:
     lODScreenPercentages: []
-    globalScale: .00700000022
+    globalScale: .000300000014
     meshCompression: 0
     addColliders: 0
     importBlendShapes: 1
