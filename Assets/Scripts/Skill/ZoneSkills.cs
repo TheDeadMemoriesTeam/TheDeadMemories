@@ -11,10 +11,6 @@ public class ZoneSkills : BaseSkills
 
 	public void launch(Vector3 position)
 	{
-		Transform magicZoneTransform = (Transform)GameObject.Instantiate(m_particule,
-		                                                      new Vector3(position.x, 
-		            										  position.y,
-		            										  position.z),
-		                                                      Quaternion.identity);
+		GameObject.Instantiate(m_particule, new Vector3(position.x, position.y, position.z), Quaternion.identity);
 	}
 }
