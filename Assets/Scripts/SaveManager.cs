@@ -7,13 +7,14 @@ using System.Runtime.Serialization.Formatters.Binary;
 public class SaveManager{
 	
 	private AchievementManager achievementManager;
+	private DayNightCycleManager timeManager;
 	private SkillManager skillManager;
 	private PlayerController player;
 
 	// Chemin vers les fichiers de sauvegarde
 	private string achievementPath = "./save/achievement.dat";
+	private string externalPath = "./save/external.dat";
 	private string skillsPath = "./save/skills.dat";
-
 
 	public SaveManager(AchievementManager otherA, SkillManager otherS, PlayerController p)
 	{
@@ -27,6 +28,7 @@ public class SaveManager{
 	// Fonction de sauvegarde
 	public void save()
 	{
+		saveExternal();
 		saveSkills();
 		saveAchievements();
 	}
@@ -34,6 +36,7 @@ public class SaveManager{
 	// Fonction de chargement
 	public void load()
 	{
+		loadExternal();
 		loadSkills();
 		loadAchievements();
 	}
@@ -220,4 +223,46 @@ public class SaveManager{
 		}
 	}
 
+	/********************/
+	/* Gestion du reste */
+	/********************/
+	private void saveExternal()
+	{
+		List<string> external = new List<string>();
+
+		Vector3 position = player.transform.position;
+
+		external.Add(position.x.ToString());
+		external.Add((position.y + 1).ToString());
+		external.Add(position.z.ToString());
+
+		// Créé le formater
+		BinaryFormatter formater = new BinaryFormatter();
+		// Crée le fichier
+		Stream saveFile = File.Create(externalPath);
+		// Sauvegarde les achivements
+		formater.Serialize(saveFile, external);
+		// Libère la mémoire
+		saveFile.Close();
+	}
+
+	private void loadExternal()
+	{
+		// Si le fichier existe
+		if(File.Exists(externalPath))
+		{
+			// Créé le formateur
+			BinaryFormatter formater = new BinaryFormatter();
+			// Créé le fichier
+			Stream file = File.Open (externalPath, FileMode.Open);
+			// Récupère les informations
+			List<string> external = formater.Deserialize(file) as List<string>;
+
+			player.transform.position = new Vector3(float.Parse(external[0]),
+			                                        float.Parse(external[1]),
+			            							float.Parse(external[2]));
+			
+			file.Close();
+		}
+	}
 }
