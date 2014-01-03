@@ -18,19 +18,15 @@ public class MeleeController : EnemyController
 		skillManager.setBaseMagicAttack(2f);
 
 		int ind = Random.Range(0, tab.Length);
-		Debug.Log(tab[ind].name);
 
 		skillManager.addSkill(new PorteeSkills("melee Skill", "", 0, null, 1f, 50, tab[ind], 1f, 0, 0, "", "", "", "", 1f)); 
-		
-		manaCost = -50;
+
 		timeAttack = 1F;
 		probabilityAttack = 0.1F;
 		
 		xp = 15;
 		
 		timeRegen = 6;
-		
-		//gameObject.renderer.material.color = new Color(0.725F, 0.478F, 0.341F);
 	}
 	
 	protected override void Update ()

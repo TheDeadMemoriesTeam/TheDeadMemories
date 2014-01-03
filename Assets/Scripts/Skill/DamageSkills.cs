@@ -22,11 +22,6 @@ public abstract class DamageSkills : ActiveSkills
 		m_baseDamage = baseDamage;	
 	}
 	
-	public float getBaseDamage()
-	{
-		return m_baseDamage;	
-	}
-	
 	// Use this for initialization
 	public DamageSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule, float baseDamage) 
 		:base(name, description, price, father, timeIncantation, manaCost, particule)

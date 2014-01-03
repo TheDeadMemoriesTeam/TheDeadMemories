@@ -185,7 +185,7 @@ public class SkillsGUI : MonoBehaviour
 				               					generateToolTip(baseSkillRank1.getDescriptionDamage(),
 				                								baseSkillRank1.getCostIncDamage()))))
 				{
-					upgradeMagicLittleSkill(baseSkillRank1);
+					upgradeMagicLittleSkill(baseSkillRank1, true);
 				}
 				
 				GUI.enabled = baseSkillRank1.getCostIncAd() <= player.getExperience();
@@ -242,7 +242,7 @@ public class SkillsGUI : MonoBehaviour
 					               					generateToolTip(baseSkillRank2.getDescriptionDamage(),
 					                								baseSkillRank2.getCostIncDamage()))))
 					{
-						upgradeMagicLittleSkill(baseSkillRank2);
+						upgradeMagicLittleSkill(baseSkillRank2, true);
 					}
 					
 					GUI.enabled = baseSkillRank2.getCostIncAd() <= player.getExperience();
@@ -408,7 +408,7 @@ public class SkillsGUI : MonoBehaviour
 				               					generateToolTip(passiveSkillRank1.getDescriptionFirstAd(),
 				                                				passiveSkillRank1.getCostIncFirstAd()))))
 				{
-					upgradePassiveLittleSkill(passiveSkillRank1);
+					upgradePassiveLittleSkill(passiveSkillRank1, true);
 				}
 				
 				GUI.enabled = passiveSkillRank1.getCostIncSecAd() <= player.getExperience();
@@ -463,7 +463,7 @@ public class SkillsGUI : MonoBehaviour
 					               					generateToolTip(passiveSkillRank2.getDescriptionFirstAd(),
 					                								passiveSkillRank2.getCostIncFirstAd()))))
 					{
-						upgradePassiveLittleSkill(passiveSkillRank2);
+						upgradePassiveLittleSkill(passiveSkillRank2, true);
 					}
 					
 					GUI.enabled = passiveSkillRank2.getCostIncSecAd() <= player.getExperience();
@@ -578,7 +578,7 @@ public class SkillsGUI : MonoBehaviour
 	*		   	=> first : 	true si c'est le premier skill qui doit etre augmenté
 	*						false si c'est le second
 	*/
-	void upgradePassiveLittleSkill(PassiveSkills skillRank, bool first = true)
+	void upgradePassiveLittleSkill(PassiveSkills skillRank, bool first)
 	{
 		if (first)
 		{
@@ -600,7 +600,7 @@ public class SkillsGUI : MonoBehaviour
 	*		   	=> first : 	true si c'est le premier skill qui doit etre augmenté
 	*						false si c'est le second
 	*/
-	void upgradeMagicLittleSkill(BaseSkills skillRank, bool first = true)
+	void upgradeMagicLittleSkill(BaseSkills skillRank, bool first)
 	{
 		if (first)
 		{

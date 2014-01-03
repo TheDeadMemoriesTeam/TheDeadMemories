@@ -20,8 +20,7 @@ public class BossController : EnemyController
 		int ind = Random.Range(0, tab.Length);
 
 		skillManager.addSkill(new PorteeSkills("Boss Skill", "", 0, null, 1.5f, 50, tab[ind], 10f, 0, 0, "", "", "", "", 1f)); 
-
-		manaCost = -50;
+	
 		timeAttack = 1.5F;
 		probabilityAttack = 0.1F;
 		
