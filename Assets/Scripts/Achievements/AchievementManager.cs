@@ -164,6 +164,11 @@ public class AchievementManager : MonoBehaviour
 		refreshListAchievements();
 	}
 
+	public List<Achievement> getAchievementsLocked()
+	{
+		return achievements;
+	}
+
 	public List<Achievement> getAchievementsUnlocked()
 	{
 		return achievementsUnlock;
