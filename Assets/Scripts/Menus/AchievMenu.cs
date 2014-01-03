@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 public class AchievMenu : SubMenu 
 {
-	private List<string> achievementsCompleted;
+	private AchievementManager am;
 
 	//Fenetre d'affichage des achievements accomplis
 	private Rect achievsWindowRect;
@@ -28,9 +28,11 @@ public class AchievMenu : SubMenu
 	protected override void Start () 
 	{
 		base.Start();
-		// Récupère la liste des achievements accomplis
+		// Récupère la sauvegarde des achievements accomplis
 		AchievementsSaveReader asr = FindObjectOfType<AchievementsSaveReader>();
-		achievementsCompleted = asr.getAchievementsCompleted();
+
+		am = FindObjectOfType<AchievementManager>();
+		am.loadAchievements(asr.getAchievementsCompleted());
 	}
 	
 	// Update is called once per frame
@@ -58,6 +60,8 @@ public class AchievMenu : SubMenu
 	// Rempli la fenetre des achievements accomplis
 	void achievementsWindowOpen(int windowId)
 	{
+		List<Achievement> achievementsCompleted = am.getAchievementsUnlocked();
+
 		// Zone de dessin + scroll bars
 		GUILayout.BeginArea(new Rect(10, 20, windowWidth, windowHeight));
 		
@@ -70,9 +74,9 @@ public class AchievMenu : SubMenu
 		{
 			GUI.Label(	new Rect(20,
 			                     paddingTop + i*spaceBetweenItem,
-			                     achievementsCompleted[i].Length * letterSize,
+			                     achievementsCompleted[i].getName().Length * letterSize,
 			                     spaceBetweenItem),
-			            new GUIContent(achievementsCompleted[i],
+			          	new GUIContent(achievementsCompleted[i].getName(),
 			               			   ""));
 		}
 

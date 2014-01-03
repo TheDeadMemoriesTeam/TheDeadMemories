@@ -134,7 +134,8 @@ public class AchievementManager : MonoBehaviour
 			if (achievements[i].check())
 			{
 				// Unlocked achievement
-				Announcer.addAchiev(achievements[i].getName());
+				if (Announcer != null)
+					Announcer.addAchiev(achievements[i].getName());
 				// Supprime de la liste des achievements a check tous ceux déjà réalisés
 				refreshListAchievements();
 			}
