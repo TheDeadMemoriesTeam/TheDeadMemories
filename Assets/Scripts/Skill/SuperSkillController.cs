@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class MeteorController : MonoBehaviour 
+public class SuperSkillController : MonoBehaviour 
 {
 	public Transform particule;
 
@@ -25,7 +25,8 @@ public class MeteorController : MonoBehaviour
 
 	void OnCollisionEnter(Collision col)
 	{
-		GameObject.Instantiate(particule, transform.position, Quaternion.identity);
+		if(particule)
+			GameObject.Instantiate(particule, transform.position, Quaternion.identity);
 
 		//on inflige des degas au ennemis si il sont dans la zone 
 		EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
