@@ -755,6 +755,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 570922429}
     m_Modifications:
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: headArc.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: tailArc.Array.size
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: m_LocalPosition.x
       value: -44.6103516
@@ -785,8 +793,92 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: m_Name
-      value: WaysNetwork cemetery
+      value: WaysNetwork cemetery crypte
       objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 34.3265648
+      objectReference: {fileID: 0}
+    - target: {fileID: 400006, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -32.4728851
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -9.93106842
+      objectReference: {fileID: 0}
+    - target: {fileID: 400004, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 12.6591263
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -11.3497314
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 13.7318687
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -29.5613327
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 30.9556732
+      objectReference: {fileID: 0}
+    - target: {fileID: 400002, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: .667838335
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: headArc.Array.data[4]
+      value: 
+      objectReference: {fileID: 195295905}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: tailArc.Array.data[4]
+      value: 
+      objectReference: {fileID: 786175751}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: headArc.Array.data[5]
+      value: 
+      objectReference: {fileID: 825741217}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: tailArc.Array.data[5]
+      value: 
+      objectReference: {fileID: 773474502}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: headArc.Array.data[6]
+      value: 
+      objectReference: {fileID: 195295905}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: headArc.Array.data[7]
+      value: 
+      objectReference: {fileID: 825741217}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: headArc.Array.data[8]
+      value: 
+      objectReference: {fileID: 786175751}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: headArc.Array.data[9]
+      value: 
+      objectReference: {fileID: 773474502}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: tailArc.Array.data[6]
+      value: 
+      objectReference: {fileID: 2114917921}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: tailArc.Array.data[7]
+      value: 
+      objectReference: {fileID: 1479633368}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: tailArc.Array.data[8]
+      value: 
+      objectReference: {fileID: 1855181090}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: tailArc.Array.data[9]
+      value: 
+      objectReference: {fileID: 1856259488}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
   m_RootGameObject: {fileID: 1157527724}
@@ -1287,7 +1379,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_Name
-      value: spawn middle cemetery
+      value: spawn cemetery middle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
@@ -4102,7 +4194,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: m_Name
-      value: WaysNetwork middle wood
+      value: WaysNetwork wood middle
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: m_LocalPosition.x
@@ -6710,7 +6802,7 @@ Transform:
   m_PrefabInternal: {fileID: 19339185}
   m_GameObject: {fileID: 195295904}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 34.3265648, y: 0, z: -32.4728851}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1157527725}
@@ -8347,7 +8439,7 @@ GameObject:
   - 4: {fileID: 270284586}
   - 114: {fileID: 270284587}
   m_Layer: 0
-  m_Name: WaysNetwork middle cemetery
+  m_Name: WaysNetwork cemetery middle
   m_TagString: WaysNetwork
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8364,13 +8456,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 8869164}
-  - {fileID: 125942256}
   - {fileID: 1388287041}
-  - {fileID: 1961658261}
   - {fileID: 1631306602}
+  - {fileID: 104594644}
+  - {fileID: 125942256}
+  - {fileID: 1961658261}
   - {fileID: 1225418692}
   - {fileID: 165140960}
-  - {fileID: 104594644}
   - {fileID: 326729741}
   - {fileID: 431819798}
   m_Father: {fileID: 570922429}
@@ -8715,7 +8807,7 @@ GameObject:
   - 4: {fileID: 290004254}
   - 114: {fileID: 290004253}
   m_Layer: 0
-  m_Name: spawn middle cemetery
+  m_Name: spawn cemetery middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17587,17 +17679,17 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 660360907}
-  - {fileID: 1157527725}
   - {fileID: 738460421}
   - {fileID: 1511421121}
+  - {fileID: 1157527725}
+  - {fileID: 270284586}
   - {fileID: 532397592}
   - {fileID: 663857211}
-  - {fileID: 270284586}
-  - {fileID: 676313019}
   - {fileID: 886928928}
   - {fileID: 751675446}
   - {fileID: 61682088}
   - {fileID: 1804707376}
+  - {fileID: 676313019}
   m_Father: {fileID: 0}
 --- !u!1001 &573756017
 Prefab:
@@ -20488,7 +20580,7 @@ GameObject:
   - 4: {fileID: 676313019}
   - 114: {fileID: 676313020}
   m_Layer: 0
-  m_Name: WaysNetwork middle wood
+  m_Name: WaysNetwork wood middle
   m_TagString: WaysNetwork
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20752,7 +20844,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100008, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: m_Name
-      value: WaysNetwork middle cemetery
+      value: WaysNetwork cemetery middle
       objectReference: {fileID: 0}
     - target: {fileID: 400006, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: m_LocalPosition.z
@@ -24301,7 +24393,7 @@ Transform:
   m_PrefabInternal: {fileID: 19339185}
   m_GameObject: {fileID: 773474501}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: 15}
+  m_LocalPosition: {x: -29.5613327, y: 0, z: 30.9556732}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1157527725}
@@ -24798,7 +24890,7 @@ Transform:
   m_PrefabInternal: {fileID: 19339185}
   m_GameObject: {fileID: 786175750}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 15}
+  m_LocalPosition: {x: -11.3497314, y: .667838335, z: 13.7318687}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1157527725}
@@ -25771,7 +25863,7 @@ Transform:
   m_PrefabInternal: {fileID: 19339185}
   m_GameObject: {fileID: 825741216}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 15, y: 0, z: 0}
+  m_LocalPosition: {x: 12.6591263, y: 0, z: -9.93106842}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1157527725}
@@ -34979,7 +35071,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
       propertyPath: m_Name
-      value: spawn middle wood
+      value: spawn wood middle
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
@@ -35022,7 +35114,7 @@ GameObject:
   - 4: {fileID: 1157527725}
   - 114: {fileID: 1157527726}
   m_Layer: 0
-  m_Name: WaysNetwork cemetery
+  m_Name: WaysNetwork cemetery crypte
   m_TagString: WaysNetwork
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35042,6 +35134,10 @@ Transform:
   - {fileID: 825741217}
   - {fileID: 786175751}
   - {fileID: 773474502}
+  - {fileID: 2114917921}
+  - {fileID: 1479633368}
+  - {fileID: 1855181090}
+  - {fileID: 1856259488}
   m_Father: {fileID: 570922429}
 --- !u!114 &1157527726
 MonoBehaviour:
@@ -35060,11 +35156,23 @@ MonoBehaviour:
   - {fileID: 825741217}
   - {fileID: 786175751}
   - {fileID: 773474502}
+  - {fileID: 195295905}
+  - {fileID: 825741217}
+  - {fileID: 195295905}
+  - {fileID: 825741217}
+  - {fileID: 786175751}
+  - {fileID: 773474502}
   tailArc:
   - {fileID: 825741217}
   - {fileID: 786175751}
   - {fileID: 773474502}
   - {fileID: 195295905}
+  - {fileID: 786175751}
+  - {fileID: 773474502}
+  - {fileID: 2114917921}
+  - {fileID: 1479633368}
+  - {fileID: 1855181090}
+  - {fileID: 1856259488}
   isOrientedArc: 
 --- !u!1001 &1160012436
 Prefab:
@@ -45267,6 +45375,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 878640949}
   m_GameObject: {fileID: 1479240612}
   m_Mesh: {fileID: 4300000, guid: 317ed822b661dbc4eb60620082825a71, type: 3}
+--- !u!1 &1479633367
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1479633368}
+  m_Layer: 0
+  m_Name: Point 2.5 middle cimetery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1479633368
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1479633367}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 50.7425537, y: 0, z: 30.0905571}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1157527725}
 --- !u!1 &1480032631
 GameObject:
   m_ObjectHideFlags: 0
@@ -50550,7 +50684,7 @@ GameObject:
   - 4: {fileID: 1677053350}
   - 114: {fileID: 1677053351}
   m_Layer: 0
-  m_Name: spawn middle wood
+  m_Name: spawn wood middle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -55217,6 +55351,58 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1489376273}
   m_GameObject: {fileID: 1854810799}
   m_Mesh: {fileID: 4300010, guid: e390739dcf00c0f4f96b39e15ec154b3, type: 3}
+--- !u!1 &1855181089
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100004, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1855181090}
+  m_Layer: 0
+  m_Name: Point 3.5 middle cimetery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1855181090
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400004, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1855181089}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 28.3601456, y: 0, z: 53.6174393}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1157527725}
+--- !u!1 &1856259487
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1856259488}
+  m_Layer: 0
+  m_Name: Point 4.5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1856259488
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1856259487}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -28.1146393, y: 0, z: 80.1721115}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1157527725}
 --- !u!1 &1857031250
 GameObject:
   m_ObjectHideFlags: 0
@@ -62883,17 +63069,17 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 290004254}
   - {fileID: 40047323}
   - {fileID: 107796630}
   - {fileID: 482644215}
+  - {fileID: 290004254}
   - {fileID: 2034320495}
   - {fileID: 1320824942}
-  - {fileID: 1677053350}
   - {fileID: 1984659244}
   - {fileID: 898509662}
   - {fileID: 1990393853}
   - {fileID: 124323625}
+  - {fileID: 1677053350}
   m_Father: {fileID: 0}
 --- !u!114 &2108200924
 MonoBehaviour:
@@ -63009,6 +63195,32 @@ MeshFilter:
   m_PrefabInternal: {fileID: 529399953}
   m_GameObject: {fileID: 2112876757}
   m_Mesh: {fileID: 4300000, guid: 93f59e574910cd949a21aaab8ad83df2, type: 3}
+--- !u!1 &2114917920
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100006, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 2114917921}
+  m_Layer: 0
+  m_Name: Point 1.5
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2114917921
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400006, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2114917920}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 72.7062607, y: 0, z: -32.4728851}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1157527725}
 --- !u!23 &2115382210
 Renderer:
   m_ObjectHideFlags: 0
