@@ -353,8 +353,8 @@ public class SaveManager{
 			                                        float.Parse(external[1]),
 			            							float.Parse(external[2]));
 			timeManager.dayTime = float.Parse (external[3]);
-//			player.getSkillManager().setPv(float.Parse (external[4]));
-//			player.getSkillManager().setMana(float.Parse (external[5]));
+			player.getSkillManager().setPv(float.Parse (external[4]));
+			player.getSkillManager().setMana(float.Parse (external[5]));
 			
 			file.Close();
 		}
