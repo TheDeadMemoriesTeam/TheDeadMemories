@@ -63092,6 +63092,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37e899e3ded719140b9bfe926e004e54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dayNightCycle: {fileID: 116980739}
   player: {fileID: 1758632532}
 --- !u!1 &2110339899
 GameObject:
