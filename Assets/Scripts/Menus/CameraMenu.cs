@@ -9,6 +9,7 @@ public class CameraMenu : CameraPath
 	public SubMenu advancedSettingsMenu;
 	public SubMenu achievementsMenu;
 	public SubMenu creditsMenu;
+	public SubMenu helpMenu;
 	private Vector3 creditsPos;
 
 	public Vector3 cameraPositionOffset;
@@ -79,4 +80,9 @@ public class CameraMenu : CameraPath
 		callbackObj = creditsMenu;
 	}
 
+	public void goToHelpMenu()
+	{
+		goTo(helpMenu.transform.position + cameraPositionOffset);
+		callbackObj = helpMenu;
+	}
 }

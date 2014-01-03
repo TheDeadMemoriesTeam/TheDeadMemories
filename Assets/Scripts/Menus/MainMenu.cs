@@ -9,6 +9,7 @@ public class MainMenu : Menu
 	public bool isSettingsButton = false;
 	public bool isAchievButton = false;
 	public bool isCreditsButton = false;
+	public bool isHelpButton = false;
 
 	// Use this for initialization
 	protected override void Start () 
@@ -40,19 +41,25 @@ public class MainMenu : Menu
 		
 		if (isSettingsButton)
 		{
-			cam.goToSettingsMenu(); // TODO
+			cam.goToSettingsMenu();
 			return;
 		}
 
 		if (isAchievButton)
 		{
-			cam.goToAchievementsMenu(); // TODO
+			cam.goToAchievementsMenu();
 			return;
 		}
 
 		if (isCreditsButton)
 		{
-			cam.goToCreditsMenu(); // TODO
+			cam.goToCreditsMenu();
+			return;
+		}
+
+		if (isHelpButton)
+		{
+			cam.goToHelpMenu();
 			return;
 		}
 	}
