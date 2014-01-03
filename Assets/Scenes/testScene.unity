@@ -22683,10 +22683,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 891117102}
-  - {fileID: 1480032632}
   - {fileID: 1218653467}
   - {fileID: 327992215}
   - {fileID: 949646905}
+  - {fileID: 1480032632}
   - {fileID: 192337524}
   - {fileID: 547679626}
   - {fileID: 1747535215}
@@ -33255,11 +33255,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.size
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.size
-      value: 13
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 400008, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: m_LocalPosition.x
@@ -33344,59 +33344,59 @@ Prefab:
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.data[6]
       value: 
-      objectReference: {fileID: 185358694}
+      objectReference: {fileID: 602122625}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.data[6]
       value: 
-      objectReference: {fileID: 15699664}
+      objectReference: {fileID: 958677014}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.data[7]
       value: 
-      objectReference: {fileID: 114030352}
+      objectReference: {fileID: 804487900}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.data[7]
       value: 
-      objectReference: {fileID: 602122625}
+      objectReference: {fileID: 594236482}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.data[8]
       value: 
-      objectReference: {fileID: 602122625}
+      objectReference: {fileID: 185358694}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.data[8]
       value: 
-      objectReference: {fileID: 958677014}
+      objectReference: {fileID: 594236482}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.data[9]
       value: 
-      objectReference: {fileID: 804487900}
+      objectReference: {fileID: 185358694}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.data[9]
       value: 
-      objectReference: {fileID: 594236482}
+      objectReference: {fileID: 1188888770}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.data[10]
       value: 
-      objectReference: {fileID: 185358694}
+      objectReference: {fileID: 958677014}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.data[10]
       value: 
-      objectReference: {fileID: 594236482}
+      objectReference: {fileID: 1234738334}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.data[11]
       value: 
-      objectReference: {fileID: 185358694}
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.data[11]
       value: 
-      objectReference: {fileID: 1188888770}
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: headArc.Array.data[12]
       value: 
-      objectReference: {fileID: 958677014}
+      objectReference: {fileID: 0}
     - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
       propertyPath: tailArc.Array.data[12]
       value: 
-      objectReference: {fileID: 1234738334}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
   m_RootGameObject: {fileID: 1511421120}
@@ -35126,7 +35126,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1188888770}
   m_Layer: 0
-  m_Name: Point 4.5
+  m_Name: Point 4.5 middle cemetery
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45822,8 +45822,6 @@ MonoBehaviour:
   - {fileID: 185358694}
   - {fileID: 15699664}
   - {fileID: 804487900}
-  - {fileID: 185358694}
-  - {fileID: 114030352}
   - {fileID: 602122625}
   - {fileID: 804487900}
   - {fileID: 185358694}
@@ -45836,8 +45834,6 @@ MonoBehaviour:
   - {fileID: 15699664}
   - {fileID: 958677014}
   - {fileID: 185358694}
-  - {fileID: 15699664}
-  - {fileID: 602122625}
   - {fileID: 958677014}
   - {fileID: 594236482}
   - {fileID: 594236482}
