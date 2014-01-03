@@ -119,7 +119,6 @@ public class AchievementManager : MonoBehaviour
 	{
 		// Supprime de la liste des achievements a check tous ceux déjà réalisés et les ajoute à une liste de ceux réalisés
 		refreshListAchievements();
-
 	}
 	
 	// Update is called once per frame

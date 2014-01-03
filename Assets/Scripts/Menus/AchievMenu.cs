@@ -65,8 +65,8 @@ public class AchievMenu : SubMenu
 		// Zone de dessin + scroll bars
 		GUILayout.BeginArea(new Rect(10, 20, windowWidth, windowHeight));
 		
-		scrollPosition = GUI.BeginScrollView(	new Rect(0, 10, windowWidth-20, 0.75f*windowHeight),
-		                                     	scrollPosition,
+		scrollPosition = GUI.BeginScrollView(	new Rect(0, 10, windowWidth-20, 0.63f*windowHeight),
+		                                        scrollPosition,
 		                                        new Rect(0, 10, windowWidth-40, achievementsCompleted.Count*spaceBetweenItem + paddingTop));
 
 		// Affiche la liste des achievements acquis
@@ -76,19 +76,26 @@ public class AchievMenu : SubMenu
 			                     paddingTop + i*spaceBetweenItem,
 			                     achievementsCompleted[i].getName().Length * letterSize,
 			                     spaceBetweenItem),
-			          	new GUIContent(achievementsCompleted[i].getName(),
-			               			   ""));
+			          	new GUIContent(	achievementsCompleted[i].getName(),
+			               				generateToolTip(achievementsCompleted[i].getDescription())));
 		}
 
 		GUI.EndScrollView();
+
+		// Affiche la description de l'achievement survolé
+		GUI.Label(	new Rect(20,
+		                     0.63f*windowHeight + 10,
+		                   	 windowWidth - 50,
+		                   	 0.16f*windowHeight),
+		          	GUI.tooltip);
 
 		// Bouton de retour au menu principal
 		float buttonWidth = 0.33f * windowWidth;
 		float buttonHeight = 0.1f * windowHeight;
 		if (GUI.Button(	new Rect((windowWidth-10)/2 - buttonWidth/2,
-		                         windowHeight - 2*buttonHeight,
+		                          windowHeight - 2*buttonHeight,
 		                          buttonWidth,
-		                         buttonHeight),
+		                          buttonHeight),
 		           		"Return"))
 		{
 			setInfFrontOf(false);
@@ -96,5 +103,12 @@ public class AchievMenu : SubMenu
 		}
 		
 		GUILayout.EndArea();
+	}
+
+	string generateToolTip(string description)
+	{
+		return 	"Description : "
+				+ System.Environment.NewLine
+				+ description;
 	}
 }
