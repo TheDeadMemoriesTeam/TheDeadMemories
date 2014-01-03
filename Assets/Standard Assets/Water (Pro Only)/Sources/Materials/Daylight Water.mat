@@ -79,6 +79,10 @@ Material:
     m_Floats:
       data:
         first:
+          name: _Shininess
+        second: .078125
+      data:
+        first:
           name: _WaveScale
         second: .104785718
       data:
@@ -89,10 +93,6 @@ Material:
         first:
           name: _RefrDistort
         second: .721428573
-      data:
-        first:
-          name: _Shininess
-        second: .078125
       data:
         first:
           name: _InvFade
@@ -108,6 +108,14 @@ Material:
         second: {r: 1, g: 1, b: 1, a: 1}
       data:
         first:
+          name: _SpecColor
+        second: {r: .5, g: .5, b: .5, a: 1}
+      data:
+        first:
+          name: _Emission
+        second: {r: 0, g: 0, b: 0, a: 0}
+      data:
+        first:
           name: _RefrColor
         second: {r: .337254912, g: .482352942, b: .466666669, a: 1}
       data:
@@ -118,14 +126,6 @@ Material:
         first:
           name: _HorizonColor
         second: {r: .0233564004, g: .0759978145, b: .117647052, a: 1}
-      data:
-        first:
-          name: _SpecColor
-        second: {r: .5, g: .5, b: .5, a: 1}
-      data:
-        first:
-          name: _Emission
-        second: {r: 0, g: 0, b: 0, a: 0}
 --- !u!1002 &2100001
 EditorExtensionImpl:
   serializedVersion: 6
