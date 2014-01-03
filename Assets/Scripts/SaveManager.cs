@@ -16,6 +16,7 @@ public class SaveManager{
 	private string achievementPath = "./save/achievement.dat";
 	private string externalPath = "./save/external.dat";
 	private string skillsPath = "./save/skills.dat";
+	private string statsPath = "./save/stats.dat";
 
 	// Lieu de spawn pour le joueur
 	Vector3 spawn1 = new Vector3 (-14, 8, -20); 	// Crypte du cimetière
@@ -36,6 +37,7 @@ public class SaveManager{
 	public void save()
 	{
 		saveExternal();
+		saveStats();
 		saveSkills();
 		saveAchievements();
 	}
@@ -44,6 +46,7 @@ public class SaveManager{
 	public void load()
 	{
 		loadExternal();
+		loadStats();
 		loadSkills();
 		loadAchievements();
 	}
@@ -81,11 +84,7 @@ public class SaveManager{
 
 		achievements = achievementManager.getAchievementsLocked();
 		achievementList.Capacity = achievements.Capacity;
-		for (int i=0; i<achievements.Count; i++)
-		{
-			achievementList.Add(achievements[i].getName());
-			Debug.Log(achievementList[i]);
-		}
+
 
 		saveFile = File.Create (achievements2Path);
 		formater.Serialize(saveFile, achievementList);
@@ -252,6 +251,49 @@ public class SaveManager{
 		}
 	}
 
+	/*********************/
+	/* Gestion des stats */
+	/*********************/
+	private void saveStats()
+	{
+		List<string> stats = new List<string>();
+		
+		stats.Add (achievementManager.getTravelledDistance().ToString());
+		stats.Add (achievementManager.getNbKilledEnemy().ToString());
+		stats.Add (achievementManager.getNbKilledBerseker().ToString());
+		stats.Add (achievementManager.getNbAssassinKills().ToString());
+		
+		// Créé le formater
+		BinaryFormatter formater = new BinaryFormatter();
+		// Crée le fichier
+		Stream saveFile = File.Create(skillsPath);
+		// Sauvegarde les achivements
+		formater.Serialize(saveFile, stats);
+		// Libère la mémoire
+		saveFile.Close();
+	}
+
+	private void loadStats()
+	{
+		// Si le fichier existe
+		if(File.Exists(statsPath))
+		{
+			// Créé le formateur
+			BinaryFormatter formater = new BinaryFormatter();
+			// Créé le fichier
+			Stream file = File.Open (statsPath, FileMode.Open);
+			// Récupère les informations
+			List<string> stats = formater.Deserialize(file) as List<string>;
+			
+			achievementManager.setTravelledDistance(float.Parse (stats[0]));
+			achievementManager.setNbKilledEnemy(int.Parse (stats[1]));
+			achievementManager.setNbKilledBerseker(int.Parse (stats[2]));
+			achievementManager.setNbAssassinKills(int.Parse (stats[3]));
+			
+			file.Close();
+		}
+	}
+
 	/********************/
 	/* Gestion du reste */
 	/********************/
@@ -282,6 +324,9 @@ public class SaveManager{
 		
 		external.Add (timeManager.dayTime.ToString());
 
+		external.Add (player.getSkillManager().getPv().ToString());
+		external.Add (player.getSkillManager().getMana().ToString());
+
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
 		// Crée le fichier
@@ -308,6 +353,8 @@ public class SaveManager{
 			                                        float.Parse(external[1]),
 			            							float.Parse(external[2]));
 			timeManager.dayTime = float.Parse (external[3]);
+//			player.getSkillManager().setPv(float.Parse (external[4]));
+//			player.getSkillManager().setMana(float.Parse (external[5]));
 			
 			file.Close();
 		}
