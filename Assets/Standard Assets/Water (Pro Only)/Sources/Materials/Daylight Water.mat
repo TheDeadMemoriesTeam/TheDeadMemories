@@ -83,6 +83,10 @@ Material:
         second: .078125
       data:
         first:
+          name: _InvFade
+        second: 1
+      data:
+        first:
           name: _WaveScale
         second: .104785718
       data:
@@ -93,10 +97,6 @@ Material:
         first:
           name: _RefrDistort
         second: .721428573
-      data:
-        first:
-          name: _InvFade
-        second: 1
       data:
         first:
           name: _Parallax
