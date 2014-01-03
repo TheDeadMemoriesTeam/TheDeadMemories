@@ -7,7 +7,7 @@ public class roueMoulin : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		m_vitesse = Random.Range(10, 20);
+		m_vitesse = Random.Range(15, 20) * PlayerPrefs.GetFloat("windSpeed", 0.5f);
 	}
 	
 	// Update is called once per frame
