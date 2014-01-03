@@ -31170,8 +31170,8 @@ Transform:
   - {fileID: 160402055}
   - {fileID: 439621070}
   - {fileID: 1770914750}
-  - {fileID: 125132271}
   - {fileID: 569526201}
+  - {fileID: 125132271}
   - {fileID: 763467022}
   - {fileID: 1327398481}
   - {fileID: 972274011}
@@ -59272,26 +59272,26 @@ Transform:
   m_Children:
   - {fileID: 203879027}
   - {fileID: 1151910680}
-  - {fileID: 27877837}
-  - {fileID: 834648388}
   - {fileID: 1401652373}
   - {fileID: 2020658739}
   - {fileID: 1785252149}
-  - {fileID: 1658488170}
+  - {fileID: 1044694733}
+  - {fileID: 38015334}
   - {fileID: 49821349}
+  - {fileID: 1658488170}
+  - {fileID: 27877837}
+  - {fileID: 525513015}
+  - {fileID: 2131077862}
+  - {fileID: 834648388}
+  - {fileID: 481469615}
   - {fileID: 101656406}
+  - {fileID: 2128922262}
+  - {fileID: 354457259}
+  - {fileID: 45326181}
+  - {fileID: 278535399}
   - {fileID: 740924669}
   - {fileID: 2094301623}
-  - {fileID: 45326181}
   - {fileID: 1602438061}
-  - {fileID: 2131077862}
-  - {fileID: 38015334}
-  - {fileID: 525513015}
-  - {fileID: 354457259}
-  - {fileID: 278535399}
-  - {fileID: 2128922262}
-  - {fileID: 481469615}
-  - {fileID: 1044694733}
   m_Father: {fileID: 734345985}
 --- !u!1 &1496535581
 GameObject:
@@ -68165,7 +68165,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 90e4f67e8785ca748b64a013df34adc6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 10
+  walkSpeed: 6
   jumpSpeed: 8
   rotationFactor: 5
   gravity: 20
@@ -81249,8 +81249,8 @@ Transform:
   - {fileID: 1707042282}
   - {fileID: 705254495}
   - {fileID: 1316339254}
-  - {fileID: 346642362}
   - {fileID: 1129166094}
+  - {fileID: 346642362}
   - {fileID: 950145446}
   - {fileID: 2079052597}
   - {fileID: 1662919344}
