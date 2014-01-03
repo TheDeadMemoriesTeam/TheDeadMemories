@@ -1155,6 +1155,10 @@ MonoBehaviour:
   itemsDropProbability:
   - .100000001
   - .0700000003
+  tab:
+  - {fileID: 400008, guid: a81d33d1075bceb47b086621eeaf33bf, type: 2}
+  - {fileID: 400008, guid: 6ff6f6f94b8d4d34cb499c0f89e1ef7e, type: 2}
+  - {fileID: 400000, guid: ade97b1cae6481e40af974e99e028099, type: 2}
 --- !u!114 &11400004
 MonoBehaviour:
   m_ObjectHideFlags: 1
