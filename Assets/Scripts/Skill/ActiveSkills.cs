@@ -18,11 +18,6 @@ public abstract class ActiveSkills : Skills
 		return m_manaCost;	
 	}
 
-	public Transform getParticule()
-	{
-		return m_particule;	
-	}
-	
 	// Use this for initialization
 	public ActiveSkills (string name, string description, int price, Skills father, float timeIncantation, int manaCost, Transform particule) 
 		:base(name, description, price, father)

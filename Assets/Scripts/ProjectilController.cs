@@ -31,12 +31,18 @@ public class ProjectilController : MonoBehaviour
 
 	void OnTriggerEnter(Collider other)
 	{
-		//if(other.gameObject.tag == "Enemy")
 		if(other.gameObject.tag == "Enemy")
 		{
 			HumanoidController enemy = other.gameObject.GetComponent<HumanoidController>() as HumanoidController;
 			float damage = -m_damage + (-m_damage/100 * enemy.getSkillManager().getMagicResistance());
 			enemy.healthUpdate(damage);
+			Destroy(gameObject);
+		}
+		else if(other.gameObject.tag == "Player")
+		{
+			PlayerController player = other.gameObject.GetComponent<PlayerController>() as PlayerController;
+			float damage = -m_damage + (-m_damage/100 * player.getSkillManager().getMagicResistance());
+			player.healthUpdate(damage);
 			Destroy(gameObject);
 		}
 	}
