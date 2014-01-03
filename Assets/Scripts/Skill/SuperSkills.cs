@@ -26,7 +26,7 @@ public class SuperSkills : DamageSkills
 			                                                                  new Vector3(Random.Range(position.x - m_zone, position.x + m_zone),
 			            													  35,
 			            													  Random.Range(position.z - m_zone, position.z + m_zone)),
-			                                                                  Quaternion.identity);
+			                                                                  m_particule.localRotation);
 			MeteorController meteor = meteorTransform.GetComponent<MeteorController>() as MeteorController;
 			meteor.init(distance + m_zone, damage + m_damage, furie, damageFurie, factorCritique);
 		}
