@@ -10,11 +10,15 @@ public class AchievMenu : SubMenu
 
 	// Position sur la scrollBar
 	private Vector2 scrollPosition = Vector2.zero;
+	// Choix d'afficher les achievements débloqués ou non
+	private int itemSelected = 0;
+	// Nom des boutons
+	private string[] toolbarStrings = {"Unlocked", "Locked"};
 
 	// variables de placement (en pixels)
 	private int spaceBetweenItem = 30;
 	private int letterSize = 10;
-	private int paddingTop = 20;
+	private int paddingTop = 40;
 
 	// variable de tailles (en %)
 	private float coefWidth = 0.4f;
@@ -32,7 +36,10 @@ public class AchievMenu : SubMenu
 		AchievementsSaveReader asr = FindObjectOfType<AchievementsSaveReader>();
 
 		am = FindObjectOfType<AchievementManager>();
-		am.loadAchievements(asr.getAchievementsCompleted());
+
+		List<string> achievCompleted = asr.getAchievementsCompleted();
+		if (achievCompleted != null)
+			am.loadAchievements(achievCompleted);
 	}
 	
 	// Update is called once per frame
@@ -60,24 +67,51 @@ public class AchievMenu : SubMenu
 	// Rempli la fenetre des achievements accomplis
 	void achievementsWindowOpen(int windowId)
 	{
-		List<Achievement> achievementsCompleted = am.getAchievementsUnlocked();
-
 		// Zone de dessin + scroll bars
 		GUILayout.BeginArea(new Rect(10, 20, windowWidth, windowHeight));
-		
-		scrollPosition = GUI.BeginScrollView(	new Rect(0, 10, windowWidth-20, 0.63f*windowHeight),
-		                                        scrollPosition,
-		                                        new Rect(0, 10, windowWidth-40, achievementsCompleted.Count*spaceBetweenItem + paddingTop));
 
-		// Affiche la liste des achievements acquis
-		for (int i = 0 ; i < achievementsCompleted.Count ; i++)
+		// Bouton sélectionné
+		itemSelected = GUI.Toolbar(new Rect(0, 0, 140, 30), itemSelected, toolbarStrings);
+
+		// Achievements réalisés
+		if (itemSelected == 0)
 		{
-			GUI.Label(	new Rect(20,
-			                     paddingTop + i*spaceBetweenItem,
-			                     achievementsCompleted[i].getName().Length * letterSize,
-			                     spaceBetweenItem),
-			          	new GUIContent(	achievementsCompleted[i].getName(),
-			               				generateToolTip(achievementsCompleted[i].getDescription())));
+			List<Achievement> achievementsCompleted = am.getAchievementsUnlocked();
+
+			scrollPosition = GUI.BeginScrollView(	new Rect(0, paddingTop, windowWidth-20, 0.5f*windowHeight),
+		                                        	scrollPosition,
+			                                        new Rect(0, paddingTop, windowWidth-40, achievementsCompleted.Count*spaceBetweenItem));
+
+			// Affiche la liste des achievements acquis
+			for (int i = 0 ; i < achievementsCompleted.Count ; i++)
+			{
+				GUI.Label(	new Rect(20,
+				                  	 paddingTop + i*spaceBetweenItem,
+				                     achievementsCompleted[i].getName().Length * letterSize,
+				                     spaceBetweenItem),
+				          	new GUIContent(	achievementsCompleted[i].getName(),
+				               				generateToolTip(achievementsCompleted[i].getDescription())));
+			}
+		}
+		// Achievements non réalisés
+		else
+		{
+			List<Achievement> achievementsLocked = am.getAchievementsLocked();
+
+			scrollPosition = GUI.BeginScrollView(	new Rect(0, paddingTop, windowWidth-20, 0.5f*windowHeight),
+			                                     	scrollPosition,
+				                                    new Rect(0, paddingTop, windowWidth-40, achievementsLocked.Count*spaceBetweenItem));
+
+			// Affiche la liste des achievements acquis
+			for (int i = 0 ; i < achievementsLocked.Count ; i++)
+			{
+				GUI.Label(	new Rect(20,
+				                    paddingTop + i*spaceBetweenItem,
+				                    achievementsLocked[i].getName().Length * letterSize,
+				                    spaceBetweenItem),
+				          	new GUIContent(	achievementsLocked[i].getName(),
+				               				generateToolTip(achievementsLocked[i].getDescription())));
+			}
 		}
 
 		GUI.EndScrollView();
