@@ -1246,6 +1246,54 @@ MeshFilter:
   m_PrefabInternal: {fileID: 805133162}
   m_GameObject: {fileID: 27423968}
   m_Mesh: {fileID: 4300006, guid: ba6a41dc489914734857bb5924eb70ad, type: 3}
+--- !u!1001 &27571275
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2108200923}
+    m_Modifications:
+    - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 74.9200592
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: -.00274658203
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 78.7126617
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: spawnRange
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+      propertyPath: m_Name
+      value: spawn middle cemetery
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+  m_RootGameObject: {fileID: 290004252}
+  m_IsPrefabParent: 0
+  m_IsExploded: 1
 --- !u!1 &29272863
 GameObject:
   m_ObjectHideFlags: 0
@@ -8657,6 +8705,49 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1935726758}
   m_GameObject: {fileID: 290002780}
   m_Mesh: {fileID: 4300008, guid: e390739dcf00c0f4f96b39e15ec154b3, type: 3}
+--- !u!1 &290004252
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 100000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+  m_PrefabInternal: {fileID: 27571275}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 290004254}
+  - 114: {fileID: 290004253}
+  m_Layer: 0
+  m_Name: spawn middle cemetery
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &290004253
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 95e769c1a05c60742ad78966ef5971bc,
+    type: 2}
+  m_PrefabInternal: {fileID: 27571275}
+  m_GameObject: {fileID: 290004252}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cb5260921d34df345a515949e9237651, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnRange: 25
+  meleePrefab: {fileID: 11400002, guid: a12e477a27bdd3c4b8b6ab4d952fe988, type: 2}
+  distancePrefab: {fileID: 11400000, guid: f31e1c739d6ca194fbdf722a4adfca4b, type: 2}
+  bossPrefab: {fileID: 11400006, guid: cc6a8c3e0e3db2d4eb6034fc548d08ed, type: 2}
+--- !u!4 &290004254
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 400000, guid: 95e769c1a05c60742ad78966ef5971bc, type: 2}
+  m_PrefabInternal: {fileID: 27571275}
+  m_GameObject: {fileID: 290004252}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 74.9200592, y: -.00274658203, z: 78.7126617}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2108200923}
 --- !u!1 &291859930
 GameObject:
   m_ObjectHideFlags: 0
@@ -62792,6 +62883,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 290004254}
   - {fileID: 40047323}
   - {fileID: 107796630}
   - {fileID: 482644215}
