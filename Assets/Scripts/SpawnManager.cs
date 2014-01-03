@@ -3,6 +3,7 @@ using System.Collections;
 
 public class SpawnManager : MonoBehaviour 
 {
+	public DayNightCycleManager dayNightCycle;
 	
 	private SpawnController[] spawns;
 	
@@ -17,7 +18,19 @@ public class SpawnManager : MonoBehaviour
         }
         set {
             _nbEnnemies = value;
-			spawnDelay = timeStep - timeStep * 1/Mathf.Sqrt((_nbEnnemies+5F)/5F);
+
+			float timeS = timeStep;
+
+			if (dayNightCycle != null) {
+				float dayTime = dayNightCycle.dayTime - 0.7f; // Add an offset of -0.7 hour on the current time to have a better result.
+				float coef = Mathf.Cos(dayTime/24f * 2*Mathf.PI);
+				coef = Mathf.Sign(coef)*Mathf.Pow(Mathf.Sign(coef)*coef, 0.3f);
+				coef = coef/2 + 0.5f; // To range [0, 1]
+				coef += 0.9f; // To range [0.9, 1.9]
+				timeS *= coef;
+			}
+
+			spawnDelay = timeS - timeS * 1/Mathf.Sqrt((_nbEnnemies+5F)/5F);
         }
 	}
 	

@@ -117,12 +117,10 @@ public class SkillsGUI : MonoBehaviour
 		    && GUI.tooltip != "")
 		{
 			GUI.Label(new Rect(0.08f*Screen.width,
-			                   Screen.height-75,
-			                   Screen.width/2,
+			                   Screen.height - 85,
+			                   Screen.width - 50,
 			                   50f),
-			          "Description du sort : "
-			          + System.Environment.NewLine
-			          + GUI.tooltip);
+			          GUI.tooltip);
 		}
 
 		GUILayout.EndArea();
@@ -168,7 +166,8 @@ public class SkillsGUI : MonoBehaviour
 				                    firstSkillButtonWidth,
 				                    30),
 				           new GUIContent(	listSkills[i].getName(),
-				               				listSkills[i].getDescription()));
+				               				generateToolTip(listSkills[i].getDescription(),
+				                							listSkills[i].getPrice())));
 
 				// Met à jour la marge gauche
 				marginLeft += (firstSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -183,7 +182,8 @@ public class SkillsGUI : MonoBehaviour
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
 				               new GUIContent(	baseSkillRank1.getNameDamage(),
-				               					baseSkillRank1.getDescriptionDamage())))
+				               					generateToolTip(baseSkillRank1.getDescriptionDamage(),
+				                								baseSkillRank1.getCostIncDamage()))))
 				{
 					upgradeMagicLittleSkill(baseSkillRank1);
 				}
@@ -194,7 +194,8 @@ public class SkillsGUI : MonoBehaviour
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
 				               new GUIContent(	baseSkillRank1.getNameAd(),
-				               					baseSkillRank1.getDescriptionAd())))
+				               					generateToolTip(baseSkillRank1.getDescriptionAd(),
+				                								baseSkillRank1.getCostIncAd()))))
 				{
 					upgradeMagicLittleSkill(baseSkillRank1, false);
 				}
@@ -222,7 +223,8 @@ public class SkillsGUI : MonoBehaviour
 					                    secondSkillButtonWidth,
 					                    30),
 					           new GUIContent(	listSkills[i+1].getName(),
-					               				listSkills[i+1].getDescription()));
+					               				generateToolTip(listSkills[i+1].getDescription(),
+					                							listSkills[i+1].getPrice())));
 
 					// Met à jour la marge gauche
 					marginLeft += (secondSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -237,7 +239,8 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
 					               new GUIContent(	baseSkillRank2.getNameDamage(),
-					              					baseSkillRank2.getDescriptionDamage())))
+					               					generateToolTip(baseSkillRank2.getDescriptionDamage(),
+					                								baseSkillRank2.getCostIncDamage()))))
 					{
 						upgradeMagicLittleSkill(baseSkillRank2);
 					}
@@ -248,7 +251,8 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
 					               new GUIContent(	baseSkillRank2.getNameAd(),
-					               					baseSkillRank2.getDescriptionAd())))
+					               					generateToolTip(baseSkillRank2.getDescriptionAd(),
+					                								baseSkillRank2.getCostIncAd()))))
 					{
 						upgradeMagicLittleSkill(baseSkillRank2, false);
 					}
@@ -274,7 +278,8 @@ public class SkillsGUI : MonoBehaviour
 						                    lastSkillButtonWidth,
 						                    30),
 						           new GUIContent(	listSkills[i+2].getName(),
-						               				listSkills[i+2].getDescription()));
+						               				generateToolTip(listSkills[i+2].getDescription(),
+						                							listSkills[i+2].getPrice())));
 
 						// Met à jour la marge gauche
 						marginLeft += (lastSkillButtonWidth + 20);
@@ -291,7 +296,8 @@ public class SkillsGUI : MonoBehaviour
 						                        lastSkillButtonWidth,
 						                        30),
 						               new GUIContent(	listSkills[i+2].getName(),
-						               					listSkills[i+2].getDescription())))
+						               					generateToolTip(listSkills[i+2].getDescription(),
+						                								listSkills[i+2].getPrice()))))
 						{
 							unlockSkill(listSkills[i+2]);
 						}
@@ -315,7 +321,8 @@ public class SkillsGUI : MonoBehaviour
 					                        secondSkillButtonWidth,
 					                        30),
 					               new GUIContent(	listSkills[i+1].getName(),
-					               					listSkills[i+1].getDescription())))
+					               					generateToolTip(listSkills[i+1].getDescription(),
+					                								listSkills[i+1].getPrice()))))
 					{
 						unlockSkill(listSkills[i+1]);
 					}
@@ -334,7 +341,8 @@ public class SkillsGUI : MonoBehaviour
 				                        firstSkillButtonWidth,
 				                        30),
 				               new GUIContent(	listSkills[i].getName(),
-				               					listSkills[i].getDescription())))
+				               					generateToolTip(listSkills[i].getDescription(),
+				                								listSkills[i].getPrice()))))
 				{
 					unlockSkill(listSkills[i]);
 				}
@@ -382,7 +390,8 @@ public class SkillsGUI : MonoBehaviour
 				                    firstSkillButtonWidth,
 				                    30),
 				           new GUIContent(	listSkills[i].getName(),
-				               				listSkills[i].getDescription()));
+				               				generateToolTip(listSkills[i].getDescription(),
+				                							listSkills[i].getPrice())));
 				
 				// Met à jour la marge gauche
 				marginLeft += (firstSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -395,8 +404,9 @@ public class SkillsGUI : MonoBehaviour
 				                        heightFromTop-verticalSpace,
 				                        firstLittleSkillButtonWidthUp,
 				                        30),
-				               new GUIContent(	passiveSkillRank1.getNameFirstAd(),
-				               					passiveSkillRank1.getDescriptionFirstAd())))
+				               new GUIContent(	passiveSkillRank1.getNameFirstAd(), 
+				               					generateToolTip(passiveSkillRank1.getDescriptionFirstAd(),
+				                                				passiveSkillRank1.getCostIncFirstAd()))))
 				{
 					upgradePassiveLittleSkill(passiveSkillRank1);
 				}
@@ -407,7 +417,8 @@ public class SkillsGUI : MonoBehaviour
 				                        firstLittleSkillButtonWidthDown,
 				                        30),
 				               new GUIContent(	passiveSkillRank1.getNameSecAd(),
-				               					passiveSkillRank1.getDescriptionSecAd())))
+				               					generateToolTip(passiveSkillRank1.getDescriptionSecAd(),
+				               		 							passiveSkillRank1.getCostIncSecAd()))))
 				{
 					upgradePassiveLittleSkill(passiveSkillRank1, false);
 				}
@@ -434,7 +445,8 @@ public class SkillsGUI : MonoBehaviour
 					                    secondSkillButtonWidth,
 					                    30),
 					           new GUIContent(	listSkills[i+1].getName(),
-					              			 	listSkills[i+1].getDescription()));
+					               				generateToolTip(listSkills[i+1].getDescription(),
+					                							listSkills[i+1].getPrice())));
 					
 					// Met à jour la marge gauche
 					marginLeft += (secondSkillButtonWidth + horizontalMarginBetweenButton*Screen.width);
@@ -448,7 +460,8 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthUp,
 					                        30),
 					               new GUIContent(	passiveSkillRank2.getNameFirstAd(),
-					               					passiveSkillRank2.getDescriptionFirstAd())))
+					               					generateToolTip(passiveSkillRank2.getDescriptionFirstAd(),
+					                								passiveSkillRank2.getCostIncFirstAd()))))
 					{
 						upgradePassiveLittleSkill(passiveSkillRank2);
 					}
@@ -459,7 +472,8 @@ public class SkillsGUI : MonoBehaviour
 					                        secondLittleSkillButtonWidthDown,
 					                        30),
 					               new GUIContent(	passiveSkillRank2.getNameSecAd(),
-					               					passiveSkillRank2.getDescriptionSecAd())))
+					               					generateToolTip(passiveSkillRank2.getDescriptionSecAd(),
+					                								passiveSkillRank2.getCostIncSecAd()))))
 					{
 						upgradePassiveLittleSkill(passiveSkillRank2, false);
 					}
@@ -484,7 +498,8 @@ public class SkillsGUI : MonoBehaviour
 						                    lastSkillButtonWidth,
 						                    30),
 						           new GUIContent(	listSkills[i+2].getName(),
-						               				listSkills[i+2].getDescription()));
+						               				generateToolTip(listSkills[i+2].getDescription(),
+						                							listSkills[i+2].getPrice())));
 
 						// Met à jour la marge gauche
 						marginLeft += (lastSkillButtonWidth + 20);
@@ -501,7 +516,8 @@ public class SkillsGUI : MonoBehaviour
 						                        lastSkillButtonWidth,
 						                        30),
 						               new GUIContent(	listSkills[i+2].getName(),
-						               					listSkills[i+2].getDescription())))
+						               					generateToolTip(listSkills[i+2].getDescription(),
+						                								listSkills[i+2].getPrice()))))
 						{
 							unlockSkill(listSkills[i+2]);
 						}
@@ -525,7 +541,8 @@ public class SkillsGUI : MonoBehaviour
 					                        secondSkillButtonWidth,
 					                        30),
 					               new GUIContent(	listSkills[i+1].getName(),
-					              	 				listSkills[i+1].getDescription())))
+							               			generateToolTip(listSkills[i+1].getDescription(),
+							                						listSkills[i+1].getPrice()))))
 					{
 						unlockSkill(listSkills[i+1]);
 					}
@@ -544,7 +561,8 @@ public class SkillsGUI : MonoBehaviour
 				                        firstSkillButtonWidth,
 				                        30),
 				               new GUIContent(	listSkills[i].getName(),
-				               					listSkills[i].getDescription())))
+								               	generateToolTip(listSkills[i].getDescription(),
+								                				listSkills[i].getPrice()))))
 				{
 					unlockSkill(listSkills[i]);
 				}
@@ -616,6 +634,23 @@ public class SkillsGUI : MonoBehaviour
 	{
 		if (maxTreeWidth < width)
 			maxTreeWidth = width;
+	}
+
+	/*
+	*	Génère le texte du tooltip
+	*	params 	=> description : description du skill
+	*			=> price : prix du skill
+	*/
+	string generateToolTip(string description, int price)
+	{
+	
+		return 	"Description du sort : "
+			    + System.Environment.NewLine
+				+ description
+				+ System.Environment.NewLine
+				+ "Prix : "
+				+ price
+				+ "Xp";
 	}
 
 	void OnTriggerEnter (Collider other)
