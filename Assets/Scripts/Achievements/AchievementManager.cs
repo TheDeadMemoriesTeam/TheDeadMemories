@@ -237,10 +237,20 @@ public class AchievementManager : MonoBehaviour
 	{
 		return nbKilledEnemy;
 	}
+
+	public void setNbKilledEnemy(int nb)
+	{
+		nbKilledEnemy = nb;
+	}
 	
 	public int getNbKilledBerseker()
 	{
 		return nbBersekerKilled;
+	}
+
+	public void setNbKilledBerseker(int nb)
+	{
+		nbBersekerKilled = nb;
 	}
 	
 	public int getNbSimultaneouslyKilledEnemy()
@@ -251,6 +261,11 @@ public class AchievementManager : MonoBehaviour
 	public float getTravelledDistance()
 	{
 		return travelledDistance;
+	}
+
+	public void setTravelledDistance(float distance)
+	{
+		travelledDistance = distance;
 	}
 	
 	public float getUntouchedTime()
@@ -266,6 +281,11 @@ public class AchievementManager : MonoBehaviour
 	public int getNbAssassinKills()
 	{
 		return nbAssassinKill;
+	}
+
+	public void setNbAssassinKills(int nb)
+	{
+		nbAssassinKill = nb;
 	}
 	
 	public bool getAssassin()

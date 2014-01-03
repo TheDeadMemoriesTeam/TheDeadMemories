@@ -21,7 +21,6 @@ public class DistanceController : EnemyController
 
 		skillManager.addSkill(new PorteeSkills("Distance Skill", "", 0, null, 1f, 40, tab[ind], 2.5f, 0, 0, "", "", "", "", 1f)); 
 
-		manaCost = -40;
 		timeAttack = 1F;
 		probabilityAttack = 0.25F;
 		
