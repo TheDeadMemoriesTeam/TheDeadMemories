@@ -52,7 +52,7 @@ public class EnemyShoot : MonoBehaviour
 				// The damage depend of...
 				float damage = -enemyController.getSkillManager().getMagicAttack();
 				// ...the skill
-				damage+= (-enemyController.getSkillManager().getMagicAttack()/100 * player.getSkillManager().getMagicResistance());
+				damage += (-enemyController.getSkillManager().getMagicAttack()/100 * player.getSkillManager().getMagicResistance());
 				// ...a random factor (luck)
 				damage *= (Random.value * 0.4f + 0.8f);
 				// ...the distance with the target

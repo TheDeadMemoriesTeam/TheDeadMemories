@@ -119,7 +119,6 @@ public class AchievementManager : MonoBehaviour
 	{
 		// Supprime de la liste des achievements a check tous ceux déjà réalisés et les ajoute à une liste de ceux réalisés
 		refreshListAchievements();
-
 	}
 	
 	// Update is called once per frame
@@ -134,7 +133,8 @@ public class AchievementManager : MonoBehaviour
 			if (achievements[i].check())
 			{
 				// Unlocked achievement
-				Announcer.addAchiev(achievements[i].getName());
+				if (Announcer != null)
+					Announcer.addAchiev(achievements[i].getName());
 				// Supprime de la liste des achievements a check tous ceux déjà réalisés
 				refreshListAchievements();
 			}
