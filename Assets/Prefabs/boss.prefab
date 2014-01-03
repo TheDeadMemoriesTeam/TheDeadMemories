@@ -978,9 +978,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootDistance: 4
-  chaseSpeed: 5.5
+  chaseSpeed: 5.5999999
   chaseWaitTime: 3
-  patrolSpeed: 2.5
+  patrolSpeed: 2.79999995
   patrolWaitTime: .5
   droppableItems:
   - {fileID: 5400000, guid: 00e6f55288c657d42976a57a746e78ef, type: 2}
