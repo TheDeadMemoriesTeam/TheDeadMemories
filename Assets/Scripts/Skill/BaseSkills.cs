@@ -41,11 +41,6 @@ public class BaseSkills : DamageSkills
 	{
 		return m_ad;	
 	}
-	
-	public float getBaseAd()
-	{
-		return m_baseAd;	
-	}
 
 	public void setLvlAd(int lvl)
 	{

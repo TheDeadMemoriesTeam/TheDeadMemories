@@ -25,7 +25,6 @@ public class EnemyController : HumanoidController
 
 
 	protected float timeCountAttack;
-	protected int manaCost;          public int getManaCost() {return manaCost;}
 	protected float timeAttack;
 	protected float probabilityAttack;
 	protected int xp;
