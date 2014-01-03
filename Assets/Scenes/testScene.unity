@@ -768,7 +768,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &19282461
 Transform:
@@ -6770,12 +6770,13 @@ GameObject:
   - 33: {fileID: 229471450}
   - 23: {fileID: 229471449}
   - 64: {fileID: 229471451}
+  - 114: {fileID: 229471452}
   m_Layer: 0
   m_Name: Roue moulin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &229471448
 Transform:
@@ -6833,6 +6834,18 @@ MeshCollider:
   m_SmoothSphereCollisions: 0
   m_Convex: 0
   m_Mesh: {fileID: 4300006, guid: a1bc786c38c440d40a9bccb12d8e874d, type: 3}
+--- !u!114 &229471452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 33b77439bfe66bb489d60e1a8dfce2f1,
+    type: 2}
+  m_PrefabInternal: {fileID: 1705654291}
+  m_GameObject: {fileID: 229471447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e5d753a99cd3843913e9d95b587748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &230530001
 Prefab:
   m_ObjectHideFlags: 0
@@ -18642,7 +18655,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &653772971
 Transform:
@@ -20952,7 +20965,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &723168246
 Transform:
@@ -22408,9 +22421,9 @@ Transform:
   - {fileID: 160402055}
   - {fileID: 439621070}
   - {fileID: 1770914750}
-  - {fileID: 972274011}
   - {fileID: 1327398481}
   - {fileID: 763467022}
+  - {fileID: 972274011}
   - {fileID: 442928301}
   m_Father: {fileID: 1224705525}
 --- !u!1001 &759636944
@@ -22515,7 +22528,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &763467022
 Transform:
@@ -24782,7 +24795,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &844295269
 Transform:
@@ -25694,30 +25707,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .797408283
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
   m_RootGameObject: {fileID: 763467021}
@@ -26166,30 +26155,6 @@ Prefab:
     - target: {fileID: 400010, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
       propertyPath: m_LocalRotation.w
       value: .797408283
-      objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
@@ -27281,7 +27246,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &927784216
 Transform:
@@ -28329,7 +28294,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &972274011
 Transform:
@@ -29195,7 +29160,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &997084978
 Transform:
@@ -32634,7 +32599,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1118653482
 Transform:
@@ -38309,7 +38274,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1327398481
 Transform:
@@ -45524,12 +45489,13 @@ GameObject:
   - 33: {fileID: 1569948597}
   - 23: {fileID: 1569948596}
   - 64: {fileID: 1569948595}
+  - 114: {fileID: 1569948598}
   m_Layer: 0
   m_Name: Roue moulin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1569948594
 Transform:
@@ -45587,6 +45553,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 888234904}
   m_GameObject: {fileID: 1569948593}
   m_Mesh: {fileID: 4300006, guid: a1bc786c38c440d40a9bccb12d8e874d, type: 3}
+--- !u!114 &1569948598
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 33b77439bfe66bb489d60e1a8dfce2f1,
+    type: 2}
+  m_PrefabInternal: {fileID: 888234904}
+  m_GameObject: {fileID: 1569948593}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e5d753a99cd3843913e9d95b587748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1576567650
 GameObject:
   m_ObjectHideFlags: 0
@@ -47213,7 +47191,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1648511423
 Transform:
@@ -48754,30 +48732,6 @@ Prefab:
       propertyPath: m_LocalRotation.w
       value: .797408462
       objectReference: {fileID: 0}
-    - target: {fileID: 100000, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100006, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100010, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100002, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100004, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 100008, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 4294967295
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33b77439bfe66bb489d60e1a8dfce2f1, type: 2}
   m_RootGameObject: {fileID: 972274010}
@@ -50082,7 +50036,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1759915125
 Transform:
@@ -51234,7 +51188,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1783758818
 Transform:
@@ -53234,7 +53188,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &1880515897
 Transform:
@@ -58321,12 +58275,13 @@ GameObject:
   - 33: {fileID: 2021571571}
   - 23: {fileID: 2021571570}
   - 64: {fileID: 2021571569}
+  - 114: {fileID: 2021571572}
   m_Layer: 0
   m_Name: Roue moulin
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2021571568
 Transform:
@@ -58384,6 +58339,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 871847658}
   m_GameObject: {fileID: 2021571567}
   m_Mesh: {fileID: 4300006, guid: a1bc786c38c440d40a9bccb12d8e874d, type: 3}
+--- !u!114 &2021571572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 11400000, guid: 33b77439bfe66bb489d60e1a8dfce2f1,
+    type: 2}
+  m_PrefabInternal: {fileID: 871847658}
+  m_GameObject: {fileID: 2021571567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53e5d753a99cd3843913e9d95b587748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2025200829
 GameObject:
   m_ObjectHideFlags: 0
@@ -59577,7 +59544,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!4 &2070971807
 Transform:
