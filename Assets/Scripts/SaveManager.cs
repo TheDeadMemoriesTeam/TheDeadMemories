@@ -12,7 +12,6 @@ public class SaveManager{
 	private PlayerController player;
 
 	// Chemin vers les fichiers de sauvegarde
-	private string achievements2Path = "./save/achievement2.dat";
 	private string achievementPath = "./save/achievement.dat";
 	private string externalPath = "./save/external.dat";
 	private string skillsPath = "./save/skills.dat";
@@ -70,25 +69,6 @@ public class SaveManager{
 		// Sauvegarde les achivements
 		formater.Serialize(saveFile, achievementList);
 		// Libère la mémoire
-		saveFile.Close();
-
-		/**************************/
-		/* Sauvegarde des bloqués */
-		/**************************/
-
-		achievements.Clear();
-		achievementList.Clear();
-
-		achievements = achievementManager.getAchievementsLocked();
-		achievementList.Capacity = achievements.Capacity;
-		for (int i=0; i<achievements.Count; i++)
-		{
-			achievementList.Add(achievements[i].getName());
-			Debug.Log(achievementList[i]);
-		}
-
-		saveFile = File.Create (achievements2Path);
-		formater.Serialize(saveFile, achievementList);
 		saveFile.Close();
 	}
 
