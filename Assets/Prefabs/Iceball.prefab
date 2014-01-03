@@ -141,7 +141,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 100008}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 486.435547, y: -3.34841537, z: -.116760254}
+  m_LocalPosition: {x: -32.6681976, y: 11.4052334, z: 8.62477493}
   m_LocalScale: {x: .25, y: .25, z: .25}
   m_Children:
   - {fileID: 400006}
@@ -155,16 +155,16 @@ ParticleAnimator:
   Does Animate Color?: 1
   colorAnimation[0]:
     serializedVersion: 2
-    rgba: 10879016
+    rgba: 11943473
   colorAnimation[1]:
     serializedVersion: 2
     rgba: 1912573726
   colorAnimation[2]:
     serializedVersion: 2
-    rgba: 2362638343
+    rgba: 2360882986
   colorAnimation[3]:
     serializedVersion: 2
-    rgba: 2561015876
+    rgba: 2561091618
   colorAnimation[4]:
     serializedVersion: 2
     rgba: 725531
@@ -185,7 +185,7 @@ ParticleAnimator:
   Does Animate Color?: 1
   colorAnimation[0]:
     serializedVersion: 2
-    rgba: 10879016
+    rgba: 12785701
   colorAnimation[1]:
     serializedVersion: 2
     rgba: 1828695072
@@ -194,7 +194,7 @@ ParticleAnimator:
     rgba: 2885660948
   colorAnimation[3]:
     serializedVersion: 2
-    rgba: 866517066
+    rgba: 867045918
   colorAnimation[4]:
     serializedVersion: 2
     rgba: 725531
@@ -374,7 +374,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 3
   m_Type: 2
-  m_Color: {r: .349253595, g: .186567187, b: 1, a: 1}
+  m_Color: {r: .186567187, g: .259495825, b: 1, a: 1}
   m_Intensity: 1.10810816
   m_Range: 6.11444902
   m_SpotAngle: 30
