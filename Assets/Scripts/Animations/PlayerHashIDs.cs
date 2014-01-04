@@ -15,6 +15,7 @@ public class PlayerHashIDs : MonoBehaviour {
 	public int isSmallSummoning;
 	public int isJumping;
 	public int isDead;
+	public int isSprinting;
 
 	void Start()
 	{
@@ -30,5 +31,6 @@ public class PlayerHashIDs : MonoBehaviour {
 		isSmallSummoning = Animator.StringToHash("isSmallSummoning");
 		isJumping = Animator.StringToHash("isJumping");
 		isDead = Animator.StringToHash("isDead");
+		isSprinting = Animator.StringToHash("isSprinting");
 	}
 }
