@@ -26,7 +26,7 @@ public class MeleeController : EnemyController
 		
 		xp = 15;
 		
-		timeRegen = 6;
+		timeRegen = 0.5f;
 	}
 	
 	protected override void Update ()

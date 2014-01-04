@@ -26,7 +26,7 @@ public class DistanceController : EnemyController
 		
 		xp = 15;
 		
-		timeRegen = 4;
+		timeRegen = 0.5f;
 	}
 	
 	protected override void Update ()

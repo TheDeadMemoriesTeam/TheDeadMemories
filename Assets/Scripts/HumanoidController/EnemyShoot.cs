@@ -49,20 +49,9 @@ public class EnemyShoot : MonoBehaviour
 
 			if (Random.value < manaAttackProbability && enemyController.getSkillManager().getMana() >= skill.getManaCost()) // Mana attack
 			{
-				/*// The fractional distance from the player, 1 is next to the player, 0.5 is at the max shooting distance.
-				float fractionalDistance = (enemyController.shootDistance * 2 - d) / enemyController.shootDistance;
-				// The damage depend of...
-				float damage = -(enemyController.getSkillManager().getMagicAttack() + skill.getDamage());
-				// ...the skill
-				damage += (-(enemyController.getSkillManager().getMagicAttack() + skill.getDamage())/100 * player.getSkillManager().getMagicResistance());
-				// ...a random factor (luck)
-				damage *= (Random.value * 0.4f + 0.8f);
-				// ...the distance with the target
-				damage *= fractionalDistance;*/
-				Vector3 position = new Vector3(transform.position.x, transform.position.y/2, transform.position.z);
+				Vector3 position = new Vector3(transform.position.x, transform.position.y/3, transform.position.z);
 				skill.launch(position, transform.forward, enemyController.getSkillManager().getMagicAttack(), 0.4f, Random.value * 0.4f + 0.8f);	//player.healthUpdate(damage);
 				enemyController.manaUpdate(-skill.getManaCost());
-				Debug.Log(enemyController.getSkillManager().getMana());
 			}
 			else // Melee attack
 			{
