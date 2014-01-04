@@ -115,6 +115,7 @@ public class EnemyController : HumanoidController
 	{
 		// Stop the enemy where it is.
 		nav.Stop();
+		transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 		shooting = true;
 
 		anim.SetBool(hashIDs.isHitting, true);
