@@ -69,7 +69,7 @@ public class HelpMenu : SubMenu
 		GUIStyle myStyle = new GUIStyle();
 		// Détermine la hauteur de l'aide pour la largeur précédente
 		float labelHeight = myStyle.CalcHeight( content, labelWidth);
-		helpHeight = labelHeight + countNewLine()*12 + 20;
+		helpHeight = labelHeight + countNewLine()*14 + 20;
 
 		// Affiche l'aide
 		GUI.Label(new Rect(10, 20, labelWidth, helpHeight), textDisplay);
@@ -125,29 +125,23 @@ public class HelpMenu : SubMenu
 		// (mettre \n pour saut d'une ligne)
 		List<string> helpMenuTexts = new List<string>();
 
-		helpMenuTexts.Add("Aide de The Dead's Memories");
+		helpMenuTexts.Add("Aide de The Dead Memories");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Controles :");
+		helpMenuTexts.Add("Controles par défaut:");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez vous déplacer avec les flèches directionnelles ou les touches Z, Q, S et D.");
+		helpMenuTexts.Add("Vous pouvez vous déplacer avec les flèches directionnelles ou les touches Z, Q, S et D et sprinter en maintenant la touche SHIFT enfoncée.");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez réaliser un saut avec la touche Espace.");
-		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez consulter votre inventaire avec la touche Tab.");
-		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez mettre le jeu en pause avec la touche Echap.");
+		helpMenuTexts.Add("Vous pouvez attaquer au corps à corps avec un clic gauche et utiliser la magie (une fois la compétance acquise) avec un clic droit.");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("Votre personnage peut débloquer une foule de compétences en se rendant dans une crypte, pour en débloquer de nouvelles, il vous faudra acquérir de l'expérience en tuant vos ennemis.");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez controler 3 types d'éléments magique : le Feu, la Glace et le Vent.");
+		helpMenuTexts.Add("Vous pouvez controler 3 types d'éléments magiques : le Feu, la Glace et le Vent.");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("Si vous désirez changer d'éléments vous pouvez utiliser les touches F1, F2 ou F3.");
@@ -160,6 +154,15 @@ public class HelpMenu : SubMenu
 		helpMenuTexts.Add("- Un appui modéré lancera une attaque de zone de l'élément sélectionné.");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("- Un appui long lancera la super attaque de l'élément sélectionné.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez réaliser un saut avec la touche Espace.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez consulter votre inventaire avec la touche Tab.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez mettre le jeu en pause avec la touche Echap.");
 
 		return helpMenuTexts;
 	}
