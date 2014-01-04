@@ -423,20 +423,16 @@ public class PlayerController : HumanoidController
 		if (Input.GetAxis ("Horizontal") != 0f || 
 						Input.GetAxis ("Vertical") != 0f)
 		{
-			anim.SetFloat (hash.speed, 5.5f);
-			if (!soundWalk.isPlaying)
-				soundWalk.Play ();
-
+			float sprint = 1f;
 			if(isSprinting)
 			{
-				anim.SetBool(hash.isSprinting, true);
-				soundWalk.pitch = 1.5f;
+				sprint = 1.5f;
 			}
-			else
-			{
-				anim.SetBool(hash.isSprinting, false);
-				soundWalk.pitch = 1;
-			}
+			anim.SetFloat (hash.speed, 5.5f);
+			anim.speed = sprint;
+			if (!soundWalk.isPlaying)
+				soundWalk.Play ();
+			soundWalk.pitch = sprint;
 		}
 		else
 		{
