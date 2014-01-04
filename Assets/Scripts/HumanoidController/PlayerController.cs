@@ -200,7 +200,7 @@ public class PlayerController : HumanoidController
 	        controller.Move(moveDirection * Time.deltaTime);
 			achievementManager.updateTravel(vec, transform.position);
 			achievementManager.setPlayerPos(transform.position);
-	
+			
 			// Rotation
 			rotation = new Vector3(0, Input.GetAxis("Rotation")+Input.GetAxis("Mouse X"), 0);
 			rotation *= rotationFactor * Time.timeScale;
@@ -219,11 +219,12 @@ public class PlayerController : HumanoidController
 
 			AnimationManager();
 
-			// Test du saveManager
-			if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+			// Sauvegarde
+			if (Input.GetKeyDown(KeyCode.P))
+			{
 				saveManager.save();
-			if (Input.GetKeyDown(KeyCode.KeypadDivide))
-				saveManager.load();
+				autoSav.showMessage();
+			}
 		}
 		remainingTime -= Time.deltaTime;
 		if (remainingTime <= 0)

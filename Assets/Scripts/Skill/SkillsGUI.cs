@@ -40,7 +40,7 @@ public class SkillsGUI : MonoBehaviour
 	// Use this for initialization
 	void Start () 
 	{
-		openSkills.text = "Press P to buy Skills";
+		openSkills.text = LanguageManager.Instance.GetTextValue("Interface.openCrypt");
 		openSkills.enabled = false;
 		cam = FindObjectOfType<CameraController>();
 	}
@@ -51,7 +51,7 @@ public class SkillsGUI : MonoBehaviour
 		if (!isActive)
 			return;
 
-		if (Input.GetKeyUp(KeyCode.P))
+		if (Input.GetKeyUp(KeyCode.H))
 		{
 			//update les stats skills
 			player.getSkillManager().updateSkill();
@@ -86,7 +86,7 @@ public class SkillsGUI : MonoBehaviour
 		if (isActive && skillsOpen)
 		{
 			skillsWindowRect = new Rect(0,0, Screen.width, Screen.height);
-			skillsWindowRect = GUI.Window(1, skillsWindowRect, skillsWindowOpen, "Arbre des compétences");
+			skillsWindowRect = GUI.Window(1, skillsWindowRect, skillsWindowOpen, LanguageManager.Instance.GetTextValue("Interface.skillsTrees"));
 		}
 	}
 
@@ -644,11 +644,11 @@ public class SkillsGUI : MonoBehaviour
 	string generateToolTip(string description, int price)
 	{
 	
-		return 	"Description du sort : "
+		return 	LanguageManager.Instance.GetTextValue("GUISkills.description")
 			    + System.Environment.NewLine
 				+ description
 				+ System.Environment.NewLine
-				+ "Prix : "
+				+ LanguageManager.Instance.GetTextValue("GUISkills.price")
 				+ price
 				+ "Xp";
 	}

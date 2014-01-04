@@ -50,7 +50,7 @@ public class SettingsMenu : SubMenu
 		                             	Screen.height/2 - windowHeight/2,
 		                             	windowWidth,
 		                             	windowHeight);
-		settingsWindowRect = GUI.Window(2, settingsWindowRect, settingsWindowOpen, "Settings");
+		settingsWindowRect = GUI.Window(2, settingsWindowRect, settingsWindowOpen, LanguageManager.Instance.GetTextValue("MenuOptions.settings"));
 	}
 
 	// Rempli la fenetre des achievements accomplis
@@ -60,7 +60,7 @@ public class SettingsMenu : SubMenu
 		GUILayout.BeginArea(new Rect(10, 20, windowWidth, windowHeight));
 
 		GUI.Label(	new Rect(20, 10, 200, 30),
-					"Available Resolutions :");
+		          	LanguageManager.Instance.GetTextValue("MenuOptions.availableResolutions"));
 
 		/**********************************************
 		 *************** Partie Gauche ****************
@@ -108,13 +108,20 @@ public class SettingsMenu : SubMenu
 
 
 		GUI.Label(	new Rect(windowWidth/2, 10, 200, 30),
-		          "Available Graphics Quality :");
+		          	LanguageManager.Instance.GetTextValue("MenuOptions.availableQuality"));
 
 		/**********************************************
 		 *************** Partie Droite ****************
 		**********************************************/
 
 		string[] qualities = QualitySettings.names;
+		string[] qualitiesName = new string[qualities.Length];
+		for (int i = 0 ; i < qualities.Length ; i++)
+		{
+			qualitiesName[i] = LanguageManager.Instance.GetTextValue("MenuOptions.quality" + i);
+			if (qualitiesName[i] == "")
+				qualitiesName[i] = LanguageManager.Instance.GetTextValue("MenuOptions.qualityUndefiened");
+		}
 		
 		// Scroll bar droite
 		scrollPositionRight = GUI.BeginScrollView(	new Rect(windowWidth/2, paddingTop, windowWidth/2-20, 0.55f*windowHeight),
@@ -136,7 +143,7 @@ public class SettingsMenu : SubMenu
 			                        paddingTop + i*(spaceBetweenItem + 10),
 			                        100,
 			                        spaceBetweenItem),
-			               qualities[i]))
+			               qualitiesName[i]))
 			{
 				QualitySettings.SetQualityLevel(i, true);
 				PlayerPrefs.SetInt("qualityLevel", i);
@@ -147,7 +154,7 @@ public class SettingsMenu : SubMenu
 		GUI.EndScrollView();
 
 
-		float buttonWidth = 0.33f * windowWidth;
+		float buttonWidth = 0.37f * windowWidth;
 		float buttonHeight = 0.1f * windowHeight;
 
 		// Bouton de valeurs par défaut
@@ -155,7 +162,7 @@ public class SettingsMenu : SubMenu
 		                         paddingTop + 0.57f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
-		               "Default Values"))
+		               	LanguageManager.Instance.GetTextValue("Menu.default")))
 		{
 			// Restaure les valeurs par défaut
 			QualitySettings.SetQualityLevel(4, true);
@@ -171,7 +178,7 @@ public class SettingsMenu : SubMenu
 		                         paddingTop + 0.57f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
-		               "Advanced Settings"))
+		               	LanguageManager.Instance.GetTextValue("MenuOptions.goAdvencedSettings")))
 		{
 			setInfFrontOf(false);
 			cam.goToAdvancedSettingsMenu();
@@ -182,7 +189,7 @@ public class SettingsMenu : SubMenu
 		                         paddingTop + buttonHeight + 0.57f*windowHeight + 10,
 		                         buttonWidth,
 		                         buttonHeight),
-		               "Return"))
+		               	LanguageManager.Instance.GetTextValue("MainMenu.Return")))
 		{
 			setInfFrontOf(false);
 			cam.goToMainMenu();

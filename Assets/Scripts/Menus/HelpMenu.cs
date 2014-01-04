@@ -83,7 +83,7 @@ public class HelpMenu : SubMenu
 		                         windowHeight - 2f*buttonHeight,
 		                         buttonWidth,
 		                         buttonHeight),
-		               "Return"))
+		               	LanguageManager.Instance.GetTextValue("MainMenu.Return")))
 		{
 			setInfFrontOf(false);
 			cam.goToMainMenu();
@@ -125,44 +125,45 @@ public class HelpMenu : SubMenu
 		// (mettre \n pour saut d'une ligne)
 		List<string> helpMenuTexts = new List<string>();
 
-		helpMenuTexts.Add("Aide de The Dead Memories");
+		int i = 0;
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Controles par défaut:");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez vous déplacer avec les flèches directionnelles ou les touches Z, Q, S et D et sprinter en maintenant la touche SHIFT enfoncée.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez attaquer au corps à corps avec un clic gauche et utiliser la magie (une fois la compétance acquise) avec un clic droit.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Votre personnage peut débloquer une foule de compétences en se rendant dans une crypte, pour en débloquer de nouvelles, il vous faudra acquérir de l'expérience en tuant vos ennemis.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez controler 3 types d'éléments magiques : le Feu, la Glace et le Vent.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Si vous désirez changer d'éléments vous pouvez utiliser les touches F1, F2 ou F3.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez lancer des sorts plus ou moins puissant suivant le temps que vous laisser le bouton droit de la souris enfoncé :");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("- Un appui bref lancera une boule de l'élément sélectionné.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("- Un appui modéré lancera une attaque de zone de l'élément sélectionné.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("- Un appui long lancera la super attaque de l'élément sélectionné.");
-		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez réaliser un saut avec la touche Espace.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez consulter votre inventaire avec la touche Tab.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez mettre le jeu en pause avec la touche Echap.");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 
 		return helpMenuTexts;
 	}

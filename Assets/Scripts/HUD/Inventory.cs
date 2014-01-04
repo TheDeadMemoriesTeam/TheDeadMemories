@@ -43,8 +43,8 @@ public class Inventory : PauseSystem
 		
 		// Liste de tous les items
 		listOfItem = new List<Item>();
-		listOfItem.Add(new Item(0, "Bone", "Restaure de la vie", itemImage[0]));
-		listOfItem.Add(new Item(1, "ManaPotion", "Restaure de la mana", itemImage[1]));
+		listOfItem.Add(new Item(0, /*LanguageManager.Instance.GetTextValue("Inventory.nameItem0")*/"Bone", LanguageManager.Instance.GetTextValue("Inventory.descItem0"), itemImage[0]));
+		listOfItem.Add(new Item(1, /*LanguageManager.Instance.GetTextValue("Inventory.nameItem1")*/"ManaPotion", LanguageManager.Instance.GetTextValue("Inventory.descItem1"), itemImage[1]));
 		
 		inventory = new Dictionary<Item, int>();
 		
@@ -71,7 +71,7 @@ public class Inventory : PauseSystem
 	void OnGUI()
 	{
 		if (paused)
-			inventoryWindowRect = GUI.Window(0, inventoryWindowRect, inventoryWindowMethod, "Inventaire");
+			inventoryWindowRect = GUI.Window(0, inventoryWindowRect, inventoryWindowMethod, LanguageManager.Instance.GetTextValue("Interface.inventory"));
 	}
 	
 	void inventoryWindowMethod (int windowId)
@@ -112,10 +112,10 @@ public class Inventory : PauseSystem
 		//Affiche la description de l'objet survolé dans ce Label
 		if (itemHover != -1)
 		{
-			GUILayout.Label ("Nom: "+getNameOfItemForId(itemHover)
-				+System.Environment.NewLine+"Quantité: "+getQuantityOfItem(itemHover)
-				+System.Environment.NewLine+"Description: "+getDescriptionOfItemForId(itemHover)
-				,GUILayout.Height(100), GUILayout.Width(250));
+			GUILayout.Label (LanguageManager.Instance.GetTextValue("Interface.inventoryNameObject")+getNameOfItemForId(itemHover)
+			                 +System.Environment.NewLine+LanguageManager.Instance.GetTextValue("Interface.inventoryQuantityObject")+getQuantityOfItem(itemHover)
+			                 +System.Environment.NewLine+LanguageManager.Instance.GetTextValue("MainMenu.description")+getDescriptionOfItemForId(itemHover)
+							,GUILayout.Height(100), GUILayout.Width(250));
 		}
 		else
 		{
