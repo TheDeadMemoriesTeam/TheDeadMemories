@@ -99,29 +99,29 @@ public class PlayerController : HumanoidController
 		List<string> skillsDescriptions = initSkillsDescriptions();
 
 		//arbre de competence Survie
-		skillManager.addSkill(new PassiveSkills("Survie", skillsDescriptions[0], 0, null, 50, 50, 5f, 5f, "pv+", "mana+", skillsDescriptions[1], skillsDescriptions[2]));
-		skillManager.addSkill(new PassiveSkills("Résistance", skillsDescriptions[3], 0, skillManager.getSkill(0), 100, 100, 1f, 1f, "degPhysique-", "degMagic-", skillsDescriptions[4], skillsDescriptions[5])); 
-		skillManager.addSkill(new InvincibleSkill("Invincible", skillsDescriptions[6], 6000, skillManager.getSkill(1), 0, 30, null, 5f));
+		skillManager.addSkill(new PassiveSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill1"), skillsDescriptions[0], 0, null, 50, 50, 5f, 5f, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill1"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill2"), skillsDescriptions[1], skillsDescriptions[2]));
+		skillManager.addSkill(new PassiveSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill2"), skillsDescriptions[3], 0, skillManager.getSkill(0), 100, 100, 1f, 1f, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill3"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill4"), skillsDescriptions[4], skillsDescriptions[5])); 
+		skillManager.addSkill(new InvincibleSkill(LanguageManager.Instance.GetTextValue("Skills.nameSkill3"), skillsDescriptions[6], 6000, skillManager.getSkill(1), 0, 30, null, 5f));
 
 		//arbre de competence Attaque
-		skillManager.addSkill(new PassiveSkills("Attaque de base", skillsDescriptions[7], 0, null, 50, 50, 5f, 5f, "degCac+", "degMag+", skillsDescriptions[8], skillsDescriptions[9]));
-		skillManager.addSkill(new PassiveSkills("Critique", skillsDescriptions[10], 0, skillManager.getSkill(3), 100, 100, 1f, 1f, "criCac+", "cricMag+", skillsDescriptions[11], skillsDescriptions[12]));
-		skillManager.addSkill(new FurieSkills("Furie", skillsDescriptions[13], 6000, skillManager.getSkill(4), 0, 30, null, 5f, 10f));
+		skillManager.addSkill(new PassiveSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill4"), skillsDescriptions[7], 0, null, 50, 50, 5f, 5f, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill5"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill6"), skillsDescriptions[8], skillsDescriptions[9]));
+		skillManager.addSkill(new PassiveSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill5"), skillsDescriptions[10], 0, skillManager.getSkill(3), 100, 100, 1f, 1f, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill7"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill8"), skillsDescriptions[11], skillsDescriptions[12]));
+		skillManager.addSkill(new FurieSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill6"), skillsDescriptions[13], 6000, skillManager.getSkill(4), 0, 30, null, 5f, 10f));
 
 		//arbre de competence Feu
-		skillManager.addSkill(new PorteeSkills("Boule de feu", skillsDescriptions[14], 500, null, 0f, 10, fireball, 10f, 50, 50, "Dégat+", "Portée+", skillsDescriptions[15], skillsDescriptions[16], 20f));
-		skillManager.addSkill(new ZoneSkills("Lance flammes", skillsDescriptions[17], 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 100, 100, "Dégat+", "Zone+", skillsDescriptions[18], skillsDescriptions[19], 10f));
-		skillManager.addSkill(new SuperSkills("Méteore", skillsDescriptions[20], 6000, skillManager.getSkill(7), 2f, 20, firesuper, 20f, 50f)); 
+		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill7"), skillsDescriptions[14], 500, null, 0f, 10, fireball, 10f, 50, 50, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[15], skillsDescriptions[16], 20f));
+		skillManager.addSkill(new ZoneSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill8"), skillsDescriptions[17], 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 100, 100, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill11"), skillsDescriptions[18], skillsDescriptions[19], 10f));
+		skillManager.addSkill(new SuperSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill9"), skillsDescriptions[20], 6000, skillManager.getSkill(7), 2f, 20, firesuper, 20f, 50f)); 
 		
 		//arbre de competence Glace
-		skillManager.addSkill(new PorteeSkills("Glaçon", skillsDescriptions[21], 500, null, 0f, 10, iceball, 10f, 50, 50, "Dégat+", "Portée+", skillsDescriptions[22], skillsDescriptions[23], 20f));
-		skillManager.addSkill(new ZoneSkills("Iceberg", skillsDescriptions[24], 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 100, 100, "Dégat+", "Zone+", skillsDescriptions[25], skillsDescriptions[26], 10f));
-		skillManager.addSkill(new SuperSkills("Ere glacière", skillsDescriptions[27], 6000, skillManager.getSkill(10), 2f, 20, icesuper, 20f, 50f));
+		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill10"), skillsDescriptions[21], 500, null, 0f, 10, iceball, 10f, 50, 50, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[22], skillsDescriptions[23], 20f));
+		skillManager.addSkill(new ZoneSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill11"), skillsDescriptions[24], 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 100, 100, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill11"), skillsDescriptions[25], skillsDescriptions[26], 10f));
+		skillManager.addSkill(new SuperSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill12"), skillsDescriptions[27], 6000, skillManager.getSkill(10), 2f, 20, icesuper, 20f, 50f));
 		
 		//arbre de competence Vent
-		skillManager.addSkill(new PorteeSkills("Souffle", skillsDescriptions[28], 500, null, 0f, 10, windball, 10f, 50, 50, "Dégat+", "Portée+", skillsDescriptions[29], skillsDescriptions[30], 20f));
-		skillManager.addSkill(new ZoneSkills("Bourrasque", skillsDescriptions[31], 1000, skillManager.getSkill(12), 1f, 15, windsuper, 15f, 100, 100, "Dégat+", "Zone+", skillsDescriptions[32], skillsDescriptions[33], 10f));
-		skillManager.addSkill(new SuperSkills("Tornade", skillsDescriptions[34], 6000, skillManager.getSkill(13), 2f, 20, windsuper, 20f, 50f));
+		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill13"), skillsDescriptions[28], 500, null, 0f, 10, windball, 10f, 50, 50, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[29], skillsDescriptions[30], 20f));
+		skillManager.addSkill(new ZoneSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill14"), skillsDescriptions[31], 1000, skillManager.getSkill(12), 1f, 15, windsuper, 15f, 100, 100, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill11"), skillsDescriptions[32], skillsDescriptions[33], 10f));
+		skillManager.addSkill(new SuperSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill15"), skillsDescriptions[34], 6000, skillManager.getSkill(13), 2f, 20, windsuper, 20f, 50f));
 
 		// Animations
 		hash = GetComponent<PlayerHashIDs>();

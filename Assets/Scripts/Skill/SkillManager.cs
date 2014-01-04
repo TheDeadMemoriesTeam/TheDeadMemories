@@ -299,13 +299,13 @@ public class SkillManager : MonoBehaviour
 			if(listSkills[i].GetType() == System.Type.GetType("PassiveSkills"))
 			{
 				PassiveSkills tmp = listSkills[i] as PassiveSkills;
-				if(tmp.getName() == "Survie")
+				if(tmp.getName() == LanguageManager.Instance.GetTextValue("Skills.nameSkill1"))
 					tmp.update(ref m_pvMax, m_basePvMax, ref m_manaMax, m_baseManaMax);
-				else if(tmp.getName() == "Résistance")
+				else if(tmp.getName() == LanguageManager.Instance.GetTextValue("Skills.nameSkill2"))
 					tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
-				else if(tmp.getName() == "Attaque de base")
+				else if(tmp.getName() == LanguageManager.Instance.GetTextValue("Skills.nameSkill4"))
 					tmp.update(ref m_physicAttack, m_basePhysicAttack, ref m_magicAttack, m_baseMagicAttack);
-				else if(tmp.getName() == "Critique")
+				else if(tmp.getName() == LanguageManager.Instance.GetTextValue("Skills.nameSkill5"))
 					tmp.update(ref m_criticPhysic, m_baseCriticPhysic, ref m_criticMagic, m_baseCriticMagic);
 			}
 			else if(listSkills[i].GetType() == System.Type.GetType("BaseSkills"))
