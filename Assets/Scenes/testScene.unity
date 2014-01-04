@@ -210,7 +210,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 838822981}
-  - {fileID: 1500412341}
+  - {fileID: 1415537204}
   - {fileID: 1250935793}
   - {fileID: 23522337}
   m_Father: {fileID: 1934529497}
@@ -239,7 +239,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 1758632532}
-  openSkills: {fileID: 1500412342}
+  openSkills: {fileID: 1415537205}
 --- !u!54 &5640184
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12821,7 +12821,7 @@ GameObject:
   - 4: {fileID: 308539880}
   - 132: {fileID: 308539881}
   m_Layer: 0
-  m_Name: openSkillsText
+  m_Name: openSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13393,7 +13393,7 @@ GUIText:
   m_FontStyle: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4278388662
+    rgba: 4278388719
   m_PixelCorrect: 1
   m_RichText: 1
 --- !u!1 &324561443
@@ -16261,7 +16261,7 @@ GameObject:
   - 4: {fileID: 394289037}
   - 132: {fileID: 394289038}
   m_Layer: 0
-  m_Name: openSkillsText
+  m_Name: openSkills
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17366,7 +17366,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   aManager: {fileID: 1389026324}
-  terrain: {fileID: 0}
 --- !u!1 &413398272
 GameObject:
   m_ObjectHideFlags: 0
@@ -37808,6 +37807,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 931854723}
   - 132: {fileID: 931854724}
+  - 114: {fileID: 931854725}
   m_Layer: 0
   m_Name: AchievementGet
   m_TagString: Untagged
@@ -37846,9 +37846,21 @@ GUIText:
   m_FontStyle: 1
   m_Color:
     serializedVersion: 2
-    rgba: 4279041792
+    rgba: 4278255360
   m_PixelCorrect: 1
   m_RichText: 1
+--- !u!114 &931854725
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 931854722}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584bf4f7a96ce45f38e6756144845b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizedKey: Interface.AchievUnlock
 --- !u!1 &936926668
 GameObject:
   m_ObjectHideFlags: 0
@@ -56708,6 +56720,56 @@ Prefab:
   m_RootGameObject: {fileID: 122353284}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1415537203
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1415537204}
+  - 132: {fileID: 1415537205}
+  m_Layer: 0
+  m_Name: openSkills
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1415537204
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1415537203}
+  m_LocalRotation: {x: 0, y: -.380264401, z: 0, w: .924877882}
+  m_LocalPosition: {x: -5.22721958, y: -5.74819183, z: 31.7845879}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 5640181}
+--- !u!132 &1415537205
+GUIText:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1415537203}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Text: Gui Text
+  m_Anchor: 4
+  m_Alignment: 1
+  m_PixelOffset: {x: 0, y: 0}
+  m_LineSpacing: 1
+  m_TabSize: 4
+  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+  m_Material: {fileID: 0}
+  m_FontSize: 0
+  m_FontStyle: 0
+  m_Color:
+    serializedVersion: 2
+    rgba: 4278190335
+  m_PixelCorrect: 1
+  m_RichText: 1
 --- !u!1 &1415645373
 GameObject:
   m_ObjectHideFlags: 0
@@ -57926,6 +57988,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 1443134988}
   - 132: {fileID: 1443134989}
+  - 114: {fileID: 1443134990}
   m_Layer: 0
   m_Name: autoSav
   m_TagString: Untagged
@@ -57967,6 +58030,18 @@ GUIText:
     rgba: 4294967295
   m_PixelCorrect: 1
   m_RichText: 1
+--- !u!114 &1443134990
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1443134987}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 584bf4f7a96ce45f38e6756144845b1d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  localizedKey: Interface.GameSaved
 --- !u!23 &1443242967
 Renderer:
   m_ObjectHideFlags: 0
@@ -60062,56 +60137,6 @@ Prefab:
   m_RootGameObject: {fileID: 1804707375}
   m_IsPrefabParent: 0
   m_IsExploded: 1
---- !u!1 &1500412340
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 1500412341}
-  - 132: {fileID: 1500412342}
-  m_Layer: 0
-  m_Name: openSkillsText
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1500412341
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500412340}
-  m_LocalRotation: {x: 0, y: -.380264401, z: 0, w: .924877882}
-  m_LocalPosition: {x: -5.22717619, y: -5.74819183, z: 31.7846317}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 5640181}
---- !u!132 &1500412342
-GUIText:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1500412340}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Text: Gui Text
-  m_Anchor: 4
-  m_Alignment: 1
-  m_PixelOffset: {x: 0, y: 0}
-  m_LineSpacing: 1
-  m_TabSize: 4
-  m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-  m_Material: {fileID: 0}
-  m_FontSize: 0
-  m_FontStyle: 0
-  m_Color:
-    serializedVersion: 2
-    rgba: 4278190335
-  m_PixelCorrect: 1
-  m_RichText: 1
 --- !u!1 &1500549482
 GameObject:
   m_ObjectHideFlags: 0
@@ -81068,7 +81093,7 @@ GUIText:
   m_GameObject: {fileID: 2103803404}
   m_Enabled: 1
   serializedVersion: 3
-  m_Text: 
+  m_Text: Game Over
   m_Anchor: 4
   m_Alignment: 0
   m_PixelOffset: {x: 0, y: 0}

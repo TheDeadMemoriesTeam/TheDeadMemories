@@ -58,34 +58,34 @@ public class AdvancedSettingsMenu : SubMenu
 		                              windowWidth,
 		                              windowHeight));
 
-		GUILayout.Label ("Advanced Settings : ");
+		GUILayout.Label (LanguageManager.Instance.GetTextValue("MenuOptions.advencedSettings"));
 
 		scrollBarPosition = GUILayout.BeginScrollView(scrollBarPosition, GUILayout.Height(0.58f * windowHeight));
 
 		// Sliders de réglages
 		float detailDistance = PlayerPrefs.GetFloat("detailDistance");
-		GUILayout.Label ("Details distance : " + truncateValue(detailDistance, 0));
+		GUILayout.Label (LanguageManager.Instance.GetTextValue("MenuOptions.detailDistance") + truncateValue(detailDistance, 0));
 		ground.detailObjectDistance = GUILayout.HorizontalSlider (detailDistance, 0, 250, GUILayout.Width(sliderWidth), GUILayout.Height(sliderHeight));
 		PlayerPrefs.SetFloat("detailDistance", ground.detailObjectDistance);
 
 		float detailDensity = PlayerPrefs.GetFloat("detailDensity");
-		GUILayout.Label ("Details density : " + truncateValue(detailDensity, 1));
+		GUILayout.Label (LanguageManager.Instance.GetTextValue("MenuOptions.detailDensity") + truncateValue(detailDensity, 1));
 		ground.detailObjectDensity = GUILayout.HorizontalSlider (detailDensity, 0, 1, GUILayout.Width(sliderWidth), GUILayout.Height(sliderHeight));
 		PlayerPrefs.SetFloat("detailDensity", ground.detailObjectDensity);
 
 		float fadeLenght = PlayerPrefs.GetFloat("fadeLenght");
-		GUILayout.Label ("Fade Lenght : " + truncateValue(fadeLenght, 0));
+		GUILayout.Label (LanguageManager.Instance.GetTextValue("MenuOptions.fadeLenght") + truncateValue(fadeLenght, 0));
 		ground.treeCrossFadeLength = GUILayout.HorizontalSlider (fadeLenght, 0, 200, GUILayout.Width(sliderWidth), GUILayout.Height(sliderHeight));
 		PlayerPrefs.SetFloat("fadeLenght", ground.treeCrossFadeLength);
 
 		float windSpeed = PlayerPrefs.GetFloat("windSpeed");
-		GUILayout.Label ("Wind Speed : " + truncateValue(windSpeed, 1));
+		GUILayout.Label (LanguageManager.Instance.GetTextValue("MenuOptions.windSpeed") + truncateValue(windSpeed, 1));
 		ground.terrainData.wavingGrassStrength = GUILayout.HorizontalSlider (windSpeed, 0, 1, GUILayout.Width(sliderWidth), GUILayout.Height(sliderHeight));
 		PlayerPrefs.SetFloat("windSpeed", ground.terrainData.wavingGrassStrength);
 
 		GUILayout.EndScrollView();
 
-		float buttonWidth = 0.33f * windowWidth;
+		float buttonWidth = 0.37f * windowWidth;
 		float buttonHeight = 0.1f * windowHeight;
 		
 		// Bouton de valeurs par défaut
@@ -93,7 +93,7 @@ public class AdvancedSettingsMenu : SubMenu
 		                         0.68f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
-		               "Default Values"))
+		               LanguageManager.Instance.GetTextValue("Menu.default")))
 		{
 			// Restaure les valeurs par défaut
 			PlayerPrefs.SetFloat("detailDistance", 100f);
@@ -107,7 +107,7 @@ public class AdvancedSettingsMenu : SubMenu
 		                         0.68f*windowHeight,
 		                         buttonWidth,
 		                         buttonHeight),
-		               "Return"))
+		                LanguageManager.Instance.GetTextValue("MainMenu.Return")))
 		{
 			setInfFrontOf(false);
 			cam.goToMainMenu();
@@ -118,7 +118,7 @@ public class AdvancedSettingsMenu : SubMenu
 		                         0.68f*windowHeight + buttonHeight + 10,
 		                         buttonWidth,
 		                         buttonHeight),
-		               "Return Settings"))
+		                LanguageManager.Instance.GetTextValue("MenuOptions.ReturnSettings")))
 		{
 			setInfFrontOf(false);
 			cam.goToSettingsMenu();

@@ -13,7 +13,7 @@ public class AchievMenu : SubMenu
 	// Choix d'afficher les achievements débloqués ou non
 	private int itemSelected = 0;
 	// Nom des boutons
-	private string[] toolbarStrings = {"Unlocked", "Locked"};
+	private string[] toolbarStrings;
 
 	// variables de placement (en pixels)
 	private int spaceBetweenItem = 30;
@@ -32,6 +32,11 @@ public class AchievMenu : SubMenu
 	protected override void Start () 
 	{
 		base.Start();
+
+		toolbarStrings = new string[2];
+		toolbarStrings[0] = LanguageManager.Instance.GetTextValue("MainMenu.unlock");
+		toolbarStrings[1] = LanguageManager.Instance.GetTextValue("MainMenu.lock");
+
 		// Récupère la sauvegarde des achievements accomplis
 		AchievementsSaveReader asr = FindObjectOfType<AchievementsSaveReader>();
 
@@ -61,7 +66,7 @@ public class AchievMenu : SubMenu
 		                             Screen.height/2 - windowHeight/2,
 		                             windowWidth,
 		                             windowHeight);
-		achievsWindowRect = GUI.Window(1, achievsWindowRect, achievementsWindowOpen, "Achievements Completed");
+		achievsWindowRect = GUI.Window(1, achievsWindowRect, achievementsWindowOpen, LanguageManager.Instance.GetTextValue("MainMenu.achievCompleted"));
 	}
 
 	// Rempli la fenetre des achievements accomplis
@@ -71,7 +76,7 @@ public class AchievMenu : SubMenu
 		GUILayout.BeginArea(new Rect(10, 20, windowWidth, windowHeight));
 
 		// Bouton sélectionné
-		itemSelected = GUI.Toolbar(new Rect(0, 0, 140, 30), itemSelected, toolbarStrings);
+		itemSelected = GUI.Toolbar(new Rect(0, 0, 150, 30), itemSelected, toolbarStrings);
 
 		// Achievements réalisés
 		if (itemSelected == 0)
@@ -130,7 +135,7 @@ public class AchievMenu : SubMenu
 		                          windowHeight - 2*buttonHeight,
 		                          buttonWidth,
 		                          buttonHeight),
-		           		"Return"))
+		                LanguageManager.Instance.GetTextValue("MainMenu.Return")))
 		{
 			setInfFrontOf(false);
 			cam.goToMainMenu();
@@ -141,7 +146,7 @@ public class AchievMenu : SubMenu
 
 	string generateToolTip(string description)
 	{
-		return 	"Description : "
+		return 	LanguageManager.Instance.GetTextValue("MainMenu.description")
 				+ System.Environment.NewLine
 				+ description;
 	}

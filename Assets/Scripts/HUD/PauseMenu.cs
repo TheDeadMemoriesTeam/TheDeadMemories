@@ -6,7 +6,7 @@ public class PauseMenu : PauseSystem
 
 	private bool isOption;
 	public AudioManager aManager;
-	public Terrain terrain;
+	private Terrain terrain;
 	
 	protected override void Start()
 	{
@@ -21,7 +21,7 @@ public class PauseMenu : PauseSystem
 		if(!paused)
 		{
 			// si on appuie sur "Escape" change l'état du jeu
-			if(Input.GetButtonDown("Menu"))
+			if(Input.GetButtonDown(LanguageManager.Instance.GetTextValue("Interface.Menu")))
 			{
 				paused = true;
 				
@@ -36,19 +36,19 @@ public class PauseMenu : PauseSystem
 		{
 			GUILayout.BeginArea(new Rect(Screen.width/2-50,Screen.height/2-50, 100,100));
 			
-			if(GUILayout.Button("Continuer"))
+			if(GUILayout.Button(LanguageManager.Instance.GetTextValue("Interface.resume")))
 			{
 				paused = false;
 				
 				UpdateState();
 			}
 
-			if(GUILayout.Button("Option"))
+			if(GUILayout.Button(LanguageManager.Instance.GetTextValue("Interface.settings")))
 			{
 				isOption = true;
 			}
 
-			if(GUILayout.Button("Menu"))
+			if(GUILayout.Button(LanguageManager.Instance.GetTextValue("Interface.Menu")))
 			{
 				Application.LoadLevel(0);
 			}
@@ -66,13 +66,13 @@ public class PauseMenu : PauseSystem
 	{
 		GUILayout.BeginArea(new Rect(Screen.width/2+70,Screen.height/2-100, 150,200));
 
-		if(GUILayout.Button("Changer piste"))
+		if(GUILayout.Button(LanguageManager.Instance.GetTextValue("Interface.changeTrack")))
 		{
 			aManager.changeTrack();
 		}
 		if(aManager.getPlayState())
 		{
-			if(GUILayout.Button ("Desactiver musique"))
+			if(GUILayout.Button (LanguageManager.Instance.GetTextValue("Interface.disableMusic")))
 			{
 				aManager.changePlayState();
 				aManager.pauseTrack();
@@ -80,17 +80,17 @@ public class PauseMenu : PauseSystem
 		}
 		else
 		{
-			if(GUILayout.Button ("Réactiver musique"))
+			if(GUILayout.Button (LanguageManager.Instance.GetTextValue("Interface.activeMusic")))
 			{
 				aManager.changePlayState();
 				aManager.startTrack();
 			}
 		}
 
-		GUILayout.Label ("Volume de la musique:");
+		GUILayout.Label (LanguageManager.Instance.GetTextValue("Interface.musicVolume"));
 		aManager.changeVolume (GUILayout.HorizontalSlider (aManager.getVolume(), 0, 1));
 
-		GUILayout.Label ("Distance de rendu:");
+		GUILayout.Label (LanguageManager.Instance.GetTextValue("MenuOptions.detailDistance"));
 		terrain.detailObjectDistance = GUILayout.HorizontalSlider (terrain.detailObjectDistance, 0, 250);
 
 		GUILayout.EndArea();
