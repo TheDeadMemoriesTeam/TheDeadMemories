@@ -1012,7 +1012,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2993d8b5c1f3936498735b9b2eee46f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCoups: []
+  soundCoups:
+  - {fileID: 8300000, guid: 63a7d4e01bc095a4cba221edd28823b2, type: 3}
+  - {fileID: 8300000, guid: 459925dcb36288c42958dfd278eaf066, type: 3}
+  - {fileID: 8300000, guid: 646f62af16807ad499421ed86cffd061, type: 3}
+  - {fileID: 8300000, guid: 6f0e6d1a983ce5742be11f54ae525a84, type: 3}
 --- !u!114 &11400010
 MonoBehaviour:
   m_ObjectHideFlags: 1
