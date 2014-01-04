@@ -43,55 +43,55 @@ public class AchievementManager : MonoBehaviour
 		// Add achievements
 		achievements = new List<Achievement>();
 		// Famille d'achievements Walking
-		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev1"), "Do your first move!", 1));
-		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev2"), "Walk on 1 km!", 1000));
-		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev3"), "Walk on 10 km!", 10000));
-		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev4"), "Walk on 42.195 km!", 42195));
-		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev5"), "Walk on 100 km!", 100000));
-		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev6"), "Walk on 1.000 km!", 1000000));
-		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev7"), "Walk on 10.000 km!", 10000000));
+		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev1"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev1"), 1));
+		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev2"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev2"), 1000));
+		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev3"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev3"), 10000));
+		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev4"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev4"), 42195));
+		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev5"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev5"), 100000));
+		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev6"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev6"), 1000000));
+		achievements.Add(new WalkingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev7"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev7"), 10000000));
 		
 		// Famille d'achievements Kill x ennemis
-		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev8"), "Kill for the first time!", 1));
-		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev9"), "Kill 10 enemies !", 10));
-		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev10"), "Kill 100 enemies !", 100));
-		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev11"), "Kill 1000 enemies !", 1000));
+		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev8"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev8"), 1));
+		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev9"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev9"), 10));
+		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev10"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev10"), 100));
+		achievements.Add(new KillingAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev11"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev11"), 1000));
 		
 		// Famille d'achievements Kill x bersekers
-		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev12"), "Kill your first Berseker !", 1));
-		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev13"), "Kill 10 Bersekers !", 10));
-		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev14"), "Kill 100 Bersekers !", 100));
-		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev15"), "Kill 1000 Bersekers !", 1000));
+		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev12"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev12"), 1));
+		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev13"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev13"), 10));
+		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev14"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev14"), 100));
+		achievements.Add(new KillingBersekerAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev15"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev15"), 1000));
 		
 		// Famille d'achievement kill simultanés
-		achievements.Add(new SimultaneousKillsAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev16"), "Kill 5 enemies in the same time", 5));
-		achievements.Add(new SimultaneousKillsAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev17"), "Kill 10 enemies in the same time", 10));
+		achievements.Add(new SimultaneousKillsAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev16"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev16"), 5));
+		achievements.Add(new SimultaneousKillsAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev17"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev17"), 10));
 		
 		// Famille d'achievements Assassin
-		achievements.Add(new AssassinAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev18"), "Kill 5 enemies without being touch !", 5));
-		achievements.Add(new AssassinAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev19"), "Kill 50 enemies without being touch !", 50));
+		achievements.Add(new AssassinAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev18"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev18"), 5));
+		achievements.Add(new AssassinAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev19"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev19"), 50));
 		
 		// Famille d'achievements kill x ennemis en x temps
-		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev20"), "Kill 10 enemies in 1 min", 10, 60));
-		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev21"), "Kill 25 enemies in 1 min", 25, 60));
-		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev22"), "Kill 50 enemies in 1 min", 50, 60));
-		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev23"), "Kill 100 enemies in 1 min", 100, 60));
-		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev24"), "Kill 200 enemies in 1 min", 200, 60));
+		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev20"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev20"), 10, 60));
+		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev21"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev21"), 25, 60));
+		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev22"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev22"), 50, 60));
+		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev23"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev23"), 100, 60));
+		achievements.Add(new TimedKillAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev24"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev24"), 200, 60));
 		
 		// Famille d'achievements survivre x temps
-		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev25"), "Survive during 1 min!", 60));
-		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev26"), "Survive during 20 min!", 1200));
-		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev27"), "Survive during 1 h!", 3600));
-		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev28"), "Survive during 4 h!", 14400));
-		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev29"), "Survive during 12 h!", 43200));
+		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev25"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev25"), 60));
+		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev26"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev26"), 1200));
+		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev27"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev27"), 3600));
+		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev28"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev28"), 14400));
+		achievements.Add(new SurvivedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev29"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev29"), 43200));
 		
 		// Famille d'achievements ne pas etre touché x temps
-		achievements.Add(new UntouchedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev30"), "Not being touched during 1 min !", 60));
-		achievements.Add(new UntouchedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev31"), "Not being touched during 5 min !", 300));
+		achievements.Add(new UntouchedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev30"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev30"), 60));
+		achievements.Add(new UntouchedAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev31"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev31"), 300));
 
 		// Famille d'achievements avec triggers de zone
-		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev32"), "Arrive to the castle", "castle"));
-		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev33"), "Discover the village", "village"));
+		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev32"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev32"), "castle"));
+		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev33"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev33"), "village"));
 		
 		// Récupère l'interval de temps maximal à conserver en historique pour les TimedKillAchievement
 		for (int i = 0 ; i < achievements.Count ; i++)

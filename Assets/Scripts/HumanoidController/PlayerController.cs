@@ -521,6 +521,43 @@ public class PlayerController : HumanoidController
 	List<string> initSkillsDescriptions()
 	{
 		List<string> list = new List<string>();
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill1"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill2"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill3"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill4"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill5"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill6"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill7"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill8"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill9"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill10"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill11"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill12"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill13"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill14"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill15"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill16"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill17"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill18"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill19"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill20"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill21"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill22"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill23"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill24"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill25"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill26"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill27"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill28"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill29"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill30"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill31"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill32"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill33"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill34"));
+		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill35"));
+
+		/*
 		list.Add("Permet a George d'augmenter ses stats");
 		list.Add("Augmente la quantité de points de vie maximale");
 		list.Add("Augmente la quantité de points de mana maximale");
@@ -556,6 +593,7 @@ public class PlayerController : HumanoidController
 		list.Add("Augmente les dégats infligés par le sort Bourrasque");
 		list.Add("Augmente la zone de souffle du sort Bourrasque");
 		list.Add("Faite disparaitre vos ennemis dans les airs en un clin d'oeil !");
+		*/
 
 		return list;
 	}
