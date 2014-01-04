@@ -69,7 +69,7 @@ public class HelpMenu : SubMenu
 		GUIStyle myStyle = new GUIStyle();
 		// Détermine la hauteur de l'aide pour la largeur précédente
 		float labelHeight = myStyle.CalcHeight( content, labelWidth);
-		helpHeight = labelHeight+20;
+		helpHeight = labelHeight + countNewLine()*10 + 20;
 
 		// Affiche l'aide
 		GUI.Label(new Rect(10, 20, labelWidth, helpHeight), textDisplay);
@@ -107,6 +107,17 @@ public class HelpMenu : SubMenu
 		return textToDisplay;
 	}
 
+	int countNewLine()
+	{
+		int nbNewLine = 0;
+		for (int i = 0 ; i < texts.Count ; i++)
+		{
+			if (texts[i] == "\n")
+				nbNewLine++;
+		}
+		return nbNewLine;
+	}
+
 	List<string> helpTexts()
 	{
 		// Liste des textes à afficher dans l'aide
@@ -114,7 +125,32 @@ public class HelpMenu : SubMenu
 		// (mettre \n pour saut d'une ligne)
 		List<string> helpMenuTexts = new List<string>();
 
-		helpMenuTexts.Add("Début");
+		helpMenuTexts.Add("Aide de The Dead's Memories");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Controles :");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez vous déplacer avec les flèches directionnelles ou les touches Z, Q, S et D.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez réaliser un saut avec la touche Espace.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez consulter votre inventaire avec la touche Tab.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez mettre le jeu en pause avec la touche Echap.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Votre personnage peut débloquer une foule de compétences en se rendant dans une crypte, pour en débloquer de nouvelles, il vous faudra acquérir de l'expérience en tuant vos ennemis.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez controler 3 types d'éléments magique : le Feu, la Glace et le Vent.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Si vous désirez changer d'éléments vous pouvez utiliser les touches F1, F2 ou F3.");
 
 		return helpMenuTexts;
 	}
