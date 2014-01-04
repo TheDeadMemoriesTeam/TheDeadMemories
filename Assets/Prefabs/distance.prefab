@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootDistance: 6
-  chaseSpeed: 6
+  chaseSpeed: 5.80000019
   chaseWaitTime: 3
   patrolSpeed: 3
   patrolWaitTime: .5
@@ -834,7 +834,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2993d8b5c1f3936498735b9b2eee46f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundCoups: []
+  soundCoups:
+  - {fileID: 8300000, guid: 63a7d4e01bc095a4cba221edd28823b2, type: 3}
+  - {fileID: 8300000, guid: 459925dcb36288c42958dfd278eaf066, type: 3}
+  - {fileID: 8300000, guid: 646f62af16807ad499421ed86cffd061, type: 3}
+  - {fileID: 8300000, guid: 6f0e6d1a983ce5742be11f54ae525a84, type: 3}
 --- !u!114 &11400006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -852,6 +856,15 @@ MonoBehaviour:
   personalLastSighting: {x: 0, y: 0, z: 0}
   hearingDistance: 8
   playerLastDirection: {x: 0, y: 0, z: 0}
+  soundAlerted:
+  - {fileID: 8300000, guid: 3fd75ef57a9e9754e9be16b333f4e835, type: 3}
+  - {fileID: 8300000, guid: 4327efbb410757648b54ef1b1899a54e, type: 3}
+  - {fileID: 8300000, guid: f1101db69227c63429827e536c2b0e53, type: 3}
+  - {fileID: 8300000, guid: 2a7718c3ddeffb24b9bf4acb4d37ebc8, type: 3}
+  - {fileID: 8300000, guid: bc6acc8c52576ce4981130941f550296, type: 3}
+  - {fileID: 8300000, guid: e027d3b23a5309d4688ea6de368e4023, type: 3}
+  - {fileID: 8300000, guid: 439db0f700758e04b92314fbb5c6d337, type: 3}
+  - {fileID: 8300000, guid: 4d9349dd86b4aa54d811fd31571a103d, type: 3}
 --- !u!114 &11400008
 MonoBehaviour:
   m_ObjectHideFlags: 1
