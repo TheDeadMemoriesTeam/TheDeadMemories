@@ -34,7 +34,7 @@ public class BaseSkills : DamageSkills
 	
 	public int getCostIncDamage()
 	{
-		return (int)(m_costIncDamage + Mathf.Pow((m_lvlDamage/2),3)*5 + (Mathf.Cos(m_lvlDamage)*1.5*Mathf.Pow(m_lvlDamage,2)));	
+		return (int)(m_costIncDamage + Mathf.Pow((m_lvlDamage/2f),3)*5f + (Mathf.Cos(m_lvlDamage)*1.5f*Mathf.Pow(m_lvlDamage,2)));	
 	}
 
 	public float getAd()
@@ -59,7 +59,7 @@ public class BaseSkills : DamageSkills
 	
 	public int getCostIncAd()
 	{
-		return (int)(m_costIncAd + Mathf.Pow((m_lvlAd/2),3)*5 + (Mathf.Cos(m_lvlAd)*1.5*Mathf.Pow(m_lvlAd,2)));
+		return (int)(m_costIncAd + Mathf.Pow((m_lvlAd/2f),3)*5f + (Mathf.Cos(m_lvlAd)*1.5f*Mathf.Pow(m_lvlAd,2)));
 	}
 
 	public string getNameAd()
