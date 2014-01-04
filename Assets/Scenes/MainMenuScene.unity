@@ -1882,8 +1882,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 151a98710ba228c4298b6bee69e3dfdd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  coefWidth: .5
-  coefHeight: .800000012
 --- !u!95 &226041311
 Animator:
   serializedVersion: 2

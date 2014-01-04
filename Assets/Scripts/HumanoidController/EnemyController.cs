@@ -135,7 +135,7 @@ public class EnemyController : HumanoidController
 		nav.speed = chaseSpeed;
 		
 		// If near the last personal sighting...
-		if(nav.remainingDistance < nav.stoppingDistance)
+		if(nav.remainingDistance < shootDistance)
 		{
 			// Try to find the player in a possible direction
 			if (chaseTimer == 0f && enemySight.playerLastDirection != Utils.GetInfiniteVector3())

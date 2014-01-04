@@ -1067,9 +1067,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 70
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -1144,7 +1144,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba5c27f37ce7b145bec07c30489bd4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDistance: 3
+  shootDistance: 4
   chaseSpeed: 5.5999999
   chaseWaitTime: 3
   patrolSpeed: 3
@@ -1192,6 +1192,7 @@ MonoBehaviour:
   personalLastSighting: {x: 0, y: 0, z: 0}
   hearingDistance: 8
   playerLastDirection: {x: 0, y: 0, z: 0}
+  playerHeared: 0
   soundAlerted:
   - {fileID: 8300000, guid: 3fd75ef57a9e9754e9be16b333f4e835, type: 3}
   - {fileID: 8300000, guid: 4327efbb410757648b54ef1b1899a54e, type: 3}
