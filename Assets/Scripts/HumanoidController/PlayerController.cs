@@ -557,44 +557,6 @@ public class PlayerController : HumanoidController
 		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill34"));
 		list.Add(LanguageManager.Instance.GetTextValue("Skills.descSkill35"));
 
-		/*
-		list.Add("Permet a George d'augmenter ses stats");
-		list.Add("Augmente la quantité de points de vie maximale");
-		list.Add("Augmente la quantité de points de mana maximale");
-		list.Add("Permet a George d'augmenter sa résitance");
-		list.Add("Augmente la résistance physique de Georges");
-		list.Add("Augmente la résistance aux sorts de Georges");
-		list.Add("Rend Georges invincible pendant une courte période");
-		list.Add("Permet a George d'augmenter ses degats");
-		list.Add("Augmente les dégats physique infligés à chaque coups");
-		list.Add("Augmente la puissance des sorts");
-		list.Add("Permet d'effectuer des coup critique");
-		list.Add("Augmente les dégats de coup critique physique");
-		list.Add("Augmente les dégats de coup critique magique");
-		list.Add("Laisser sortir la furie qui est en vous!");
-		list.Add("Permet à Georges de lancer des boules de feu");
-		list.Add("Augmente les dégats infligés par les boules de feu");
-		list.Add("Augmente la portée des boules de feu");
-		list.Add("Permet à Georges de lancer un sort de zone de feu");
-		list.Add("Augmente les dégats du sort lance flamme");
-		list.Add("Augmente la zone de feu du sort lance flamme");
-		list.Add("Invoquez la puissance céleste des étoiles !");
-		list.Add("Permet à George de lancer des morceaux de glace");
-		list.Add("Augmente les dégats infligés par les glaçons");
-		list.Add("Augmente la portée des glaçons");
-		list.Add("Permet à Georges de geler les ennemis proches");
-		list.Add("Augmente les dégats infligés par le sort iceberg");
-		list.Add("Augmente la zone de glace du sort iceberg");
-		list.Add("C'est Noel ! Enfin, pour vous");
-		list.Add("Permet à Georges de repousser ces ennemis");
-		list.Add("Augmente les dégats infligés par le souffle");
-		list.Add("Augmente la portée du souffle");
-		list.Add("Permet à Georges de repousser les ennemis qui l'entoure");
-		list.Add("Augmente les dégats infligés par le sort Bourrasque");
-		list.Add("Augmente la zone de souffle du sort Bourrasque");
-		list.Add("Faite disparaitre vos ennemis dans les airs en un clin d'oeil !");
-		*/
-
 		return list;
 	}
 }
