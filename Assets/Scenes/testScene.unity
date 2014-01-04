@@ -5659,7 +5659,7 @@ GameObject:
   - 114: {fileID: 116980739}
   m_Layer: 0
   m_Name: DayNightLights
-  m_TagString: Untagged
+  m_TagString: DayNight
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5688,7 +5688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de25d70b3f95104c8d88c2caeeb9c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 12
+  dayTime: 11.5
 --- !u!1001 &117431285
 Prefab:
   m_ObjectHideFlags: 0
