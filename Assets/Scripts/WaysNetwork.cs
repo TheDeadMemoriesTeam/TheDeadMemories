@@ -10,6 +10,7 @@ public class WaysNetwork : MonoBehaviour {
 	public Transform[] tailArc;    // Tail nodes of arcs
 	public bool[] isOrientedArc;   // Is the arc oriented? If not (false), the arc (tail, head) is also considered.
 	                               // If isOrientedArc.Lenght < headArc.Lenght, additional arcs are considered as non-oriented.
+	public bool isConnectedGraph = true; // If the graph should be considered as connected or not.
 
 	private Transform[] nodes;
 
@@ -77,22 +78,19 @@ public class WaysNetwork : MonoBehaviour {
 		}
 	}
 
-	public Vector3[] getShortestPath(Vector3 from, Vector3 to)
+	private List<Vector3> dijkstra(Vector3 from, Vector3 to)
 	{
-		if (!weightedAdjacencyList.ContainsKey(from) || !weightedAdjacencyList.ContainsKey(to))
-			return new Vector3[0];
-
 		// Init everything
 		Dictionary<Vector3, float> d = new Dictionary<Vector3, float>();
 		Dictionary<Vector3, Vector3?> pi = new Dictionary<Vector3, Vector3?>();
-
+		
 		foreach(KeyValuePair<Vector3, Dictionary<Vector3, float>> entry in weightedAdjacencyList)
 		{
 			d.Add(entry.Key, float.PositiveInfinity);
 			pi.Add(entry.Key, null);
 		}
 		d[from] = 0;
-
+		
 		// Start Dijkstra
 		//List<Vector3> E = new List<Vector3>();
 		List<Vector3> F = new List<Vector3>();
@@ -100,7 +98,7 @@ public class WaysNetwork : MonoBehaviour {
 		{
 			F.Add(entry.Key);
 		}
-
+		
 		while (F.Count > 0)
 		{
 			// Extract the node with the minimal distance
@@ -108,7 +106,7 @@ public class WaysNetwork : MonoBehaviour {
 			F.Sort ( (i1, i2) => ((d[i1] < d[i2]) ? -1 : ((d[i1] == d[i2]) ? 0 : 1)) );
 			u = F[0];
 			F.RemoveAt(0);
-
+			
 			//E.Add(u);
 			foreach(KeyValuePair<Vector3, float> entry in weightedAdjacencyList[u])
 			{
@@ -119,7 +117,7 @@ public class WaysNetwork : MonoBehaviour {
 				}
 			}
 		}
-
+		
 		// Get the sortest path to the destination
 		List<Vector3> path = new List<Vector3>();
 		if (pi[to] != null)
@@ -132,11 +130,43 @@ public class WaysNetwork : MonoBehaviour {
 				u = pi[u] ?? default(Vector3);
 			}
 		}
-		if (path.Count < 1 ||path.First() != from || path.Last() != to) {
-			Debug.LogWarning("WaysNetwork: Can not find a path between two nodes. "
-			          		 + "You should add some arcs to avoid this. "
-			          		 + "(Position of the affected WaysNetwork: " + transform.position.ToString() + ")");
+		return path;
+	}
+
+	public Vector3[] getShortestPath(Vector3 from, Vector3 to)
+	{
+		if (!weightedAdjacencyList.ContainsKey(from) || !weightedAdjacencyList.ContainsKey(to))
+			return new Vector3[0];
+
+		List<Vector3> path;
+
+		if (!isConnectedGraph) {
+			int count = weightedAdjacencyList[from].Count;
+			if (count < 1)
+				Debug.LogWarning("WaysNetwork: A node lead nowhere in a non-connected Waynetwork. "
+				                 + "(Position of the affected WaysNetwork: " + transform.position.ToString() + ")");
+			int index = (int) Random.Range(0, count - 1e-10f);
+			to = weightedAdjacencyList[from].ElementAt(index).Key;
+			path = new List<Vector3>();
+			path.Add (from);
+			path.Add (to);
+			
+			if (path.Count < 1 || path.First() != from || path.Last() != to) {
+				Debug.LogWarning("WaysNetwork: Can not find a path between two nodes. "
+				                 + "You should add some arcs to avoid this. "
+				                 + "(Position of the affected WaysNetwork: " + transform.position.ToString() + ")");
+			}
 		}
+		else {
+			path = dijkstra(from, to);
+
+			if (path.Count < 1 || path.First() != from || path.Last() != to) {
+				Debug.LogWarning("WaysNetwork: Can not find a path between two nodes. "
+				          		 + "You should add some arcs to avoid this. "
+				          		 + "(Position of the affected WaysNetwork: " + transform.position.ToString() + ")");
+			}
+		}
+
 		return path.ToArray();
 	}
 

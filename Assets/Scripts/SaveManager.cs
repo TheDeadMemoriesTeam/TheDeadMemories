@@ -18,8 +18,8 @@ public class SaveManager{
 	private string statsPath = "./save/stats.dat";
 
 	// Lieu de spawn pour le joueur
-	Vector3 spawn1 = new Vector3 (-14, 8, -20); 	// Crypte du cimetière
-	Vector3 spawn2 = new Vector3 (120, -2, 479); 	// Crypte du village
+	Vector3 spawn1 = new Vector3 (-14, 5.3f, -20); 	// Crypte du cimetière
+	Vector3 spawn2 = new Vector3 (120, -4.8f, 479); 	// Crypte du village
 	Vector3 spawn3 = new Vector3 (697, -4, 17);		// Crypte de la ferme
 
 	public SaveManager(AchievementManager otherA, SkillManager otherS, PlayerController p, DayNightCycleManager otherD)

@@ -125,14 +125,17 @@ public class HelpMenu : SubMenu
 		// (mettre \n pour saut d'une ligne)
 		List<string> helpMenuTexts = new List<string>();
 
-		helpMenuTexts.Add("Aide de The Dead's Memories");
+		helpMenuTexts.Add("Aide de The Dead Memories");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Controles :");
+		helpMenuTexts.Add("Controles par défaut:");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
-		helpMenuTexts.Add("Vous pouvez vous déplacer avec les flèches directionnelles ou les touches Z, Q, S et D.");
+		helpMenuTexts.Add("Vous pouvez vous déplacer avec les flèches directionnelles ou les touches Z, Q, S et D et sprinter en maintenant la touche SHIFT enfoncée.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez attaquer au corps à corps avec un clic gauche et utiliser la magie (une fois la compétance acquise) avec un clic droit.");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("Vous pouvez réaliser un saut avec la touche Espace.");
