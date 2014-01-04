@@ -26,7 +26,7 @@ public class BossController : EnemyController
 		
 		xp = 30;
 		
-		timeRegen = 6;
+		timeRegen = 0.8f;
 	}
 	
 	protected override void Update ()

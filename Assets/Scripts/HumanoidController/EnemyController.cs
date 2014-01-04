@@ -115,6 +115,7 @@ public class EnemyController : HumanoidController
 	{
 		// Stop the enemy where it is.
 		nav.Stop();
+		transform.LookAt(new Vector3(player.transform.position.x, transform.position.y, player.transform.position.z));
 		shooting = true;
 
 		anim.SetBool(hashIDs.isHitting, true);
@@ -134,7 +135,7 @@ public class EnemyController : HumanoidController
 		nav.speed = chaseSpeed;
 		
 		// If near the last personal sighting...
-		if(nav.remainingDistance < nav.stoppingDistance)
+		if(nav.remainingDistance < shootDistance)
 		{
 			// Try to find the player in a possible direction
 			if (chaseTimer == 0f && enemySight.playerLastDirection != Utils.GetInfiniteVector3())

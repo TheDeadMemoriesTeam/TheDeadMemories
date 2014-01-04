@@ -9,6 +9,7 @@ public class EnemySight : MonoBehaviour
     public Vector3 personalLastSighting;            // Last place this enemy spotted the player.
 	public float hearingDistance = 8f;              // Distance from where the player will be heard
 	public Vector3 playerLastDirection;             // Last direction of the player
+	public bool playerHeared;
     
     private NavMeshAgent nav;                       // Reference to the NavMeshAgent component.
 	private Animator anim;							// Reference to the Animator.
@@ -17,6 +18,9 @@ public class EnemySight : MonoBehaviour
 	private PlayerHashIDs playerHashIds;
 	
 	private float alertDistance = 25f;              // Distance from where ennemies can be alerted
+
+	public AudioClip[] soundAlerted;				//Liste des bruitages d'alerte de l'ennemie
+	private AudioSource aSource;					//AudioSource du de l'ennemie
     
     void Awake ()
     {
@@ -35,6 +39,7 @@ public class EnemySight : MonoBehaviour
 		player = (PlayerController)FindObjectOfType(System.Type.GetType("PlayerController"));
 		playerAnim = player.GetComponentInChildren<Animator>();
 		playerHashIds = player.GetComponent<PlayerHashIDs>();
+		aSource = GetComponent <AudioSource> ();
 	}
     
     
@@ -52,10 +57,10 @@ public class EnemySight : MonoBehaviour
     
 
 	private void updateSighting()
-    {
-        // By default the player is not in sight.
-        playerInSight = false;
-        
+    {        
+		// By default the player is not in sight.
+		playerInSight = false;
+
 		// If the ennemi was not alerted and if the player is not stopped
 		// This is to decrease the performance impact of the raycasting
 		if (personalLastSighting != player.transform.position)
@@ -77,16 +82,15 @@ public class EnemySight : MonoBehaviour
 	                // ... and if the raycast hits the player...
 	                if(hit.collider.gameObject.tag == "Player")
 	                {
-	                    // ... the player is in sight.
-	                    playerInSight = true;
-	                    
+						// ... the player is in sight.
+						playerInSight = true;
+
 	                    // Set the players current position.
 						Debug.Log ("sight");
 						playerPosition(player.transform.position);
 	                }
 	            }
 			}
-
         }
 		else {
 			playerInSight = true;
@@ -103,7 +107,7 @@ public class EnemySight : MonoBehaviour
             if(CalculatePathLength(player.transform.position) <= hearingDistance) {
                 // ... set the last personal sighting of the player to the player's current position.
 				Debug.Log("heared");
-            	playerPosition(player.transform.position);
+				playerPosition(player.transform.position);
 			}
         }
     }
@@ -153,9 +157,6 @@ public class EnemySight : MonoBehaviour
 		const int maxBroadcastingLevel = 2;
 		if ( broadcastingLevel < maxBroadcastingLevel)
 		{
-			// if (maxBroadcastingLevel == 0)
-			//  	audio.PlayOneShot(alertSound);
-			
 			EnemySight[] ennemies = FindObjectsOfType(System.Type.GetType("EnemySight")) as EnemySight[];
 			for (int i = 0; i < ennemies.Length; i++)
 			{
@@ -177,10 +178,17 @@ public class EnemySight : MonoBehaviour
 	{
 		if (personalLastSighting != pos)
 		{
-			if (broadcastingLevel != 0)
+			if (broadcastingLevel == 0) {
+				if(personalLastSighting.magnitude == Utils.GetInfiniteVector3().magnitude) {
+					aSource.PlayOneShot(soundAlerted[ (int) Random.Range(0, soundAlerted.Length - 1e-10f)]);
+				}
+			}
+			else {
 				Debug.Log("alerted");
+			}
 			personalLastSighting = pos;
 			alertOthers(pos, ++broadcastingLevel);
+
 		}
 	}
 }

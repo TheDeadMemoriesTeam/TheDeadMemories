@@ -45,6 +45,10 @@ public class ProjectilController : MonoBehaviour
 			player.healthUpdate(damage);
 			Destroy(gameObject);
 		}
+		else
+		{
+			Destroy(this.gameObject);
+		}
 	}
 
 	public void init(float speed, float distance, float damage, Vector3 forward)
