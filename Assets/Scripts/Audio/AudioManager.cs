@@ -12,6 +12,8 @@ public class AudioManager : MonoBehaviour
 	
 	private AudioSource audioSource;
 	private bool isPlay;
+
+	private float delayTime;
 	
 	
 	// Use this for initialization
@@ -20,6 +22,8 @@ public class AudioManager : MonoBehaviour
 		audioSource = GetComponent<AudioSource> ();
 		changeTrack();
 		isPlay = true;
+		audioSource.ignoreListenerPause = true;
+		delayTime = 0f;
 	}
 	
 	// Update is called once per frame
@@ -49,8 +53,10 @@ public class AudioManager : MonoBehaviour
 			}
 		}
 		
-		if (!audioSource.isPlaying)
+		if (delayTime >= audioSource.timeSamples)
 			changeTrack();
+
+		delayTime += Time.deltaTime;
 	}
 	
 	public void changeTrack()
@@ -65,6 +71,7 @@ public class AudioManager : MonoBehaviour
 		lastPlayingTrack = Tracks[randomTrack];
 		
 		startTrack();
+		delayTime = 0f;
 	}
 	
 	public void stopTrack()
