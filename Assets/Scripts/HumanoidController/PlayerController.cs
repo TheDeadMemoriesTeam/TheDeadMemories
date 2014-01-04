@@ -26,7 +26,7 @@ public class PlayerController : HumanoidController
 	
 	private CharacterController controller;
 	
-	private int xp = 2000000;
+	private int xp = 0;
 	
 	// Variables servants aux achievements
 	public AchievementManager achievementManager;
@@ -73,9 +73,17 @@ public class PlayerController : HumanoidController
 	private AudioSource soundWalk;
 	public AudioClip gameSaved;
 
+	//equilibrage
+	private MobsController mobsController;
+	private DayNightCycleManager dayNightCycle;
+
 	// Use this for initialization
 	protected override void Start () 
 	{
+		//equilibrage
+		mobsController = new MobsController();
+		dayNightCycle = (DayNightCycleManager)FindObjectOfType<DayNightCycleManager>();
+
 		controller = GetComponent<CharacterController>();
 		skillManager.setBasePvMax(200f);
 		skillManager.setBaseManaMax(100f);
@@ -109,17 +117,17 @@ public class PlayerController : HumanoidController
 		skillManager.addSkill(new FurieSkills("Furie", skillsDescriptions[13], 6000, skillManager.getSkill(4), 0, 30, null, 5f, 10f));
 
 		//arbre de competence Feu
-		skillManager.addSkill(new PorteeSkills("Boule de feu", skillsDescriptions[14], 500, null, 0f, 10, fireball, 10f, 50, 50, "Dégat+", "Portée+", skillsDescriptions[15], skillsDescriptions[16], 20f));
+		skillManager.addSkill(new PorteeSkills("Boule de feu", skillsDescriptions[14], 300, null, 0f, 10, fireball, 10f, 40, 40, "Dégat+", "Portée+", skillsDescriptions[15], skillsDescriptions[16], 20f));
 		skillManager.addSkill(new ZoneSkills("Lance flammes", skillsDescriptions[17], 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 100, 100, "Dégat+", "Zone+", skillsDescriptions[18], skillsDescriptions[19], 10f));
 		skillManager.addSkill(new SuperSkills("Méteore", skillsDescriptions[20], 6000, skillManager.getSkill(7), 2f, 20, firesuper, 20f, 50f)); 
 		
 		//arbre de competence Glace
-		skillManager.addSkill(new PorteeSkills("Glaçon", skillsDescriptions[21], 500, null, 0f, 10, iceball, 10f, 50, 50, "Dégat+", "Portée+", skillsDescriptions[22], skillsDescriptions[23], 20f));
+		skillManager.addSkill(new PorteeSkills("Glaçon", skillsDescriptions[21], 300, null, 0f, 10, iceball, 10f, 40, 40, "Dégat+", "Portée+", skillsDescriptions[22], skillsDescriptions[23], 20f));
 		skillManager.addSkill(new ZoneSkills("Iceberg", skillsDescriptions[24], 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 100, 100, "Dégat+", "Zone+", skillsDescriptions[25], skillsDescriptions[26], 10f));
 		skillManager.addSkill(new SuperSkills("Ere glacière", skillsDescriptions[27], 6000, skillManager.getSkill(10), 2f, 20, icesuper, 20f, 50f));
 		
 		//arbre de competence Vent
-		skillManager.addSkill(new PorteeSkills("Souffle", skillsDescriptions[28], 500, null, 0f, 10, windball, 10f, 50, 50, "Dégat+", "Portée+", skillsDescriptions[29], skillsDescriptions[30], 20f));
+		skillManager.addSkill(new PorteeSkills("Souffle", skillsDescriptions[28], 300, null, 0f, 10, windball, 10f, 40, 40, "Dégat+", "Portée+", skillsDescriptions[29], skillsDescriptions[30], 20f));
 		skillManager.addSkill(new ZoneSkills("Bourrasque", skillsDescriptions[31], 1000, skillManager.getSkill(12), 1f, 15, windsuper, 15f, 100, 100, "Dégat+", "Zone+", skillsDescriptions[32], skillsDescriptions[33], 10f));
 		skillManager.addSkill(new SuperSkills("Tornade", skillsDescriptions[34], 6000, skillManager.getSkill(13), 2f, 20, windsuper, 20f, 50f));
 
@@ -218,6 +226,16 @@ public class PlayerController : HumanoidController
 				currentMagicType = magicTypes.Wind;
 
 			AnimationManager();
+
+			//equilibrage les mobs utilisent leur xp a 0h 8h 12h 16h
+			Debug.Log("time : " + (int)(dayNightCycle.dayTime*1000));
+			if ((int)(dayNightCycle.dayTime*1000) == 0 || 
+			    (int)(dayNightCycle.dayTime*1000) == 8000 ||
+			    (int)(dayNightCycle.dayTime*1000) == 12000 ||
+			    (int)(dayNightCycle.dayTime*1000) == 16000)
+			{
+				mobsController.upMob();
+			}
 
 			// Test du saveManager
 			if (Input.GetKeyDown(KeyCode.KeypadMultiply))
@@ -467,7 +485,10 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		if (change > 0)
+		{
 			achievementManager.updateKills();
+			mobsController.incXp(change);
+		}
 	}
 	
 	public int getExperience()
