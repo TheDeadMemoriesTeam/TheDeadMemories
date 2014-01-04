@@ -68602,6 +68602,7 @@ MonoBehaviour:
   isSmallSummoning: 0
   isJumping: 0
   isDead: 0
+  isSprinting: 0
 --- !u!82 &1758632536
 AudioSource:
   m_ObjectHideFlags: 0
