@@ -798,7 +798,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shootDistance: 6
-  chaseSpeed: 6
+  chaseSpeed: 5.80000019
   chaseWaitTime: 3
   patrolSpeed: 3
   patrolWaitTime: .5

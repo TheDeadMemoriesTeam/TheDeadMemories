@@ -3370,6 +3370,7 @@ MonoBehaviour:
   - {fileID: 651102468}
   - {fileID: 1604605730}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &64168100
 GameObject:
   m_ObjectHideFlags: 0
@@ -5687,7 +5688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de25d70b3f95104c8d88c2caeeb9c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 16
+  dayTime: 12
 --- !u!1001 &117431285
 Prefab:
   m_ObjectHideFlags: 0
@@ -11094,6 +11095,7 @@ MonoBehaviour:
   - {fileID: 431819798}
   - {fileID: 326729741}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &270345425
 GameObject:
   m_ObjectHideFlags: 0
@@ -21740,6 +21742,7 @@ MonoBehaviour:
   - {fileID: 356717901}
   - {fileID: 1572322344}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &532727733
 GameObject:
   m_ObjectHideFlags: 0
@@ -25765,6 +25768,7 @@ MonoBehaviour:
   - {fileID: 1099096899}
   - {fileID: 161261082}
   isOrientedArc: 010101
+  isConnectedGraph: 0
 --- !u!1 &640070915
 GameObject:
   m_ObjectHideFlags: 0
@@ -26414,6 +26418,7 @@ MonoBehaviour:
   - {fileID: 1880841740}
   - {fileID: 1880841740}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &661379874
 GameObject:
   m_ObjectHideFlags: 0
@@ -26634,6 +26639,7 @@ MonoBehaviour:
   - {fileID: 1762341942}
   - {fileID: 1762341942}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1001 &664276725
 Prefab:
   m_ObjectHideFlags: 0
@@ -27322,6 +27328,7 @@ MonoBehaviour:
   - {fileID: 493797298}
   - {fileID: 2042964420}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1001 &679038250
 Prefab:
   m_ObjectHideFlags: 0
@@ -30497,6 +30504,7 @@ MonoBehaviour:
   - {fileID: 192337524}
   - {fileID: 1157423193}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &738611093
 GameObject:
   m_ObjectHideFlags: 0
@@ -31095,6 +31103,7 @@ MonoBehaviour:
   - {fileID: 1052300317}
   - {fileID: 1052300317}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &751860398
 GameObject:
   m_ObjectHideFlags: 0
@@ -36093,6 +36102,7 @@ MonoBehaviour:
   - {fileID: 2015579994}
   - {fileID: 647280736}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &887986562
 GameObject:
   m_ObjectHideFlags: 0
@@ -42462,6 +42472,10 @@ Prefab:
       propertyPath: isOrientedArc.Array.data[2]
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11400000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
+      propertyPath: isConnectedGraph
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8d4d34eb079425245bf4f531bd49e939, type: 2}
   m_RootGameObject: {fileID: 639724150}
@@ -45959,6 +45973,7 @@ MonoBehaviour:
   - {fileID: 1855181090}
   - {fileID: 1856259488}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1001 &1159812445
 Prefab:
   m_ObjectHideFlags: 0
@@ -60378,6 +60393,7 @@ MonoBehaviour:
   - {fileID: 1188888770}
   - {fileID: 1234738334}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &1512044179
 GameObject:
   m_ObjectHideFlags: 0
@@ -70702,6 +70718,7 @@ MonoBehaviour:
   - {fileID: 1895430544}
   - {fileID: 45401301}
   isOrientedArc: 
+  isConnectedGraph: 1
 --- !u!1 &1804967390
 GameObject:
   m_ObjectHideFlags: 0
