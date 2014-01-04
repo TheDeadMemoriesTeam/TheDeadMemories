@@ -987,7 +987,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0be340f16d935ec4da92806b80700c13, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootDistance: 3
+  shootDistance: 4
   chaseSpeed: 5.4000001
   chaseWaitTime: 3
   patrolSpeed: 2.79999995
