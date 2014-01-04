@@ -26,7 +26,7 @@ public class PlayerController : HumanoidController
 	
 	private CharacterController controller;
 	
-	private int xp = 2000000;
+	private int xp = 0;
 	
 	// Variables servants aux achievements
 	public AchievementManager achievementManager;
@@ -73,9 +73,17 @@ public class PlayerController : HumanoidController
 	private AudioSource soundWalk;
 	public AudioClip gameSaved;
 
+	//equilibrage
+	private MobsController mobsController;
+	private DayNightCycleManager dayNightCycle;
+
 	// Use this for initialization
 	protected override void Start () 
 	{
+		//equilibrage
+		mobsController = new MobsController();
+		dayNightCycle = (DayNightCycleManager)FindObjectOfType<DayNightCycleManager>();
+
 		controller = GetComponent<CharacterController>();
 		skillManager.setBasePvMax(200f);
 		skillManager.setBaseManaMax(100f);
@@ -219,9 +227,18 @@ public class PlayerController : HumanoidController
 
 			AnimationManager();
 
-			// Sauvegarde
-			if (Input.GetKeyDown(KeyCode.P))
+			//equilibrage les mobs utilisent leur xp a 0h 8h 12h 16h
+			Debug.Log("time : " + (int)(dayNightCycle.dayTime*1000));
+			if ((int)(dayNightCycle.dayTime*1000) == 0 || 
+			    (int)(dayNightCycle.dayTime*1000) == 8000 ||
+			    (int)(dayNightCycle.dayTime*1000) == 12000 ||
+			    (int)(dayNightCycle.dayTime*1000) == 16000)
 			{
+				mobsController.upMob();
+			}
+
+			// Test du saveManager
+			if (Input.GetKeyDown(KeyCode.KeypadMultiply))
 				saveManager.save();
 				autoSav.showMessage();
 			}
@@ -464,7 +481,10 @@ public class PlayerController : HumanoidController
 	{
 		xp += change;
 		if (change > 0)
+		{
 			achievementManager.updateKills();
+			mobsController.incXp(change);
+		}
 	}
 	
 	public int getExperience()

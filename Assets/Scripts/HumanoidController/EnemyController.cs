@@ -28,7 +28,7 @@ public class EnemyController : HumanoidController
 	protected float timeAttack;
 	protected float probabilityAttack;
 	protected int xp;
-	
+
 	public Rigidbody[] droppableItems;
 	public float[] itemsDropProbability;
 	
@@ -36,6 +36,19 @@ public class EnemyController : HumanoidController
 
 	private Animator anim;
 	private EnemyHashIDs hashIDs;
+
+	//equilibrage
+	private int m_xp = 0;
+
+	public void setXp(int xp)
+	{
+		m_xp = xp;
+	}
+
+	public int getXp()
+	{
+		return m_xp;
+	}
 
 	protected override void Awake ()
 	{
