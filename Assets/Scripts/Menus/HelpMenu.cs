@@ -13,8 +13,8 @@ public class HelpMenu : SubMenu
 	private Rect helpWindowRect;
 
 	// variable de tailles (en %)
-	public float coefWidth = 0.5f;
-	public float coefHeight = 0.8f;
+	private float coefWidth = 0.5f;
+	private float coefHeight = 0.8f;
 	
 	// Déterminés automatiquement
 	private int windowWidth;
@@ -48,7 +48,7 @@ public class HelpMenu : SubMenu
 		                          Screen.height/2 - windowHeight/2,
 		                          windowWidth,
 		                          windowHeight);
-		helpWindowRect = GUI.Window(1, helpWindowRect, helpWindowOpen, "Help");
+		helpWindowRect = GUI.Window(1, helpWindowRect, helpWindowOpen, LanguageManager.Instance.GetTextValue("MainMenu.Help"));
 	}
 
 	// Rempli la fenetre de l'aide
@@ -69,7 +69,7 @@ public class HelpMenu : SubMenu
 		GUIStyle myStyle = new GUIStyle();
 		// Détermine la hauteur de l'aide pour la largeur précédente
 		float labelHeight = myStyle.CalcHeight( content, labelWidth);
-		helpHeight = labelHeight + countNewLine()*10 + 20;
+		helpHeight = labelHeight + countNewLine()*12 + 20;
 
 		// Affiche l'aide
 		GUI.Label(new Rect(10, 20, labelWidth, helpHeight), textDisplay);
@@ -151,6 +151,15 @@ public class HelpMenu : SubMenu
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("Si vous désirez changer d'éléments vous pouvez utiliser les touches F1, F2 ou F3.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("Vous pouvez lancer des sorts plus ou moins puissant suivant le temps que vous laisser le bouton droit de la souris enfoncé :");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("- Un appui bref lancera une boule de l'élément sélectionné.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("- Un appui modéré lancera une attaque de zone de l'élément sélectionné.");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("- Un appui long lancera la super attaque de l'élément sélectionné.");
 
 		return helpMenuTexts;
 	}
