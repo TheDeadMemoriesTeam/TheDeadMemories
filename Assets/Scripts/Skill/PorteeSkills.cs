@@ -13,10 +13,10 @@ public class PorteeSkills : BaseSkills
 	{
 		// Création et initialisation du projectile
 		Transform projectileTransform = (Transform)GameObject.Instantiate(	m_particule,
-		                                                       	new Vector3(position.x + forward.x, 
-		            											position.y + 1.5f + forward.y, 
-		            											position.z + forward.z),
-		                                                       	Quaternion.identity);
+					                                                       	new Vector3(position.x + forward.x + 0.2f, 
+					            											position.y + 1.5f + forward.y, 
+					            											position.z + forward.z + 0.2f),
+		                                                                  Quaternion.identity);
 		ProjectilController projectile = projectileTransform.GetComponent<ProjectilController>() as ProjectilController;
 		float damage = damageMagic + m_damage;
 		//gestion furie
@@ -24,6 +24,6 @@ public class PorteeSkills : BaseSkills
 		//gestion critique
 		if(critic/100 < Random.value)
 			damage *= 2;
-		projectile.init(10f, m_ad, damage, forward);
+		projectile.init(20f, m_ad, damage, forward);
 	}
 }
