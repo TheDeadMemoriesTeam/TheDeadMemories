@@ -166,9 +166,9 @@ public class SaveManager{
 				skillsList[i].setIsBought(false);
 
 			// Réinitialise l'expérience du joueur
-			player.experienceUpdate(-player.getExperience());
+			player.experienceUpdateOnLoad(-player.getExperience());
 			// Récupère l'expérience sauvegardée
-			player.experienceUpdate(int.Parse (skillsLoaded[0]));
+			player.experienceUpdateOnLoad(int.Parse (skillsLoaded[0]));
 
 			// Récupère les compétences déjà achetées
 			int index;

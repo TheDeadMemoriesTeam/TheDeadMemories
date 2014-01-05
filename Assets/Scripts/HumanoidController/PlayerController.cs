@@ -26,7 +26,7 @@ public class PlayerController : HumanoidController
 	
 	private CharacterController controller;
 	
-	private int xp = 20000000;
+	private int xp = 0;
 	
 	// Variables servants aux achievements
 	public AchievementManager achievementManager;
@@ -475,10 +475,15 @@ public class PlayerController : HumanoidController
 			}
 		}
 	}
-	
-	public void experienceUpdate(int change)
+
+	public void experienceUpdateOnLoad(int change)
 	{
 		xp += change;
+	}
+
+	public void experienceUpdate(int change)
+	{
+		experienceUpdateOnLoad(change);
 		if (change > 0)
 		{
 			achievementManager.updateKills();
