@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MobsController
 {
-	private float m_xpPlayer = 20000000;
+	private float m_xpPlayer = 0;
 	EnemyController[] enemis;
 
 	public void incXp(int xp)
