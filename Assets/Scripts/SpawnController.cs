@@ -42,9 +42,9 @@ public class SpawnController : MonoBehaviour
 		
 		float proba = Random.value;
 		EnemyController enemy;
-		if (proba <= 0.02)
+		if (proba <= 0.025)
 			enemy = Instantiate(bossPrefab, position, Quaternion.identity) as EnemyController;
-		else if (proba <= 0.37)
+		else if (proba <= 0.5)
 			enemy = Instantiate(distancePrefab, position, Quaternion.identity) as EnemyController;
 		else
 			enemy = Instantiate(meleePrefab, position, Quaternion.identity) as EnemyController;
