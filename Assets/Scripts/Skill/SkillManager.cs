@@ -300,7 +300,11 @@ public class SkillManager : MonoBehaviour
 			{
 				PassiveSkills tmp = listSkills[i] as PassiveSkills;
 				if(tmp.getName() == LanguageManager.Instance.GetTextValue("Skills.nameSkill1"))
+				{
+					float lifePercentage = m_pv/m_pvMax;
 					tmp.update(ref m_pvMax, m_basePvMax, ref m_manaMax, m_baseManaMax);
+					m_pv = lifePercentage*m_pvMax;
+				}
 				else if(tmp.getName() == LanguageManager.Instance.GetTextValue("Skills.nameSkill2"))
 					tmp.update(ref m_physicalResistance, m_basePhysicalResistance, ref m_magicResistance, m_baseMagicResistance);
 				else if(tmp.getName() == LanguageManager.Instance.GetTextValue("Skills.nameSkill4"))

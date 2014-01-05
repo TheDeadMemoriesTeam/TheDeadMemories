@@ -230,6 +230,9 @@ public class SaveManager{
 				skillsList[i].unlockedSkill();
 
 			skillManager.setListOfSkills(skillsList);
+			// Met à jour les compétences du player
+			player.getSkillManager().updateSkill();
+			player.getSkillManager().updateSpetialSkill();
 
 			file.Close();
 		}
