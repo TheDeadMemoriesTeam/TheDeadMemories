@@ -167,6 +167,9 @@ public class HelpMenu : SubMenu
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 
 		return helpMenuTexts;
 	}
