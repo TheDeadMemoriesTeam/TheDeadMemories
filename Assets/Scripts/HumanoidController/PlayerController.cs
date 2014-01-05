@@ -514,6 +514,11 @@ public class PlayerController : HumanoidController
 		return pause;
 	}
 
+	public MobsController getMobsController()
+	{
+		return mobsController;
+	}
+
 	void updateSpeed(bool isSprinting)
 	{
 		// Met à jour la vitesse du joueur selon son status (sprint ou non)

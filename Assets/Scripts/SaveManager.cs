@@ -313,6 +313,7 @@ public class SaveManager{
 
 		external.Add (player.getSkillManager().getPv().ToString());
 		external.Add (player.getSkillManager().getMana().ToString());
+		external.Add (player.getMobsController().getMaxPlayerXpWin().ToString());
 
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
@@ -342,6 +343,8 @@ public class SaveManager{
 			timeManager.dayTime = float.Parse (external[3]);
 			player.getSkillManager().setPv(float.Parse (external[4]));
 			player.getSkillManager().setMana(float.Parse (external[5]));
+			player.getMobsController().setMaxPlayerXpWin(int.Parse(external[6]));
+			player.getMobsController().upMob();
 			
 			file.Close();
 		}
