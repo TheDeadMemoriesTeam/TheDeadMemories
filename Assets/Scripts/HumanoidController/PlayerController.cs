@@ -95,8 +95,6 @@ public class PlayerController : HumanoidController
 		skillManager.setDistancePhysicAttack(4f);
 		skillManager.setDistanceMagicAttack(4f);
 		
-		timeRegen = 2;
-		
 		// Affecte la valeur du sprint de sprintAugmentation% de plus que la marche normale
 		sprintSpeed = walkSpeed + sprintAugmentation*walkSpeed;
 		sprintTimeStart = Time.time;
@@ -142,6 +140,8 @@ public class PlayerController : HumanoidController
 		autoSav = FindObjectOfType<ShowMessage>();
 
 		ds = GetComponent<DamageShow>();
+
+		updateManaRegen();
 
 		//Sound
 		soundWalk = GetComponent<AudioSource> ();
@@ -242,6 +242,8 @@ public class PlayerController : HumanoidController
 				saveManager.save();
 				autoSav.showMessage();
 			}
+
+			updateManaRegen();
 		}
 		remainingTime -= Time.deltaTime;
 		if (remainingTime <= 0)
@@ -490,7 +492,12 @@ public class PlayerController : HumanoidController
 			mobsController.incXp(change);
 		}
 	}
-	
+
+	void updateManaRegen()
+	{
+		timeRegen = 0.02f*skillManager.getManaMax();
+	}
+
 	public int getExperience()
 	{
 		return xp;
