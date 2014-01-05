@@ -27,6 +27,7 @@ public class MobsController
 		for(int i=0; i<enemis.Length; i++)
 		{
 			//code a faire
+			Debug.Log("a que coucou");
 		}
 	}
 }

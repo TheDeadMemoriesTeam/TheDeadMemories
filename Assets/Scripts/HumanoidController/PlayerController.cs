@@ -239,6 +239,7 @@ public class PlayerController : HumanoidController
 
 			// Test du saveManager
 			if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+			{
 				saveManager.save();
 				autoSav.showMessage();
 			}
