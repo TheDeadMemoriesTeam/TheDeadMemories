@@ -253,7 +253,7 @@ public class SaveManager{
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
 		// Crée le fichier
-		Stream saveFile = File.Create(skillsPath);
+		Stream saveFile = File.Create(statsPath);
 		// Sauvegarde les achivements
 		formater.Serialize(saveFile, stats);
 		// Libère la mémoire
