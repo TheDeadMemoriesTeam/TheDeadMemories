@@ -228,7 +228,6 @@ public class PlayerController : HumanoidController
 			AnimationManager();
 
 			//equilibrage les mobs utilisent leur xp a 0h 8h 12h 16h
-			Debug.Log("time : " + (int)(dayNightCycle.dayTime*1000));
 			if ((int)(dayNightCycle.dayTime*1000) == 0 || 
 			    (int)(dayNightCycle.dayTime*1000) == 8000 ||
 			    (int)(dayNightCycle.dayTime*1000) == 12000 ||
@@ -237,8 +236,8 @@ public class PlayerController : HumanoidController
 				mobsController.upMob();
 			}
 
-			// Test du saveManager
-			if (Input.GetKeyDown(KeyCode.KeypadMultiply))
+			// Sauvegarde
+			if (Input.GetKeyDown(KeyCode.P))
 			{
 				saveManager.save();
 				autoSav.showMessage();
