@@ -340,7 +340,6 @@ public class PlayerController : HumanoidController
 								if(distance.magnitude <= skillManager.getDistanceMagicAttack() + zoneSkill.getAd())
 								{
 									float damage = -(skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage())) + (-(skillManager.getMagicAttack()+(porteeSkill.getDamage()*porteeSkill.getLvlDamage()))/100 * targets[i].getSkillManager().getMagicResistance());
-									Debug.Log(damage);
 									//gestion de la furie
 									if(skillManager.getFurie())
 									{

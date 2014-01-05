@@ -76,7 +76,6 @@ public class EnemySight : MonoBehaviour
 	            RaycastHit hit;
 	            
 	            // ... and if a raycast towards the player hits something...
-				Debug.DrawRay(transform.position, direction.normalized * viewingDistance, new Color(1f, 0, 0, 1f));
 	            if(Physics.Raycast(transform.position, direction.normalized, out hit, viewingDistance))
 	            {
 	                // ... and if the raycast hits the player...
@@ -86,7 +85,6 @@ public class EnemySight : MonoBehaviour
 						playerInSight = true;
 
 	                    // Set the players current position.
-						Debug.Log ("sight");
 						playerPosition(player.transform.position);
 	                }
 	            }
@@ -106,7 +104,6 @@ public class EnemySight : MonoBehaviour
             // ... and if the player is within hearing range...
             if(CalculatePathLength(player.transform.position) <= hearingDistance) {
                 // ... set the last personal sighting of the player to the player's current position.
-				Debug.Log("heared");
 				playerPosition(player.transform.position);
 			}
         }
@@ -184,7 +181,7 @@ public class EnemySight : MonoBehaviour
 				}
 			}
 			else {
-				Debug.Log("alerted");
+
 			}
 			personalLastSighting = pos;
 			alertOthers(pos, ++broadcastingLevel);

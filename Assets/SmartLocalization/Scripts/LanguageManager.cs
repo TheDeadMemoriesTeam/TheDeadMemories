@@ -134,8 +134,6 @@ public class LanguageManager : MonoBehaviour
 		}
 		
 		GetAvailableLanguages();
-
-		Debug.Log ("LanguageManager.cs: Waking up");
 		
 		//Load the default language(if it exists)
 		foreach(string availableLanguage in availableLanguages)
