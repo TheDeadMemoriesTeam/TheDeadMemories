@@ -205,6 +205,8 @@ public class Interface : MonoBehaviour
 			gameOverText.enabled=true;
 			Screen.showCursor = true;
 			Screen.lockCursor = false;
+			if (Input.anyKeyDown)
+				Application.LoadLevel("MainMenuScene");
 		}
 		
 		
