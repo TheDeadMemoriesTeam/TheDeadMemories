@@ -583,4 +583,26 @@ public class PlayerController : HumanoidController
 
 		return list;
 	}
+
+
+	// Accesseurs pour l'affichage de la jauge d'énergie
+	public float AccessTimePortee()
+	{
+		//recuperation des skills celon le type selectionné
+		PorteeSkills porteeSkill = skillManager.getSkill((int)currentMagicType) as PorteeSkills;
+		return porteeSkill.getTimeIncantation();
+	}
+	public float AccessTimeZone()
+	{
+		//recuperation des skills celon le type selectionné
+		ZoneSkills zoneSkill = skillManager.getSkill((int)currentMagicType + 1) as ZoneSkills;
+		return zoneSkill.getTimeIncantation();
+	}
+	public float AccessTimeSuper()
+	{
+		//recuperation des skills celon le type selectionné
+		SuperSkills superSkill = skillManager.getSkill((int)currentMagicType + 2) as SuperSkills;
+		return superSkill.getTimeIncantation();
+	}
+
 }

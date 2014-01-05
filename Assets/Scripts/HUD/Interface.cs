@@ -3,31 +3,31 @@ using System.Collections;
 
 public class Interface : MonoBehaviour 
 {
-
+	
 	/*****     Objets      *****/
 	public PlayerController player;
 	public SkillManager playerSkill;
 	/***** * * * * * * * * *****/
-
+	
 	// Text du game over
 	public GUIText gameOverText;
-
+	
 	/*****     Gestion de la barre de vie     *****/
 	//texture de la barre de vie de base
 	public GUITexture healthManaTextureEmpty;
-
+	
 	// texture de la boule de mana
 	public GUITexture ManaTexture;
 	// texture de la boule de vie
 	public GUITexture VieTexture;
-
+	
 	// texture n&b de la case element feu
 	public GUITexture FeuOmbres;
 	// texture n&b de la case element glace
 	public GUITexture GlaceOmbres;
 	// texture n&b de la case element vent
 	public GUITexture VentOmbres;
-
+	
 	// texture de bois pour cacher la case element feu
 	public GUITexture FeuCache;
 	// texture de bois pour cacher la case element glace
@@ -35,28 +35,45 @@ public class Interface : MonoBehaviour
 	// texture de bois pour cacher la case element vent
 	public GUITexture VentCache;
 	/***** * * * * * * * * * * * * * * * * * * *****/
-
+	
 	// texte servant à l'affichage de l'expérience
 	public GUIText playerXp;
-
+	
+	
+	/*****     Gestion de la jauge d'énergie     *****/
+	// skill en cours
+	private bool skillLance;
+	private float timerPortee;
+	private float timerZone;
+	private float timerSuper;
+	// timer de la jauge
+	private float timerJauge;
+	// texture de la jauge vide
+	public GUITexture JaugeVide;
+	public GUITexture JaugeRouge;
+	public GUITexture JaugeJaune;
+	public GUITexture JaugeVerte;
+	
+	/***** * * * * * * * * * * * * * * * * * * *****/
+	
 	// Use this for initialization
 	void Start ()
 	{
 		// cache le texte de Game Over
 		gameOverText.enabled=false;
-
+		
 		// placement de la barre de vie vide sur l'écran
 		healthManaTextureEmpty.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		healthManaTextureEmpty.border = new RectOffset(0,0,0,511);
-
+		
 		// placement de la texture du mana (au maximum) dans la barre de vie
 		ManaTexture.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		ManaTexture.border = new RectOffset(0,0,0,511);
-
+		
 		// placement de la texture de la vie (au maximum) dans la barre de vie
 		VieTexture.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VieTexture.border = new RectOffset(0,0,0,511);
-
+		
 		// on place les ombres des éléments pour les griser
 		// sauf pour le feu car pré-selectionné
 		FeuOmbres.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
@@ -65,7 +82,7 @@ public class Interface : MonoBehaviour
 		GlaceOmbres.border = new RectOffset(0,0,0,511);
 		VentOmbres.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VentOmbres.border = new RectOffset(0,0,0,511);
-
+		
 		// on cache les trois éléments car il ne sont pas achetés
 		FeuCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		FeuCache.border = new RectOffset(0,0,0,511);
@@ -73,12 +90,29 @@ public class Interface : MonoBehaviour
 		GlaceCache.border = new RectOffset(0,0,0,511);
 		VentCache.pixelInset = new Rect(Screen.width/2-260, -256, 512, 256);
 		VentCache.border = new RectOffset(0,0,0,511);
+		
+		// aucun skill n'est lancé
+		skillLance = false;
+		timerJauge = 0;
+		timerPortee = -1;
+		timerZone = -1;
+		timerSuper = -1;
+		// placement de la jauge vide
+		JaugeVide.pixelInset = new Rect(Screen.width/2+320, -256, 64, 256);
+		JaugeVide.border = new RectOffset(0,0,0,0);
+		JaugeRouge.pixelInset = new Rect(Screen.width/2+320, -256, 64, 256);
+		JaugeRouge.border = new RectOffset(0,0,0,0);
+		JaugeJaune.pixelInset = new Rect(Screen.width/2+320, -256, 64, 256);
+		JaugeJaune.border = new RectOffset(0,0,0,0);
+		JaugeVerte.pixelInset = new Rect(Screen.width/2+320, -256, 64, 256);
+		JaugeVerte.border = new RectOffset(0,0,0,0);
+		
 	}
 	
 	// Update is called once per frame
 	void LateUpdate () 
 	{
-
+		
 		// on test si l'élément feu est acheté
 		if( playerSkill.getSkill(6).getIsBought() )
 		{
@@ -97,7 +131,7 @@ public class Interface : MonoBehaviour
 			// on enleve le cache de l'élément vent
 			VentCache.border = new RectOffset(0,0,0,0);
 		}
-
+		
 		// Permet l'affichage du changement de type de magie
 		// si on selectionne l'élément feu
 		if (Input.GetKeyDown(KeyCode.F1))
@@ -105,7 +139,7 @@ public class Interface : MonoBehaviour
 			// on verifie si l'élément est acheté et on grise les deux autres
 			if(playerSkill.getSkill(6).getIsBought())
 			{
-
+				
 				FeuOmbres.border = new RectOffset(0,0,0,0);
 			}
 			GlaceOmbres.border = new RectOffset(0,0,0,511);
@@ -133,8 +167,65 @@ public class Interface : MonoBehaviour
 				VentOmbres.border = new RectOffset(0,0,0,0);
 			}
 		}
-
-
+		
+		// lorsqu'on declenche le chargement d'une skill
+		if (Input.GetButtonDown("Fire2"))
+		{
+			skillLance = true;
+			// accesseur player pour les timer
+			timerPortee = player.AccessTimePortee();
+			timerZone = player.AccessTimeZone();
+			timerSuper = player.AccessTimeSuper();
+			timerJauge = 0;
+			JaugeVide.border = new RectOffset(0,0,0,512);
+		}
+		// lorsqu'on lance la skill
+		if (Input.GetButtonUp("Fire2"))
+		{
+			skillLance = false;
+			timerJauge = -1;
+			timerPortee = -1;
+			timerZone = -1;
+			timerSuper = -1;
+		}
+		
+		if(skillLance)
+		{
+			timerJauge += Time.deltaTime;
+			float sizeConverter = 197f * ((float)timerJauge/((float)timerSuper-(float)timerPortee));
+			int sizeTime = 286 + (int)sizeConverter;
+			
+			if( timerJauge >= timerPortee && timerJauge < timerZone)
+			{
+				JaugeVerte.border = new RectOffset(0,0,0, sizeTime );
+				JaugeJaune.border = new RectOffset(0,0,0,0);
+				JaugeRouge.border = new RectOffset(0,0,0,0);
+			}
+			else if( timerJauge >= timerZone && timerJauge < timerSuper)
+			{
+				JaugeJaune.border = new RectOffset(0,0,0, sizeTime );
+				JaugeVerte.border = new RectOffset(0,0,0,0);
+				JaugeRouge.border = new RectOffset(0,0,0,0);
+			}
+			else
+			{
+				JaugeVerte.border = new RectOffset(0,0,0,0);
+				JaugeJaune.border = new RectOffset(0,0,0,0);
+				JaugeRouge.border = new RectOffset(0,0,0,483);
+			}
+			
+			
+		}
+		else
+		{
+			JaugeVide.border = new RectOffset(0,0,0,0);
+			JaugeVerte.border = new RectOffset(0,0,0,0);
+			JaugeJaune.border = new RectOffset(0,0,0,0);
+			JaugeRouge.border = new RectOffset(0,0,0,0);
+		}
+		
+		
+		
 		/*****     Affichage du score     *****/
 		// gestion de la police et de la position de l'expérience du joueur
 		// selon la taille du nombre
@@ -190,13 +281,13 @@ public class Interface : MonoBehaviour
 		}
 		playerXp.text = player.getExperience().ToString();
 		/***** * * * * * * * * * * * * * *****/
-
+		
 		/*****     Gestion de la vie et du mana     *****/
 		float hp = player.getSkillManager().getPv();
 		float hpMax = player.getSkillManager().getPvMax();
 		float mana = player.getSkillManager().getMana();
 		float manaMax = player.getSkillManager().getManaMax();
-
+		
 		// si la vie est inférieure à 0
 		if(hp <= 0)
 		{
@@ -223,6 +314,6 @@ public class Interface : MonoBehaviour
 		int manaBarPxl = (int)manaBar + 288;
 		
 		ManaTexture.border = new RectOffset(0,0,0,manaBarPxl);
-
+		
 	}
 }

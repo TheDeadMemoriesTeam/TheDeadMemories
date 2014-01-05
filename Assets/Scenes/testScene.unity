@@ -13396,6 +13396,52 @@ GUIText:
     rgba: 4278388719
   m_PixelCorrect: 1
   m_RichText: 1
+--- !u!1 &323739803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 323739804}
+  - 131: {fileID: 323739805}
+  m_Layer: 0
+  m_Name: JaugeJaune
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &323739804
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323739803}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!131 &323739805
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 323739803}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 41bee5b7980f6184a93d7d6849914d74, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &324561443
 GameObject:
   m_ObjectHideFlags: 0
@@ -13558,6 +13604,52 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 270284586}
+--- !u!1 &327051179
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 327051180}
+  - 131: {fileID: 327051181}
+  m_Layer: 0
+  m_Name: JaugeVerte
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &327051180
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327051179}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!131 &327051181
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 327051179}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 9298d655f42824146a06b8d8f17c098e, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &327992214
 GameObject:
   m_ObjectHideFlags: 0
@@ -41232,6 +41324,52 @@ MeshFilter:
   m_PrefabInternal: {fileID: 1961429241}
   m_GameObject: {fileID: 1036897990}
   m_Mesh: {fileID: 4300000, guid: 98e1124567ac3f746bf647e3be225571, type: 3}
+--- !u!1 &1036986472
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1036986473}
+  - 131: {fileID: 1036986474}
+  m_Layer: 0
+  m_Name: JaugeVide
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1036986473
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1036986472}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
+--- !u!131 &1036986474
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1036986472}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 429ae11f59d01974c94d32acd61a6ce9, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
 --- !u!1 &1037540723
 GameObject:
   m_ObjectHideFlags: 0
@@ -47470,6 +47608,9 @@ Transform:
   - {fileID: 326577969}
   - {fileID: 2035054649}
   - {fileID: 1871252538}
+  - {fileID: 1036986473}
+  - {fileID: 327051180}
+  - {fileID: 323739804}
   - {fileID: 1002493095}
   - {fileID: 1610968418}
   - {fileID: 413398273}
@@ -47478,6 +47619,7 @@ Transform:
   - {fileID: 411470965}
   - {fileID: 1814580168}
   - {fileID: 1301433053}
+  - {fileID: 1430956416}
   m_Father: {fileID: 0}
 --- !u!114 &1194533976
 MonoBehaviour:
@@ -47503,6 +47645,10 @@ MonoBehaviour:
   GlaceCache: {fileID: 1160291951}
   VentCache: {fileID: 1301433054}
   playerXp: {fileID: 326577970}
+  JaugeVide: {fileID: 1036986474}
+  JaugeRouge: {fileID: 1430956415}
+  JaugeJaune: {fileID: 323739805}
+  JaugeVerte: {fileID: 327051181}
 --- !u!114 &1194533977
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -57604,6 +57750,52 @@ Prefab:
   m_RootGameObject: {fileID: 1283660493}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &1430956414
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1430956416}
+  - 131: {fileID: 1430956415}
+  m_Layer: 0
+  m_Name: JaugeRouge
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!131 &1430956415
+GUITexture:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1430956414}
+  m_Enabled: 1
+  m_Texture: {fileID: 2800000, guid: 235e533d4abfbeb4a827691b01c07ebf, type: 3}
+  m_Color: {r: .5, g: .5, b: .5, a: .5}
+  m_PixelInset:
+    serializedVersion: 2
+    x: -64
+    y: -29
+    width: 128
+    height: 58
+  m_LeftBorder: 0
+  m_RightBorder: 0
+  m_TopBorder: 0
+  m_BottomBorder: 0
+--- !u!4 &1430956416
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1430956414}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0, y: 0, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1194533975}
 --- !u!23 &1431052500
 Renderer:
   m_ObjectHideFlags: 0
