@@ -69,7 +69,7 @@ public class HelpMenu : SubMenu
 		GUIStyle myStyle = new GUIStyle();
 		// Détermine la hauteur de l'aide pour la largeur précédente
 		float labelHeight = myStyle.CalcHeight( content, labelWidth);
-		helpHeight = labelHeight + countNewLine()*14 + 20;
+		helpHeight = labelHeight + countNewLine()*10 + 20;
 
 		// Affiche l'aide
 		GUI.Label(new Rect(10, 20, labelWidth, helpHeight), textDisplay);
@@ -153,6 +153,9 @@ public class HelpMenu : SubMenu
 		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
+		helpMenuTexts.Add("\n");
+		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
+		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add("\n");
 		helpMenuTexts.Add(LanguageManager.Instance.GetTextValue("MenuHelp.Help" + (i++)));
 		helpMenuTexts.Add("\n");
