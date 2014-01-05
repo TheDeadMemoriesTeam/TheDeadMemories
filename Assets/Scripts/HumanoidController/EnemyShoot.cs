@@ -49,7 +49,8 @@ public class EnemyShoot : MonoBehaviour
 
 			if (Random.value < manaAttackProbability && enemyController.getSkillManager().getMana() >= skill.getManaCost()) // Mana attack
 			{
-				Vector3 position = new Vector3(transform.position.x, transform.position.y/3, transform.position.z);
+				Vector3 position = new Vector3(transform.position.x+transform.forward.x*2, transform.position.y/4, transform.position.z+transform.forward.z*2);
+			
 				skill.launch(position, transform.forward, enemyController.getSkillManager().getMagicAttack(), 0.4f, Random.value * 0.4f + 0.8f);	//player.healthUpdate(damage);
 				enemyController.manaUpdate(-skill.getManaCost());
 			}
