@@ -21,27 +21,30 @@ public class SuperSkillController : MonoBehaviour
 	void Update () 
 	{
 		ParticleSystem particuleSystem = GetComponent<ParticleSystem>() as ParticleSystem;
-		if(particuleSystem.isStopped)
+		if(particuleSystem)
 		{
-			Destroy(this.gameObject);
-		}
-		else if(particuleSystem.isPlaying)
-		{
-			//on inflige des degas au ennemis si il sont dans la zone 
-			EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
-			for (int i=0; i<targets.Length; i++)
+			if(particuleSystem.isStopped)
 			{
-				Vector3 distance = transform.position-targets[i].transform.position;
-				if(distance.magnitude <= m_distance)
+				Destroy(this.gameObject);
+			}
+			else if(particuleSystem.isPlaying)
+			{
+				//on inflige des degas au ennemis si il sont dans la zone 
+				EnemyController[] targets = FindObjectsOfType(System.Type.GetType("EnemyController")) as EnemyController[];
+				for (int i=0; i<targets.Length; i++)
 				{
-					float damage = -m_damage + (-m_damage)/100 * targets[i].getSkillManager().getMagicResistance();
-					//gestion de la furie
-					if(m_furie)
-						damage += damage/100 * m_damageFurie;
-					//gestion des critique
-					if(m_factorCritique/100 < Random.value)
-						damage *= 2;
-					targets[i].healthUpdate(damage);
+					Vector3 distance = transform.position-targets[i].transform.position;
+					if(distance.magnitude <= m_distance)
+					{
+						float damage = -m_damage + (-m_damage)/100 * targets[i].getSkillManager().getMagicResistance();
+						//gestion de la furie
+						if(m_furie)
+							damage += damage/100 * m_damageFurie;
+						//gestion des critique
+						if(m_factorCritique/100 < Random.value)
+							damage *= 2;
+						targets[i].healthUpdate(damage);
+					}
 				}
 			}
 		}

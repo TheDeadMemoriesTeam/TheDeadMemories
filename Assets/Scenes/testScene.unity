@@ -5688,7 +5688,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9de25d70b3f95104c8d88c2caeeb9c35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dayTime: 11.5
+  dayTime: 11.8999996
 --- !u!1001 &117431285
 Prefab:
   m_ObjectHideFlags: 0

@@ -38,16 +38,24 @@ public class EnemyController : HumanoidController
 	private EnemyHashIDs hashIDs;
 
 	//equilibrage
-	private int m_xp = 0;
+	private int m_xpE = 0;
 
-	public void setXp(int xp)
+	//acessor
+	//equilibrage
+	public void setXpE(int xpE)
 	{
-		m_xp = xp;
+		m_xpE = xpE;
 	}
 
-	public int getXp()
+	public int getXpE()
 	{
-		return m_xp;
+		return m_xpE;
+	}
+
+	//xp
+	public void incXp(int xpPlus)
+	{
+		xp += (int)Mathf.Sqrt(xpPlus);
 	}
 
 	protected override void Awake ()

@@ -20,9 +20,9 @@ public class MeleeController : EnemyController
 		int ind = Random.Range(0, tab.Length);
 
 		skillManager.addSkill(new PorteeSkills("skill", "", 0, null, 1f, 50, tab[ind], 1f, 40, 40, "", "", "", "", 1f)); 
-		skillManager.addSkill(new PassiveSkills("survie", "", 0, null, 40, 40, 5f, 5f, "", "", "", ""));
-		skillManager.addSkill(new PassiveSkills("attaque", "", 0, null, 40, 40, 5f, 5f, "", "", "", ""));
-		skillManager.addSkill(new PassiveSkills("resistance", "", 0, null, 40, 40, 5f, 5f, "", "", "", ""));
+		skillManager.addSkill(new PassiveSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill4"), "", 0, null, 40, 40, 5f, 5f, "", "", "", ""));
+		skillManager.addSkill(new PassiveSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill1"), "", 0, null, 40, 40, 5f, 5f, "", "", "", ""));
+		skillManager.addSkill(new PassiveSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill2"), "", 0, null, 40, 40, 5f, 5f, "", "", "", ""));
 
 		timeAttack = 1F;
 		probabilityAttack = 0.1F;
