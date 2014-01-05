@@ -247,6 +247,7 @@ public class SaveManager{
 		
 		stats.Add (achievementManager.getTravelledDistance().ToString());
 		stats.Add (achievementManager.getNbKilledEnemy().ToString());
+		stats.Add (achievementManager.getLastNbEnnemyKilled().ToString());
 		stats.Add (achievementManager.getNbKilledBerseker().ToString());
 		stats.Add (achievementManager.getNbAssassinKills().ToString());
 		
@@ -274,8 +275,9 @@ public class SaveManager{
 			
 			achievementManager.setTravelledDistance(float.Parse (stats[0]));
 			achievementManager.setNbKilledEnemy(int.Parse (stats[1]));
-			achievementManager.setNbKilledBerseker(int.Parse (stats[2]));
-			achievementManager.setNbAssassinKills(int.Parse (stats[3]));
+			achievementManager.setLastNbEnnemyKilled(int.Parse(stats[2]));
+			achievementManager.setNbKilledBerseker(int.Parse (stats[3]));
+			achievementManager.setNbAssassinKills(int.Parse (stats[4]));
 			
 			file.Close();
 		}

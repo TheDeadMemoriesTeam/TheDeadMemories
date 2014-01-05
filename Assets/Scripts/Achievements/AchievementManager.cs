@@ -242,6 +242,16 @@ public class AchievementManager : MonoBehaviour
 	{
 		nbKilledEnemy = nb;
 	}
+
+	public int getLastNbEnnemyKilled()
+	{
+		return lastNbEnemyKilled;
+	}
+
+	public void setLastNbEnnemyKilled(int nb)
+	{
+		lastNbEnemyKilled = nb;
+	}
 	
 	public int getNbKilledBerseker()
 	{
