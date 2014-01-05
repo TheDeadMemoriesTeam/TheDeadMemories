@@ -167,63 +167,66 @@ public class Interface : MonoBehaviour
 				VentOmbres.border = new RectOffset(0,0,0,0);
 			}
 		}
-		
-		// lorsqu'on declenche le chargement d'une skill
-		if (Input.GetButtonDown("Fire2"))
+
+
+		if(Time.timeScale != 0)
 		{
-			skillLance = true;
-			// accesseur player pour les timer
-			timerPortee = player.AccessTimePortee();
-			timerZone = player.AccessTimeZone();
-			timerSuper = player.AccessTimeSuper();
-			timerJauge = 0;
-			JaugeVide.border = new RectOffset(0,0,0,512);
-		}
-		// lorsqu'on lance la skill
-		if (Input.GetButtonUp("Fire2"))
-		{
-			skillLance = false;
-			timerJauge = -1;
-			timerPortee = -1;
-			timerZone = -1;
-			timerSuper = -1;
-		}
-		
-		if(skillLance)
-		{
-			timerJauge += Time.deltaTime;
-			float sizeConverter = 197f * ((float)timerJauge/((float)timerSuper-(float)timerPortee));
-			int sizeTime = 286 + (int)sizeConverter;
-			
-			if( timerJauge >= timerPortee && timerJauge < timerZone)
+			// lorsqu'on declenche le chargement d'une skill
+			if (Input.GetButtonDown("Fire2"))
 			{
-				JaugeVerte.border = new RectOffset(0,0,0, sizeTime );
-				JaugeJaune.border = new RectOffset(0,0,0,0);
-				JaugeRouge.border = new RectOffset(0,0,0,0);
+				skillLance = true;
+				// accesseur player pour les timer
+				timerPortee = player.AccessTimePortee();
+				timerZone = player.AccessTimeZone();
+				timerSuper = player.AccessTimeSuper();
+				timerJauge = 0;
+				JaugeVide.border = new RectOffset(0,0,0,512);
 			}
-			else if( timerJauge >= timerZone && timerJauge < timerSuper)
+			// lorsqu'on lance la skill
+			if (Input.GetButtonUp("Fire2"))
 			{
-				JaugeJaune.border = new RectOffset(0,0,0, sizeTime );
-				JaugeVerte.border = new RectOffset(0,0,0,0);
-				JaugeRouge.border = new RectOffset(0,0,0,0);
+				skillLance = false;
+				timerJauge = -1;
+				timerPortee = -1;
+				timerZone = -1;
+				timerSuper = -1;
+			}
+			
+			if(skillLance)
+			{
+				timerJauge += Time.deltaTime;
+				float sizeConverter = 197f * ((float)timerJauge/((float)timerSuper-(float)timerPortee));
+				int sizeTime = 286 + (int)sizeConverter;
+				
+				if( timerJauge >= timerPortee && timerJauge < timerZone)
+				{
+					JaugeVerte.border = new RectOffset(0,0,0, sizeTime );
+					JaugeJaune.border = new RectOffset(0,0,0,0);
+					JaugeRouge.border = new RectOffset(0,0,0,0);
+				}
+				else if( timerJauge >= timerZone && timerJauge < timerSuper)
+				{
+					JaugeJaune.border = new RectOffset(0,0,0, sizeTime );
+					JaugeVerte.border = new RectOffset(0,0,0,0);
+					JaugeRouge.border = new RectOffset(0,0,0,0);
+				}
+				else
+				{
+					JaugeVerte.border = new RectOffset(0,0,0,0);
+					JaugeJaune.border = new RectOffset(0,0,0,0);
+					JaugeRouge.border = new RectOffset(0,0,0,483);
+				}
+				
+				
 			}
 			else
 			{
+				JaugeVide.border = new RectOffset(0,0,0,0);
 				JaugeVerte.border = new RectOffset(0,0,0,0);
 				JaugeJaune.border = new RectOffset(0,0,0,0);
-				JaugeRouge.border = new RectOffset(0,0,0,483);
+				JaugeRouge.border = new RectOffset(0,0,0,0);
 			}
-			
-			
 		}
-		else
-		{
-			JaugeVide.border = new RectOffset(0,0,0,0);
-			JaugeVerte.border = new RectOffset(0,0,0,0);
-			JaugeJaune.border = new RectOffset(0,0,0,0);
-			JaugeRouge.border = new RectOffset(0,0,0,0);
-		}
-		
 		
 		
 		/*****     Affichage du score     *****/
