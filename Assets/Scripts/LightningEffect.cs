@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class LightningEffect : MonoBehaviour {
-	
+public class LightningEffect : MonoBehaviour 
+{	
 	public bool thunder = true;
 	public Light lightning;
 	
@@ -19,12 +19,15 @@ public class LightningEffect : MonoBehaviour {
 	public PlayerController player;
 	
 	// Use this for initialization
-	void Start () {
+	void Start () 
+	{
 		ResetTimeForRefresh();
+		lightning.intensity = 0;
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	void Update () 
+	{
 		// Déclenche des éclair que si l'on est hors pause et que l'orage est activé
 		if (!thunder || player.getPause())
 			return;
