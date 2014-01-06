@@ -92,7 +92,9 @@ public class AchievementManager : MonoBehaviour
 		// Famille d'achievements avec triggers de zone
 		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev32"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev32"), "castle"));
 		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev33"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev33"), "village"));
-		
+		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev34"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev34"), "inCastle"));
+		achievements.Add(new ZoneAchievement(this, LanguageManager.Instance.GetTextValue("Achievement.nameAchiev35"), LanguageManager.Instance.GetTextValue("Achievement.descAchiev35"), "blockInCastle"));
+
 		// Récupère l'interval de temps maximal à conserver en historique pour les TimedKillAchievement
 		for (int i = 0 ; i < achievements.Count ; i++)
 		{

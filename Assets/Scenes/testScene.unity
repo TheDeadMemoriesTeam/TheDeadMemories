@@ -16343,6 +16343,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 373919730}
   m_GameObject: {fileID: 392152847}
   m_Mesh: {fileID: 4300000, guid: d3115398d31e0cc4f9b28545bc595003, type: 3}
+--- !u!1 &394286839
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 394286840}
+  - 65: {fileID: 394286841}
+  m_Layer: 0
+  m_Name: triggerBlockInTheCastle
+  m_TagString: blockInCastle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &394286840
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 394286839}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 76.4704437, y: -1.62429905, z: 640.296387}
+  m_LocalScale: {x: .0586050004, y: 1.54699302, z: .0439280011}
+  m_Children: []
+  m_Father: {fileID: 1500549483}
+--- !u!65 &394286841
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 394286839}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 153, y: 3, z: 220}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &394289036
 GameObject:
   m_ObjectHideFlags: 0
@@ -24448,8 +24487,8 @@ GameObject:
   - 4: {fileID: 598281845}
   - 65: {fileID: 598281844}
   m_Layer: 0
-  m_Name: triggerCastle
-  m_TagString: castle
+  m_Name: triggerInCastle
+  m_TagString: inCastle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -24473,8 +24512,8 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 598281843}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 30, y: -3.89425659, z: 612}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 21.7062225, y: -4.21102905, z: 658.605225}
+  m_LocalScale: {x: .446664304, y: 1.12997282, z: .514128387}
   m_Children: []
   m_Father: {fileID: 1500549483}
 --- !u!1 &598843710
@@ -24627,6 +24666,45 @@ Prefab:
   m_RootGameObject: {fileID: 2040846603}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &605616766
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 605616767}
+  - 65: {fileID: 605616768}
+  m_Layer: 0
+  m_Name: triggerBlockInTheCastle
+  m_TagString: blockInCastle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &605616767
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605616766}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 20.3690567, y: -1.62429905, z: 577.627747}
+  m_LocalScale: {x: .0586050004, y: 1.54699302, z: .0439280011}
+  m_Children: []
+  m_Father: {fileID: 1500549483}
+--- !u!65 &605616768
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 605616766}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 153, y: 3, z: 220}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &609916696
 GameObject:
   m_ObjectHideFlags: 0
@@ -26143,6 +26221,45 @@ MeshFilter:
   m_PrefabInternal: {fileID: 974192967}
   m_GameObject: {fileID: 642692477}
   m_Mesh: {fileID: 4300004, guid: e390739dcf00c0f4f96b39e15ec154b3, type: 3}
+--- !u!1 &646382829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 646382830}
+  - 65: {fileID: 646382831}
+  m_Layer: 0
+  m_Name: triggerBlockInTheCastle
+  m_TagString: blockInCastle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &646382830
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646382829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 47.6607819, y: -1.62429905, z: 588.775269}
+  m_LocalScale: {x: .0586050004, y: 1.54699302, z: .0439280011}
+  m_Children: []
+  m_Father: {fileID: 1500549483}
+--- !u!65 &646382831
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 646382829}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 153, y: 3, z: 220}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &647280735
 GameObject:
   m_ObjectHideFlags: 0
@@ -39386,6 +39503,45 @@ Prefab:
   m_RootGameObject: {fileID: 1741066290}
   m_IsPrefabParent: 0
   m_IsExploded: 1
+--- !u!1 &975577724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 975577725}
+  - 65: {fileID: 975577726}
+  m_Layer: 0
+  m_Name: triggerBlockInTheCastle
+  m_TagString: blockInCastle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &975577725
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 975577724}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 23.9556255, y: -1.62429905, z: 528.427063}
+  m_LocalScale: {x: .0586050004, y: 1.54699302, z: .0439280011}
+  m_Children: []
+  m_Father: {fileID: 1500549483}
+--- !u!65 &975577726
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 975577724}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 153, y: 3, z: 220}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1001 &979421518
 Prefab:
   m_ObjectHideFlags: 0
@@ -47088,6 +47244,45 @@ Transform:
   m_LocalScale: {x: 17.4529724, y: 17.4529762, z: 17.4529743}
   m_Children: []
   m_Father: {fileID: 101656406}
+--- !u!1 &1186808719
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1186808720}
+  - 65: {fileID: 1186808721}
+  m_Layer: 0
+  m_Name: triggerCastle
+  m_TagString: castle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1186808720
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1186808719}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 30, y: -3.89425707, z: 612}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1500549483}
+--- !u!65 &1186808721
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1186808719}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 153, y: 3, z: 220}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &1187676129
 GameObject:
   m_ObjectHideFlags: 0
@@ -60426,7 +60621,13 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 605616767}
+  - {fileID: 646382830}
+  - {fileID: 394286840}
+  - {fileID: 975577725}
+  - {fileID: 1186808720}
   - {fileID: 598281845}
+  - {fileID: 1777432274}
   - {fileID: 2040928883}
   m_Father: {fileID: 1375840452}
 --- !u!1 &1506223052
@@ -70533,6 +70734,45 @@ Transform:
   - {fileID: 216159868}
   - {fileID: 640070916}
   m_Father: {fileID: 49821349}
+--- !u!1 &1777432272
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1777432274}
+  - 65: {fileID: 1777432273}
+  m_Layer: 0
+  m_Name: triggerBlockInTheCastle
+  m_TagString: blockInCastle
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &1777432273
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777432272}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 153, y: 3, z: 220}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!4 &1777432274
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777432272}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 66.7526321, y: -1.62429881, z: 668.472412}
+  m_LocalScale: {x: .0586051084, y: 1.54699314, z: .0439275131}
+  m_Children: []
+  m_Father: {fileID: 1500549483}
 --- !u!1 &1777863292
 GameObject:
   m_ObjectHideFlags: 0
