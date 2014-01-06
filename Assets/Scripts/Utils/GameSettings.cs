@@ -12,7 +12,6 @@ public class GameSettings : MonoBehaviour
 	{
 		//PlayerPrefs.DeleteAll();
 		ground = FindObjectOfType<Terrain>();
-
 		// Initialise les valeurs des régalges du jeu
 		QualitySettings.SetQualityLevel(PlayerPrefs.GetInt("qualityLevel", 3), true);
 		Screen.SetResolution(PlayerPrefs.GetInt("ResolutionWidth", Screen.currentResolution.width),

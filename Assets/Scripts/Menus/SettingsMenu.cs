@@ -165,8 +165,8 @@ public class SettingsMenu : SubMenu
 		               	LanguageManager.Instance.GetTextValue("Menu.default")))
 		{
 			// Restaure les valeurs par défaut
-			QualitySettings.SetQualityLevel(4, true);
-			PlayerPrefs.SetInt("qualityLevel", 4);
+			QualitySettings.SetQualityLevel(3, true);
+			PlayerPrefs.SetInt("qualityLevel", 3);
 
 			Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
 			PlayerPrefs.SetInt("ResolutionWidth", Screen.currentResolution.width);
