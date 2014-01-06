@@ -247,6 +247,7 @@ public class SaveManager{
 		
 		stats.Add (achievementManager.getTravelledDistance().ToString());
 		stats.Add (achievementManager.getNbKilledEnemy().ToString());
+		stats.Add (achievementManager.getLastNbEnnemyKilled().ToString());
 		stats.Add (achievementManager.getNbKilledBerseker().ToString());
 		stats.Add (achievementManager.getNbAssassinKills().ToString());
 		
@@ -274,8 +275,9 @@ public class SaveManager{
 			
 			achievementManager.setTravelledDistance(float.Parse (stats[0]));
 			achievementManager.setNbKilledEnemy(int.Parse (stats[1]));
-			achievementManager.setNbKilledBerseker(int.Parse (stats[2]));
-			achievementManager.setNbAssassinKills(int.Parse (stats[3]));
+			achievementManager.setLastNbEnnemyKilled(int.Parse(stats[2]));
+			achievementManager.setNbKilledBerseker(int.Parse (stats[3]));
+			achievementManager.setNbAssassinKills(int.Parse (stats[4]));
 			
 			file.Close();
 		}
@@ -313,6 +315,7 @@ public class SaveManager{
 
 		external.Add (player.getSkillManager().getPv().ToString());
 		external.Add (player.getSkillManager().getMana().ToString());
+		external.Add (player.getMobsController().getMaxPlayerXpWin().ToString());
 
 		// Créé le formater
 		BinaryFormatter formater = new BinaryFormatter();
@@ -342,6 +345,8 @@ public class SaveManager{
 			timeManager.dayTime = float.Parse (external[3]);
 			player.getSkillManager().setPv(float.Parse (external[4]));
 			player.getSkillManager().setMana(float.Parse (external[5]));
+			player.getMobsController().setMaxPlayerXpWin(int.Parse(external[6]));
+			player.getMobsController().upMob();
 			
 			file.Close();
 		}

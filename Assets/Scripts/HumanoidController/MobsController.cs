@@ -3,7 +3,7 @@ using System.Collections;
 
 public class MobsController
 {
-	private float m_xpPlayer = 0;
+	private int m_xpPlayer = 0;
 	EnemyController[] enemis;
 
 	public void incXp(int xp)
@@ -96,5 +96,15 @@ public class MobsController
 			enemis[i].getSkillManager().updateSkill();
 			enemis[i].getSkillManager().setPv(enemis[i].getSkillManager().getPvMax());
 		}
+	}
+
+	public void setMaxPlayerXpWin(int xp)
+	{
+		m_xpPlayer = xp;
+	}
+
+	public int getMaxPlayerXpWin()
+	{
+		return m_xpPlayer;
 	}
 }

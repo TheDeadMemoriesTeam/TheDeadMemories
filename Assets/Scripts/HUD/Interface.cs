@@ -227,6 +227,18 @@ public class Interface : MonoBehaviour
 				JaugeRouge.border = new RectOffset(0,0,0,0);
 			}
 		}
+		else
+		{
+			JaugeVide.border = new RectOffset(0,0,0,0);
+			JaugeVerte.border = new RectOffset(0,0,0,0);
+			JaugeJaune.border = new RectOffset(0,0,0,0);
+			JaugeRouge.border = new RectOffset(0,0,0,0);
+			skillLance = false;
+			timerJauge = -1;
+			timerPortee = -1;
+			timerZone = -1;
+			timerSuper = -1;
+		}
 		
 		
 		/*****     Affichage du score     *****/
