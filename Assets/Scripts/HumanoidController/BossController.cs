@@ -10,7 +10,7 @@ public class BossController : EnemyController
 	{
 		base.Start();
 		
-		skillManager.setBasePvMax(10);
+		skillManager.setBasePvMax(15);
 		skillManager.setBaseManaMax(50);
 		skillManager.setBasePhysicalResistance(5f);
 		skillManager.setBaseMagicResistance(5f);

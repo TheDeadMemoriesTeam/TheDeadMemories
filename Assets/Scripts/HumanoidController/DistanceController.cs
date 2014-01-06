@@ -10,7 +10,7 @@ public class DistanceController : EnemyController
 	{
 		base.Start();
 		
-		skillManager.setBasePvMax(4);
+		skillManager.setBasePvMax(9);
 		skillManager.setBaseManaMax(80);
 		skillManager.setBasePhysicalResistance(0f);
 		skillManager.setBaseMagicResistance(5f);

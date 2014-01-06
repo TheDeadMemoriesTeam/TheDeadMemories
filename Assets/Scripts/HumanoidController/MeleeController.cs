@@ -10,7 +10,7 @@ public class MeleeController : EnemyController
 	{
 		base.Start();
 		
-		skillManager.setBasePvMax(6);
+		skillManager.setBasePvMax(11);
 		skillManager.setBaseManaMax(50);
 		skillManager.setBasePhysicalResistance(5f);
 		skillManager.setBaseMagicResistance(0f);
