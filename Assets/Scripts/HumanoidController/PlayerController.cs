@@ -115,17 +115,17 @@ public class PlayerController : HumanoidController
 		skillManager.addSkill(new FurieSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill6"), skillsDescriptions[13], 6000, skillManager.getSkill(4), 0, 30, null, 5f, 10f));
 
 		//arbre de competence Feu
-		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill7"), skillsDescriptions[14], 500, null, 0f, 10, fireball, 10f, 50, 50, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[15], skillsDescriptions[16], 20f));
+		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill7"), skillsDescriptions[14], 300, null, 0f, 10, fireball, 10f, 40, 40, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[15], skillsDescriptions[16], 20f));
 		skillManager.addSkill(new ZoneSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill8"), skillsDescriptions[17], 1000, skillManager.getSkill(6), 1f, 15, firezone, 15f, 100, 100, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill11"), skillsDescriptions[18], skillsDescriptions[19], 10f));
 		skillManager.addSkill(new SuperSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill9"), skillsDescriptions[20], 6000, skillManager.getSkill(7), 2f, 20, firesuper, 20f, 50f)); 
 		
 		//arbre de competence Glace
-		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill10"), skillsDescriptions[21], 500, null, 0f, 10, iceball, 10f, 50, 50, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[22], skillsDescriptions[23], 20f));
+		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill10"), skillsDescriptions[21], 300, null, 0f, 10, iceball, 10f, 40, 40, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[22], skillsDescriptions[23], 20f));
 		skillManager.addSkill(new ZoneSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill11"), skillsDescriptions[24], 1000, skillManager.getSkill(9), 1f, 15, icezone, 15f, 100, 100, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill11"), skillsDescriptions[25], skillsDescriptions[26], 10f));
 		skillManager.addSkill(new SuperSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill12"), skillsDescriptions[27], 6000, skillManager.getSkill(10), 2f, 20, icesuper, 20f, 50f));
 		
 		//arbre de competence Vent
-		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill13"), skillsDescriptions[28], 500, null, 0f, 10, windball, 10f, 50, 50, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[29], skillsDescriptions[30], 20f));
+		skillManager.addSkill(new PorteeSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill13"), skillsDescriptions[28], 300, null, 0f, 10, windball, 10f, 40, 40, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill10"), skillsDescriptions[29], skillsDescriptions[30], 20f));
 		skillManager.addSkill(new ZoneSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill14"), skillsDescriptions[31], 1000, skillManager.getSkill(12), 1f, 15, windsuper, 15f, 100, 100, LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill9"), LanguageManager.Instance.GetTextValue("Skills.nameUnderSkill11"), skillsDescriptions[32], skillsDescriptions[33], 10f));
 		skillManager.addSkill(new SuperSkills(LanguageManager.Instance.GetTextValue("Skills.nameSkill15"), skillsDescriptions[34], 6000, skillManager.getSkill(13), 2f, 20, windsuper, 20f, 50f));
 

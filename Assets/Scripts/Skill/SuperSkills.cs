@@ -20,7 +20,7 @@ public class SuperSkills : DamageSkills
 
 	public void launch(Vector3 position, float distance, float damage, bool furie, float damageFurie, float factorCritique)
 	{
-		for(int i=0; i<5; i++)
+		for(int i=0; i<10; i++)
 		{
 			Transform meteorTransform = (Transform)GameObject.Instantiate(m_particule,
 			                                                                  new Vector3(Random.Range(position.x - m_zone, position.x + m_zone),
