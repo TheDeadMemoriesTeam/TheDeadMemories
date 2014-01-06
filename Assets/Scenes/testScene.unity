@@ -56686,7 +56686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fade6be4d7a933f4d92d313465c9db1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  thunder: 1
+  thunder: 0
   lightning: {fileID: 902188957}
   lightningSound: {fileID: 8300000, guid: f73a124a079edb14d98508a9aa3ad812, type: 3}
   player: {fileID: 1758632532}
